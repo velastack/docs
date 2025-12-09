@@ -1,9 +1,11 @@
 <script lang="ts">
 	import * as Item from '$lib/components/ui/item';
 	import { Button } from '$lib/components/ui/button';
+
+	const { data } = $props();
 </script>
 
-<h1>Helpers</h1>
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>Although Vela has no runtime, it does include a few helpers for common tasks.</p>
 

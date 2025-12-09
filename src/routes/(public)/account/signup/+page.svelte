@@ -1,4 +1,8 @@
-<h1>Sign Up</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>Sign up for a new account on shipvela.com.</p>
 

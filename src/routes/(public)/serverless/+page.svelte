@@ -1,9 +1,11 @@
 <script lang="ts">
 	import * as Item from '$lib/components/ui/item';
 	import { Button } from '$lib/components/ui/button';
+
+	const { data } = $props();
 </script>
 
-<h1>Serverless</h1>
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	Serverless is not the recommended approach for Vela projects. Vela projects are designed as

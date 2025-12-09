@@ -1,4 +1,8 @@
-<h1>S3</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	Enable S3 storage for file uploads. Normally, file uploads are stored on the local filesystem.

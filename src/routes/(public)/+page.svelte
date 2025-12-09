@@ -1,10 +1,9 @@
-<h1>Getting Started</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
 
-<p>
-	Vela is a command line tool for rapidly scaffolding production ready SvelteKit projects. It
-	prioritizes transparency, type-safety, and developer control. Everything it scaffolds is editable
-	code, not hidden abstractions.
-</p>
+<h1>{data.pageMetaTags.title}</h1>
+<p>{data.pageMetaTags.description}</p>
 
 <h3>Installation</h3>
 

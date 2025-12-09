@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { Badge } from '$lib/components/ui/badge';
+
+	const { data } = $props();
 </script>
 
-<h1>Scaffold</h1>
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	A scaffold is a full CRUD interface for a resource. It includes the index, view, create and edit

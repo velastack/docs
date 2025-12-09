@@ -1,4 +1,8 @@
-<h1>Privacy</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	Vela includes a privacy policy generator to create a demo privacy policy for your application.

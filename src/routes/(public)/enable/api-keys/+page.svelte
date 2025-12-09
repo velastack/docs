@@ -1,8 +1,10 @@
-<script>
+<script lang="ts">
 	import { Badge } from '$lib/components/ui/badge';
+
+	const { data } = $props();
 </script>
 
-<h1>API Keys</h1>
+<h1>{data.pageMetaTags.title}</h1>
 
 <div class="flex gap-1">
 	<Badge variant="outline" href="/enable/auth" class="no-underline">Depends: auth</Badge>

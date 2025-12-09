@@ -1,4 +1,8 @@
-<h1>Static Site Generator</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	Vela includes a static build mode to create a static site, ready to be deployed to any hosting

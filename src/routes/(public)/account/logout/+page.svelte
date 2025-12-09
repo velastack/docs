@@ -1,4 +1,8 @@
-<h1>Logout</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>Logout of your account on shipvela.com.</p>
 

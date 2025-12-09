@@ -1,4 +1,8 @@
-<h1>Netlify</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	Deploy your application to Netlify. You'll need a hosted database backend (we recommend <a

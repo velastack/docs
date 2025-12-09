@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { Badge } from '$lib/components/ui/badge';
+
+	const { data } = $props();
 </script>
 
-<h1>Schema</h1>
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	A schema is a Zod schema for validating data. Vela uses TypeScript definitions to ensure that the

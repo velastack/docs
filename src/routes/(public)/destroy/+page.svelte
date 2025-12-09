@@ -1,4 +1,8 @@
-<h1>Destroy</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	The destroy command is a tool for removing resources created with generate. It can be used to

@@ -1,4 +1,8 @@
-<h1>Build</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>Build the application for production.</p>
 

@@ -1,9 +1,11 @@
 <script lang="ts">
 	import * as Item from '$lib/components/ui/item';
 	import { Button } from '$lib/components/ui/button';
+
+	const { data } = $props();
 </script>
 
-<h1>Test</h1>
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	The test command is used to run the unit and integration tests for your application. Vela uses

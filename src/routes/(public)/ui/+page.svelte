@@ -1,4 +1,8 @@
-<h1>UI</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	Vela uses shadcn-svelte for its UI components with no modifications. The add command is a wrapper

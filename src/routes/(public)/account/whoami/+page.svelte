@@ -1,4 +1,8 @@
-<h1>Who Am I</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	Check your account details on shipvela.com. The API key for the CLI is stored in <code

@@ -2,9 +2,11 @@
 	import * as Item from '$lib/components/ui/item';
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
+
+	const { data } = $props();
 </script>
 
-<h1>Backend</h1>
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	Vela projects are designed as traditional full-stack applications: a database and an application.

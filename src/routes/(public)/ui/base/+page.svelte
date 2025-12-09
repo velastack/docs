@@ -1,4 +1,8 @@
-<h1>Base</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>The base command changes the base color of the application.</p>
 

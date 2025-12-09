@@ -1,4 +1,8 @@
-<h1>Auth</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	Authentication (user accounts) is enabled by running the <code>vela enable auth</code> command. This

@@ -1,4 +1,8 @@
-<h1>Clear</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>Clear seed data from the database.</p>
 

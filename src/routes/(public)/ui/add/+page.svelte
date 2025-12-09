@@ -1,4 +1,8 @@
-<h1>Add</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>The add command is used to add a new Shadcn-Svelte component to the application.</p>
 

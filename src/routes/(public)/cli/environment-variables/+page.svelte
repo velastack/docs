@@ -1,4 +1,8 @@
-<h1>Environment Variables</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p class="mb-0!">
 	Vela uses environment variables to configure the project. The environment variables are stored in

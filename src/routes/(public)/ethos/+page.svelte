@@ -1,7 +1,11 @@
-<h1>Ethos</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
-	Vela enables you to rapidly scaffold full-stack SvelteKit projects with a focus on performance,
+	Vela enables you to rapidly scaffold fullstack projects with a focus on performance,
 	accessibility, and developer experience. All functionality created with Vela aims to be the
 	<b>canonical implementation</b> of the feature: <i>the correct way to do something</i>.
 </p>

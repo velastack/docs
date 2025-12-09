@@ -1,4 +1,8 @@
-<h1>Fixtures</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	Fixtures are mock data for testing and development. They are stored in <code>data/fixtures</code> directory.

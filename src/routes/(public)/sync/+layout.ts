@@ -1,3 +1,12 @@
+import { definePageMetaTags } from 'svelte-meta-tags';
+
 export const load = () => {
-	return { breadcrumbs: [{ title: 'Sync', url: '/sync' }] };
+	const pageTags = definePageMetaTags({
+		title: 'Sync'
+	});
+
+	return {
+		...pageTags,
+		breadcrumbs: [{ title: 'Sync', url: '/sync' }]
+	};
 };

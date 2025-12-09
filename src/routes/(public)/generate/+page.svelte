@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { Badge } from '$lib/components/ui/badge';
+
+	const { data } = $props();
 </script>
 
-<h1>Generate</h1>
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	Vela provides a generator for creating database models, forms, resources, schemas and full CRUD

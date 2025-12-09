@@ -1,4 +1,8 @@
-<h1>Seeds</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	Seed data is used to populate the database with initial data that is essential for the application

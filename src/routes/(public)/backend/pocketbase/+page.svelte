@@ -1,4 +1,8 @@
-<h1>PocketBase</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	PocketBase is a lightweight, open-source database backend. It's a great choice for small to

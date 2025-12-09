@@ -2,9 +2,11 @@
 	import * as Item from '$lib/components/ui/item';
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
+
+	const { data } = $props();
 </script>
 
-<h1>Enable</h1>
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	The enable command is used to enable features in a Vela project. It can be used to enable

@@ -1,4 +1,8 @@
-<h1>Disable</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>The disable command is used to disable features enabled by the enable command.</p>
 

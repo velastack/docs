@@ -1,4 +1,8 @@
-<h1>Terms</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	Vela includes a terms of service generator to create a demo terms of service for your application.

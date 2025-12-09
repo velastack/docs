@@ -1,4 +1,8 @@
-<h1>Sync</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>Sync the database schema with the application TypeScript definitions.</p>
 

@@ -1,4 +1,8 @@
-<h1>Integration</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>Integration tests cover the full application stack, including the database.</p>
 

@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { Badge } from '$lib/components/ui/badge';
+
+	const { data } = $props();
 </script>
 
-<h1>Resource</h1>
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	A resource is a collection of data that is stored in the database. For models that don't require a

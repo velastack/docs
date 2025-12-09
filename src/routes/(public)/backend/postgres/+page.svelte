@@ -1,4 +1,8 @@
-<h1>PostgreSQL</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p class="mb-0!">
 	PostgreSQL support is coming soon. Configuration is done in <code>hooks.server.ts</code>:

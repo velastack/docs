@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { Badge } from '$lib/components/ui/badge';
+
+	const { data } = $props();
 </script>
 
-<h1>Form</h1>
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	The basic building block of any website or application is the form. If you don't need a database

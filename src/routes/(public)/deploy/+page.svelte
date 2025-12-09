@@ -1,4 +1,8 @@
-<h1>Deploy</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>Deploy the application to a previously provisioned VPS.</p>
 

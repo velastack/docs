@@ -1,4 +1,8 @@
-<h1>Routes</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>The routes command is used to list all routes in the application.</p>
 

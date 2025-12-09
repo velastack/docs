@@ -1,9 +1,11 @@
 <script lang="ts">
 	import * as Item from '$lib/components/ui/item';
 	import { Button } from '$lib/components/ui/button';
+
+	const { data } = $props();
 </script>
 
-<h1>CLI</h1>
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>The Vela CLI is a command-line interface for creating and managing Vela projects.</p>
 

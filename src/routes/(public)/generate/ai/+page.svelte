@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { Badge } from '$lib/components/ui/badge';
+
+	const { data } = $props();
 </script>
 
-<h1>AI</h1>
+<h1>{data.pageMetaTags.title}</h1>
 <Badge variant="outline">Pro</Badge>
 <p></p>
 

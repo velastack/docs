@@ -4,6 +4,7 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import { getFlash } from 'sveltekit-flash-message';
 	import { toast } from 'svelte-sonner';
+	import { MetaTags, deepMerge } from 'svelte-meta-tags';
 	import { page } from '$app/state';
 	import { Toaster } from '$lib/components/ui/sonner';
 
@@ -19,12 +20,11 @@
 
 		$flash = undefined;
 	});
+
+	let metaTags = $derived(deepMerge(data.baseMetaTags, page.data.pageMetaTags));
 </script>
 
-<svelte:head>
-	<title>{data.meta.appName}</title>
-</svelte:head>
-
+<MetaTags {...metaTags} />
 <ModeWatcher />
 <Toaster />
 

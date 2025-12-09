@@ -1,4 +1,8 @@
-<h1>@vela/pocketbase</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>This library is used to interact with PocketBase.</p>
 

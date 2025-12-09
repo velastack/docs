@@ -1,4 +1,8 @@
-<h1>Provision</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>Provision a VPS for deploys. Any host that supports SSH can be used.</p>
 

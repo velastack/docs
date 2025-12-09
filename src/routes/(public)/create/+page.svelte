@@ -1,4 +1,8 @@
-<h1>Create</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>The create command is used to initialize a new Vela project.</p>
 

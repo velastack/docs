@@ -1,4 +1,8 @@
-<h1>Account</h1>
+<script lang="ts">
+	const { data } = $props();
+</script>
+
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	An account is not required to use the Vela CLI. Paid features, templates and AI options require it

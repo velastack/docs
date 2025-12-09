@@ -331,7 +331,7 @@
 								<img src="/favicon.svg" alt="logo" class="size-6" />
 							</div>
 							<div class="grid flex-1 text-left text-sm leading-tight">
-								<span class="truncate font-medium">{meta.appName} Docs</span>
+								<span class="truncate font-medium">{meta.appName}</span>
 							</div>
 						</a>
 					{/snippet}

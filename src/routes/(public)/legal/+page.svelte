@@ -1,9 +1,11 @@
 <script lang="ts">
 	import * as Item from '$lib/components/ui/item';
 	import { Button } from '$lib/components/ui/button';
+
+	const { data } = $props();
 </script>
 
-<h1>Legal</h1>
+<h1>{data.pageMetaTags.title}</h1>
 
 <p>
 	Vela includes a privacy policy and terms of service generator to create a demo privacy policy and
