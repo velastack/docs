@@ -1,0 +1,10 @@
+<h1>Login</h1>
+
+<p>Login to your account on shipvela.com.</p>
+
+<h3>Syntax</h3>
+<pre><code>{`$ vela login`}</code></pre>
+
+<p></p>
+
+<p>You'll be prompted for your email and password.</p>
