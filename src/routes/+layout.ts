@@ -6,8 +6,7 @@ export const load = async ({ url }) => {
 	const baseTags = defineBaseMetaTags({
 		title: 'Getting Started',
 		titleTemplate: '%s | Vela Docs',
-		description:
-			'Vela is a fullstack command line tool for rapidly scaffolding modern web apps. Rather than a framework, Vela prioritizes extensibility and developer control by generating editable code, not hidden abstractions.',
+		description: 'Vela is a fullstack command line tool for rapidly scaffolding modern web apps.',
 		canonical,
 		openGraph: {
 			type: 'website',

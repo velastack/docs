@@ -3,7 +3,11 @@
 </script>
 
 <h1>{data.pageMetaTags.title}</h1>
-<p>{data.pageMetaTags.description}</p>
+<p>
+	Vela is a fullstack command line tool for rapidly scaffolding modern web apps. Rather than a
+	framework, Vela prioritizes extensibility and developer control by generating editable code, not
+	hidden abstractions.
+</p>
 
 <h3>Installation</h3>
 
