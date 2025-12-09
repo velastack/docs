@@ -19,7 +19,7 @@
 		<AppSidebar meta={data.meta} />
 		<Sidebar.Inset>
 			<header class="flex h-16 shrink-0 items-center justify-between">
-				<div class="flex items-center gap-2 px-4">
+				<div class="flex items-center gap-2 px-6">
 					<Sidebar.Trigger class="-ml-1" />
 					<Separator orientation="vertical" class="mr-2 data-[orientation=vertical]:h-4" />
 					{#if breadcrumbs.length > 0}
@@ -51,7 +51,7 @@
 				</div>
 			</header>
 			<div
-				class="flex flex-1 flex-col p-4 pt-0 text-foreground prose dark:prose-invert prose-headings:mt-0 prose-headings:mb-2 prose-p:mt-0 prose-p:mb-4 prose-p:leading-relaxed prose-pre:mt-2 prose-pre:mb-2 prose-ul:mt-2"
+				class="flex flex-1 flex-col p-6 pt-0 text-foreground prose dark:prose-invert dark:prose-pre:bg-card prose-headings:mt-0 prose-headings:mb-2 prose-p:mt-0 prose-p:mb-4 prose-p:leading-relaxed prose-pre:mt-2 prose-pre:mb-2 prose-ul:mt-2"
 			>
 				{@render children?.()}
 			</div>
