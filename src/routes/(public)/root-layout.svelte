@@ -41,7 +41,7 @@
 					{/if}
 				</div>
 				<div class="px-4 gap-2 flex items-center">
-					<ButtonGroup.Root>
+					<ButtonGroup.Root class="hidden md:flex">
 						<Button variant="outline" size="sm">PocketBase</Button>
 						<Button variant="outline" size="sm" disabled>PostgreSQL</Button>
 					</ButtonGroup.Root>
