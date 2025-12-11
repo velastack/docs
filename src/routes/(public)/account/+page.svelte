@@ -11,4 +11,4 @@
 
 <h3>Deploy History</h3>
 
-<p>If logged in, you can view your deploy history on shipvela.com.</p>
+<p>If logged in, you can view your deploy history on velastack.dev.</p>

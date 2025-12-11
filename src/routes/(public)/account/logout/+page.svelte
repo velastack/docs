@@ -4,7 +4,7 @@
 
 <h1>{data.pageMetaTags.title}</h1>
 
-<p>Logout of your account on shipvela.com.</p>
+<p>Logout of your account on velastack.dev.</p>
 
 <h3>Syntax</h3>
 <pre><code>{`$ vela logout`}</code></pre>

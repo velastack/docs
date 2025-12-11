@@ -4,7 +4,7 @@
 
 <h1>{data.pageMetaTags.title}</h1>
 
-<p>Sign up for a new account on shipvela.com.</p>
+<p>Sign up for a new account on velastack.dev.</p>
 
 <h3>Syntax</h3>
 <pre><code>{`$ vela signup`}</code></pre>

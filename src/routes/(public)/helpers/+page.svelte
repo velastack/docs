@@ -31,7 +31,7 @@
 	</Item.Root>
 	<Item.Root variant="outline">
 		<Item.Content>
-			<Item.Title>shipvela/action</Item.Title>
+			<Item.Title>velastack/action</Item.Title>
 			<Item.Description>The GitHub Action for deploying Vela projects to a VPS.</Item.Description>
 		</Item.Content>
 		<Item.Actions>

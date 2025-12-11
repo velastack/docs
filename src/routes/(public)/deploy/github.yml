@@ -14,7 +14,7 @@ jobs:
           else
             echo "DOMAIN=${BRANCH}.dev.example.com" >> "$GITHUB_ENV"
           fi
-      - uses: shipvela/action@v1
+      - uses: velastack/action@v1
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           api_key: ${{ secrets.VELA_API_KEY }}

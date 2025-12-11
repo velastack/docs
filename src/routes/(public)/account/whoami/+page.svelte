@@ -5,7 +5,7 @@
 <h1>{data.pageMetaTags.title}</h1>
 
 <p>
-	Check your account details on shipvela.com. The API key for the CLI is stored in <code
+	Check your account details on velastack.dev. The API key for the CLI is stored in <code
 		>~/.vela/config.json</code
 	>.
 </p>

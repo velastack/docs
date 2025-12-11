@@ -22,18 +22,19 @@
 
 <p>
 	If logged in, you can view your project's deploy history on <a
-		href="https://shipvela.com"
-		target="_blank">shipvela.com</a
+		href="https://velastack.dev"
+		target="_blank">velastack.dev</a
 	>.
 </p>
 
 <h3>GitHub Action</h3>
 
 <p class="mb-0!">
-	Use the <code>@vela/action</code> to deploy the application from a GitHub workflow. We recommend
-	using the <code>webfactory/ssh-agent</code> action to manage the deploy host SSH key secret. The
-	<code>shipvela/action</code> API key is not required but allows deployment history to be tracked on
-	shipvela.com.
+	Use the <code>velastack/action</code> to deploy the application from a GitHub workflow. We
+	recommend using the <code>webfactory/ssh-agent</code> action to manage the deploy host SSH key
+	secret. The
+	<code>velastack/action</code> API key is not required but allows deployment history to be tracked on
+	velastack.dev.
 </p>
 
 <pre><code
@@ -45,7 +46,7 @@
       - uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: $\{{ secrets.SSH_PRIVATE_KEY }}
-      - uses: shipvela/action@v1
+      - uses: velastack/action@v1
         with:
           host: $\{{ secrets.DEPLOY_HOST }}
 		  domain: example.com
@@ -80,7 +81,7 @@
           else
             echo "DOMAIN=$\{BRANCH}.dev.example.com" >> "$\{GITHUB_ENV}"
           fi
-      - uses: shipvela/action@v1
+      - uses: velastack/action@v1
         with:
           host: $\{{ secrets.DEPLOY_HOST }}
           api_key: $\{{ secrets.VELA_API_KEY }}
