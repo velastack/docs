@@ -146,6 +146,28 @@
 				url: '/disable'
 			},
 			{
+				title: 'i18n',
+				url: '/i18n',
+				items: [
+					{
+						title: 'Extract',
+						url: '/i18n/extract'
+					},
+					{
+						title: 'Watch',
+						url: '/i18n/watch'
+					},
+					{
+						title: 'Status',
+						url: '/i18n/status'
+					},
+					{
+						title: 'Clean',
+						url: '/i18n/clean'
+					}
+				]
+			},
+			{
 				title: 'Sync',
 				url: '/sync'
 			},

@@ -10,7 +10,7 @@ export const load = () => {
 		breadcrumbs: [
 			{
 				title: 'i18n',
-				url: '/enable/i18n'
+				url: '/i18n'
 			}
 		]
 	};
