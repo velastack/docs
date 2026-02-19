@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { Button } from '$lib/components/ui/button';
-	import RootLayout from './(public)/root-layout.svelte';
+	import RootLayout from './[[locale]]/(public)/root-layout.svelte';
 
 	let { data } = $props();
 </script>

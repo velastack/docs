@@ -50,5 +50,10 @@
 		"vite": "^7.1.10",
 		"vitest": "^3.2.3",
 		"zod": "^4.1.11"
+	},
+	"dependencies": {
+		"@wuchale/svelte": "^0.18.1",
+		"@wuchale/vite-plugin": "^0.16.3",
+		"wuchale": "^0.19.4"
 	}
 }

@@ -1,6 +1,8 @@
 import { definePageMetaTags } from 'svelte-meta-tags';
 
-export const load = () => {
+export const load = async ({ parent }) => {
+	await parent();
+
 	const pageTags = definePageMetaTags({
 		title: 'Generate'
 	});

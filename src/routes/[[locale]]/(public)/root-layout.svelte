@@ -12,6 +12,39 @@
 
 	let breadcrumbs = $derived(page.data.breadcrumbs || []) as { title: string; url: string }[];
 	let { data, children } = $props();
+
+	const defaultLocale = 'en';
+	let locale = $derived(page.params.locale);
+
+	const replaceLocale = (newLocale: string) => {
+		const url = new URL(page.url);
+
+		if (locale === undefined) {
+			if (newLocale === defaultLocale) {
+				return url.pathname;
+			} else {
+				return `/${newLocale}${url.pathname}`;
+			}
+		}
+
+		if (url.pathname.startsWith(`/${newLocale}`)) {
+			return url.pathname;
+		} else if (url.pathname.startsWith(`/${locale}/`)) {
+			if (newLocale === defaultLocale) {
+				return url.pathname.replace(`/${locale}/`, '/');
+			} else {
+				return url.pathname.replace(`/${locale}/`, `/${newLocale}/`);
+			}
+		} else if (url.pathname.startsWith(`/${locale}`)) {
+			if (newLocale === defaultLocale) {
+				return url.pathname.replace(`/${locale}`, '/');
+			} else {
+				return `/${newLocale}${url.pathname}`;
+			}
+		} else {
+			return `/${newLocale}${url.pathname}`;
+		}
+	};
 </script>
 
 <div class="min-h-dvh dashboard">
@@ -42,8 +75,20 @@
 				</div>
 				<div class="px-4 gap-2 flex items-center">
 					<ButtonGroup.Root class="hidden md:flex">
-						<Button variant="outline" size="sm">PocketBase</Button>
-						<Button variant="outline" size="sm" disabled>PostgreSQL</Button>
+						<Button
+							variant="outline"
+							size="sm"
+							class={locale !== undefined && locale !== 'en' ? 'opacity-50' : ''}
+							href={replaceLocale('en')}
+							data-sveltekit-preload-data="off">English</Button
+						>
+						<Button
+							variant="outline"
+							size="sm"
+							class={locale !== 'es' ? 'opacity-50' : ''}
+							href={replaceLocale('es')}
+							data-sveltekit-preload-data="off">Español</Button
+						>
 					</ButtonGroup.Root>
 					<Button onclick={toggleMode} variant="ghost" size="icon">
 						<Navbar.Mode />

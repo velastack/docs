@@ -1,0 +1,2210 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-19T17:16:26.933Z\n"
+"PO-Revision-Date: 2026-02-19T17:16:26.933Z\n"
+"Last-Translator: \n"
+"Language: en\n"
+"Language-Team: \n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"MIME-Version: 1.0\n"
+
+#: src/routes/+error.svelte
+msgid "Oops! Something went wrong"
+msgstr "Oops! Something went wrong"
+
+#: src/routes/+error.svelte
+msgid "We couldn't find what you were looking for. Let's get you back on track!"
+msgstr "We couldn't find what you were looking for. Let's get you back on track!"
+
+#: src/routes/+error.svelte
+msgid "Take me home"
+msgstr "Take me home"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/+page.ts
+#: src/routes/[[locale]]/(public)/+page.ts
+#: src/routes/[[locale]]/+layout.ts
+msgid "Getting Started"
+msgstr "Getting Started"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/ethos/+layout.ts
+#: src/routes/[[locale]]/(public)/ethos/+layout.ts
+msgid "Ethos"
+msgstr "Ethos"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/backend/+layout.ts
+#: src/routes/[[locale]]/(public)/backend/+layout.ts
+msgid "Backend"
+msgstr "Backend"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/backend/+page.svelte
+#: src/routes/[[locale]]/(public)/backend/pocketbase/+page.ts
+#: src/routes/[[locale]]/(public)/backend/pocketbase/+page.ts
+msgid "PocketBase"
+msgstr "PocketBase"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/backend/postgres/+page.ts
+#: src/routes/[[locale]]/(public)/backend/postgres/+page.ts
+msgid "PostgreSQL"
+msgstr "PostgreSQL"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/backend/postgres/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/cms/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/i18n/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/subscriptions/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/workflow/+page.svelte
+#: src/routes/[[locale]]/(public)/helpers/postgres/+page.svelte
+msgid "Preview"
+msgstr "Preview"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/cli/+layout.ts
+#: src/routes/[[locale]]/(public)/cli/+layout.ts
+msgid "CLI Reference"
+msgstr "CLI Reference"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/cli/+page.svelte
+#: src/routes/[[locale]]/(public)/cli/installation/+page.ts
+#: src/routes/[[locale]]/(public)/cli/installation/+page.ts
+msgid "Installation"
+msgstr "Installation"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/cli/+page.svelte
+#: src/routes/[[locale]]/(public)/cli/environment-variables/+page.ts
+#: src/routes/[[locale]]/(public)/cli/environment-variables/+page.ts
+msgid "Environment Variables"
+msgstr "Environment Variables"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/create/+layout.ts
+#: src/routes/[[locale]]/(public)/create/+layout.ts
+msgid "Create"
+msgstr "Create"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/dev/+layout.ts
+#: src/routes/[[locale]]/(public)/dev/+layout.ts
+msgid "Dev"
+msgstr "Dev"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/build/+layout.ts
+#: src/routes/[[locale]]/(public)/build/+layout.ts
+msgid "Build"
+msgstr "Build"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/fixtures/generate/+page.ts
+#: src/routes/[[locale]]/(public)/fixtures/generate/+page.ts
+#: src/routes/[[locale]]/(public)/generate/+layout.ts
+#: src/routes/[[locale]]/(public)/generate/+layout.ts
+msgid "Generate"
+msgstr "Generate"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/generate/form/+page.ts
+#: src/routes/[[locale]]/(public)/generate/form/+page.ts
+msgid "Form"
+msgstr "Form"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/generate/resource/+page.ts
+#: src/routes/[[locale]]/(public)/generate/resource/+page.ts
+msgid "Resource"
+msgstr "Resource"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/generate/schema/+page.ts
+#: src/routes/[[locale]]/(public)/generate/schema/+page.ts
+msgid "Schema"
+msgstr "Schema"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/generate/scaffold/+page.ts
+#: src/routes/[[locale]]/(public)/generate/scaffold/+page.ts
+msgid "Scaffold"
+msgstr "Scaffold"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/teams/+page.svelte
+#: src/routes/[[locale]]/(public)/fixtures/generate/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/ai/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/form/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/resource/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/scaffold/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/schema/+page.svelte
+msgid "Pro"
+msgstr "Pro"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/destroy/+layout.ts
+#: src/routes/[[locale]]/(public)/destroy/+layout.ts
+msgid "Destroy"
+msgstr "Destroy"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/enable/+layout.ts
+#: src/routes/[[locale]]/(public)/enable/+layout.ts
+msgid "Enable"
+msgstr "Enable"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/disable/auth/+page.ts
+#: src/routes/[[locale]]/(public)/disable/auth/+page.ts
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/auth/+page.ts
+#: src/routes/[[locale]]/(public)/enable/auth/+page.ts
+msgid "Auth"
+msgstr "Auth"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/api-keys/+page.ts
+#: src/routes/[[locale]]/(public)/enable/api-keys/+page.ts
+msgid "API Keys"
+msgstr "API Keys"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/enable/notifications/+page.ts
+#: src/routes/[[locale]]/(public)/enable/notifications/+page.ts
+msgid "Notifications"
+msgstr "Notifications"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/disable/teams/+page.ts
+#: src/routes/[[locale]]/(public)/disable/teams/+page.ts
+#: src/routes/[[locale]]/(public)/enable/teams/+page.ts
+#: src/routes/[[locale]]/(public)/enable/teams/+page.ts
+msgid "Teams"
+msgstr "Teams"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/disable/payments/+page.ts
+#: src/routes/[[locale]]/(public)/disable/payments/+page.ts
+#: src/routes/[[locale]]/(public)/enable/payments/+page.ts
+#: src/routes/[[locale]]/(public)/enable/payments/+page.ts
+msgid "Payments"
+msgstr "Payments"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/enable/subscriptions/+page.ts
+#: src/routes/[[locale]]/(public)/enable/subscriptions/+page.ts
+msgid "Subscriptions"
+msgstr "Subscriptions"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/enable/workflow/+layout.ts
+#: src/routes/[[locale]]/(public)/enable/workflow/+layout.ts
+#: src/routes/[[locale]]/(public)/enable/workflow/+page.svelte
+msgid "Workflow"
+msgstr "Workflow"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/disable/+layout.ts
+#: src/routes/[[locale]]/(public)/disable/+layout.ts
+msgid "Disable"
+msgstr "Disable"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/i18n/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/extract/+page.ts
+#: src/routes/[[locale]]/(public)/i18n/extract/+page.ts
+msgid "Extract"
+msgstr "Extract"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/i18n/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/watch/+page.ts
+#: src/routes/[[locale]]/(public)/i18n/watch/+page.ts
+msgid "Watch"
+msgstr "Watch"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/i18n/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/status/+page.ts
+#: src/routes/[[locale]]/(public)/i18n/status/+page.ts
+msgid "Status"
+msgstr "Status"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/i18n/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/clean/+page.ts
+#: src/routes/[[locale]]/(public)/i18n/clean/+page.ts
+msgid "Clean"
+msgstr "Clean"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/sync/+layout.ts
+#: src/routes/[[locale]]/(public)/sync/+layout.ts
+msgid "Sync"
+msgstr "Sync"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/test/+layout.ts
+#: src/routes/[[locale]]/(public)/test/+layout.ts
+msgid "Test"
+msgstr "Test"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/test/+page.svelte
+#: src/routes/[[locale]]/(public)/test/unit/+page.ts
+#: src/routes/[[locale]]/(public)/test/unit/+page.ts
+msgid "Unit"
+msgstr "Unit"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/test/+page.svelte
+#: src/routes/[[locale]]/(public)/test/integration/+page.ts
+#: src/routes/[[locale]]/(public)/test/integration/+page.ts
+msgid "Integration"
+msgstr "Integration"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/seeds/+layout.ts
+#: src/routes/[[locale]]/(public)/seeds/+layout.ts
+msgid "Seeds"
+msgstr "Seeds"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/seeds/save/+page.ts
+#: src/routes/[[locale]]/(public)/seeds/save/+page.ts
+msgid "Save"
+msgstr "Save"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/fixtures/load/+page.ts
+#: src/routes/[[locale]]/(public)/fixtures/load/+page.ts
+#: src/routes/[[locale]]/(public)/seeds/load/+page.ts
+#: src/routes/[[locale]]/(public)/seeds/load/+page.ts
+msgid "Load"
+msgstr "Load"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/fixtures/clear/+page.ts
+#: src/routes/[[locale]]/(public)/fixtures/clear/+page.ts
+#: src/routes/[[locale]]/(public)/seeds/clear/+page.ts
+#: src/routes/[[locale]]/(public)/seeds/clear/+page.ts
+msgid "Clear"
+msgstr "Clear"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/fixtures/+layout.ts
+#: src/routes/[[locale]]/(public)/fixtures/+layout.ts
+msgid "Fixtures"
+msgstr "Fixtures"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/legal/+layout.ts
+#: src/routes/[[locale]]/(public)/legal/+layout.ts
+msgid "Legal"
+msgstr "Legal"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/legal/privacy/+page.ts
+#: src/routes/[[locale]]/(public)/legal/privacy/+page.ts
+msgid "Privacy"
+msgstr "Privacy"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/legal/terms/+page.ts
+#: src/routes/[[locale]]/(public)/legal/terms/+page.ts
+msgid "Terms"
+msgstr "Terms"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/ui/add/+page.ts
+#: src/routes/[[locale]]/(public)/ui/add/+page.ts
+msgid "Add"
+msgstr "Add"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/ui/base/+page.ts
+#: src/routes/[[locale]]/(public)/ui/base/+page.ts
+msgid "Base"
+msgstr "Base"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/routes/+layout.ts
+#: src/routes/[[locale]]/(public)/routes/+layout.ts
+msgid "Routes"
+msgstr "Routes"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/provision/+layout.ts
+#: src/routes/[[locale]]/(public)/provision/+layout.ts
+msgid "Provision"
+msgstr "Provision"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/deploy/+layout.ts
+#: src/routes/[[locale]]/(public)/deploy/+layout.ts
+msgid "Deploy"
+msgstr "Deploy"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/serverless/+layout.ts
+#: src/routes/[[locale]]/(public)/serverless/+layout.ts
+msgid "Serverless"
+msgstr "Serverless"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+#: src/routes/[[locale]]/(public)/serverless/vercel/+layout.ts
+#: src/routes/[[locale]]/(public)/serverless/vercel/+layout.ts
+msgid "Vercel"
+msgstr "Vercel"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+#: src/routes/[[locale]]/(public)/serverless/netlify/+layout.ts
+#: src/routes/[[locale]]/(public)/serverless/netlify/+layout.ts
+msgid "Netlify"
+msgstr "Netlify"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+#: src/routes/[[locale]]/(public)/serverless/cloudflare/+layout.ts
+#: src/routes/[[locale]]/(public)/serverless/cloudflare/+layout.ts
+msgid "Cloudflare"
+msgstr "Cloudflare"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/static/+layout.ts
+#: src/routes/[[locale]]/(public)/static/+layout.ts
+msgid "Static Site Generator"
+msgstr "Static Site Generator"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/account/+layout.ts
+#: src/routes/[[locale]]/(public)/account/+layout.ts
+msgid "Account"
+msgstr "Account"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/account/signup/+page.ts
+#: src/routes/[[locale]]/(public)/account/signup/+page.ts
+msgid "Sign Up"
+msgstr "Sign Up"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/account/login/+page.ts
+#: src/routes/[[locale]]/(public)/account/login/+page.ts
+msgid "Login"
+msgstr "Login"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/account/whoami/+page.ts
+#: src/routes/[[locale]]/(public)/account/whoami/+page.ts
+msgid "Who Am I"
+msgstr "Who Am I"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/account/logout/+page.ts
+#: src/routes/[[locale]]/(public)/account/logout/+page.ts
+msgid "Logout"
+msgstr "Logout"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/helpers/+layout.ts
+#: src/routes/[[locale]]/(public)/helpers/+layout.ts
+msgid "Helpers"
+msgstr "Helpers"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/deploy/+page.svelte
+msgid "GitHub Action"
+msgstr "GitHub Action"
+
+#: src/routes/[[locale]]/(public)/+page.svelte
+msgid ""
+"<0/> <1>Vela is a fullstack command line tool for rapidly scaffolding modern web apps. Rather than a\n"
+"framework, Vela prioritizes extensibility and developer control by generating editable code, not\n"
+"hidden abstractions.</1> <2>Installation</2> To install the CLI, run the following command: <3/> Verify the installation by running: <4/> <5/> <6>Create a Project</6> To create a new project, run the following command: <7/> <8>This will create a new directory called <0/> with the project files.</8> <9>Run the Project</9> To run the project, run the following command: <10/> <11/>"
+msgstr ""
+"<0/> <1>Vela is a fullstack command line tool for rapidly scaffolding modern web apps. Rather than a\n"
+"framework, Vela prioritizes extensibility and developer control by generating editable code, not\n"
+"hidden abstractions.</1> <2>Installation</2> To install the CLI, run the following command: <3/> Verify the installation by running: <4/> <5/> <6>Create a Project</6> To create a new project, run the following command: <7/> <8>This will create a new directory called <0/> with the project files.</8> <9>Run the Project</9> To run the project, run the following command: <10/> <11/>"
+
+#: src/lib/components/ui/breadcrumb/breadcrumb-ellipsis.svelte
+msgid "More"
+msgstr "More"
+
+#: src/lib/components/ui/navbar/navbar-logo.svelte
+msgid "Logo"
+msgstr "Logo"
+
+#: src/lib/components/ui/navbar/navbar-mobile-toggle.svelte
+msgid "Open main menu"
+msgstr "Open main menu"
+
+#: src/lib/components/ui/navbar/navbar-mode.svelte
+msgid "Toggle theme"
+msgstr "Toggle theme"
+
+#: src/lib/components/ui/sheet/sheet-content.svelte
+msgid "Close"
+msgstr "Close"
+
+#: src/lib/components/ui/sidebar/sidebar-rail.svelte
+#: src/lib/components/ui/sidebar/sidebar-rail.svelte
+#: src/lib/components/ui/sidebar/sidebar-trigger.svelte
+msgid "Toggle Sidebar"
+msgstr "Toggle Sidebar"
+
+#: src/lib/components/ui/sidebar/sidebar.svelte
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: src/lib/components/ui/sidebar/sidebar.svelte
+msgid "Displays the mobile sidebar."
+msgstr "Displays the mobile sidebar."
+
+#: src/routes/[[locale]]/(public)/account/+page.svelte
+msgid ""
+"An account is not required to use the Vela CLI. Paid features, templates and AI options require it\n"
+"however. An API key is generated for the CLI and stored in <0/>."
+msgstr ""
+"An account is not required to use the Vela CLI. Paid features, templates and AI options require it\n"
+"however. An API key is generated for the CLI and stored in <0/>."
+
+#: src/routes/[[locale]]/(public)/account/+page.svelte
+#: src/routes/[[locale]]/(public)/deploy/+page.svelte
+msgid "Deploy History"
+msgstr "Deploy History"
+
+#: src/routes/[[locale]]/(public)/account/+page.svelte
+msgid "If logged in, you can view your deploy history on velastack.dev."
+msgstr "If logged in, you can view your deploy history on velastack.dev."
+
+#: src/routes/[[locale]]/(public)/backend/+page.svelte
+msgid ""
+"Vela projects are designed as traditional full-stack applications: a database and an application.\n"
+"With the database running alongside the application, we see baseline performance that's\n"
+"significantly better than a serverless PaaS paired with a hosted database. We believe it's the\n"
+"better starting point for most projects. Initially, Vela supports PocketBase as a database, with\n"
+"PostgreSQL support coming soon."
+msgstr ""
+"Vela projects are designed as traditional full-stack applications: a database and an application.\n"
+"With the database running alongside the application, we see baseline performance that's\n"
+"significantly better than a serverless PaaS paired with a hosted database. We believe it's the\n"
+"better starting point for most projects. Initially, Vela supports PocketBase as a database, with\n"
+"PostgreSQL support coming soon."
+
+#: src/routes/[[locale]]/(public)/backend/+page.svelte
+msgid "A lightweight, open-source database backend."
+msgstr "A lightweight, open-source database backend."
+
+#: src/routes/[[locale]]/(public)/backend/+page.svelte
+#: src/routes/[[locale]]/(public)/cli/+page.svelte
+#: src/routes/[[locale]]/(public)/cli/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+#: src/routes/[[locale]]/(public)/helpers/+page.svelte
+#: src/routes/[[locale]]/(public)/helpers/+page.svelte
+#: src/routes/[[locale]]/(public)/helpers/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/+page.svelte
+#: src/routes/[[locale]]/(public)/legal/+page.svelte
+#: src/routes/[[locale]]/(public)/legal/+page.svelte
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+#: src/routes/[[locale]]/(public)/test/+page.svelte
+#: src/routes/[[locale]]/(public)/test/+page.svelte
+msgid "Learn more"
+msgstr "Learn more"
+
+#: src/routes/[[locale]]/(public)/backend/+page.svelte
+msgid "PostgreSQL <0>Preview</0>"
+msgstr "PostgreSQL <0>Preview</0>"
+
+#: src/routes/[[locale]]/(public)/backend/+page.svelte
+msgid "A powerful, full-featured database backend."
+msgstr "A powerful, full-featured database backend."
+
+#: src/routes/[[locale]]/(public)/backend/+page.svelte
+msgid "Coming soon"
+msgstr "Coming soon"
+
+#: src/routes/[[locale]]/(public)/build/+page.svelte
+msgid "Build the application for production."
+msgstr "Build the application for production."
+
+#: src/routes/[[locale]]/(public)/account/login/+page.svelte
+#: src/routes/[[locale]]/(public)/account/logout/+page.svelte
+#: src/routes/[[locale]]/(public)/account/signup/+page.svelte
+#: src/routes/[[locale]]/(public)/account/whoami/+page.svelte
+#: src/routes/[[locale]]/(public)/build/+page.svelte
+#: src/routes/[[locale]]/(public)/create/+page.svelte
+#: src/routes/[[locale]]/(public)/deploy/+page.svelte
+#: src/routes/[[locale]]/(public)/destroy/+page.svelte
+#: src/routes/[[locale]]/(public)/dev/+page.svelte
+#: src/routes/[[locale]]/(public)/disable/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/api-keys/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/api/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/auth/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/cms/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/i18n/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/notifications/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/s3/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/smtp/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/subscriptions/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/teams/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/workflow/+page.svelte
+#: src/routes/[[locale]]/(public)/fixtures/+page.svelte
+#: src/routes/[[locale]]/(public)/fixtures/clear/+page.svelte
+#: src/routes/[[locale]]/(public)/fixtures/generate/+page.svelte
+#: src/routes/[[locale]]/(public)/fixtures/load/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/ai/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/form/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/resource/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/scaffold/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/schema/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/clean/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/extract/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/status/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/watch/+page.svelte
+#: src/routes/[[locale]]/(public)/legal/privacy/+page.svelte
+#: src/routes/[[locale]]/(public)/legal/terms/+page.svelte
+#: src/routes/[[locale]]/(public)/provision/+page.svelte
+#: src/routes/[[locale]]/(public)/routes/+page.svelte
+#: src/routes/[[locale]]/(public)/seeds/+page.svelte
+#: src/routes/[[locale]]/(public)/seeds/clear/+page.svelte
+#: src/routes/[[locale]]/(public)/seeds/load/+page.svelte
+#: src/routes/[[locale]]/(public)/seeds/save/+page.svelte
+#: src/routes/[[locale]]/(public)/static/+page.svelte
+#: src/routes/[[locale]]/(public)/sync/+page.svelte
+#: src/routes/[[locale]]/(public)/test/integration/+page.svelte
+#: src/routes/[[locale]]/(public)/test/unit/+page.svelte
+#: src/routes/[[locale]]/(public)/ui/add/+page.svelte
+#: src/routes/[[locale]]/(public)/ui/base/+page.svelte
+msgid "Syntax"
+msgstr "Syntax"
+
+#: src/routes/[[locale]]/(public)/build/+page.svelte
+msgid "This will build the application for production. The build will be available in the <0/> directory."
+msgstr "This will build the application for production. The build will be available in the <0/> directory."
+
+#: src/routes/[[locale]]/(public)/build/+page.svelte
+msgid "Static"
+msgstr "Static"
+
+#: src/routes/[[locale]]/(public)/build/+page.svelte
+msgid ""
+"The static build mode will create a static site from the Vela project. The database will be\n"
+"started for the duration of the build, enabling data to be fetched from the database. See the <0>Static Site Generator</0> for more information on static builds."
+msgstr ""
+"The static build mode will create a static site from the Vela project. The database will be\n"
+"started for the duration of the build, enabling data to be fetched from the database. See the <0>Static Site Generator</0> for more information on static builds."
+
+#: src/routes/[[locale]]/(public)/build/+page.svelte
+msgid "Under the hood, the static build mode replaces the SvelteKit adapter with the static adapter."
+msgstr "Under the hood, the static build mode replaces the SvelteKit adapter with the static adapter."
+
+#: src/routes/[[locale]]/(public)/cli/+page.svelte
+msgid "The Vela CLI is a command-line interface for creating and managing Vela projects."
+msgstr "The Vela CLI is a command-line interface for creating and managing Vela projects."
+
+#: src/routes/[[locale]]/(public)/cli/+page.svelte
+msgid "How to install the CLI."
+msgstr "How to install the CLI."
+
+#: src/routes/[[locale]]/(public)/cli/+page.svelte
+msgid "Environment variables used by the CLI and backend."
+msgstr "Environment variables used by the CLI and backend."
+
+#: src/routes/[[locale]]/(public)/create/+page.svelte
+msgid "The create command is used to initialize a new Vela project."
+msgstr "The create command is used to initialize a new Vela project."
+
+#: src/routes/[[locale]]/(public)/create/+page.svelte
+msgid ""
+"This will create a directory called <0/> with the new SvelteKit project. The CLI\n"
+"prompts will ask you for the superuser email and password for the new PocketBase database. The CLI\n"
+"will also prompt for the template to use for the project. Browse all of the available templates here."
+msgstr ""
+"This will create a directory called <0/> with the new SvelteKit project. The CLI\n"
+"prompts will ask you for the superuser email and password for the new PocketBase database. The CLI\n"
+"will also prompt for the template to use for the project. Browse all of the available templates here."
+
+#: src/routes/[[locale]]/(public)/create/+page.svelte
+msgid "Included Features"
+msgstr "Included Features"
+
+#: src/routes/[[locale]]/(public)/create/+page.svelte
+msgid ""
+"Out of the box, before enabling any modules, all Vela templates include these minimum features,\n"
+"which are deemed essential for a production-ready application:"
+msgstr ""
+"Out of the box, before enabling any modules, all Vela templates include these minimum features,\n"
+"which are deemed essential for a production-ready application:"
+
+#: src/routes/[[locale]]/(public)/create/+page.svelte
+msgid "Database connection"
+msgstr "Database connection"
+
+#: src/routes/[[locale]]/(public)/create/+page.svelte
+msgid "App metadata (app name, canonical domain)"
+msgstr "App metadata (app name, canonical domain)"
+
+#: src/routes/[[locale]]/(public)/create/+page.svelte
+msgid "Tailwind CSS full height grid layout"
+msgstr "Tailwind CSS full height grid layout"
+
+#: src/routes/[[locale]]/(public)/create/+page.svelte
+msgid "Error fallback page"
+msgstr "Error fallback page"
+
+#: src/routes/[[locale]]/(public)/create/+page.svelte
+msgid "Light/dark mode support"
+msgstr "Light/dark mode support"
+
+#: src/routes/[[locale]]/(public)/create/+page.svelte
+msgid "Integration tests"
+msgstr "Integration tests"
+
+#: src/routes/[[locale]]/(public)/create/+page.svelte
+msgid "Flash messages"
+msgstr "Flash messages"
+
+#: src/routes/[[locale]]/(public)/create/+page.svelte
+msgid "Toast notifications"
+msgstr "Toast notifications"
+
+#: src/routes/[[locale]]/(public)/destroy/+page.svelte
+msgid ""
+"The destroy command is a tool for removing resources created with generate. It can be used to\n"
+"delete forms, resources, schemas and scaffolds. Generally, it's a no-op to call <0/> and then <1/> on the same resource, with the exception that newly installed components\n"
+"or dependencies won't be removed as they may be required by other resources."
+msgstr ""
+"The destroy command is a tool for removing resources created with generate. It can be used to\n"
+"delete forms, resources, schemas and scaffolds. Generally, it's a no-op to call <0/> and then <1/> on the same resource, with the exception that newly installed components\n"
+"or dependencies won't be removed as they may be required by other resources."
+
+#: src/routes/[[locale]]/(public)/destroy/+page.svelte
+msgid "The type can be one of the following:"
+msgstr "The type can be one of the following:"
+
+#: src/routes/[[locale]]/(public)/destroy/+page.svelte
+msgid "<0/> - Destroy a form"
+msgstr "<0/> - Destroy a form"
+
+#: src/routes/[[locale]]/(public)/destroy/+page.svelte
+msgid "<0/> - Destroy a resource"
+msgstr "<0/> - Destroy a resource"
+
+#: src/routes/[[locale]]/(public)/destroy/+page.svelte
+msgid "<0/> - Destroy a schema"
+msgstr "<0/> - Destroy a schema"
+
+#: src/routes/[[locale]]/(public)/destroy/+page.svelte
+msgid "<0/> - Destroy a scaffold"
+msgstr "<0/> - Destroy a scaffold"
+
+#: src/routes/[[locale]]/(public)/dev/+page.svelte
+msgid "Start the development server."
+msgstr "Start the development server."
+
+#: src/routes/[[locale]]/(public)/dev/+page.svelte
+msgid "This will start the development server and the database. The server will be available at <0/> and the admin interface at <1/>."
+msgstr "This will start the development server and the database. The server will be available at <0/> and the admin interface at <1/>."
+
+#: src/routes/[[locale]]/(public)/deploy/+page.svelte
+msgid "Deploy the application to a previously provisioned VPS."
+msgstr "Deploy the application to a previously provisioned VPS."
+
+#: src/routes/[[locale]]/(public)/deploy/+page.svelte
+msgid ""
+"Vela will deploy the application to the previously provisioned VPS. The connection is made via SSH\n"
+"and the application is deployed using the <0/> script. On deploy, any new migrations\n"
+"are run against the server's database."
+msgstr ""
+"Vela will deploy the application to the previously provisioned VPS. The connection is made via SSH\n"
+"and the application is deployed using the <0/> script. On deploy, any new migrations\n"
+"are run against the server's database."
+
+#: src/routes/[[locale]]/(public)/deploy/+page.svelte
+msgid "If logged in, you can view your project's deploy history on <0>velastack.dev</0>."
+msgstr "If logged in, you can view your project's deploy history on <0>velastack.dev</0>."
+
+#: src/routes/[[locale]]/(public)/deploy/+page.svelte
+msgid ""
+"Use the <0/> to deploy the application from a GitHub workflow. We\n"
+"recommend using the <1/> action to manage the deploy host SSH key\n"
+"secret. The <2/> API key is not required but allows deployment history to be tracked on\n"
+"velastack.dev."
+msgstr ""
+"Use the <0/> to deploy the application from a GitHub workflow. We\n"
+"recommend using the <1/> action to manage the deploy host SSH key\n"
+"secret. The <2/> API key is not required but allows deployment history to be tracked on\n"
+"velastack.dev."
+
+#: src/routes/[[locale]]/(public)/deploy/+page.svelte
+msgid "Preview and Branch Deploys"
+msgstr "Preview and Branch Deploys"
+
+#: src/routes/[[locale]]/(public)/deploy/+page.svelte
+msgid ""
+"Multiple instances of the application can be deployed to the same VPS, internally using different\n"
+"ports. Point a wildcard subdomain to the VPS's IP address, for example <0/>."
+msgstr ""
+"Multiple instances of the application can be deployed to the same VPS, internally using different\n"
+"ports. Point a wildcard subdomain to the VPS's IP address, for example <0/>."
+
+#: src/routes/[[locale]]/(public)/disable/+page.svelte
+msgid "The disable command is used to disable features enabled by the enable command."
+msgstr "The disable command is used to disable features enabled by the enable command."
+
+#: src/routes/[[locale]]/(public)/disable/+page.svelte
+msgid "The following features can be disabled:"
+msgstr "The following features can be disabled:"
+
+#: src/routes/[[locale]]/(public)/disable/+page.svelte
+msgid "<0/> - Disable auth"
+msgstr "<0/> - Disable auth"
+
+#: src/routes/[[locale]]/(public)/disable/+page.svelte
+msgid "<0/> - Disable API"
+msgstr "<0/> - Disable API"
+
+#: src/routes/[[locale]]/(public)/disable/+page.svelte
+msgid "<0/> - Disable API keys"
+msgstr "<0/> - Disable API keys"
+
+#: src/routes/[[locale]]/(public)/disable/+page.svelte
+msgid "<0/> - Disable S3"
+msgstr "<0/> - Disable S3"
+
+#: src/routes/[[locale]]/(public)/disable/+page.svelte
+msgid "<0/> - Disable SMTP"
+msgstr "<0/> - Disable SMTP"
+
+#: src/routes/[[locale]]/(public)/disable/+page.svelte
+msgid "<0/> - Disable internationalization"
+msgstr "<0/> - Disable internationalization"
+
+#: src/routes/[[locale]]/(public)/disable/+page.svelte
+msgid "<0/> - Disable teams"
+msgstr "<0/> - Disable teams"
+
+#: src/routes/[[locale]]/(public)/disable/+page.svelte
+msgid "<0/> - Disable payments"
+msgstr "<0/> - Disable payments"
+
+#: src/routes/[[locale]]/(public)/disable/+page.svelte
+msgid "<0/> - Disable subscriptions"
+msgstr "<0/> - Disable subscriptions"
+
+#: src/routes/[[locale]]/(public)/disable/+page.svelte
+msgid "<0/> - Disable the content management system"
+msgstr "<0/> - Disable the content management system"
+
+#: src/routes/[[locale]]/(public)/disable/+page.svelte
+msgid "<0/> - Disable Workflow"
+msgstr "<0/> - Disable Workflow"
+
+#: src/routes/[[locale]]/(public)/ethos/+page.svelte
+msgid ""
+"Vela enables you to rapidly scaffold fullstack projects with a focus on performance,\n"
+"accessibility, and developer experience. All functionality created with Vela aims to be the <0>canonical implementation</0> of the feature: <1>the correct way to do something</1>."
+msgstr ""
+"Vela enables you to rapidly scaffold fullstack projects with a focus on performance,\n"
+"accessibility, and developer experience. All functionality created with Vela aims to be the <0>canonical implementation</0> of the feature: <1>the correct way to do something</1>."
+
+#: src/routes/[[locale]]/(public)/ethos/+page.svelte
+msgid ""
+"Vela is a tool, not a framework. There is <0>no runtime, hidden framework code or abstractions</0>. As such, it enables complete control over the project, and serves as a jumping off point for\n"
+"building powerful applications. Vela favors code generation over abstractions, allowing the\n"
+"developer to extend and abstract as needed."
+msgstr ""
+"Vela is a tool, not a framework. There is <0>no runtime, hidden framework code or abstractions</0>. As such, it enables complete control over the project, and serves as a jumping off point for\n"
+"building powerful applications. Vela favors code generation over abstractions, allowing the\n"
+"developer to extend and abstract as needed."
+
+#: src/routes/[[locale]]/(public)/ethos/+page.svelte
+msgid ""
+"At the core of Vela is the CLI, which is used to generate code. Vela draws inspiration from\n"
+"projects like Ruby on Rails and Laravel, while staying true to the SvelteKit philosophy and\n"
+"project structure."
+msgstr ""
+"At the core of Vela is the CLI, which is used to generate code. Vela draws inspiration from\n"
+"projects like Ruby on Rails and Laravel, while staying true to the SvelteKit philosophy and\n"
+"project structure."
+
+#: src/routes/[[locale]]/(public)/ethos/+page.svelte
+msgid ""
+"Where libraries are used, they are chosen for their <0>wide adoption, support and extensibility</0>. Projects created with Vela use SvelteKit, TypeScript, Tailwind CSS, Shadcn-Svelte, Superforms\n"
+"and Zod. In particular, Vela focuses on <1>full-stack type safety</1>, with types automatically\n"
+"generated and kept in sync with the database schema."
+msgstr ""
+"Where libraries are used, they are chosen for their <0>wide adoption, support and extensibility</0>. Projects created with Vela use SvelteKit, TypeScript, Tailwind CSS, Shadcn-Svelte, Superforms\n"
+"and Zod. In particular, Vela focuses on <1>full-stack type safety</1>, with types automatically\n"
+"generated and kept in sync with the database schema."
+
+#: src/routes/[[locale]]/(public)/ethos/+page.svelte
+msgid ""
+"Finally, Vela projects require <0>no special infrastructure or hosted services to run</0>. Vela\n"
+"embraces the traditional full-stack approach of a database and an application. This pair can be\n"
+"deployed to any VPS or built and deployed as a static site. Vela projects are not designed for\n"
+"serverless environments."
+msgstr ""
+"Finally, Vela projects require <0>no special infrastructure or hosted services to run</0>. Vela\n"
+"embraces the traditional full-stack approach of a database and an application. This pair can be\n"
+"deployed to any VPS or built and deployed as a static site. Vela projects are not designed for\n"
+"serverless environments."
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid ""
+"The enable command is used to enable features in a Vela project. It can be used to enable\n"
+"authentication, API access, S3 storage, SMTP email sending, teams, payments and more. You'll be\n"
+"prompted for configuration options for each feature and the command will generate the necessary\n"
+"code."
+msgstr ""
+"The enable command is used to enable features in a Vela project. It can be used to enable\n"
+"authentication, API access, S3 storage, SMTP email sending, teams, payments and more. You'll be\n"
+"prompted for configuration options for each feature and the command will generate the necessary\n"
+"code."
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "Authentication for your application."
+msgstr "Authentication for your application."
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "API"
+msgstr "API"
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "REST API endpoints for your application."
+msgstr "REST API endpoints for your application."
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "API keys for your application's API."
+msgstr "API keys for your application's API."
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "S3"
+msgstr "S3"
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "S3 storage for file uploads."
+msgstr "S3 storage for file uploads."
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "SMTP"
+msgstr "SMTP"
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "SMTP email sending for your application."
+msgstr "SMTP email sending for your application."
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "Teams <0>Pro</0>"
+msgstr "Teams <0>Pro</0>"
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "Team management for your application's users."
+msgstr "Team management for your application's users."
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "Payments <0>Pro</0>"
+msgstr "Payments <0>Pro</0>"
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "Payment processing with Stripe."
+msgstr "Payment processing with Stripe."
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "Subscriptions <0>Preview</0>"
+msgstr "Subscriptions <0>Preview</0>"
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "Subscription plans for your application."
+msgstr "Subscription plans for your application."
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "CMS <0>Preview</0>"
+msgstr "CMS <0>Preview</0>"
+
+#: src/routes/[[locale]]/(public)/enable/+page.svelte
+msgid "Content management system for your application."
+msgstr "Content management system for your application."
+
+#: src/routes/[[locale]]/(public)/fixtures/+page.svelte
+msgid ""
+"Fixtures are mock data for testing and development. They are stored in <0/> directory.\n"
+"Fixtures are loaded automatically for integration tests. Fixtures load after seed data and can depend\n"
+"on seed data records."
+msgstr ""
+"Fixtures are mock data for testing and development. They are stored in <0/> directory.\n"
+"Fixtures are loaded automatically for integration tests. Fixtures load after seed data and can depend\n"
+"on seed data records."
+
+#: src/routes/[[locale]]/(public)/fixtures/+page.svelte
+#: src/routes/[[locale]]/(public)/seeds/+page.svelte
+msgid "The action can be one of the following:"
+msgstr "The action can be one of the following:"
+
+#: src/routes/[[locale]]/(public)/fixtures/+page.svelte
+msgid "<0/> - Load fixture data from the database"
+msgstr "<0/> - Load fixture data from the database"
+
+#: src/routes/[[locale]]/(public)/fixtures/+page.svelte
+msgid "<0/> - Save fixture data to the database"
+msgstr "<0/> - Save fixture data to the database"
+
+#: src/routes/[[locale]]/(public)/fixtures/+page.svelte
+msgid "<0/> - Clear all fixture data from the database"
+msgstr "<0/> - Clear all fixture data from the database"
+
+#: src/routes/[[locale]]/(public)/legal/+page.svelte
+msgid ""
+"Vela includes a privacy policy and terms of service generator to create a demo privacy policy and\n"
+"terms of service for your application."
+msgstr ""
+"Vela includes a privacy policy and terms of service generator to create a demo privacy policy and\n"
+"terms of service for your application."
+
+#: src/routes/[[locale]]/(public)/legal/+page.svelte
+msgid "Privacy Policy"
+msgstr "Privacy Policy"
+
+#: src/routes/[[locale]]/(public)/legal/+page.svelte
+msgid "Create a demo privacy policy for the application."
+msgstr "Create a demo privacy policy for the application."
+
+#: src/routes/[[locale]]/(public)/legal/+page.svelte
+msgid "Terms of Service"
+msgstr "Terms of Service"
+
+#: src/routes/[[locale]]/(public)/legal/+page.svelte
+msgid "Create a demo terms of service for the application."
+msgstr "Create a demo terms of service for the application."
+
+#: src/routes/[[locale]]/(public)/helpers/+page.svelte
+msgid "Although Vela has no runtime, it does include a few helpers for common tasks."
+msgstr "Although Vela has no runtime, it does include a few helpers for common tasks."
+
+#: src/routes/[[locale]]/(public)/helpers/+page.svelte
+msgid "@vela/pocketbase"
+msgstr "@vela/pocketbase"
+
+#: src/routes/[[locale]]/(public)/helpers/+page.svelte
+#: src/routes/[[locale]]/(public)/helpers/pocketbase/+page.svelte
+msgid "This library is used to interact with PocketBase."
+msgstr "This library is used to interact with PocketBase."
+
+#: src/routes/[[locale]]/(public)/helpers/+page.svelte
+msgid "@vela/postgres"
+msgstr "@vela/postgres"
+
+#: src/routes/[[locale]]/(public)/helpers/+page.svelte
+#: src/routes/[[locale]]/(public)/helpers/postgres/+page.svelte
+msgid "This library is used to interact with PostgreSQL."
+msgstr "This library is used to interact with PostgreSQL."
+
+#: src/routes/[[locale]]/(public)/helpers/+page.svelte
+msgid "velastack/action"
+msgstr "velastack/action"
+
+#: src/routes/[[locale]]/(public)/helpers/+page.svelte
+#: src/routes/[[locale]]/(public)/helpers/github-action/+page.svelte
+msgid "The GitHub Action for deploying Vela projects to a VPS."
+msgstr "The GitHub Action for deploying Vela projects to a VPS."
+
+#: src/routes/[[locale]]/(public)/provision/+page.svelte
+msgid "Provision a VPS for deploys. Any host that supports SSH can be used."
+msgstr "Provision a VPS for deploys. Any host that supports SSH can be used."
+
+#: src/routes/[[locale]]/(public)/provision/+page.svelte
+msgid ""
+"Vela will provision a VPS for the application. The connection is made via SSH and the VPS is\n"
+"provisioned using the <0/> script. After provisioning, the application can\n"
+"be deployed with the <1/> command."
+msgstr ""
+"Vela will provision a VPS for the application. The connection is made via SSH and the VPS is\n"
+"provisioned using the <0/> script. After provisioning, the application can\n"
+"be deployed with the <1/> command."
+
+#: src/routes/[[locale]]/(public)/provision/+page.svelte
+msgid "Stack"
+msgstr "Stack"
+
+#: src/routes/[[locale]]/(public)/provision/+page.svelte
+msgid "Vela sets up the following stack on the VPS:"
+msgstr "Vela sets up the following stack on the VPS:"
+
+#: src/routes/[[locale]]/(public)/provision/+page.svelte
+msgid "Caddy with automatic HTTPS"
+msgstr "Caddy with automatic HTTPS"
+
+#: src/routes/[[locale]]/(public)/provision/+page.svelte
+msgid "Systemd for process management"
+msgstr "Systemd for process management"
+
+#: src/routes/[[locale]]/(public)/provision/+page.svelte
+msgid ""
+"Deploys are pushed to <0/> on the VPS. Two processes are started with systemd: the\n"
+"Node server and the database."
+msgstr ""
+"Deploys are pushed to <0/> on the VPS. Two processes are started with systemd: the\n"
+"Node server and the database."
+
+#: src/routes/[[locale]]/(public)/provision/+page.svelte
+msgid "Requirements"
+msgstr "Requirements"
+
+#: src/routes/[[locale]]/(public)/provision/+page.svelte
+msgid ""
+"For HTTPS to be automatically provisioned on deploy, the VPS must have a public IP address and a\n"
+"domain must be pointed to the IP address. This enables Caddy to automatically provision HTTPS\n"
+"certificates."
+msgstr ""
+"For HTTPS to be automatically provisioned on deploy, the VPS must have a public IP address and a\n"
+"domain must be pointed to the IP address. This enables Caddy to automatically provision HTTPS\n"
+"certificates."
+
+#: src/routes/[[locale]]/(public)/routes/+page.svelte
+msgid "The routes command is used to list all routes in the application."
+msgstr "The routes command is used to list all routes in the application."
+
+#: src/routes/[[locale]]/(public)/seeds/+page.svelte
+msgid ""
+"Seed data is used to populate the database with initial data that is essential for the application\n"
+"to function. They are stored in <0/> directory."
+msgstr ""
+"Seed data is used to populate the database with initial data that is essential for the application\n"
+"to function. They are stored in <0/> directory."
+
+#: src/routes/[[locale]]/(public)/seeds/+page.svelte
+msgid "<0/> - Load seed data from the database"
+msgstr "<0/> - Load seed data from the database"
+
+#: src/routes/[[locale]]/(public)/seeds/+page.svelte
+msgid "<0/> - Save seed data to the database"
+msgstr "<0/> - Save seed data to the database"
+
+#: src/routes/[[locale]]/(public)/seeds/+page.svelte
+msgid "<0/> - Clear all seed data from the database"
+msgstr "<0/> - Clear all seed data from the database"
+
+#: src/routes/[[locale]]/(public)/static/+page.svelte
+msgid ""
+"Vela includes a static build mode to create a static site, ready to be deployed to any hosting\n"
+"provider."
+msgstr ""
+"Vela includes a static build mode to create a static site, ready to be deployed to any hosting\n"
+"provider."
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+#: src/routes/[[locale]]/(public)/static/+page.svelte
+msgid "Limitations"
+msgstr "Limitations"
+
+#: src/routes/[[locale]]/(public)/static/+page.svelte
+msgid "Forms are not supported"
+msgstr "Forms are not supported"
+
+#: src/routes/[[locale]]/(public)/static/+page.svelte
+msgid "Form actions are not supported in static builds, you'll need to remove any forms from the project."
+msgstr "Form actions are not supported in static builds, you'll need to remove any forms from the project."
+
+#: src/routes/[[locale]]/(public)/static/+page.svelte
+msgid "User authentication is not supported"
+msgstr "User authentication is not supported"
+
+#: src/routes/[[locale]]/(public)/static/+page.svelte
+msgid ""
+"Static builds do not support dynamic server-side rendering, so user authentication is not\n"
+"supported."
+msgstr ""
+"Static builds do not support dynamic server-side rendering, so user authentication is not\n"
+"supported."
+
+#: src/routes/[[locale]]/(public)/static/+page.svelte
+msgid "This will build the application for production and create a static site in the <0/> directory."
+msgstr "This will build the application for production and create a static site in the <0/> directory."
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid ""
+"Vela provides a generator for creating database models, forms, resources, schemas and full CRUD\n"
+"scaffolds. Each of these shares a common syntax. Within the syntax, singular and plural forms have\n"
+"significance."
+msgstr ""
+"Vela provides a generator for creating database models, forms, resources, schemas and full CRUD\n"
+"scaffolds. Each of these shares a common syntax. Within the syntax, singular and plural forms have\n"
+"significance."
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid "Name"
+msgstr "Name"
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid ""
+"The plural name of the model, form, resource, schema or scaffold, for example <0/> or <1/>. Model names are always plural and will be converted to plural if the singular\n"
+"form is provided. Names can be nested within directories by using a slash (<2/>)\n"
+"separator. For example, <3/> will create a resource at <4/>."
+msgstr ""
+"The plural name of the model, form, resource, schema or scaffold, for example <0/> or <1/>. Model names are always plural and will be converted to plural if the singular\n"
+"form is provided. Names can be nested within directories by using a slash (<2/>)\n"
+"separator. For example, <3/> will create a resource at <4/>."
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid "Fields"
+msgstr "Fields"
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid ""
+"The fields are defined as <0/> pairs, for example <1/> or <2/>. If the model already exists in the database, the <3/> option\n"
+"can be omitted and the generator will use the existing fields."
+msgstr ""
+"The fields are defined as <0/> pairs, for example <1/> or <2/>. If the model already exists in the database, the <3/> option\n"
+"can be omitted and the generator will use the existing fields."
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid "Field types"
+msgstr "Field types"
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid "Vela supports the following field types:"
+msgstr "Vela supports the following field types:"
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid "autodate"
+msgstr "autodate"
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid ""
+"The <0/> field type is a special field type that automatically sets the field to\n"
+"the current date and time on creation or update. The field names for autodate can be: <1/> or <2/>."
+msgstr ""
+"The <0/> field type is a special field type that automatically sets the field to\n"
+"the current date and time on creation or update. The field names for autodate can be: <1/> or <2/>."
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid "select"
+msgstr "select"
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid ""
+"The select field has special syntax for defining the options. The options are defined as <0/> pairs. The singular or plural form of the field name determines whether the\n"
+"select acts as a single or multi-select."
+msgstr ""
+"The select field has special syntax for defining the options. The options are defined as <0/> pairs. The singular or plural form of the field name determines whether the\n"
+"select acts as a single or multi-select."
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid "file"
+msgstr "file"
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid ""
+"The file field is used to upload files to the server. The single or plural form of the field name\n"
+"determines whether the field accepts a single file or an array of files."
+msgstr ""
+"The file field is used to upload files to the server. The single or plural form of the field name\n"
+"determines whether the field accepts a single file or an array of files."
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid "Required fields"
+msgstr "Required fields"
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid ""
+"Fields are marked as required by appending <0/> to the field name. This marks the field as\n"
+"required in the database and the Zod schema for form validation."
+msgstr ""
+"Fields are marked as required by appending <0/> to the field name. This marks the field as\n"
+"required in the database and the Zod schema for form validation."
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid "Relationships"
+msgstr "Relationships"
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid ""
+"In addition to the field types above, Vela supports passing in the name of any existing model to\n"
+"create a relationship. Single vs plural has significance here, as it determines whether the\n"
+"relationship is a one-to-many or many-to-many."
+msgstr ""
+"In addition to the field types above, Vela supports passing in the name of any existing model to\n"
+"create a relationship. Single vs plural has significance here, as it determines whether the\n"
+"relationship is a one-to-many or many-to-many."
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid ""
+"Similarly to Ruby on Rails, the shorthand <0/> can be used to create relationships\n"
+"based on the field name."
+msgstr ""
+"Similarly to Ruby on Rails, the shorthand <0/> can be used to create relationships\n"
+"based on the field name."
+
+#: src/routes/[[locale]]/(public)/enable/teams/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid "Ownership and permissions"
+msgstr "Ownership and permissions"
+
+#: src/routes/[[locale]]/(public)/enable/api-keys/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/notifications/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/teams/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid "Depends: auth"
+msgstr "Depends: auth"
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid ""
+"If authentication is enabled with the <0/> command, it's possible to\n"
+"associate models with the authenticated user. This can be done directly on the model with the\n"
+"special <1/> field type, which will automatically set the field to the authenticated\n"
+"user on creation (and exclude the field from the frontend form)."
+msgstr ""
+"If authentication is enabled with the <0/> command, it's possible to\n"
+"associate models with the authenticated user. This can be done directly on the model with the\n"
+"special <1/> field type, which will automatically set the field to the authenticated\n"
+"user on creation (and exclude the field from the frontend form)."
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid ""
+"If the model is nested within another model, vela traverses the model heirchay to find the nearest\n"
+"parent model with a relationship to the authenticated user."
+msgstr ""
+"If the model is nested within another model, vela traverses the model heirchay to find the nearest\n"
+"parent model with a relationship to the authenticated user."
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid ""
+"In this example, the <0/> model is associated with the <1/> model.\n"
+"Access to the <2/> model is restricted to users who are members of the project's team."
+msgstr ""
+"In this example, the <0/> model is associated with the <1/> model.\n"
+"Access to the <2/> model is restricted to users who are members of the project's team."
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid "Usage"
+msgstr "Usage"
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid ""
+"In the generated SvelteKit project, there's two ways to retrieve data from the database. The first\n"
+"is the admin API <0/> equivalent to querying the database directly. The\n"
+"second is the user-scoped API <1/> which provides access to the database scoped to the authenticated user."
+msgstr ""
+"In the generated SvelteKit project, there's two ways to retrieve data from the database. The first\n"
+"is the admin API <0/> equivalent to querying the database directly. The\n"
+"second is the user-scoped API <1/> which provides access to the database scoped to the authenticated user."
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid "Admin API"
+msgstr "Admin API"
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid "User-scoped API"
+msgstr "User-scoped API"
+
+#: src/routes/[[locale]]/(public)/generate/+page.svelte
+msgid "Ownership via backreference is not supported."
+msgstr "Ownership via backreference is not supported."
+
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+msgid ""
+"Serverless is not the recommended approach for Vela projects. Vela projects are designed as\n"
+"traditional full-stack applications: a database and an application. With the database running\n"
+"alongside the application, we see baseline performance that's significantly better than a\n"
+"serverless PaaS paired with a hosted database. We believe it's the better starting point for most\n"
+"projects."
+msgstr ""
+"Serverless is not the recommended approach for Vela projects. Vela projects are designed as\n"
+"traditional full-stack applications: a database and an application. With the database running\n"
+"alongside the application, we see baseline performance that's significantly better than a\n"
+"serverless PaaS paired with a hosted database. We believe it's the better starting point for most\n"
+"projects."
+
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+msgid "Regardless, with some limitations, serverless can be a viable option:"
+msgstr "Regardless, with some limitations, serverless can be a viable option:"
+
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+msgid "Database latency overhead"
+msgstr "Database latency overhead"
+
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+msgid ""
+"When using a serverless PaaS, the database is hosted on a remote server. This introduces latency\n"
+"overhead on every request."
+msgstr ""
+"When using a serverless PaaS, the database is hosted on a remote server. This introduces latency\n"
+"overhead on every request."
+
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+msgid "Reduced caching"
+msgstr "Reduced caching"
+
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+msgid ""
+"A long-running server process can cache data in memory and avoid database queries. This is not\n"
+"possible with serverless, as the server is terminated after each request."
+msgstr ""
+"A long-running server process can cache data in memory and avoid database queries. This is not\n"
+"possible with serverless, as the server is terminated after each request."
+
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+msgid "Automatic migrations"
+msgstr "Automatic migrations"
+
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+msgid ""
+"With separate database and application hosts, automatic migrations are not supported. You'll need\n"
+"to manually run migrations after each deploy."
+msgstr ""
+"With separate database and application hosts, automatic migrations are not supported. You'll need\n"
+"to manually run migrations after each deploy."
+
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+msgid "PocketBase hosting"
+msgstr "PocketBase hosting"
+
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+msgid ""
+"We recommend <0>PocketHost</0> as a hosted solution\n"
+"for PocketBase. Set up a database instance and then configure the <1/> environment variable in your project."
+msgstr ""
+"We recommend <0>PocketHost</0> as a hosted solution\n"
+"for PocketBase. Set up a database instance and then configure the <1/> environment variable in your project."
+
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+msgid "Deploy your application to Vercel"
+msgstr "Deploy your application to Vercel"
+
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+msgid "Deploy your application to Netlify"
+msgstr "Deploy your application to Netlify"
+
+#: src/routes/[[locale]]/(public)/serverless/+page.svelte
+msgid "Deploy your application to Cloudflare"
+msgstr "Deploy your application to Cloudflare"
+
+#: src/routes/[[locale]]/(public)/test/+page.svelte
+msgid ""
+"The test command is used to run the unit and integration tests for your application. Vela uses\n"
+"Vitest for testing and includes tests for all generated code."
+msgstr ""
+"The test command is used to run the unit and integration tests for your application. Vela uses\n"
+"Vitest for testing and includes tests for all generated code."
+
+#: src/routes/[[locale]]/(public)/test/+page.svelte
+msgid "Unit tests for your application."
+msgstr "Unit tests for your application."
+
+#: src/routes/[[locale]]/(public)/test/+page.svelte
+msgid "Integration tests for your application."
+msgstr "Integration tests for your application."
+
+#: src/routes/[[locale]]/(public)/sync/+page.svelte
+msgid "Sync the database schema with the application TypeScript definitions."
+msgstr "Sync the database schema with the application TypeScript definitions."
+
+#: src/routes/[[locale]]/(public)/sync/+page.svelte
+msgid ""
+"This will sync the database schema with the application TypeScript definitions. This runs\n"
+"automatically after any database changes during local development."
+msgstr ""
+"This will sync the database schema with the application TypeScript definitions. This runs\n"
+"automatically after any database changes during local development."
+
+#: src/routes/[[locale]]/(public)/ui/+page.svelte
+msgid ""
+"Vela uses shadcn-svelte for its UI components with no modifications. The add command is a wrapper\n"
+"around the shadcn-svelte add command. All components are installed to the <0/> directory."
+msgstr ""
+"Vela uses shadcn-svelte for its UI components with no modifications. The add command is a wrapper\n"
+"around the shadcn-svelte add command. All components are installed to the <0/> directory."
+
+#: src/routes/[[locale]]/(public)/account/logout/+page.svelte
+msgid "Logout of your account on velastack.dev."
+msgstr "Logout of your account on velastack.dev."
+
+#: src/routes/[[locale]]/(public)/account/logout/+page.svelte
+msgid "This will log you out of your account."
+msgstr "This will log you out of your account."
+
+#: src/routes/[[locale]]/(public)/account/signup/+page.svelte
+msgid "Sign up for a new account on velastack.dev."
+msgstr "Sign up for a new account on velastack.dev."
+
+#: src/routes/[[locale]]/(public)/account/login/+page.svelte
+#: src/routes/[[locale]]/(public)/account/signup/+page.svelte
+msgid "You'll be prompted for your email and password."
+msgstr "You'll be prompted for your email and password."
+
+#: src/routes/[[locale]]/(public)/account/whoami/+page.svelte
+msgid "Check your account details on velastack.dev. The API key for the CLI is stored in <0/>."
+msgstr "Check your account details on velastack.dev. The API key for the CLI is stored in <0/>."
+
+#: src/routes/[[locale]]/(public)/account/whoami/+page.svelte
+msgid "This will display your account details."
+msgstr "This will display your account details."
+
+#: src/routes/[[locale]]/(public)/account/login/+page.svelte
+msgid "Login to your account on velastack.dev."
+msgstr "Login to your account on velastack.dev."
+
+#: src/routes/[[locale]]/(public)/backend/postgres/+page.svelte
+msgid "PostgreSQL support is coming soon. Configuration is done in <0/>:"
+msgstr "PostgreSQL support is coming soon. Configuration is done in <0/>:"
+
+#: src/routes/[[locale]]/(public)/cli/environment-variables/+page.svelte
+msgid ""
+"Vela uses environment variables to configure the project. The environment variables are stored in\n"
+"the local <0/> file by default. The Vela CLI and PocketBase backend rely on the following\n"
+"environment variables:"
+msgstr ""
+"Vela uses environment variables to configure the project. The environment variables are stored in\n"
+"the local <0/> file by default. The Vela CLI and PocketBase backend rely on the following\n"
+"environment variables:"
+
+#: src/routes/[[locale]]/(public)/cli/environment-variables/+page.svelte
+msgid ""
+"POCKETBASE_URL=http://localhost:8090\n"
+"POCKETBASE_SUPERUSER_EMAIL=admin@example.com\n"
+"POCKETBASE_SUPERUSER_PASSWORD=password"
+msgstr ""
+"POCKETBASE_URL=http://localhost:8090\n"
+"POCKETBASE_SUPERUSER_EMAIL=admin@example.com\n"
+"POCKETBASE_SUPERUSER_PASSWORD=password"
+
+#: src/routes/[[locale]]/(public)/cli/environment-variables/+page.svelte
+msgid ""
+"You'll be prompted to create a PocketBase superuser account when you run the <0/> command. The login details are saved in the <1/> file. The superuser account is used by\n"
+"the CLI, the admin interface and the REST API."
+msgstr ""
+"You'll be prompted to create a PocketBase superuser account when you run the <0/> command. The login details are saved in the <1/> file. The superuser account is used by\n"
+"the CLI, the admin interface and the REST API."
+
+#: src/routes/[[locale]]/(public)/cli/installation/+page.svelte
+msgid "<0/> <1>To install the CLI, run the following command:</1> <2/> or <3/> or <4/>"
+msgstr "<0/> <1>To install the CLI, run the following command:</1> <2/> or <3/> or <4/>"
+
+#: src/routes/[[locale]]/(public)/i18n/+page.svelte
+msgid "Manage internationalization in the SvelteKit project, powered by <0>Wuchale</0>."
+msgstr "Manage internationalization in the SvelteKit project, powered by <0>Wuchale</0>."
+
+#: src/routes/[[locale]]/(public)/i18n/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/extract/+page.svelte
+msgid "Extract translatable strings."
+msgstr "Extract translatable strings."
+
+#: src/routes/[[locale]]/(public)/i18n/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/watch/+page.svelte
+msgid "Watch for changes and extract strings."
+msgstr "Watch for changes and extract strings."
+
+#: src/routes/[[locale]]/(public)/i18n/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/status/+page.svelte
+msgid "Show i18n status."
+msgstr "Show i18n status."
+
+#: src/routes/[[locale]]/(public)/i18n/+page.svelte
+#: src/routes/[[locale]]/(public)/i18n/clean/+page.svelte
+msgid "Clean unused translation keys."
+msgstr "Clean unused translation keys."
+
+#: src/routes/[[locale]]/(public)/backend/pocketbase/+page.svelte
+msgid ""
+"PocketBase is a lightweight, open-source database backend. It's a great choice for small to\n"
+"medium-sized projects. It runs on a local SQLite database. It comes with a built-in admin\n"
+"interface and a REST API."
+msgstr ""
+"PocketBase is a lightweight, open-source database backend. It's a great choice for small to\n"
+"medium-sized projects. It runs on a local SQLite database. It comes with a built-in admin\n"
+"interface and a REST API."
+
+#: src/routes/[[locale]]/(public)/backend/pocketbase/+page.svelte
+msgid "In Vela, the PocketBase database is configured in <0/>:"
+msgstr "In Vela, the PocketBase database is configured in <0/>:"
+
+#: src/routes/[[locale]]/(public)/backend/pocketbase/+page.svelte
+msgid ""
+"When running the project, the PocketBase admin interface is available at <0/>. The\n"
+"public REST API (if enabled) is available at <1/>."
+msgstr ""
+"When running the project, the PocketBase admin interface is available at <0/>. The\n"
+"public REST API (if enabled) is available at <1/>."
+
+#: src/routes/[[locale]]/(public)/backend/pocketbase/+page.svelte
+msgid ""
+"Two different clients are available for interacting with the PocketBase database: the admin API\n"
+"and the user-scoped API. These are provided in the <0/> object in the SvelteKit server\n"
+"context."
+msgstr ""
+"Two different clients are available for interacting with the PocketBase database: the admin API\n"
+"and the user-scoped API. These are provided in the <0/> object in the SvelteKit server\n"
+"context."
+
+#: src/routes/[[locale]]/(public)/enable/api-keys/+page.svelte
+msgid "Depends: api"
+msgstr "Depends: api"
+
+#: src/routes/[[locale]]/(public)/enable/api-keys/+page.svelte
+msgid ""
+"After enabling authentication and the API, API keys can be enabled by running the <0/> command. The command creates the necessary database tables and code for users to generate API keys\n"
+"connected to their account."
+msgstr ""
+"After enabling authentication and the API, API keys can be enabled by running the <0/> command. The command creates the necessary database tables and code for users to generate API keys\n"
+"connected to their account."
+
+#: src/routes/[[locale]]/(public)/enable/api-keys/+page.svelte
+msgid ""
+"In SvelteKit, protected routes can be accessed with the API key in the <0/> header. The API key is validated using the PocketBase middleware in <1/>.\n"
+"The PocketBase collection used for API keys is <2/> by default."
+msgstr ""
+"In SvelteKit, protected routes can be accessed with the API key in the <0/> header. The API key is validated using the PocketBase middleware in <1/>.\n"
+"The PocketBase collection used for API keys is <2/> by default."
+
+#: src/routes/[[locale]]/(public)/enable/api-keys/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/teams/+page.svelte
+msgid "Database tables"
+msgstr "Database tables"
+
+#: src/routes/[[locale]]/(public)/enable/api-keys/+page.svelte
+msgid "The API keys module creates the following database tables:"
+msgstr "The API keys module creates the following database tables:"
+
+#: src/routes/[[locale]]/(public)/enable/api/+page.svelte
+msgid "The REST API is enabled by running the <0/> command, or by modifying the <1/> file. This exposes the PocketBase REST API at <2/>. Any SvelteKit API routes in the <3/> directory are served alongside the PocketBase API."
+msgstr "The REST API is enabled by running the <0/> command, or by modifying the <1/> file. This exposes the PocketBase REST API at <2/>. Any SvelteKit API routes in the <3/> directory are served alongside the PocketBase API."
+
+#: src/routes/[[locale]]/(public)/enable/api/+page.svelte
+msgid "API Configuration"
+msgstr "API Configuration"
+
+#: src/routes/[[locale]]/(public)/enable/api/+page.svelte
+msgid "The API is configured in the <0/> file. The default configuration is:"
+msgstr "The API is configured in the <0/> file. The default configuration is:"
+
+#: src/routes/[[locale]]/(public)/enable/api/+page.svelte
+msgid "PocketBase API Routes"
+msgstr "PocketBase API Routes"
+
+#: src/routes/[[locale]]/(public)/enable/api/+page.svelte
+msgid "The following PocketBase API routes are exposed and take precedence over any SvelteKit API routes."
+msgstr "The following PocketBase API routes are exposed and take precedence over any SvelteKit API routes."
+
+#: src/routes/[[locale]]/(public)/enable/auth/+page.svelte
+msgid ""
+"Authentication (user accounts) is enabled by running the <0/> command. This\n"
+"will prompt for configuration options. The auth module creates all necessary code for authentication,\n"
+"including login, logout, sign up, password reset, email verification and more."
+msgstr ""
+"Authentication (user accounts) is enabled by running the <0/> command. This\n"
+"will prompt for configuration options. The auth module creates all necessary code for authentication,\n"
+"including login, logout, sign up, password reset, email verification and more."
+
+#: src/routes/[[locale]]/(public)/enable/auth/+page.svelte
+msgid "Protected routes"
+msgstr "Protected routes"
+
+#: src/routes/[[locale]]/(public)/enable/auth/+page.svelte
+msgid ""
+"Once enabled, a group of protected routes is automatically created, defaulting to <0/>. Any routes placed within this group will be protected and require authentication to access.\n"
+"Unauthenticated users will be redirected to the login page. The protected routes and the login\n"
+"path for redirection can be configured in the middleware in <1/>, defaults\n"
+"shown below:"
+msgstr ""
+"Once enabled, a group of protected routes is automatically created, defaulting to <0/>. Any routes placed within this group will be protected and require authentication to access.\n"
+"Unauthenticated users will be redirected to the login page. The protected routes and the login\n"
+"path for redirection can be configured in the middleware in <1/>, defaults\n"
+"shown below:"
+
+#: src/routes/[[locale]]/(public)/enable/auth/+page.svelte
+msgid "OAuth"
+msgstr "OAuth"
+
+#: src/routes/[[locale]]/(public)/enable/auth/+page.svelte
+msgid ""
+"OAuth is supported out of the box with PocketBase. Configure the OAuth providers in the PocketBase\n"
+"admin interface. Any enabled OAuth provider will be available in the authentication flow."
+msgstr ""
+"OAuth is supported out of the box with PocketBase. Configure the OAuth providers in the PocketBase\n"
+"admin interface. Any enabled OAuth provider will be available in the authentication flow."
+
+#: src/routes/[[locale]]/(public)/enable/auth/+page.svelte
+msgid "Subsequent scaffolds"
+msgstr "Subsequent scaffolds"
+
+#: src/routes/[[locale]]/(public)/enable/auth/+page.svelte
+msgid ""
+"Once auth is enabled, subsequent scaffolded routes will automatically be created within the\n"
+"protected <0/> group."
+msgstr ""
+"Once auth is enabled, subsequent scaffolded routes will automatically be created within the\n"
+"protected <0/> group."
+
+#: src/routes/[[locale]]/(public)/enable/cms/+page.svelte
+msgid "Enable Vela's content management system."
+msgstr "Enable Vela's content management system."
+
+#: src/routes/[[locale]]/(public)/enable/s3/+page.svelte
+msgid "Enable S3 storage for file uploads. Normally, file uploads are stored on the local filesystem."
+msgstr "Enable S3 storage for file uploads. Normally, file uploads are stored on the local filesystem."
+
+#: src/routes/[[locale]]/(public)/enable/s3/+page.svelte
+msgid ""
+"You'll be prompted for configuration options for the S3 storage. Once configured, file uploads\n"
+"will be stored in the S3 bucket. No other changes are necessary, file retrievals are handled\n"
+"automatically."
+msgstr ""
+"You'll be prompted for configuration options for the S3 storage. Once configured, file uploads\n"
+"will be stored in the S3 bucket. No other changes are necessary, file retrievals are handled\n"
+"automatically."
+
+#: src/routes/[[locale]]/(public)/enable/smtp/+page.svelte
+msgid "Enable SMTP email sending for your application."
+msgstr "Enable SMTP email sending for your application."
+
+#: src/routes/[[locale]]/(public)/enable/smtp/+page.svelte
+msgid "You'll be prompted for configuration options for the SMTP email sending."
+msgstr "You'll be prompted for configuration options for the SMTP email sending."
+
+#: src/routes/[[locale]]/(public)/enable/notifications/+page.svelte
+msgid "Enable notifications for your application."
+msgstr "Enable notifications for your application."
+
+#: src/routes/[[locale]]/(public)/enable/subscriptions/+page.svelte
+msgid "Depends: payments"
+msgstr "Depends: payments"
+
+#: src/routes/[[locale]]/(public)/enable/subscriptions/+page.svelte
+msgid "Enable plans and subscriptions with Stripe."
+msgstr "Enable plans and subscriptions with Stripe."
+
+#: src/routes/[[locale]]/(public)/enable/workflow/+page.svelte
+msgid "Enable <0>Workflow</0> in the SvelteKit project."
+msgstr "Enable <0>Workflow</0> in the SvelteKit project."
+
+#: src/routes/[[locale]]/(public)/enable/i18n/+page.svelte
+msgid ""
+"Enable internationalization in the SvelteKit project, powered by <0>Wuchale</0>. You'll be prompted for configuration options for the internationalization. Once enabled, use\n"
+"the <1/> <2>subcommands</2> to manage the internationalization."
+msgstr ""
+"Enable internationalization in the SvelteKit project, powered by <0>Wuchale</0>. You'll be prompted for configuration options for the internationalization. Once enabled, use\n"
+"the <1/> <2>subcommands</2> to manage the internationalization."
+
+#: src/routes/[[locale]]/(public)/enable/i18n/+page.svelte
+msgid ""
+"Enabling i18n nests all routes inside a <0/> group, providing a base URL for the\n"
+"internationalization: <1/> or <2/>."
+msgstr ""
+"Enabling i18n nests all routes inside a <0/> group, providing a base URL for the\n"
+"internationalization: <1/> or <2/>."
+
+#: src/routes/[[locale]]/(public)/fixtures/generate/+page.svelte
+msgid "Generate fixture data for testing and development."
+msgstr "Generate fixture data for testing and development."
+
+#: src/routes/[[locale]]/(public)/fixtures/generate/+page.svelte
+msgid ""
+"This will generate fixture data in the <0/> directory. The order of files is\n"
+"determined by the database schema, tables that depend on other tables are saved later."
+msgstr ""
+"This will generate fixture data in the <0/> directory. The order of files is\n"
+"determined by the database schema, tables that depend on other tables are saved later."
+
+#: src/routes/[[locale]]/(public)/fixtures/generate/+page.svelte
+msgid ""
+"Fixture data is generated with Faker.js via <0>@anatine/zod-mock</0>. The data is generated based on the database schema and the fields defined in the database\n"
+"models."
+msgstr ""
+"Fixture data is generated with Faker.js via <0>@anatine/zod-mock</0>. The data is generated based on the database schema and the fields defined in the database\n"
+"models."
+
+#: src/routes/[[locale]]/(public)/fixtures/generate/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/form/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/resource/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/scaffold/+page.svelte
+#: src/routes/[[locale]]/(public)/generate/schema/+page.svelte
+msgid "AI"
+msgstr "AI"
+
+#: src/routes/[[locale]]/(public)/fixtures/generate/+page.svelte
+msgid "The fixtures generate command supports the <0/> option for more realistic data generation."
+msgstr "The fixtures generate command supports the <0/> option for more realistic data generation."
+
+#: src/routes/[[locale]]/(public)/fixtures/load/+page.svelte
+msgid "Load fixture data into the database. Run automatically for integration tests."
+msgstr "Load fixture data into the database. Run automatically for integration tests."
+
+#: src/routes/[[locale]]/(public)/fixtures/load/+page.svelte
+msgid ""
+"This will load fixture data into the database from the <0/> directory. Fixtures\n"
+"are loaded in alphabetical order and prefixed with a number to ensure deterministic loading order."
+msgstr ""
+"This will load fixture data into the database from the <0/> directory. Fixtures\n"
+"are loaded in alphabetical order and prefixed with a number to ensure deterministic loading order."
+
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+msgid "Enable payment processing with Stripe."
+msgstr "Enable payment processing with Stripe."
+
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+msgid ""
+"The payments module creates the necessary database tables and code for payment processing, webhook\n"
+"events, receipts, sweeps and more."
+msgstr ""
+"The payments module creates the necessary database tables and code for payment processing, webhook\n"
+"events, receipts, sweeps and more."
+
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+msgid "The payments module creates the following database tables:"
+msgstr "The payments module creates the following database tables:"
+
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+msgid "Webhooks"
+msgstr "Webhooks"
+
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+msgid ""
+"Stripe webhooks are scaffolded in <0/>, with the payment intent\n"
+"succeeded event included by default."
+msgstr ""
+"Stripe webhooks are scaffolded in <0/>, with the payment intent\n"
+"succeeded event included by default."
+
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+msgid "Customers"
+msgstr "Customers"
+
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+msgid ""
+"If authentication is enabled with the <0/> command, Stripe customers will\n"
+"be created for the authenticated user on sign up and a user's payment methods can be saved and managed\n"
+"in the user's billing settings page."
+msgstr ""
+"If authentication is enabled with the <0/> command, Stripe customers will\n"
+"be created for the authenticated user on sign up and a user's payment methods can be saved and managed\n"
+"in the user's billing settings page."
+
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+msgid "These additional tables are created if authentication is enabled:"
+msgstr "These additional tables are created if authentication is enabled:"
+
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+msgid ""
+"In addition to the payment intent succeeded event, the payment method attached event is included\n"
+"by default for the authenticated user."
+msgstr ""
+"In addition to the payment intent succeeded event, the payment method attached event is included\n"
+"by default for the authenticated user."
+
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+msgid "Cron jobs"
+msgstr "Cron jobs"
+
+#: src/routes/[[locale]]/(public)/enable/payments/+page.svelte
+msgid ""
+"PocketBase cron jobs run to keep the application database in sync with Stripe. Products and prices\n"
+"are synced every two minutes, configured in <0/>. Stripe customers\n"
+"are synced as well if authentication is enabled. The cron jobs trigger HTTP requests to the\n"
+"application at <1/>, with a shared secret key stored as an\n"
+"environment variable <2/>."
+msgstr ""
+"PocketBase cron jobs run to keep the application database in sync with Stripe. Products and prices\n"
+"are synced every two minutes, configured in <0/>. Stripe customers\n"
+"are synced as well if authentication is enabled. The cron jobs trigger HTTP requests to the\n"
+"application at <1/>, with a shared secret key stored as an\n"
+"environment variable <2/>."
+
+#: src/routes/[[locale]]/(public)/generate/ai/+page.svelte
+msgid ""
+"The AI command takes an optional prompt and spawns a local whiteboard interface for developing the\n"
+"database schema iteratively with AI. Requires a Vela Pro subscription."
+msgstr ""
+"The AI command takes an optional prompt and spawns a local whiteboard interface for developing the\n"
+"database schema iteratively with AI. Requires a Vela Pro subscription."
+
+#: src/routes/[[locale]]/(public)/generate/ai/+page.svelte
+msgid "Whiteboard"
+msgstr "Whiteboard"
+
+#: src/routes/[[locale]]/(public)/generate/ai/+page.svelte
+msgid ""
+"The whiteboard interface allows you to design the database schema by dragging and dropping models,\n"
+"forms and scaffolding onto the canvas. Use the prompt input for fine-tuning the schema with AI."
+msgstr ""
+"The whiteboard interface allows you to design the database schema by dragging and dropping models,\n"
+"forms and scaffolding onto the canvas. Use the prompt input for fine-tuning the schema with AI."
+
+#: src/routes/[[locale]]/(public)/generate/ai/+page.svelte
+msgid "Committing changes"
+msgstr "Committing changes"
+
+#: src/routes/[[locale]]/(public)/generate/ai/+page.svelte
+msgid ""
+"When you're happy with the schema, you can commit the changes to the database by clicking the\n"
+"Commit button. This will generate the necessary files and migrations."
+msgstr ""
+"When you're happy with the schema, you can commit the changes to the database by clicking the\n"
+"Commit button. This will generate the necessary files and migrations."
+
+#: src/routes/[[locale]]/(public)/fixtures/clear/+page.svelte
+msgid "Clear fixture data from the database."
+msgstr "Clear fixture data from the database."
+
+#: src/routes/[[locale]]/(public)/fixtures/clear/+page.svelte
+msgid "This will clear all fixture data from the database."
+msgstr "This will clear all fixture data from the database."
+
+#: src/routes/[[locale]]/(public)/generate/resource/+page.svelte
+msgid ""
+"A resource is a collection of data that is stored in the database. For models that don't require a\n"
+"frontend interface, you can use the resource generator to create a simple resource. For existing\n"
+"models, the <0/> option can be omitted and the generator will use the existing fields."
+msgstr ""
+"A resource is a collection of data that is stored in the database. For models that don't require a\n"
+"frontend interface, you can use the resource generator to create a simple resource. For existing\n"
+"models, the <0/> option can be omitted and the generator will use the existing fields."
+
+#: src/routes/[[locale]]/(public)/generate/resource/+page.svelte
+msgid ""
+"This will create a database model and a Zod schema definition for the resource.<0/>The files\n"
+"created are:"
+msgstr ""
+"This will create a database model and a Zod schema definition for the resource.<0/>The files\n"
+"created are:"
+
+#: src/routes/[[locale]]/(public)/generate/resource/+page.svelte
+msgid ""
+"The generate resource command supports the <0/> option for freeform text input in place\n"
+"of specifying the fields."
+msgstr ""
+"The generate resource command supports the <0/> option for freeform text input in place\n"
+"of specifying the fields."
+
+#: src/routes/[[locale]]/(public)/generate/scaffold/+page.svelte
+msgid ""
+"A scaffold is a full CRUD interface for a resource. It includes the index, view, create and edit\n"
+"pages, a schema definition and a database model. If <0/> isn't provided, the scaffold\n"
+"will be generated based on the existing database schema."
+msgstr ""
+"A scaffold is a full CRUD interface for a resource. It includes the index, view, create and edit\n"
+"pages, a schema definition and a database model. If <0/> isn't provided, the scaffold\n"
+"will be generated based on the existing database schema."
+
+#: src/routes/[[locale]]/(public)/generate/scaffold/+page.svelte
+msgid ""
+"This will create a full CRUD interface for the pets resource at <0/>, the database\n"
+"model and Zod schema definition, and the database migration file.<1/>The files created are:"
+msgstr ""
+"This will create a full CRUD interface for the pets resource at <0/>, the database\n"
+"model and Zod schema definition, and the database migration file.<1/>The files created are:"
+
+#: src/routes/[[locale]]/(public)/generate/scaffold/+page.svelte
+msgid ""
+"The generate scaffold command supports the <0/> option for freeform text input in place\n"
+"of specifying the fields."
+msgstr ""
+"The generate scaffold command supports the <0/> option for freeform text input in place\n"
+"of specifying the fields."
+
+#: src/routes/[[locale]]/(public)/generate/form/+page.svelte
+msgid ""
+"The basic building block of any website or application is the form. If you don't need a database\n"
+"backend, you can use the form generator to create a simple form. Ideal for contact or feedback\n"
+"forms where the data isn't persisted."
+msgstr ""
+"The basic building block of any website or application is the form. If you don't need a database\n"
+"backend, you can use the form generator to create a simple form. Ideal for contact or feedback\n"
+"forms where the data isn't persisted."
+
+#: src/routes/[[locale]]/(public)/generate/form/+page.svelte
+msgid "This will create a form at <0/> and a Zod schema definition for form validation.<1/>The files created are:"
+msgstr "This will create a form at <0/> and a Zod schema definition for form validation.<1/>The files created are:"
+
+#: src/routes/[[locale]]/(public)/generate/form/+page.svelte
+msgid ""
+"The generate form command supports the <0/> option for freeform text input in place of\n"
+"specifying the fields."
+msgstr ""
+"The generate form command supports the <0/> option for freeform text input in place of\n"
+"specifying the fields."
+
+#: src/routes/[[locale]]/(public)/generate/schema/+page.svelte
+msgid ""
+"A schema is a Zod schema for validating data. Vela uses TypeScript definitions to ensure that the\n"
+"Zod schema is kept in sync with the database schema. If <0/> isn't provided, the schema\n"
+"will be generated based on the existing database schema."
+msgstr ""
+"A schema is a Zod schema for validating data. Vela uses TypeScript definitions to ensure that the\n"
+"Zod schema is kept in sync with the database schema. If <0/> isn't provided, the schema\n"
+"will be generated based on the existing database schema."
+
+#: src/routes/[[locale]]/(public)/generate/schema/+page.svelte
+msgid "This will create a Zod schema for a resource.<0/>The file created is:"
+msgstr "This will create a Zod schema for a resource.<0/>The file created is:"
+
+#: src/routes/[[locale]]/(public)/generate/schema/+page.svelte
+msgid ""
+"The generate schema command supports the <0/> option for freeform text input in place\n"
+"of specifying the fields."
+msgstr ""
+"The generate schema command supports the <0/> option for freeform text input in place\n"
+"of specifying the fields."
+
+#: src/routes/[[locale]]/(public)/enable/teams/+page.svelte
+msgid "Enable team management, roles and permissions for your application's users."
+msgstr "Enable team management, roles and permissions for your application's users."
+
+#: src/routes/[[locale]]/(public)/enable/teams/+page.svelte
+msgid ""
+"The teams module creates the necessary database tables and code for team management, including\n"
+"team creation, team members, roles, invitations and more."
+msgstr ""
+"The teams module creates the necessary database tables and code for team management, including\n"
+"team creation, team members, roles, invitations and more."
+
+#: src/routes/[[locale]]/(public)/enable/teams/+page.svelte
+msgid "Once enabled, teams can be used as a target for ownership and permissions using the special <0/> field type. Members of a team can access data associated with the team."
+msgstr "Once enabled, teams can be used as a target for ownership and permissions using the special <0/> field type. Members of a team can access data associated with the team."
+
+#: src/routes/[[locale]]/(public)/enable/teams/+page.svelte
+msgid "Enabling <0/> creates the following database tables:"
+msgstr "Enabling <0/> creates the following database tables:"
+
+#: src/routes/[[locale]]/(public)/helpers/pocketbase/+page.svelte
+msgid "handlePocketbase"
+msgstr "handlePocketbase"
+
+#: src/routes/[[locale]]/(public)/helpers/pocketbase/+page.svelte
+#: src/routes/[[locale]]/(public)/helpers/postgres/+page.svelte
+msgid "This function is used to configure the PocketBase middleware in <0/>."
+msgstr "This function is used to configure the PocketBase middleware in <0/>."
+
+#: src/routes/[[locale]]/(public)/helpers/pocketbase/+page.svelte
+msgid "setDefaultData"
+msgstr "setDefaultData"
+
+#: src/routes/[[locale]]/(public)/helpers/pocketbase/+page.svelte
+msgid ""
+"This function is used to set the default data for a form from a PocketBase record in a server\n"
+"action."
+msgstr ""
+"This function is used to set the default data for a form from a PocketBase record in a server\n"
+"action."
+
+#: src/routes/[[locale]]/(public)/helpers/pocketbase/+page.svelte
+msgid "setPocketbaseErrors"
+msgstr "setPocketbaseErrors"
+
+#: src/routes/[[locale]]/(public)/helpers/pocketbase/+page.svelte
+msgid "This function is used to set PocketBase errors as Superforms errors when a form submission fails."
+msgstr "This function is used to set PocketBase errors as Superforms errors when a form submission fails."
+
+#: src/routes/[[locale]]/(public)/helpers/postgres/+page.svelte
+msgid "handlePostgres"
+msgstr "handlePostgres"
+
+#: src/routes/[[locale]]/(public)/legal/privacy/+page.svelte
+msgid "Vela includes a privacy policy generator to create a demo privacy policy for your application."
+msgstr "Vela includes a privacy policy generator to create a demo privacy policy for your application."
+
+#: src/routes/[[locale]]/(public)/legal/privacy/+page.svelte
+msgid ""
+"This will start a wizard to guide you through the process of creating a demo privacy policy for\n"
+"your application. The generated privacy policy is a placeholder and not a legal document. Seek\n"
+"legal advice for your specific use case."
+msgstr ""
+"This will start a wizard to guide you through the process of creating a demo privacy policy for\n"
+"your application. The generated privacy policy is a placeholder and not a legal document. Seek\n"
+"legal advice for your specific use case."
+
+#: src/routes/[[locale]]/(public)/legal/terms/+page.svelte
+msgid "Vela includes a terms of service generator to create a demo terms of service for your application."
+msgstr "Vela includes a terms of service generator to create a demo terms of service for your application."
+
+#: src/routes/[[locale]]/(public)/legal/terms/+page.svelte
+msgid ""
+"This will start a wizard to guide you through the process of creating a demo terms of service for\n"
+"your application. The generated terms of service is a placeholder and not a legal document. Seek\n"
+"legal advice for your specific use case."
+msgstr ""
+"This will start a wizard to guide you through the process of creating a demo terms of service for\n"
+"your application. The generated terms of service is a placeholder and not a legal document. Seek\n"
+"legal advice for your specific use case."
+
+#: src/routes/[[locale]]/(public)/seeds/clear/+page.svelte
+msgid "Clear seed data from the database."
+msgstr "Clear seed data from the database."
+
+#: src/routes/[[locale]]/(public)/seeds/clear/+page.svelte
+msgid "This will clear all seed data from the database."
+msgstr "This will clear all seed data from the database."
+
+#: src/routes/[[locale]]/(public)/seeds/load/+page.svelte
+msgid "Load seed data from the database. Run automatically for integration tests."
+msgstr "Load seed data from the database. Run automatically for integration tests."
+
+#: src/routes/[[locale]]/(public)/seeds/load/+page.svelte
+msgid ""
+"This will load seed data into the database. Seed data files are loaded in alphabetical order and\n"
+"prefixed with a number to ensure deterministic loading order."
+msgstr ""
+"This will load seed data into the database. Seed data files are loaded in alphabetical order and\n"
+"prefixed with a number to ensure deterministic loading order."
+
+#: src/routes/[[locale]]/(public)/seeds/save/+page.svelte
+msgid "Save seed data from the database."
+msgstr "Save seed data from the database."
+
+#: src/routes/[[locale]]/(public)/seeds/save/+page.svelte
+msgid ""
+"This will save seed data from the database to the <0/> directory. The order of files\n"
+"is determined by the database schema, tables that depend on other tables are saved later."
+msgstr ""
+"This will save seed data from the database to the <0/> directory. The order of files\n"
+"is determined by the database schema, tables that depend on other tables are saved later."
+
+#: src/routes/[[locale]]/(public)/serverless/cloudflare/+page.svelte
+msgid "Deploy your application to Cloudflare. You'll need a hosted database backend (we recommend <0>PocketHost</0>) and configured Cloudflare environment variables."
+msgstr "Deploy your application to Cloudflare. You'll need a hosted database backend (we recommend <0>PocketHost</0>) and configured Cloudflare environment variables."
+
+#: src/routes/[[locale]]/(public)/serverless/vercel/+page.svelte
+msgid "Deploy your application to Vercel. You'll need a hosted database backend (we recommend <0>PocketHost</0>) and configured Vercel environment variables."
+msgstr "Deploy your application to Vercel. You'll need a hosted database backend (we recommend <0>PocketHost</0>) and configured Vercel environment variables."
+
+#: src/routes/[[locale]]/(public)/serverless/netlify/+page.svelte
+msgid "Deploy your application to Netlify. You'll need a hosted database backend (we recommend <0>PocketHost</0>) and configured Netlify environment variables."
+msgstr "Deploy your application to Netlify. You'll need a hosted database backend (we recommend <0>PocketHost</0>) and configured Netlify environment variables."
+
+#: src/routes/[[locale]]/(public)/test/integration/+page.svelte
+msgid "Integration tests cover the full application stack, including the database."
+msgstr "Integration tests cover the full application stack, including the database."
+
+#: src/routes/[[locale]]/(public)/test/integration/+page.svelte
+msgid "Test files"
+msgstr "Test files"
+
+#: src/routes/[[locale]]/(public)/test/integration/+page.svelte
+msgid ""
+"Integration tests match the pattern <0/> and run on Vitest. A test database\n"
+"will be created and all migrations applied before the tests are run. Any seed data and fixtures will\n"
+"be loaded before the tests are run. Integration tests created by Vela mostly run as HTTP requests to\n"
+"the application."
+msgstr ""
+"Integration tests match the pattern <0/> and run on Vitest. A test database\n"
+"will be created and all migrations applied before the tests are run. Any seed data and fixtures will\n"
+"be loaded before the tests are run. Integration tests created by Vela mostly run as HTTP requests to\n"
+"the application."
+
+#: src/routes/[[locale]]/(public)/test/integration/+page.svelte
+msgid "Frontend"
+msgstr "Frontend"
+
+#: src/routes/[[locale]]/(public)/test/integration/+page.svelte
+msgid ""
+"Integration tests do not include any frontend code. They are only concerned with the backend and\n"
+"database. Large speed benefits are gained by excluding the frontend bundle from the test runner."
+msgstr ""
+"Integration tests do not include any frontend code. They are only concerned with the backend and\n"
+"database. Large speed benefits are gained by excluding the frontend bundle from the test runner."
+
+#: src/routes/[[locale]]/(public)/ui/add/+page.svelte
+msgid "The add command is used to add a new Shadcn-Svelte component to the application."
+msgstr "The add command is used to add a new Shadcn-Svelte component to the application."
+
+#: src/routes/[[locale]]/(public)/ui/add/+page.svelte
+msgid "This will add the button component to the application."
+msgstr "This will add the button component to the application."
+
+#: src/routes/[[locale]]/(public)/test/unit/+page.svelte
+msgid "Unit tests are used to test individual units of code."
+msgstr "Unit tests are used to test individual units of code."
+
+#: src/routes/[[locale]]/(public)/test/unit/+page.svelte
+msgid "Tests"
+msgstr "Tests"
+
+#: src/routes/[[locale]]/(public)/test/unit/+page.svelte
+msgid ""
+"Unit tests match the pattern <0/> and run on Vitest. They do not depend\n"
+"on the database and no test database will be created, unlike integration tests."
+msgstr ""
+"Unit tests match the pattern <0/> and run on Vitest. They do not depend\n"
+"on the database and no test database will be created, unlike integration tests."
+
+#: src/routes/[[locale]]/(public)/ui/base/+page.svelte
+msgid "The base command changes the base color of the application."
+msgstr "The base command changes the base color of the application."
+
+#: src/routes/[[locale]]/(public)/ui/base/+page.svelte
+msgid "This will change the base color of the application to slate."
+msgstr "This will change the base color of the application to slate."
+
+#: src/routes/[[locale]]/(public)/ui/base/+page.svelte
+msgid "Colors"
+msgstr "Colors"
+
+#: src/routes/[[locale]]/(public)/ui/base/+page.svelte
+msgid "Vela supports the following colors:"
+msgstr "Vela supports the following colors:"
+
+#: src/routes/[[locale]]/+layout.ts
+msgid "Vela is a fullstack command line tool for rapidly scaffolding modern web apps."
+msgstr "Vela is a fullstack command line tool for rapidly scaffolding modern web apps."
+
+#: src/routes/[[locale]]/+layout.ts
+#: src/routes/[[locale]]/+layout.ts
+msgid "Vela Docs"
+msgstr "Vela Docs"
+
+#: src/routes/[[locale]]/(public)/cli/project-structure/+page.ts
+#: src/routes/[[locale]]/(public)/cli/project-structure/+page.ts
+msgid "Project Structure"
+msgstr "Project Structure"
+
+#: src/routes/[[locale]]/(public)/root-layout.svelte
+msgid "English"
+msgstr "English"
+
+#: src/routes/[[locale]]/(public)/root-layout.svelte
+msgid "Español"
+msgstr "Español"

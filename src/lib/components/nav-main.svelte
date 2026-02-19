@@ -4,7 +4,7 @@
 	import { page } from '$app/state';
 
 	const isActive = (url: string) => {
-		return page.url.pathname === url;
+		return page.url.pathname === url || `${page.url.pathname}/` === url;
 	};
 
 	let {
@@ -20,15 +20,26 @@
 			}[];
 		}[];
 	} = $props();
+
+	let locale = $derived(page.params.locale);
+
+	function prependLocale(url: string) {
+		if (locale === undefined) {
+			return url;
+		}
+
+		return `/${locale}${url}`;
+	}
 </script>
 
 <Sidebar.Group>
 	<Sidebar.Menu>
 		{#each items as item (item.title)}
+			{@const url = prependLocale(item.url)}
 			<Sidebar.MenuItem>
-				<Sidebar.MenuButton isActive={isActive(item.url)}>
+				<Sidebar.MenuButton isActive={isActive(url)}>
 					{#snippet child({ props })}
-						<a href={item.url} {...props}>
+						<a href={url} {...props}>
 							<span>{item.title}</span>
 						</a>
 					{/snippet}
@@ -36,10 +47,11 @@
 				{#if item.items?.length}
 					<Sidebar.MenuSub>
 						{#each item.items as subItem (subItem.title)}
+							{@const url = prependLocale(subItem.url)}
 							<Sidebar.MenuSubItem>
-								<Sidebar.MenuSubButton isActive={isActive(subItem.url)}>
+								<Sidebar.MenuSubButton isActive={isActive(url)}>
 									{#snippet child({ props })}
-										<a href={subItem.url} {...props}>
+										<a href={url} {...props}>
 											{subItem.title}
 											{#if subItem.badge}
 												<Badge variant="outline">{subItem.badge}</Badge>
