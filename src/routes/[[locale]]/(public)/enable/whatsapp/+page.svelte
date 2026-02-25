@@ -1,9 +1,12 @@
 <script lang="ts">
+	import { Badge } from '$lib/components/ui/badge';
 	const { data } = $props();
 </script>
 
 <h1>{data.pageMetaTags.title}</h1>
 
+<Badge variant="outline">Preview</Badge>
+<p></p>
 <p>Enable authentication with WhatsApp for your application.</p>
 
 <h3>Syntax</h3>

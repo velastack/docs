@@ -70,6 +70,7 @@ msgstr "PostgreSQL"
 #: src/routes/[[locale]]/(public)/enable/cms/+page.svelte
 #: src/routes/[[locale]]/(public)/enable/i18n/+page.svelte
 #: src/routes/[[locale]]/(public)/enable/subscriptions/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/whatsapp/+page.svelte
 #: src/routes/[[locale]]/(public)/enable/workflow/+page.svelte
 #: src/routes/[[locale]]/(public)/helpers/postgres/+page.svelte
 msgid "Preview"
