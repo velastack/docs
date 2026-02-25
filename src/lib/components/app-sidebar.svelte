@@ -1,4 +1,8 @@
-<script lang="ts" module>
+<script lang="ts">
+	import NavMain from './nav-main.svelte';
+	import * as Sidebar from '$lib/components/ui/sidebar';
+	import type { ComponentProps } from 'svelte';
+
 	let data = {
 		navMain: [
 			{
@@ -137,6 +141,11 @@
 					{
 						title: 'Workflow',
 						url: '/enable/workflow',
+						badge: 'Preview'
+					},
+					{
+						title: 'WhatsApp',
+						url: '/enable/whatsapp',
 						badge: 'Preview'
 					}
 				]
@@ -326,12 +335,6 @@
 			}
 		]
 	};
-</script>
-
-<script lang="ts">
-	import NavMain from './nav-main.svelte';
-	import * as Sidebar from '$lib/components/ui/sidebar';
-	import type { ComponentProps } from 'svelte';
 
 	let {
 		meta,

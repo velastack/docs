@@ -65,6 +65,7 @@ msgstr "PostgreSQL"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
 #: src/routes/[[locale]]/(public)/backend/postgres/+page.svelte
 #: src/routes/[[locale]]/(public)/enable/cms/+page.svelte
 #: src/routes/[[locale]]/(public)/enable/i18n/+page.svelte
@@ -586,6 +587,7 @@ msgstr "Compila la aplicación para producción."
 #: src/routes/[[locale]]/(public)/enable/smtp/+page.svelte
 #: src/routes/[[locale]]/(public)/enable/subscriptions/+page.svelte
 #: src/routes/[[locale]]/(public)/enable/teams/+page.svelte
+#: src/routes/[[locale]]/(public)/enable/whatsapp/+page.svelte
 #: src/routes/[[locale]]/(public)/enable/workflow/+page.svelte
 #: src/routes/[[locale]]/(public)/fixtures/+page.svelte
 #: src/routes/[[locale]]/(public)/fixtures/clear/+page.svelte
@@ -2105,3 +2107,17 @@ msgstr "English"
 #: src/routes/[[locale]]/(public)/root-layout.svelte
 msgid "Español"
 msgstr "Español"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/[[locale]]/(public)/enable/whatsapp/+page.ts
+#: src/routes/[[locale]]/(public)/enable/whatsapp/+page.ts
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: src/routes/[[locale]]/(public)/enable/whatsapp/+page.svelte
+msgid "You'll be prompted for configuration options for WhatsApp integration."
+msgstr "Se te pedirán opciones de configuración para la integración con WhatsApp."
+
+#: src/routes/[[locale]]/(public)/enable/whatsapp/+page.svelte
+msgid "Enable authentication with WhatsApp for your application."
+msgstr "Habilitar autenticación con WhatsApp para tu aplicación."
