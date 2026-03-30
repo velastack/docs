@@ -6,7 +6,10 @@ import { defineConfig } from 'wuchale';
 export default defineConfig({
 	locales: ['en', 'es'],
 	adapters: {
-		main: svelte({ loader: 'sveltekit' }),
+		main: svelte({
+			loader: 'sveltekit',
+			url: { localize: 'src/lib/url.ts', patterns: ['/', '/*rest'] }
+		}),
 		js: js({
 			loader: 'vite',
 			files: ['src/**/+{page,layout}.{js,ts}', 'src/**/+{page,layout}.server.{js,ts}']

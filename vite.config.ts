@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { wuchale } from '@wuchale/vite-plugin';
+import { wuchale } from 'wuchale/vite';
 
 export default defineConfig({
 	plugins: [wuchale(), tailwindcss(), sveltekit()],

@@ -7,43 +7,29 @@
 	import { Button } from '$lib/components/ui/button';
 	import * as Navbar from '$lib/components/ui/navbar';
 	import * as ButtonGroup from '$lib/components/ui/button-group';
+	import { locales, type Locale } from '../../locales/data.js';
+	import { deLocalizeDefault } from 'wuchale/url';
+	import { goto } from '$app/navigation';
+	import { translateUrl, defaultLocale } from '$lib/url';
 
 	import { page } from '$app/state';
 
 	let breadcrumbs = $derived(page.data.breadcrumbs || []) as { title: string; url: string }[];
 	let { data, children } = $props();
 
-	const defaultLocale = 'en';
-	let locale = $derived(page.params.locale);
+	let locale: Locale = $derived.by(() => {
+		const [_, locale] = deLocalizeDefault(page.url.pathname, locales);
+		return locale ?? defaultLocale;
+	});
 
-	const replaceLocale = (newLocale: string) => {
-		const url = new URL(page.url);
+	const localeNames: Record<string, string> = {
+		en: 'English',
+		es: 'Español'
+	};
 
-		if (locale === undefined) {
-			if (newLocale === defaultLocale) {
-				return url.pathname;
-			} else {
-				return `/${newLocale}${url.pathname}`;
-			}
-		}
-
-		if (url.pathname.startsWith(`/${newLocale}`)) {
-			return url.pathname;
-		} else if (url.pathname.startsWith(`/${locale}/`)) {
-			if (newLocale === defaultLocale) {
-				return url.pathname.replace(`/${locale}/`, '/');
-			} else {
-				return url.pathname.replace(`/${locale}/`, `/${newLocale}/`);
-			}
-		} else if (url.pathname.startsWith(`/${locale}`)) {
-			if (newLocale === defaultLocale) {
-				return url.pathname.replace(`/${locale}`, '/');
-			} else {
-				return `/${newLocale}${url.pathname}`;
-			}
-		} else {
-			return `/${newLocale}${url.pathname}`;
-		}
+	const handleValueChange = (toLocale: Locale) => {
+		const translatedUrl = translateUrl(page.url.pathname, locale, toLocale);
+		goto(translatedUrl, { invalidateAll: true });
 	};
 </script>
 
@@ -78,16 +64,16 @@
 						<Button
 							variant="outline"
 							size="sm"
-							class={locale !== undefined && locale !== 'en' ? 'opacity-50' : ''}
-							href={replaceLocale('en')}
-							data-sveltekit-preload-data="off">English</Button
+							class={locale !== 'en' ? 'opacity-50' : ''}
+							onclick={() => handleValueChange('en')}
+							data-sveltekit-preload-data="off">{localeNames['en']}</Button
 						>
 						<Button
 							variant="outline"
 							size="sm"
 							class={locale !== 'es' ? 'opacity-50' : ''}
-							href={replaceLocale('es')}
-							data-sveltekit-preload-data="off">Español</Button
+							onclick={() => handleValueChange('es')}
+							data-sveltekit-preload-data="off">{localeNames['es']}</Button
 						>
 					</ButtonGroup.Root>
 					<Button onclick={toggleMode} variant="ghost" size="icon">

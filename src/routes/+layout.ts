@@ -1,15 +1,15 @@
 import { defineBaseMetaTags } from 'svelte-meta-tags';
-import { locales } from '../../locales/data.js';
 import { browser } from '$app/environment';
 import { loadLocale } from 'wuchale/load-utils';
-// so that the loaders are registered, only here, not required in nested ones (below)
-import '../../locales/main.loader.svelte.js';
-import '../../locales/js.loader.js';
+import { getLocale } from '../locales/main.url';
 
-export const load = async ({ url, params }) => {
-	const locale = params.locale ?? 'en';
+import '../locales/main.loader.svelte.js';
+import '../locales/js.loader.js';
 
-	if (browser && locales.includes(locale)) {
+export const load = async ({ url }) => {
+	const locale = getLocale(url);
+
+	if (browser) {
 		await loadLocale(locale);
 	}
 

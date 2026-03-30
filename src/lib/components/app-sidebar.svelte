@@ -7,329 +7,329 @@
 		navMain: [
 			{
 				title: 'Getting Started',
-				url: '/'
+				url: /* @wc-url */ '/'
 			},
 			{
 				title: 'Ethos',
-				url: '/ethos'
+				url: /* @wc-url */ '/ethos'
 			},
 			{
 				title: 'Backend',
-				url: '/backend',
+				url: /* @wc-url */ '/backend',
 				items: [
 					{
 						title: 'PocketBase',
-						url: '/backend/pocketbase'
+						url: /* @wc-url */ '/backend/pocketbase'
 					},
 					{
 						title: 'PostgreSQL',
-						url: '/backend/postgres',
+						url: /* @wc-url */ '/backend/postgres',
 						badge: 'Preview'
 					}
 				]
 			},
 			{
 				title: 'CLI Reference',
-				url: '/cli',
+				url: /* @wc-url */ '/cli',
 				items: [
 					{
 						title: 'Installation',
-						url: '/cli/installation'
+						url: /* @wc-url */ '/cli/installation'
 					},
 					{
 						title: 'Environment Variables',
-						url: '/cli/environment-variables'
+						url: /* @wc-url */ '/cli/environment-variables'
 					}
 				]
 			},
 			{
 				title: 'Create',
-				url: '/create'
+				url: /* @wc-url */ '/create'
 			},
 			{
 				title: 'Dev',
-				url: '/dev'
+				url: /* @wc-url */ '/dev'
 			},
 			{
 				title: 'Build',
-				url: '/build'
+				url: /* @wc-url */ '/build'
 			},
 			{
 				title: 'Generate',
-				url: '/generate',
+				url: /* @wc-url */ '/generate',
 				items: [
 					{
 						title: 'Form',
-						url: '/generate/form'
+						url: /* @wc-url */ '/generate/form'
 					},
 					{
 						title: 'Resource',
-						url: '/generate/resource'
+						url: /* @wc-url */ '/generate/resource'
 					},
 					{
 						title: 'Schema',
-						url: '/generate/schema'
+						url: /* @wc-url */ '/generate/schema'
 					},
 					{
 						title: 'Scaffold',
-						url: '/generate/scaffold'
+						url: /* @wc-url */ '/generate/scaffold'
 					},
 					{
 						title: 'AI',
-						url: '/generate/ai',
+						url: /* @wc-url */ '/generate/ai',
 						badge: 'Pro'
 					}
 				]
 			},
 			{
 				title: 'Destroy',
-				url: '/destroy'
+				url: /* @wc-url */ '/destroy'
 			},
 			{
 				title: 'Enable',
-				url: '/enable',
+				url: /* @wc-url */ '/enable',
 				items: [
 					{
 						title: 'Auth',
-						url: '/enable/auth'
+						url: /* @wc-url */ '/enable/auth'
 					},
 					{
 						title: 'API',
-						url: '/enable/api'
+						url: /* @wc-url */ '/enable/api'
 					},
 					{
 						title: 'API Keys',
-						url: '/enable/api-keys'
+						url: /* @wc-url */ '/enable/api-keys'
 					},
 					{
 						title: 'S3',
-						url: '/enable/s3'
+						url: /* @wc-url */ '/enable/s3'
 					},
 					{
 						title: 'SMTP',
-						url: '/enable/smtp'
+						url: /* @wc-url */ '/enable/smtp'
 					},
 					{
 						title: 'Notifications',
-						url: '/enable/notifications'
+						url: /* @wc-url */ '/enable/notifications'
 					},
 					{
 						title: 'Teams',
-						url: '/enable/teams',
+						url: /* @wc-url */ '/enable/teams',
 						badge: 'Pro'
 					},
 					{
 						title: 'Payments',
-						url: '/enable/payments',
+						url: /* @wc-url */ '/enable/payments',
 						badge: 'Pro'
 					},
 					{
 						title: 'Subscriptions',
-						url: '/enable/subscriptions',
+						url: /* @wc-url */ '/enable/subscriptions',
 						badge: 'Preview'
 					},
 					{
 						title: 'i18n',
-						url: '/enable/i18n',
+						url: /* @wc-url */ '/enable/i18n',
 						badge: 'Preview'
 					},
 					{
 						title: 'CMS',
-						url: '/enable/cms',
+						url: /* @wc-url */ '/enable/cms',
 						badge: 'Preview'
 					},
 					{
 						title: 'Workflow',
-						url: '/enable/workflow',
+						url: /* @wc-url */ '/enable/workflow',
 						badge: 'Preview'
 					},
 					{
 						title: 'WhatsApp',
-						url: '/enable/whatsapp',
+						url: /* @wc-url */ '/enable/whatsapp',
 						badge: 'Preview'
 					}
 				]
 			},
 			{
 				title: 'Disable',
-				url: '/disable'
+				url: /* @wc-url */ '/disable'
 			},
 			{
 				title: 'i18n',
-				url: '/i18n',
+				url: /* @wc-url */ '/i18n',
 				items: [
 					{
 						title: 'Extract',
-						url: '/i18n/extract'
+						url: /* @wc-url */ '/i18n/extract'
 					},
 					{
 						title: 'Watch',
-						url: '/i18n/watch'
+						url: /* @wc-url */ '/i18n/watch'
 					},
 					{
 						title: 'Status',
-						url: '/i18n/status'
+						url: /* @wc-url */ '/i18n/status'
 					},
 					{
 						title: 'Clean',
-						url: '/i18n/clean'
+						url: /* @wc-url */ '/i18n/clean'
 					}
 				]
 			},
 			{
 				title: 'Sync',
-				url: '/sync'
+				url: /* @wc-url */ '/sync'
 			},
 			{
 				title: 'Test',
-				url: '/test',
+				url: /* @wc-url */ '/test',
 				items: [
 					{
 						title: 'Unit',
-						url: '/test/unit'
+						url: /* @wc-url */ '/test/unit'
 					},
 					{
 						title: 'Integration',
-						url: '/test/integration'
+						url: /* @wc-url */ '/test/integration'
 					}
 				]
 			},
 			{
 				title: 'Seeds',
-				url: '/seeds',
+				url: /* @wc-url */ '/seeds',
 				items: [
 					{
 						title: 'Save',
-						url: '/seeds/save'
+						url: /* @wc-url */ '/seeds/save'
 					},
 					{
 						title: 'Load',
-						url: '/seeds/load'
+						url: /* @wc-url */ '/seeds/load'
 					},
 					{
 						title: 'Clear',
-						url: '/seeds/clear'
+						url: /* @wc-url */ '/seeds/clear'
 					}
 				]
 			},
 			{
 				title: 'Fixtures',
-				url: '/fixtures',
+				url: /* @wc-url */ '/fixtures',
 				items: [
 					{
 						title: 'Generate',
-						url: '/fixtures/generate'
+						url: /* @wc-url */ '/fixtures/generate'
 					},
 					{
 						title: 'Load',
-						url: '/fixtures/load'
+						url: /* @wc-url */ '/fixtures/load'
 					},
 					{
 						title: 'Clear',
-						url: '/fixtures/clear'
+						url: /* @wc-url */ '/fixtures/clear'
 					}
 				]
 			},
 			{
 				title: 'Legal',
-				url: '/legal',
+				url: /* @wc-url */ '/legal',
 				items: [
 					{
 						title: 'Privacy',
-						url: '/legal/privacy'
+						url: /* @wc-url */ '/legal/privacy'
 					},
 					{
 						title: 'Terms',
-						url: '/legal/terms'
+						url: /* @wc-url */ '/legal/terms'
 					}
 				]
 			},
 			{
 				title: 'UI',
-				url: '/ui',
+				url: /* @wc-url */ '/ui',
 				items: [
 					{
 						title: 'Add',
-						url: '/ui/add'
+						url: /* @wc-url */ '/ui/add'
 					},
 					{
 						title: 'Base',
-						url: '/ui/base'
+						url: /* @wc-url */ '/ui/base'
 					}
 				]
 			},
 			{
 				title: 'Routes',
-				url: '/routes'
+				url: /* @wc-url */ '/routes'
 			},
 			{
 				title: 'Provision',
-				url: '/provision'
+				url: /* @wc-url */ '/provision'
 			},
 			{
 				title: 'Deploy',
-				url: '/deploy'
+				url: /* @wc-url */ '/deploy'
 			},
 			{
 				title: 'Serverless',
-				url: '/serverless',
+				url: /* @wc-url */ '/serverless',
 				items: [
 					{
 						title: 'Vercel',
-						url: '/serverless/vercel'
+						url: /* @wc-url */ '/serverless/vercel'
 					},
 					{
 						title: 'Netlify',
-						url: '/serverless/netlify'
+						url: /* @wc-url */ '/serverless/netlify'
 					},
 					{
 						title: 'Cloudflare',
-						url: '/serverless/cloudflare'
+						url: /* @wc-url */ '/serverless/cloudflare'
 					}
 				]
 			},
 			{
 				title: 'Static Site Generator',
-				url: '/static'
+				url: /* @wc-url */ '/static'
 			},
 			{
 				title: 'Account',
-				url: '/account',
+				url: /* @wc-url */ '/account',
 				items: [
 					{
 						title: 'Sign Up',
-						url: '/account/signup'
+						url: /* @wc-url */ '/account/signup'
 					},
 					{
 						title: 'Login',
-						url: '/account/login'
+						url: /* @wc-url */ '/account/login'
 					},
 					{
 						title: 'Who Am I',
-						url: '/account/whoami'
+						url: /* @wc-url */ '/account/whoami'
 					},
 					{
 						title: 'Logout',
-						url: '/account/logout'
+						url: /* @wc-url */ '/account/logout'
 					}
 				]
 			},
 			{
 				title: 'Helpers',
-				url: '/helpers',
+				url: /* @wc-url */ '/helpers',
 				items: [
 					{
 						title: 'PocketBase',
-						url: '/helpers/pocketbase'
+						url: /* @wc-url */ '/helpers/pocketbase'
 					},
 					{
 						title: 'PostgreSQL',
-						url: '/helpers/postgres',
+						url: /* @wc-url */ '/helpers/postgres',
 						badge: 'Preview'
 					},
 					{
 						title: 'GitHub Action',
-						url: '/helpers/github-action'
+						url: /* @wc-url */ '/helpers/github-action'
 					}
 				]
 			}
