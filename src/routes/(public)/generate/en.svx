@@ -128,7 +128,7 @@ In the generated SvelteKit project, there's two ways to retrieve data from the d
 
 #### Admin API
 
-```typescript
+```ts
 export const load = async ({ locals }) => {
   const posts = await locals.admin.collection('posts').getFullList();
   return { posts };
@@ -137,7 +137,7 @@ export const load = async ({ locals }) => {
 
 #### User-scoped API
 
-```typescript
+```ts
 export const load = async ({ locals }) => {
   const posts = await locals.pb.collection('posts').getFullList();
   return { posts };

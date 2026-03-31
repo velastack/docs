@@ -15,7 +15,7 @@ This library is used to interact with PostgreSQL.
 
 This function is used to configure the Postgres middleware in `hooks.server.ts`.
 
-```typescript
+```ts
 import { handlePostgres } from '@vela/postgres';
 
 export const handle = handlePostgres({

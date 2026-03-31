@@ -11,7 +11,7 @@ badges:
 
 Soporte para PostgreSQL está próximamente. La configuración se realiza en `hooks.server.ts`:
 
-```typescript
+```ts
 import { handlePostgres } from '@vela/postgres';
 import {
     POSTGRES_CONNECTION_STRING

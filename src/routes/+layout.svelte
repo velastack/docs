@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../app.css';
+	import '../prism-vsc-dark-plus.css';
 
 	import { ModeWatcher } from 'mode-watcher';
 	import { getFlash } from 'sveltekit-flash-message';
