@@ -1,0 +1,33 @@
+---
+title: 'PocketBase'
+breadcrumbs:
+    - title: 'Backend'
+      url: '/es/backend'
+    - title: 'PocketBase'
+      url: '/es/backend/pocketbase'
+---
+
+PocketBase es un backend de base de datos ligero y de código abierto. Es una excelente elección para proyectos pequeños a medianos. Se ejecuta en una base de datos SQLite local. Viene con una interfaz de administración integrada y una API REST.
+
+En Vela, la base de datos PocketBase se configura en `hooks.server.ts`:
+
+```ts
+import { handlePocketbase } from '@vela/pocketbase';
+import {
+  POCKETBASE_URL,
+  POCKETBASE_SUPERUSER_EMAIL,
+  POCKETBASE_SUPERUSER_PASSWORD,
+} from '$env/static/private';
+```
+
+Cuando se ejecuta el proyecto, la interfaz de administración de PocketBase está disponible en `/admin`. La API REST pública (si está habilitada) está disponible en `/api`.
+
+Dos diferentes clientes están disponibles para interactuar con la base de datos PocketBase: la API de administración y la API con ámbito de usuario. Estos se proporcionan en el objeto `locals` en el contexto del servidor de SvelteKit.
+
+```ts
+export const load = async ({ locals }) => {
+  const posts = await locals.admin.collection('posts').getFullList();
+  const posts = await locals.pb.collection('posts').getFullList();
+  return { posts };
+};
+```

@@ -1,0 +1,16 @@
+---
+title: 'Vigilar'
+breadcrumbs:
+    - title: 'i18n'
+      url: '/es/i18n'
+    - title: 'Vigilar'
+      url: '/es/i18n/watch'
+---
+
+Vigila los cambios y extrae cadenas.
+
+### Sintaxis
+
+```
+$ vela i18n watch
+```

@@ -1,0 +1,17 @@
+---
+title: 'Netlify'
+breadcrumbs:
+    - title: 'Serverless'
+      url: '/serverless'
+    - title: 'Netlify'
+      url: '/serverless/netlify'
+---
+
+Deploy your application to Netlify. You'll need a hosted database backend (we recommend PocketHost) and configured Netlify environment variables.
+
+```
+$ netlify env:set POCKETBASE_URL
+$ netlify env:set POCKETBASE_SUPERUSER_EMAIL
+$ netlify env:set POCKETBASE_SUPERUSER_PASSWORD
+$ netlify deploy
+```

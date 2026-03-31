@@ -1,0 +1,18 @@
+---
+title: 'Cargar'
+breadcrumbs:
+    - title: 'Semillas'
+      url: '/es/seeds'
+    - title: 'Cargar'
+      url: '/es/seeds/load'
+---
+
+Cargar datos de inicialización desde la base de datos. Se ejecuta automáticamente para pruebas de integración.
+
+### Sintaxis
+
+```
+$ vela seeds load
+```
+
+Esto cargará datos de semilla en la base de datos. Los archivos de datos de semilla se cargan en orden alfabético y se prefijan con un número para asegurar un orden de carga determinista.

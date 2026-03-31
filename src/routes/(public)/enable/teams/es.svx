@@ -1,0 +1,40 @@
+---
+title: 'Equipos'
+breadcrumbs:
+    - title: 'Habilitar'
+      url: '/es/enable'
+    - title: 'Equipos'
+      url: '/es/enable/teams'
+badges:
+    - Pro
+    - 'Depende de: auth'
+---
+
+Habilite la gestión de equipos, roles y permisos para los usuarios de su aplicación.
+
+### Sintaxis
+
+```
+$ vela enable teams
+```
+
+El módulo de equipos crea las tablas de base de datos y el código necesario para la gestión de equipos, incluyendo la creación de equipos, miembros de equipos, roles, invitaciones y más.
+
+### Propiedad y permisos
+
+Una vez habilitado, los equipos se pueden usar como objetivo para la propiedad y permisos usando el tipo de campo especial `current_team`. Los miembros de un equipo pueden acceder a los datos asociados con el equipo.
+
+```
+$ vela generate model projects title:string team:current_team
+```
+
+### Tablas de la base de datos
+
+Habilitar `teams` crea las siguientes tablas de base de datos:
+
+```
+teams
+team_users
+team_memberships
+team_invites
+```

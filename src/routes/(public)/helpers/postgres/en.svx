@@ -1,0 +1,24 @@
+---
+title: '@vela/postgres'
+breadcrumbs:
+    - title: 'Helpers'
+      url: '/helpers'
+    - title: '@vela/postgres'
+      url: '/helpers/postgres'
+badges:
+    - Preview
+---
+
+This library is used to interact with PostgreSQL.
+
+#### handlePostgres
+
+This function is used to configure the Postgres middleware in `hooks.server.ts`.
+
+```typescript
+import { handlePostgres } from '@vela/postgres';
+
+export const handle = handlePostgres({
+	connectionString: POSTGRES_CONNECTION_STRING
+})
+```

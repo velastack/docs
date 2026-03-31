@@ -1,0 +1,18 @@
+---
+title: 'Notifications'
+breadcrumbs:
+    - title: 'Enable'
+      url: '/enable'
+    - title: 'Notifications'
+      url: '/enable/notifications'
+badges:
+    - 'Depends: auth'
+---
+
+Enable notifications for your application.
+
+### Syntax
+
+```
+$ vela enable notifications
+```

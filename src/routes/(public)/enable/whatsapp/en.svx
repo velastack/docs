@@ -1,0 +1,20 @@
+---
+title: 'WhatsApp'
+breadcrumbs:
+    - title: 'Enable'
+      url: '/enable'
+    - title: 'WhatsApp'
+      url: '/enable/whatsapp'
+badges:
+    - Preview
+---
+
+Enable authentication with WhatsApp for your application.
+
+### Syntax
+
+```
+$ vela enable whatsapp
+```
+
+You'll be prompted for configuration options for WhatsApp integration.

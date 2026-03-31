@@ -1,0 +1,40 @@
+---
+title: 'Schema'
+breadcrumbs:
+    - title: 'Generate'
+      url: '/generate'
+    - title: 'Schema'
+      url: '/generate/schema'
+---
+
+<script lang="ts">
+    import { Badge } from '$lib/components/ui/badge';
+</script>
+
+A schema is a Zod schema for validating data. Vela uses TypeScript definitions to ensure that the Zod schema is kept in sync with the database schema. If `fields` isn't provided, the schema will be generated based on the existing database schema.
+
+### Syntax
+
+```
+$ vela generate schema <name> [fields...]
+```
+
+```
+$ vela generate schema categories name:string
+```
+
+This will create a Zod schema for a resource. The file created is:
+
+```
+src/lib/schemas/category.ts
+```
+
+### AI
+
+<Badge variant="outline">Pro</Badge>
+
+The generate schema command supports the `--ai` option for freeform text input in place of specifying the fields.
+
+```
+$ vela generate schema recipes --ai "a cooking recipe with ingredients and amounts"
+```

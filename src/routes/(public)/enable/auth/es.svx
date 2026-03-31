@@ -1,0 +1,40 @@
+---
+title: 'Autenticación'
+breadcrumbs:
+    - title: 'Habilitar'
+      url: '/es/enable'
+    - title: 'Autenticación'
+      url: '/es/enable/auth'
+---
+
+Autenticación (cuentas de usuario) se habilita ejecutando el comando `vela enable auth`. Esto te pedirá opciones de configuración. El módulo de autenticación crea todo el código necesario para la autenticación, incluyendo login, logout, sign up, reset de contraseña, verificación de correo electrónico y más.
+
+### Sintaxis
+
+```
+$ vela enable auth
+```
+
+### Rutas protegidas
+
+Una vez habilitado, un grupo de rutas protegidas se crea automáticamente, por defecto `(app)`. Cualquier ruta colocada dentro de este grupo estará protegida y requerirá autenticación para acceder. Los usuarios no autenticados serán redirigidos a la página de login. Las rutas protegidas y la ruta de login para redirección se pueden configurar en el middleware en `hooks.server.ts`, configuraciones por defecto mostradas a continuación:
+
+```ts
+import { handlePocketbase } from '@vela/pocketbase';
+
+export const handle = handlePocketbase({
+  auth: {
+    enabled: true,
+    protectedRoutes: ['/(app)'],
+    loginPath: '/login'
+  }
+})
+```
+
+### OAuth
+
+OAuth se soporta de forma nativa con PocketBase. Configura los proveedores de OAuth en la interfaz de administración de PocketBase. Cualquier proveedor de OAuth habilitado estará disponible en el flujo de autenticación.
+
+### Andamios posteriores
+
+Una vez habilitada la autenticación, los andamios posteriores se crearán automáticamente dentro del grupo protegido `(app)`.

@@ -1,0 +1,18 @@
+---
+title: 'CMS'
+breadcrumbs:
+    - title: 'Habilitar'
+      url: '/es/enable'
+    - title: 'CMS'
+      url: '/es/enable/cms'
+badges:
+    - Previa
+---
+
+Habilita el sistema de gestión de contenido de Vela.
+
+### Sintaxis
+
+```
+$ vela enable cms
+```

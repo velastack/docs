@@ -1,0 +1,14 @@
+---
+title: 'Rutas'
+breadcrumbs:
+    - title: 'Rutas'
+      url: '/es/routes'
+---
+
+El comando routes se utiliza para listar todas las rutas en la aplicación.
+
+### Sintaxis
+
+```
+$ vela routes
+```

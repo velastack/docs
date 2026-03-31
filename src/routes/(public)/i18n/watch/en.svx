@@ -1,0 +1,16 @@
+---
+title: 'Watch'
+breadcrumbs:
+    - title: 'i18n'
+      url: '/i18n'
+    - title: 'Watch'
+      url: '/i18n/watch'
+---
+
+Watch for changes and extract strings.
+
+### Syntax
+
+```
+$ vela i18n watch
+```

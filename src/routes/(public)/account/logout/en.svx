@@ -1,0 +1,18 @@
+---
+title: 'Logout'
+breadcrumbs:
+    - title: 'Account'
+      url: '/account'
+    - title: 'Logout'
+      url: '/account/logout'
+---
+
+Logout of your account on velastack.dev.
+
+### Syntax
+
+```
+$ vela logout
+```
+
+This will log you out of your account.

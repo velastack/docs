@@ -1,0 +1,40 @@
+---
+title: 'Esquema'
+breadcrumbs:
+    - title: 'Generar'
+      url: '/es/generate'
+    - title: 'Esquema'
+      url: '/es/generate/schema'
+---
+
+<script lang="ts">
+    import { Badge } from '$lib/components/ui/badge';
+</script>
+
+Un esquema es un esquema Zod para validar datos. Vela usa definiciones de TypeScript para asegurar que el esquema Zod se mantenga sincronizado con el esquema de la base de datos. Si `fields` no se proporciona, el esquema se generará basado en el esquema de base de datos existente.
+
+### Sintaxis
+
+```
+$ vela generate schema <name> [fields...]
+```
+
+```
+$ vela generate schema categories name:string
+```
+
+Esto creará un esquema Zod para un recurso. El archivo creado es:
+
+```
+src/lib/schemas/category.ts
+```
+
+### IA
+
+<Badge variant="outline">Pro</Badge>
+
+El comando de generación de esquema admite la opción `--ai` para entrada de texto libre en lugar de especificar los campos.
+
+```
+$ vela generate schema recipes --ai "a cooking recipe with ingredients and amounts"
+```

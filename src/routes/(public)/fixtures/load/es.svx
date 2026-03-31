@@ -1,0 +1,18 @@
+---
+title: 'Cargar'
+breadcrumbs:
+    - title: 'Fixtures'
+      url: '/es/fixtures'
+    - title: 'Cargar'
+      url: '/es/fixtures/load'
+---
+
+Carga datos de prueba en la base de datos. Se ejecuta automáticamente para pruebas de integración.
+
+### Sintaxis
+
+```
+$ vela fixtures load
+```
+
+Esto cargará datos de prueba en la base de datos desde el directorio `data/fixtures`. Los datos de prueba se cargan en orden alfabético y se prefijan con un número para asegurar un orden de carga determinista.

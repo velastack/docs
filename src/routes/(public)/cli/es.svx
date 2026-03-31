@@ -1,0 +1,35 @@
+---
+title: 'Referencia de la CLI'
+breadcrumbs:
+    - title: 'Referencia de la CLI'
+      url: '/es/cli'
+---
+
+<script lang="ts">
+    import * as Item from '$lib/components/ui/item';
+    import { Button } from '$lib/components/ui/button';
+</script>
+
+La CLI de Vela es una interfaz de línea de comandos para crear y gestionar proyectos de Vela.
+
+<div class="not-prose space-y-2">
+	<Item.Root variant="outline">
+		<Item.Content>
+			<Item.Title>Instalación</Item.Title>
+			<Item.Description>Cómo instalar la CLI.</Item.Description>
+		</Item.Content>
+		<Item.Actions>
+			<Button variant="outline" size="sm" href="/es/cli/installation">Más información</Button>
+		</Item.Actions>
+	</Item.Root>
+
+	<Item.Root variant="outline">
+		<Item.Content>
+			<Item.Title>Variables de entorno</Item.Title>
+			<Item.Description>Variables de entorno utilizadas por la CLI y el backend.</Item.Description>
+		</Item.Content>
+		<Item.Actions>
+			<Button variant="outline" size="sm" href="/es/cli/environment-variables">Más información</Button>
+		</Item.Actions>
+	</Item.Root>
+</div>

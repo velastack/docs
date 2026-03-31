@@ -1,0 +1,18 @@
+---
+title: 'Notificaciones'
+breadcrumbs:
+    - title: 'Habilitar'
+      url: '/es/enable'
+    - title: 'Notificaciones'
+      url: '/es/enable/notifications'
+badges:
+    - 'Depende de: auth'
+---
+
+Habilita notificaciones para tu aplicación.
+
+### Sintaxis
+
+```
+$ vela enable notifications
+```

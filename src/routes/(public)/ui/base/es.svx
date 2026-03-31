@@ -1,0 +1,34 @@
+---
+title: 'Base'
+breadcrumbs:
+    - title: 'UI'
+      url: '/es/ui'
+    - title: 'Base'
+      url: '/es/ui/base'
+---
+
+El comando base cambia el color base de la aplicación.
+
+### Sintaxis
+
+```
+$ vela ui base
+```
+
+```
+$ vela ui base slate
+```
+
+Esto cambiará el color base de la aplicación a pizarra.
+
+### Colores
+
+Vela admite los siguientes colores:
+
+```
+slate
+gray
+zinc
+neutral
+stone
+```

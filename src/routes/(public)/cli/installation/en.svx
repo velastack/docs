@@ -1,0 +1,26 @@
+---
+title: 'Installation'
+breadcrumbs:
+    - title: 'CLI Reference'
+      url: '/cli'
+    - title: 'Installation'
+      url: '/cli/installation'
+---
+
+To install the CLI, run the following command:
+
+```
+npm install -g vela
+```
+
+or
+
+```
+pnpm install -g vela
+```
+
+or
+
+```
+yarn install -g vela
+```

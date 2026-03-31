@@ -1,0 +1,18 @@
+---
+title: 'Environment Variables'
+breadcrumbs:
+    - title: 'CLI Reference'
+      url: '/cli'
+    - title: 'Environment Variables'
+      url: '/cli/environment-variables'
+---
+
+Vela uses environment variables to configure the project. The environment variables are stored in the local `.env` file by default. The Vela CLI and PocketBase backend rely on the following environment variables:
+
+```ts
+POCKETBASE_URL=http://localhost:8090
+POCKETBASE_SUPERUSER_EMAIL=admin@example.com
+POCKETBASE_SUPERUSER_PASSWORD=password
+```
+
+You'll be prompted to create a PocketBase superuser account when you run the vela create command. The login details are saved in the `.env` file. The superuser account is used by the CLI, the admin interface and the REST API.

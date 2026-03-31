@@ -1,0 +1,17 @@
+---
+title: 'Cloudflare'
+breadcrumbs:
+    - title: 'Serverless'
+      url: '/es/serverless'
+    - title: 'Cloudflare'
+      url: '/es/serverless/cloudflare'
+---
+
+Despliega tu aplicación en Cloudflare. Necesitarás un backend de base de datos alojada (recomendamos PocketHost) y variables de entorno de Cloudflare configuradas.
+
+```
+$ wrangler secret put POCKETBASE_URL
+$ wrangler secret put POCKETBASE_SUPERUSER_EMAIL
+$ wrangler secret put POCKETBASE_SUPERUSER_PASSWORD
+$ wrangler deploy
+```

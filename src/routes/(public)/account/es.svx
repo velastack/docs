@@ -1,0 +1,12 @@
+---
+title: 'Cuenta'
+breadcrumbs:
+    - title: 'Cuenta'
+      url: '/es/account'
+---
+
+Una cuenta no es requerida para usar el CLI de Vela. Las características pagas, plantillas y opciones de IA requieren una cuenta. Se genera una clave de API para el CLI y se almacena en `~/.vela/config.json`.
+
+### Historial de despliegues
+
+Si ha iniciado sesión, puede ver su historial de despliegues en velastack.dev.

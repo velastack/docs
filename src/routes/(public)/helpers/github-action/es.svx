@@ -1,0 +1,10 @@
+---
+title: 'velastack/action'
+breadcrumbs:
+    - title: 'Ayudantes'
+      url: '/es/helpers'
+    - title: 'velastack/action'
+      url: '/es/helpers/github-action'
+---
+
+La acción de GitHub para implementar proyectos de Vela en un VPS.

@@ -1,0 +1,23 @@
+---
+title: 'Seeds'
+breadcrumbs:
+    - title: 'Seeds'
+      url: '/seeds'
+---
+
+Seed data is used to populate the database with initial data that is essential for the application
+to function. They are stored in `data/seeds` directory.
+
+### Syntax
+
+```
+$ vela seeds
+```
+
+The action can be one of the following:
+
+- `load` - Load seed data from the database
+
+- `save` - Save seed data to the database
+
+- `clear` - Clear all seed data from the database

@@ -1,0 +1,26 @@
+---
+title: 'Static Site Generator'
+breadcrumbs:
+    - title: 'Static Site Generator'
+      url: '/static'
+---
+
+Vela includes a static build mode to create a static site, ready to be deployed to any hosting provider.
+
+### Limitations
+
+#### Forms are not supported
+
+Form actions are not supported in static builds, you'll need to remove any forms from the project.
+
+#### User authentication is not supported
+
+Static builds do not support dynamic server-side rendering, so user authentication is not supported.
+
+### Syntax
+
+```
+$ vela build --static
+```
+
+This will build the application for production and create a static site in the `dist` directory.

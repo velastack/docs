@@ -1,0 +1,20 @@
+---
+title: 'Unit'
+breadcrumbs:
+    - title: 'Test'
+      url: '/test'
+    - title: 'Unit'
+      url: '/test/unit'
+---
+
+Unit tests are used to test individual units of code.
+
+### Syntax
+
+```
+$ vela test:unit
+```
+
+### Tests
+
+Unit tests match the pattern `*.test.ts/*.spec.ts` and run on Vitest. They do not depend on the database and no test database will be created, unlike integration tests.

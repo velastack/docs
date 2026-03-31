@@ -1,0 +1,18 @@
+---
+title: 'Suscripciones'
+breadcrumbs:
+    - title: 'Habilitar'
+      url: '/es/enable'
+    - title: 'Suscripciones'
+      url: '/es/enable/subscriptions'
+badges:
+    - Pro
+---
+
+Habilite planes y suscripciones con Stripe.
+
+### Sintaxis
+
+```
+$ vela enable subscriptions
+```

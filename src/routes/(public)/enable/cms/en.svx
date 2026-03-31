@@ -1,0 +1,18 @@
+---
+title: 'CMS'
+breadcrumbs:
+    - title: 'Enable'
+      url: '/enable'
+    - title: 'CMS'
+      url: '/enable/cms'
+badges:
+    - Preview
+---
+
+Enable Vela's content management system.
+
+### Syntax
+
+```
+$ vela enable cms
+```

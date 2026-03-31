@@ -1,0 +1,18 @@
+---
+title: 'Who Am I'
+breadcrumbs:
+    - title: 'Account'
+      url: '/account'
+    - title: 'Who Am I'
+      url: '/account/whoami'
+---
+
+Check your account details on velastack.dev. The API key for the CLI is stored in `~/.vela/config.json`.
+
+### Syntax
+
+```
+$ vela whoami
+```
+
+This will display your account details.

@@ -1,0 +1,20 @@
+---
+title: 'Terms'
+breadcrumbs:
+    - title: 'Legal'
+      url: '/legal'
+    - title: 'Terms'
+      url: '/legal/terms'
+---
+
+Vela includes a terms of service generator to create a demo terms of service for your application.
+
+### Syntax
+
+```
+$ vela legal terms
+```
+
+This will start a wizard to guide you through the process of creating a demo terms of service for
+your application. The generated terms of service is a placeholder and not a legal document. Seek
+legal advice for your specific use case.

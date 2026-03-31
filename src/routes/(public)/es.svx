@@ -1,0 +1,44 @@
+---
+title: 'Para Empezar'
+breadcrumbs:
+    - title: 'Para Empezar'
+      url: '/es/'
+---
+
+Vela es una herramienta de línea de comandos para crear aplicaciones web modernas de forma rápida. En lugar de un framework, Vela prioriza la extensibilidad y el control del desarrollador al generar código editable, no abstracciones ocultas.
+
+### Instalación
+
+Para instalar la CLI, ejecuta el siguiente comando:
+
+```
+npm install -g vela
+```
+
+Verifica la instalación ejecutando:
+
+```
+vela --version
+```
+
+### Crear un Proyecto
+
+Para crear un nuevo proyecto, ejecuta el siguiente comando:
+
+```
+vela create my-project
+```
+
+Este comando creará un nuevo directorio llamado `my-project` con los archivos del proyecto.
+
+### Ejecutar el Proyecto
+
+Para ejecutar el proyecto, navega al directorio del proyecto y ejecuta el siguiente comando:
+
+```
+cd my-project
+```
+
+```
+npm run dev
+```

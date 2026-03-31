@@ -1,0 +1,16 @@
+---
+title: 'Desarrollo'
+breadcrumbs:
+    - title: 'Desarrollo'
+      url: '/es/dev'
+---
+
+Iniciar el servidor de desarrollo.
+
+### Sintaxis
+
+```
+$ vela dev
+```
+
+El servidor de desarrollo se iniciará y la base de datos se iniciará. El servidor estará disponible en `http://localhost:5173` y la interfaz de administración en `http://localhost:5173/admin`.

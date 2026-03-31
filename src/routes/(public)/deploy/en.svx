@@ -1,0 +1,69 @@
+---
+title: 'Deploy'
+breadcrumbs:
+    - title: 'Deploy'
+      url: '/deploy'
+---
+
+Deploy the application to a previously provisioned VPS.
+
+### Syntax
+
+```
+$ vela deploy  --domain
+```
+
+Vela will deploy the application to the previously provisioned VPS. The connection is made via SSH and the application is deployed using the `vela-deploy` script. On deploy, any new migrations are run against the server's database.
+
+### Deploy History
+
+If logged in, you can view your project's deploy history on velastack.dev.
+
+### GitHub Action
+
+Use the `velastack/action` to deploy the application from a GitHub workflow. We recommend using the `webfactory/ssh-agent` action to manage the deploy host SSH key secret. The `velastack/action` API key is not required but allows deployment history to be tracked on velastack.dev.
+
+```yaml
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - uses: velastack/action@v1
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          domain: example.com
+          api_key: ${{ secrets.VELA_API_KEY }}
+```
+
+### Preview and Branch Deploys
+
+Multiple instances of the application can be deployed to the same VPS, internally using different
+ports. Point a wildcard subdomain to the VPS's IP address, for example *.dev.example.com.
+
+```yaml
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Select domain
+        run: |
+          BRANCH="$\{GITHUB_REF_NAME}"
+          if [ "$\{BRANCH}" = "main" ]; then
+            echo "DOMAIN=example.com" >> "$\{GITHUB_ENV}"
+          else
+            echo "DOMAIN=$\{BRANCH}.dev.example.com" >> "$\{GITHUB_ENV}"
+          fi
+      - uses: velastack/action@v1
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          api_key: ${{ secrets.VELA_API_KEY }}
+          domain: ${{ env.DOMAIN }}
+```

@@ -1,0 +1,16 @@
+---
+title: 'Limpiar'
+breadcrumbs:
+    - title: 'i18n'
+      url: '/es/i18n'
+    - title: 'Limpiar'
+      url: '/es/i18n/clean'
+---
+
+Limpiar claves de traducción sin usar.
+
+### Sintaxis
+
+```
+$ vela i18n clean
+```

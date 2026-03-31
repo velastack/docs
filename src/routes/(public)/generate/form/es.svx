@@ -1,0 +1,42 @@
+---
+title: 'Formulario'
+breadcrumbs:
+    - title: 'Generar'
+      url: '/es/generate'
+    - title: 'Formulario'
+      url: '/es/generate/component'
+---
+
+<script lang="ts">
+    import { Badge } from '$lib/components/ui/badge';
+</script>
+
+El bloque de construcción básico de cualquier sitio web o aplicación es el formulario. Si no necesitas un backend de base de datos, puedes usar el generador de formularios para crear un formulario simple. Ideal para formularios de contacto o feedback donde los datos no se persisten.
+
+### Sintaxis
+
+```
+$ vela generate form <name> [fields...]
+```
+
+```
+$ vela generate form contact name:string email:string message:text
+```
+
+Esto creará un formulario en `/contact` y una definición de esquema Zod para la validación de formularios. Los archivos creados son:
+
+```
+src/routes/contact/+page.svelte
+src/routes/contact/+page.server.ts
+src/lib/schemas/contact.ts
+```
+
+### IA
+
+<Badge variant="outline">Pro</Badge>
+
+El comando de generación de formularios admite la opción `--ai` para entrada de texto libre en lugar de especificar los campos.
+
+```
+$ vela generate form contact --ai "a feedback form with a 1-5 star rating"
+```

@@ -13,6 +13,19 @@ export function localize(path: string, locale: Locale) {
 	return `/${locale}${path}`;
 }
 
+export const deLocalize = (path: string, locales: string[]) => {
+	let iSecondSlash = path.indexOf('/', 2);
+	if (iSecondSlash === -1) {
+		iSecondSlash = path.length;
+	}
+	const locale = path.slice(1, iSecondSlash);
+	if (!locales.includes(locale)) {
+		return [path, defaultLocale];
+	}
+	let rest = path.slice(1 + locale.length);
+	return [rest || '/', locale];
+};
+
 export function translateUrl(url: string, fromLocale: Locale, toLocale: Locale) {
 	const [pathOnly] = deLocalizeDefault(url, locales);
 	const result = matchUrl(pathOnly, fromLocale);

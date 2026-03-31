@@ -1,0 +1,17 @@
+---
+title: 'Vercel'
+breadcrumbs:
+    - title: 'Serverless'
+      url: '/serverless'
+    - title: 'Vercel'
+      url: '/serverless/vercel'
+---
+
+Deploy your application to Vercel. You'll need a hosted database backend (we recommend PocketHost) and configured Vercel environment variables.
+
+```
+$ vercel env add POCKETBASE_URL
+$ vercel env add POCKETBASE_SUPERUSER_EMAIL
+$ vercel env add POCKETBASE_SUPERUSER_PASSWORD
+$ vercel deploy
+```

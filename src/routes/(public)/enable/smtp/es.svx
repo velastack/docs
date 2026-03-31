@@ -1,0 +1,18 @@
+---
+title: 'SMTP'
+breadcrumbs:
+    - title: 'Habilitar'
+      url: '/es/enable'
+    - title: 'SMTP'
+      url: '/es/enable/smtp'
+---
+
+Habilitar el envío de correo electrónico SMTP para su aplicación.
+
+### Sintaxis
+
+```
+$ vela enable smtp
+```
+
+Se le pedirá que configure las opciones para el envío de correo electrónico SMTP.

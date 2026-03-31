@@ -1,0 +1,16 @@
+---
+title: 'Clean'
+breadcrumbs:
+    - title: 'i18n'
+      url: '/i18n'
+    - title: 'Clean'
+      url: '/i18n/clean'
+---
+
+Clean unused translation keys.
+
+### Syntax
+
+```
+$ vela i18n clean
+```

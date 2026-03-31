@@ -1,0 +1,26 @@
+---
+title: 'Construir'
+breadcrumbs:
+    - title: 'Construir'
+      url: '/es/build'
+---
+
+Compila la aplicación para producción.
+
+### Sintaxis
+
+```
+$ vela build [--static]
+```
+
+La compilación se realiza para producción. El resultado estará disponible en el directorio `dist`.
+
+### Estático
+
+El modo de compilación estática creará un sitio estático desde el proyecto de Vela. La base de datos se iniciará durante la compilación, lo que permitirá obtener datos de la base de datos. Para más información sobre las compilaciones estáticas, consulta el Generador de Sitios Estáticos.
+
+```
+$ vela build --static
+```
+
+Bajo el capó, el modo de compilación estática reemplaza el adaptador SvelteKit por el adaptador estático.

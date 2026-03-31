@@ -1,0 +1,41 @@
+---
+title: 'Recurso'
+breadcrumbs:
+    - title: 'Generar'
+      url: '/es/generate'
+    - title: 'Recurso'
+      url: '/es/generate/resource'
+---
+
+<script lang="ts">
+    import { Badge } from '$lib/components/ui/badge';
+</script>
+
+Un recurso es una colección de datos que se almacena en la base de datos. Para modelos que no requieren una interfaz frontend, puedes usar el generador de recursos para crear un recurso simple. Para modelos existentes, la opción `fields` puede omitirse y el generador usará los campos existentes.
+
+### Sintaxis
+
+```
+$ vela generate resource <name> [fields...]
+```
+
+```
+$ vela generate resource categories name:string
+```
+
+Esto creará un modelo de base de datos y una definición de esquema Zod para el recurso. Los archivos creados son:
+
+```
+src/lib/schemas/category.ts
+migrations/created_categories.ts
+```
+
+### IA
+
+<Badge variant="outline">Pro</Badge>
+
+El comando de generación de recursos admite la opción `--ai` para entrada de texto libre en lugar de especificar los campos.
+
+```
+$ vela generate resource categories --ai "book categories"
+```

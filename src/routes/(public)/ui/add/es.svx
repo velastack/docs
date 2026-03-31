@@ -1,0 +1,22 @@
+---
+title: 'Añadir'
+breadcrumbs:
+    - title: 'UI'
+      url: '/es/ui'
+    - title: 'Añadir'
+      url: '/es/ui/add'
+---
+
+El comando add se utiliza para añadir un nuevo componente Shadcn-Svelte a la aplicación.
+
+### Sintaxis
+
+```
+$ vela ui add
+```
+
+```
+$ vela ui add button
+```
+
+Esto agregará el componente de botón a la aplicación.

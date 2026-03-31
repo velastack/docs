@@ -1,0 +1,18 @@
+---
+title: 'Clear'
+breadcrumbs:
+    - title: 'Fixtures'
+      url: '/fixtures'
+    - title: 'Clear'
+      url: '/fixtures/clear'
+---
+
+Clear fixture data from the database.
+
+### Syntax
+
+```
+$ vela fixtures clear
+```
+
+This will clear all fixture data from the database.

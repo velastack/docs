@@ -1,0 +1,18 @@
+---
+title: 'Privacidad'
+breadcrumbs:
+    - title: 'Legal'
+      url: '/es/legal'
+    - title: 'Privacidad'
+      url: '/es/legal/privacy'
+---
+
+Vela incluye un generador de política de privacidad para crear una política de privacidad de demostración para tu aplicación.
+
+### Sintaxis
+
+```
+$ vela legal privacy
+```
+
+Esto iniciará un asistente para guiarte a través del proceso de creación de una política de privacidad de demostración para tu aplicación. La política de privacidad generada es un marcador de posición y no es un documento legal. Busca asesoría legal para tu caso de uso específico.

@@ -1,0 +1,18 @@
+---
+title: 'S3'
+breadcrumbs:
+    - title: 'Habilitar'
+      url: '/es/enable'
+    - title: 'S3'
+      url: '/es/enable/s3'
+---
+
+Habilita el almacenamiento S3 para subir archivos. Normalmente, los archivos subidos se almacenan en el sistema de archivos local.
+
+### Sintaxis
+
+```
+$ vela enable s3
+```
+
+Se te pedirán opciones de configuración para el almacenamiento S3. Una vez configurado, los archivos subidos se almacenarán en el bucket S3. No se necesitan otras cambios, la recuperación de archivos se maneja automáticamente.

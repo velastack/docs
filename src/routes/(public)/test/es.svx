@@ -1,0 +1,35 @@
+---
+title: 'Prueba'
+breadcrumbs:
+    - title: 'Prueba'
+      url: '/es/test'
+---
+
+<script lang="ts">
+    import * as Item from '$lib/components/ui/item';
+    import { Button } from '$lib/components/ui/button';
+</script>
+
+El comando de prueba se utiliza para ejecutar las pruebas unitarias y de integración para tu aplicación. Vela usa Vitest para pruebas y incluye pruebas para todo el código generado.
+
+<div class="not-prose space-y-2">
+	<Item.Root variant="outline">
+		<Item.Content>
+			<Item.Title>Unidad</Item.Title>
+			<Item.Description>Pruebas unitarias para tu aplicación.</Item.Description>
+		</Item.Content>
+		<Item.Actions>
+			<Button variant="outline" size="sm" href="/es/test/unit">Más información</Button>
+		</Item.Actions>
+	</Item.Root>
+
+	<Item.Root variant="outline">
+		<Item.Content>
+			<Item.Title>Integración</Item.Title>
+			<Item.Description>Pruebas de integración para tu aplicación.</Item.Description>
+		</Item.Content>
+		<Item.Actions>
+			<Button variant="outline" size="sm" href="/es/test/integration">Más información</Button>
+		</Item.Actions>
+	</Item.Root>
+</div>

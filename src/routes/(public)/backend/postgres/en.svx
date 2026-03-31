@@ -1,0 +1,23 @@
+---
+title: 'PostgreSQL'
+breadcrumbs:
+    - title: 'Backend'
+      url: '/backend'
+    - title: 'PostgreSQL'
+      url: '/backend/postgres'
+badges:
+    - Preview
+---
+
+PostgreSQL support is coming soon. Configuration is done in `hooks.server.ts`:
+
+```typescript
+import { handlePostgres } from '@vela/postgres';
+import {
+    POSTGRES_CONNECTION_STRING
+} from '$env/static/private';
+
+export const handle = handlePostgres({
+    connectionString: POSTGRES_CONNECTION_STRING
+})
+```

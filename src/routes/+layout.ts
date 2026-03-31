@@ -8,6 +8,8 @@ import { translateUrl } from '$lib/url';
 import '../locales/main.loader.svelte.js';
 import '../locales/js.loader.js';
 
+export const prerender = true;
+
 export const load = async ({ url }) => {
 	const locale = getLocale(url);
 

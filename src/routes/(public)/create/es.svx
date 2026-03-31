@@ -1,0 +1,36 @@
+---
+title: 'Crear'
+breadcrumbs:
+    - title: 'Crear'
+      url: '/es/create'
+---
+
+El comando create se usa para inicializar un nuevo proyecto de Vela.
+
+### Sintaxis
+
+```
+$ vela create
+```
+
+```
+$ vela create my-project
+```
+
+### Características incluidas
+
+- Conexión a la base de datos
+
+- Metadatos de la aplicación (nombre de la aplicación, dominio canónico)
+
+- Diseño de cuadrícula de altura completa con Tailwind CSS
+
+- Página de respaldo para errores
+
+- Soporte de modo claro/oscuro
+
+- Pruebas de integración
+
+- Mensajes flash
+
+- Notificaciones toast

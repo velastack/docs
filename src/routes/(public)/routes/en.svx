@@ -1,0 +1,14 @@
+---
+title: 'Routes'
+breadcrumbs:
+    - title: 'Routes'
+      url: '/routes'
+---
+
+The routes command is used to list all routes in the application.
+
+### Syntax
+
+```
+$ vela routes
+```

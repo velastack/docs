@@ -1,0 +1,16 @@
+---
+title: 'Filosofía'
+breadcrumbs:
+    - title: 'Filosofía'
+      url: '/es/ethos'
+---
+
+Vela te permite crear proyectos fullstack de forma rápida y eficiente, centrándose en rendimiento, accesibilidad y experiencia del desarrollador. Todas las funcionalidades creadas con Vela son la implementación canónica de la característica: la forma correcta de hacer algo.
+
+Vela es una herramienta, no un framework. No hay runtime, código oculto del framework o abstracciones. Por lo tanto, permite un control completo sobre el proyecto, y sirve como punto de partida para construir aplicaciones poderosas. Vela prefiere la generación de código sobre abstracciones, permitiendo al desarrollador extender y abstraer según sea necesario.
+
+En el núcleo de Vela está la CLI, que se utiliza para generar código. Vela inspira proyectos como Ruby on Rails y Laravel, mientras se mantiene fiel a la filosofía de SvelteKit y la estructura del proyecto.
+
+Cuando se utilizan bibliotecas, se eligen por su amplia adopción, soporte y extensibilidad. Los proyectos creados con Vela usan SvelteKit, TypeScript, Tailwind CSS, Shadcn-Svelte, Superforms y Zod. En particular, Vela se centra en la seguridad de tipos full-stack, con tipos generados automáticamente y mantenidos sincronizados con el esquema de la base de datos.
+
+Finalmente, los proyectos de Vela no requieren ninguna infraestructura especial o servicios alojados para ejecutarse. Vela abraza el enfoque tradicional de pila completa de una base de datos y una aplicación. Este par puede ser desplegado en cualquier VPS o construido y desplegado como un sitio estático. Los proyectos de Vela no están diseñados para entornos serverless.

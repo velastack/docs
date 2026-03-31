@@ -1,0 +1,43 @@
+---
+title: 'Claves de API'
+breadcrumbs:
+    - title: 'Habilitar'
+      url: '/es/enable'
+    - title: 'Claves de API'
+      url: '/es/enable/api-keys'
+badges:
+    - 'Depende de: auth'
+    - 'Depende de: API'
+---
+
+After enabling authentication and the API, API keys can be enabled by running the `vela enable api-keys` command. The command creates the necessary database tables and code for users to generate API keys connected to their account.
+
+### Sintaxis
+
+```
+$ vela enable api-keys
+```
+
+In SvelteKit, protected routes can be accessed with the API key in the `Authorization` header. The API key is validated using the PocketBase middleware in `hooks.server.ts`. The PocketBase collection used for API keys is `api_keys` by default.
+
+```typescript
+import { handlePocketbase } from '@vela/pocketbase';
+
+export const handle = handlePocketbase({
+  api: {
+    enabled: true,
+    apiKeys: {
+      enabled: true,
+      collection: 'api_keys'
+    }
+  }
+})
+```
+
+### Tablas de la base de datos
+
+El módulo de claves de API crea las siguientes tablas de base de datos:
+
+```
+api_keys
+```

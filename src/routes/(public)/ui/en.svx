@@ -1,0 +1,34 @@
+---
+title: 'UI'
+breadcrumbs:
+    - title: 'UI'
+      url: '/ui'
+---
+
+<script lang="ts">
+    import * as Item from '$lib/components/ui/item';
+    import { Button } from '$lib/components/ui/button';
+</script>
+
+Vela uses shadcn-svelte for its UI components with no modifications. The `add` command is a wrapper around the shadcn-svelte add command. All components are installed to the `src/lib/components/ui` directory.
+
+<div class="not-prose space-y-2">
+    <Item.Root variant="outline">
+        <Item.Content>
+            <Item.Title>Add</Item.Title>
+            <Item.Description>Add a new Shadcn-Svelte component to the application.</Item.Description>
+        </Item.Content>
+        <Item.Actions>
+            <Button variant="outline" size="sm" href="/ui/add">Learn more</Button>
+        </Item.Actions>
+    </Item.Root>
+    <Item.Root variant="outline">
+        <Item.Content>
+            <Item.Title>Base</Item.Title>
+            <Item.Description>Change the base color of the application.</Item.Description>
+        </Item.Content>
+        <Item.Actions>
+            <Button variant="outline" size="sm" href="/ui/base">Learn more</Button>
+        </Item.Actions>
+    </Item.Root>
+</div>

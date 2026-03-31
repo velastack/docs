@@ -1,0 +1,16 @@
+---
+title: 'Sync'
+breadcrumbs:
+    - title: 'Sync'
+      url: '/sync'
+---
+
+Sync the database schema with the application TypeScript definitions.
+
+### Syntax
+
+```
+$ vela sync
+```
+
+This will sync the database schema with the application TypeScript definitions. This runs automatically after any database changes during local development.

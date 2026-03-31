@@ -1,0 +1,68 @@
+---
+title: 'Desplegar'
+breadcrumbs:
+    - title: 'Desplegar'
+      url: '/es/deploy'
+---
+
+Despliegue la aplicación en un VPS previamente aprovisionado.
+
+### Sintaxis
+
+```
+$ vela deploy  --domain
+```
+
+Vela desplegará la aplicación en el VPS previamente aprovisionado. La conexión se realiza via SSH y la aplicación se despliega usando el script `vela-deploy`. Al desplegar, se ejecutan las nuevas migraciones contra la base de datos del servidor.
+
+### Historial de despliegues
+
+Si has iniciado sesión, puedes ver el historial de despliegues de tu proyecto en velastack.dev.
+
+### Acción de GitHub
+
+Usa la acción `velastack/action` para desplegar la aplicación desde un flujo de GitHub. Recomendamos usar la acción `webfactory/ssh-agent` para gestionar la clave SSH del host de despliegue. La clave API de `velastack/action` no es requerida pero permite rastrear el historial de despliegues en velastack.dev.
+
+```yaml
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - uses: velastack/action@v1
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          domain: example.com
+          api_key: ${{ secrets.VELA_API_KEY }}
+```
+
+### Despliegues de vista previa y de rama
+
+Multiples instancias de la aplicación pueden desplegarse en el mismo VPS, internamente usando diferentes puertos. Punto un subdominio wildcard al IP del VPS, por ejemplo *.dev.example.com.
+
+```yaml
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Select domain
+        run: |
+          BRANCH="$\{GITHUB_REF_NAME}"
+          if [ "$\{BRANCH}" = "main" ]; then
+            echo "DOMAIN=example.com" >> "$\{GITHUB_ENV}"
+          else
+            echo "DOMAIN=$\{BRANCH}.dev.example.com" >> "$\{GITHUB_ENV}"
+          fi
+      - uses: velastack/action@v1
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          api_key: ${{ secrets.VELA_API_KEY }}
+          domain: ${{ env.DOMAIN }}
+```

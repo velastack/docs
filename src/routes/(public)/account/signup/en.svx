@@ -1,0 +1,18 @@
+---
+title: 'Sign Up'
+breadcrumbs:
+    - title: 'Account'
+      url: '/account'
+    - title: 'Sign Up'
+      url: '/account/signup'
+---
+
+Sign up for a new account on velastack.dev.
+
+### Syntax
+
+```
+$ vela signup
+```
+
+You'll be prompted for your email and password.

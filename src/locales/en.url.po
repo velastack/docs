@@ -85,8 +85,6 @@ msgstr "/"
 #. /helpers/pocketbase
 #. /helpers/postgres
 #. /helpers/github-action
-#. /static
-#. /i18n
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
@@ -159,8 +157,6 @@ msgstr "/"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
-#: src/routes/(public)/build/+page.svelte
-#: src/routes/(public)/enable/i18n/+page.svelte
 #, url:main
 msgctxt "original: /*rest"
 msgid "/{0}"

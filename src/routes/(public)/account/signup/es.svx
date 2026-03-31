@@ -1,0 +1,18 @@
+---
+title: 'Registrarse'
+breadcrumbs:
+    - title: 'Cuenta'
+      url: '/es/account'
+    - title: 'Registrarse'
+      url: '/es/account/signup'
+---
+
+Regístrate para una nueva cuenta en velastack.dev.
+
+### Sintaxis
+
+```
+$ vela signup
+```
+
+Se te pedirá tu correo electrónico y contraseña.

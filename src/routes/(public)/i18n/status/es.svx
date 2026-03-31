@@ -1,0 +1,16 @@
+---
+title: 'Estado'
+breadcrumbs:
+    - title: 'i18n'
+      url: '/es/i18n'
+    - title: 'Estado'
+      url: '/es/i18n/status'
+---
+
+Mostrar estado de i18n.
+
+### Sintaxis
+
+```
+$ vela i18n status
+```

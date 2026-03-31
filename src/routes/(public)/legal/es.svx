@@ -1,0 +1,35 @@
+---
+title: 'Legal'
+breadcrumbs:
+    - title: 'Legal'
+      url: '/es/legal'
+---
+
+<script lang="ts">
+    import * as Item from '$lib/components/ui/item';
+    import { Button } from '$lib/components/ui/button';
+</script>
+
+Vela incluye un generador de política de privacidad y términos de servicio para crear una política de privacidad y términos de servicio de demostración para tu aplicación.
+
+<div class="not-prose space-y-2">
+	<Item.Root variant="outline">
+		<Item.Content>
+			<Item.Title>Política de Privacidad</Item.Title>
+			<Item.Description>Crear una política de privacidad de demostración para la aplicación.</Item.Description>
+		</Item.Content>
+		<Item.Actions>
+			<Button variant="outline" size="sm" href="/es/legal/privacy">Más información</Button>
+		</Item.Actions>
+	</Item.Root>
+
+	<Item.Root variant="outline">
+		<Item.Content>
+			<Item.Title>Términos de Servicio</Item.Title>
+			<Item.Description>Crear unos términos de servicio de demostración para la aplicación.</Item.Description>
+		</Item.Content>
+		<Item.Actions>
+			<Button variant="outline" size="sm" href="/es/legal/terms">Más información</Button>
+		</Item.Actions>
+	</Item.Root>
+</div>

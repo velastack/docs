@@ -1,0 +1,18 @@
+---
+title: 'Workflow'
+breadcrumbs:
+    - title: 'Habilitar'
+      url: '/es/enable'
+    - title: 'Workflow'
+      url: '/es/enable/workflow'
+badges:
+    - Previa
+---
+
+Habilitar [Workflow](https://useworkflow.dev/) in the SvelteKit project.
+
+### Sintaxis
+
+```
+$ vela enable workflow
+```

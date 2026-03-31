@@ -82,7 +82,7 @@
 				</div>
 			</header>
 			<div
-				class="flex flex-1 flex-col p-6 pt-0 text-foreground prose dark:prose-invert dark:prose-pre:bg-card prose-headings:mt-0 prose-headings:mb-2 prose-p:mt-0 prose-p:mb-4 prose-p:leading-relaxed prose-pre:mt-2 prose-pre:mb-2 prose-ul:mt-2"
+				class="markdown-content flex flex-1 flex-col p-6 pt-0 text-foreground prose dark:prose-invert dark:prose-pre:bg-card prose-headings:mt-0 prose-headings:mb-2 prose-p:mt-0 prose-p:mb-4 prose-p:leading-relaxed prose-pre:mt-0 prose-pre:mb-4 prose-ul:mt-0"
 			>
 				{@render children?.()}
 			</div>
@@ -93,5 +93,10 @@
 <style>
 	:global(body:has(div.dashboard)) {
 		background-color: var(--color-sidebar);
+	}
+
+	:global(.markdown-content pre:has(+ p)),
+	:global(.markdown-content pre:has(+ h3)) {
+		margin-bottom: 1rem;
 	}
 </style>
