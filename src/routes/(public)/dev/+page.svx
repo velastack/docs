@@ -1,0 +1,25 @@
+---
+title: 'Dev'
+---
+
+<!-- @en -->
+# Dev
+
+Start the development server.
+<!-- @es -->
+# Desarrollo
+
+Iniciar el servidor de desarrollo.
+<!-- @end -->
+
+### <!-- @t en="Syntax" es="Sintaxis" -->
+
+```
+$ vela dev
+```
+
+<!-- @en -->
+This will start the development server and the database. The server will be available at `http://localhost:5173` and the admin interface at `http://localhost:5173/admin`.
+<!-- @es -->
+El servidor de desarrollo se iniciará y la base de datos se iniciará. El servidor estará disponible en `http://localhost:5173` y la interfaz de administración en `http://localhost:5173/admin`.
+<!-- @end -->

@@ -30,24 +30,26 @@ export const load = async ({ params, url }) => {
 export const entries = async () => {
 	const modules = import.meta.glob('../**/*.svx');
 
-	const entries = Object.entries(modules).map(([path]) => {
-		const pagePath = path.replace('../', '').replace('.svx', '');
-		const segments = pagePath.split('/');
-		const locale = segments.at(-1) ?? 'en';
-		const routePath = segments.slice(0, -1).join('/');
-		const fullPath =
-			locale === 'en'
-				? routePath
-					? `${routePath}`
-					: ''
-				: routePath
-					? `${locale}/${routePath}`
-					: `${locale}`;
+	const entries = Object.entries(modules)
+		.filter(([path]) => !path.includes('+page.'))
+		.map(([path]) => {
+			const pagePath = path.replace('../', '').replace('.svx', '');
+			const segments = pagePath.split('/');
+			const locale = segments.at(-1) ?? 'en';
+			const routePath = segments.slice(0, -1).join('/');
+			const fullPath =
+				locale === 'en'
+					? routePath
+						? `${routePath}`
+						: ''
+					: routePath
+						? `${locale}/${routePath}`
+						: `${locale}`;
 
-		return {
-			path: fullPath
-		};
-	});
+			return {
+				path: fullPath
+			};
+		});
 
 	return entries;
 };
