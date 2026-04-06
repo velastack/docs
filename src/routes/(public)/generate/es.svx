@@ -102,9 +102,7 @@ model posts title:string author:user tags:references
 
 ### Propiedad y permisos
 
-<div class="flex gap-1 mb-2">
-	<Badge variant="outline" href="/es/enable/auth" class="no-underline">Depende de: auth</Badge>
-</div>
+<Badge variant="outline" href="/es/enable/auth" class="mb-2 no-underline">Depende de: auth</Badge>
 
 Si la autenticación está habilitada con el comando `vela enable auth`, es posible asociar modelos con el usuario autenticado. Esto se puede hacer directamente en el modelo con el tipo de campo especial `current_user`, que establecerá automáticamente el campo al usuario autenticado en la creación (y excluirá el campo del formulario frontend).
 

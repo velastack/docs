@@ -13,4 +13,4 @@ Start the development server.
 $ vela dev
 ```
 
-This will start the development server and the database. The server will be available at http://localhost:5173 and the admin interface at `http://localhost:5173/admin`.
+This will start the development server and the database. The server will be available at `http://localhost:5173` and the admin interface at `http://localhost:5173/admin`.
