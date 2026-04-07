@@ -1,52 +1,5 @@
-<script lang="ts">
-    import * as Item from '$lib/components/ui/item';
-    import { Button } from '$lib/components/ui/button';
-</script>
-
 <!-- @en -->
 Vela uses shadcn-svelte for its UI components with no modifications. The `add` command is a wrapper around the shadcn-svelte add command. All components are installed to the `src/lib/components/ui` directory.
-
-<div class="not-prose space-y-2">
-    <Item.Root variant="outline">
-        <Item.Content>
-            <Item.Title>Add</Item.Title>
-            <Item.Description>Add a new Shadcn-Svelte component to the application.</Item.Description>
-        </Item.Content>
-        <Item.Actions>
-            <Button variant="outline" size="sm" href="/ui/add">Learn more</Button>
-        </Item.Actions>
-    </Item.Root>
-    <Item.Root variant="outline">
-        <Item.Content>
-            <Item.Title>Base</Item.Title>
-            <Item.Description>Change the base color of the application.</Item.Description>
-        </Item.Content>
-        <Item.Actions>
-            <Button variant="outline" size="sm" href="/ui/base">Learn more</Button>
-        </Item.Actions>
-    </Item.Root>
-</div>
 <!-- @es -->
 Vela usa shadcn-svelte para sus componentes de UI con ninguna modificación. El comando `add` es un wrapper alrededor del comando add de shadcn-svelte. Todos los componentes se instalan en el directorio `src/lib/components/ui`.
-
-<div class="not-prose space-y-2">
-    <Item.Root variant="outline">
-        <Item.Content>
-            <Item.Title>Add</Item.Title>
-            <Item.Description>Add a new Shadcn-Svelte component to the application.</Item.Description>
-        </Item.Content>
-        <Item.Actions>
-            <Button variant="outline" size="sm" href="/es/ui/add">Learn more</Button>
-        </Item.Actions>
-    </Item.Root>
-    <Item.Root variant="outline">
-        <Item.Content>
-            <Item.Title>Base</Item.Title>
-            <Item.Description>Change the base color of the application.</Item.Description>
-        </Item.Content>
-        <Item.Actions>
-            <Button variant="outline" size="sm" href="/es/ui/base">Learn more</Button>
-        </Item.Actions>
-    </Item.Root>
-</div>
 <!-- @end -->

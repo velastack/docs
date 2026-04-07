@@ -1,8 +1,3 @@
-<script lang="ts">
-    import * as Item from '$lib/components/ui/item';
-    import { Button } from '$lib/components/ui/button';
-</script>
-
 <!-- @en -->
 Serverless is not the recommended approach for Vela projects. Vela projects are designed as traditional full-stack applications: a database and an application. With the database running alongside the application, we see baseline performance that's significantly better than a serverless PaaS paired with a hosted database. We believe it's the better starting point for most projects.
 
@@ -25,36 +20,6 @@ With separate database and application hosts, automatic migrations are not suppo
 ### PocketBase hosting
 
 We recommend PocketHost as a hosted solution for PocketBase. Set up a database instance and then configure the `POCKETBASE_URL` environment variable in your project.
-
-<div class="not-prose space-y-2">
-	<Item.Root variant="outline">
-		<Item.Content>
-			<Item.Title>Vercel</Item.Title>
-			<Item.Description>Deploy your application to Vercel</Item.Description>
-		</Item.Content>
-		<Item.Actions>
-			<Button variant="outline" size="sm" href="/serverless/vercel">Learn more</Button>
-		</Item.Actions>
-	</Item.Root>
-	<Item.Root variant="outline">
-		<Item.Content>
-			<Item.Title>Netlify</Item.Title>
-			<Item.Description>Deploy your application to Netlify</Item.Description>
-		</Item.Content>
-		<Item.Actions>
-			<Button variant="outline" size="sm" href="/serverless/netlify">Learn more</Button>
-		</Item.Actions>
-	</Item.Root>
-	<Item.Root variant="outline">
-		<Item.Content>
-			<Item.Title>Cloudflare</Item.Title>
-			<Item.Description>Deploy your application to Cloudflare</Item.Description>
-		</Item.Content>
-		<Item.Actions>
-			<Button variant="outline" size="sm" href="/serverless/cloudflare">Learn more</Button>
-		</Item.Actions>
-	</Item.Root>
-</div>
 <!-- @es -->
 Serverless no es la mejor opción para proyectos de Vela. Los proyectos de Vela se diseñan como aplicaciones de pila completa: una base de datos y una aplicación. Con la base de datos ejecutándose junto a la aplicación, vemos un rendimiento de base que es significativamente mejor que un PaaS serverless emparejado con una base de datos alojada. Creemos que es el mejor punto de partida para la mayoría de los proyectos.
 
@@ -77,34 +42,4 @@ Con hosts de base de datos y aplicaciones separados, las migraciones automática
 ### Alojamiento de PocketBase
 
 Recomendamos PocketHost como solución alojada para PocketBase. Configura una instancia de base de datos y luego configura la variable de entorno `POCKETBASE_URL` en tu proyecto.
-
-<div class="not-prose space-y-2">
-	<Item.Root variant="outline">
-		<Item.Content>
-			<Item.Title>Vercel</Item.Title>
-			<Item.Description>Despliega tu aplicación en Vercel</Item.Description>
-		</Item.Content>
-		<Item.Actions>
-			<Button variant="outline" size="sm" href="/es/serverless/vercel">Más información</Button>
-		</Item.Actions>
-	</Item.Root>
-	<Item.Root variant="outline">
-		<Item.Content>
-			<Item.Title>Netlify</Item.Title>
-			<Item.Description>Despliega tu aplicación en Netlify</Item.Description>
-		</Item.Content>
-		<Item.Actions>
-			<Button variant="outline" size="sm" href="/es/serverless/netlify">Más información</Button>
-		</Item.Actions>
-	</Item.Root>
-	<Item.Root variant="outline">
-		<Item.Content>
-			<Item.Title>Cloudflare</Item.Title>
-			<Item.Description>Despliega tu aplicación en Cloudflare</Item.Description>
-		</Item.Content>
-		<Item.Actions>
-			<Button variant="outline" size="sm" href="/es/serverless/cloudflare">Más información</Button>
-		</Item.Actions>
-	</Item.Root>
-</div>
 <!-- @end -->

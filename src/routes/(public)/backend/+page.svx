@@ -1,65 +1,9 @@
-<script lang="ts">
-       import * as Item from '$lib/components/ui/item';
-       import { Button } from '$lib/components/ui/button';
-       import { Badge } from '$lib/components/ui/badge';
-</script>
-
 <!-- @en -->
 Vela projects are designed as traditional full-stack applications: a database and an application.
 With the database running alongside the application, we see baseline performance that's
 significantly better than a serverless PaaS paired with a hosted database. We believe it's the
 better starting point for most projects. Initially, Vela supports PocketBase as a database, with
 PostgreSQL support coming soon.
-
-<div class="not-prose space-y-2">
-       <Item.Root variant="outline">
-               <Item.Content>
-                       <Item.Title>PocketBase</Item.Title>
-                       <Item.Description>A lightweight, open-source database backend.</Item.Description>
-               </Item.Content>
-               <Item.Actions>
-                       <Button variant="outline" size="sm" href="/backend/pocketbase">Learn more</Button>
-               </Item.Actions>
-       </Item.Root>
-
-       <Item.Root variant="outline">
-               <Item.Content>
-                       <Item.Title
-                               >PostgreSQL
-                               <Badge variant="outline">Preview</Badge>
-                       </Item.Title>
-                       <Item.Description>A powerful, full-featured database backend.</Item.Description>
-               </Item.Content>
-               <Item.Actions>
-                       <Button variant="outline" size="sm" href="/backend/postgres">Coming soon</Button>
-               </Item.Actions>
-       </Item.Root>
-</div>
 <!-- @es -->
 Los proyectos de Vela se diseñan como aplicaciones de pila completa: una base de datos y una aplicación. Con la base de datos ejecutándose junto a la aplicación, vemos un rendimiento de base que es significativamente mejor que un PaaS serverless emparejado con una base de datos alojada. Creemos que es el mejor punto de partida para la mayoría de los proyectos. Inicialmente, Vela soporta PocketBase como base de datos, con soporte para PostgreSQL próximamente.
-
-<div class="not-prose space-y-2">
-       <Item.Root variant="outline">
-               <Item.Content>
-                       <Item.Title>PocketBase</Item.Title>
-                       <Item.Description>Un backend de base de datos ligero y de código abierto.</Item.Description>
-               </Item.Content>
-               <Item.Actions>
-                       <Button variant="outline" size="sm" href="/es/backend/pocketbase">Más información</Button>
-               </Item.Actions>
-       </Item.Root>
-
-       <Item.Root variant="outline">
-               <Item.Content>
-                       <Item.Title
-                               >PostgreSQL
-                               <Badge variant="outline">Preview</Badge>
-                       </Item.Title>
-                       <Item.Description>Un backend de base de datos potente y con todas las funciones.</Item.Description>
-               </Item.Content>
-               <Item.Actions>
-                       <Button variant="outline" size="sm" href="/es/backend/postgres">Próximamente</Button>
-               </Item.Actions>
-       </Item.Root>
-</div>
 <!-- @end -->

@@ -4,7 +4,7 @@ The disable command is used to disable features enabled by the enable command.
 ### Syntax
 
 ```
-$ vela disable
+$ vela disable <feature>
 ```
 
 The following features can be disabled:
@@ -38,7 +38,7 @@ El comando disable se utiliza para desactivar características habilitadas por e
 ### Sintaxis
 
 ```
-$ vela disable
+$ vela disable <feature>
 ```
 
 Las siguientes características pueden ser deshabilitadas:

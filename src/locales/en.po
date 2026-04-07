@@ -42,6 +42,7 @@ msgstr "Backend"
 
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backend/+page.ts
 #: src/routes/(public)/backend/pocketbase/+page.ts
 #: src/routes/(public)/backend/pocketbase/+page.ts
 msgid "PocketBase"
@@ -49,6 +50,7 @@ msgstr "PocketBase"
 
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backend/+page.ts
 #: src/routes/(public)/backend/postgres/+page.ts
 #: src/routes/(public)/backend/postgres/+page.ts
 msgid "PostgreSQL"
@@ -61,6 +63,9 @@ msgstr "PostgreSQL"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backend/+page.ts
+#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/+page.ts
 msgid "Preview"
 msgstr "Preview"
 
@@ -73,12 +78,14 @@ msgid "CLI Reference"
 msgstr "CLI Reference"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/cli/+page.ts
 #: src/routes/(public)/cli/installation/+page.ts
 #: src/routes/(public)/cli/installation/+page.ts
 msgid "Installation"
 msgstr "Installation"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/cli/+page.ts
 #: src/routes/(public)/cli/environment-variables/+page.ts
 #: src/routes/(public)/cli/environment-variables/+page.ts
 msgid "Environment Variables"
@@ -143,6 +150,8 @@ msgstr "Scaffold"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/+page.ts
 msgid "Pro"
 msgstr "Pro"
 
@@ -172,12 +181,14 @@ msgid "Enable"
 msgstr "Enable"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/auth/+page.ts
 #: src/routes/(public)/enable/auth/+page.ts
 msgid "Auth"
 msgstr "Auth"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/api-keys/+page.ts
 #: src/routes/(public)/enable/api-keys/+page.ts
 msgid "API Keys"
@@ -190,18 +201,21 @@ msgid "Notifications"
 msgstr "Notifications"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/teams/+page.ts
 #: src/routes/(public)/enable/teams/+page.ts
 msgid "Teams"
 msgstr "Teams"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/payments/+page.ts
 #: src/routes/(public)/enable/payments/+page.ts
 msgid "Payments"
 msgstr "Payments"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/subscriptions/+page.ts
 #: src/routes/(public)/enable/subscriptions/+page.ts
 msgid "Subscriptions"
@@ -220,24 +234,28 @@ msgid "Disable"
 msgstr "Disable"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/i18n/+page.ts
 #: src/routes/(public)/i18n/extract/+page.ts
 #: src/routes/(public)/i18n/extract/+page.ts
 msgid "Extract"
 msgstr "Extract"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/i18n/+page.ts
 #: src/routes/(public)/i18n/watch/+page.ts
 #: src/routes/(public)/i18n/watch/+page.ts
 msgid "Watch"
 msgstr "Watch"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/i18n/+page.ts
 #: src/routes/(public)/i18n/status/+page.ts
 #: src/routes/(public)/i18n/status/+page.ts
 msgid "Status"
 msgstr "Status"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/i18n/+page.ts
 #: src/routes/(public)/i18n/clean/+page.ts
 #: src/routes/(public)/i18n/clean/+page.ts
 msgid "Clean"
@@ -258,12 +276,14 @@ msgid "Test"
 msgstr "Test"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/test/+page.ts
 #: src/routes/(public)/test/unit/+page.ts
 #: src/routes/(public)/test/unit/+page.ts
 msgid "Unit"
 msgstr "Unit"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/test/+page.ts
 #: src/routes/(public)/test/integration/+page.ts
 #: src/routes/(public)/test/integration/+page.ts
 msgid "Integration"
@@ -332,12 +352,14 @@ msgid "Terms"
 msgstr "Terms"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/ui/+page.ts
 #: src/routes/(public)/ui/add/+page.ts
 #: src/routes/(public)/ui/add/+page.ts
 msgid "Add"
 msgstr "Add"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/ui/+page.ts
 #: src/routes/(public)/ui/base/+page.ts
 #: src/routes/(public)/ui/base/+page.ts
 msgid "Base"
@@ -371,18 +393,21 @@ msgid "Serverless"
 msgstr "Serverless"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/serverless/+page.ts
 #: src/routes/(public)/serverless/vercel/+page.ts
 #: src/routes/(public)/serverless/vercel/+page.ts
 msgid "Vercel"
 msgstr "Vercel"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/serverless/+page.ts
 #: src/routes/(public)/serverless/netlify/+page.ts
 #: src/routes/(public)/serverless/netlify/+page.ts
 msgid "Netlify"
 msgstr "Netlify"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/serverless/+page.ts
 #: src/routes/(public)/serverless/cloudflare/+page.ts
 #: src/routes/(public)/serverless/cloudflare/+page.ts
 msgid "Cloudflare"
@@ -510,3 +535,131 @@ msgstr "Depends: auth"
 #: src/routes/(public)/enable/api-keys/+page.ts
 msgid "Depends: api"
 msgstr "Depends: api"
+
+#: src/routes/(public)/backend/+page.ts
+msgid "A lightweight, open-source database backend."
+msgstr "A lightweight, open-source database backend."
+
+#: src/routes/(public)/backend/+page.ts
+msgid "A powerful, full-featured database backend."
+msgstr "A powerful, full-featured database backend."
+
+#: src/routes/(public)/enable/+page.ts
+msgid "Authentication for your application."
+msgstr "Authentication for your application."
+
+#: src/routes/(public)/enable/+page.ts
+msgid "REST API endpoints for your application."
+msgstr "REST API endpoints for your application."
+
+#: src/routes/(public)/enable/+page.ts
+msgid "API keys for your application's API."
+msgstr "API keys for your application's API."
+
+#: src/routes/(public)/enable/+page.ts
+msgid "S3 storage for file uploads."
+msgstr "S3 storage for file uploads."
+
+#: src/routes/(public)/enable/+page.ts
+msgid "SMTP email sending for your application."
+msgstr "SMTP email sending for your application."
+
+#: src/routes/(public)/enable/+page.ts
+msgid "Team management for your application's users."
+msgstr "Team management for your application's users."
+
+#: src/routes/(public)/enable/+page.ts
+msgid "Payment processing with Stripe."
+msgstr "Payment processing with Stripe."
+
+#: src/routes/(public)/enable/+page.ts
+msgid "Subscription plans for your application."
+msgstr "Subscription plans for your application."
+
+#: src/routes/(public)/enable/+page.ts
+msgid "Content management system for your application."
+msgstr "Content management system for your application."
+
+#: src/routes/(public)/i18n/+page.ts
+msgid "Extract translatable strings."
+msgstr "Extract translatable strings."
+
+#: src/routes/(public)/i18n/+page.ts
+msgid "Watch for changes and extract strings."
+msgstr "Watch for changes and extract strings."
+
+#: src/routes/(public)/i18n/+page.ts
+msgid "Show i18n status."
+msgstr "Show i18n status."
+
+#: src/routes/(public)/i18n/+page.ts
+msgid "Clean unused translation keys."
+msgstr "Clean unused translation keys."
+
+#: src/routes/(public)/test/+page.ts
+msgid "Unit tests for your application."
+msgstr "Unit tests for your application."
+
+#: src/routes/(public)/test/+page.ts
+msgid "Integration tests for your application."
+msgstr "Integration tests for your application."
+
+#: src/routes/(public)/root-layout.svelte
+msgid "Learn more"
+msgstr "Learn more"
+
+#: src/routes/(public)/cli/+page.ts
+msgid "How to install the CLI."
+msgstr "How to install the CLI."
+
+#: src/routes/(public)/cli/+page.ts
+msgid "Environment variables used by the CLI and backend."
+msgstr "Environment variables used by the CLI and backend."
+
+#: src/routes/(public)/serverless/+page.ts
+msgid "Deploy your application to Vercel"
+msgstr "Deploy your application to Vercel"
+
+#: src/routes/(public)/serverless/+page.ts
+msgid "Deploy your application to Netlify"
+msgstr "Deploy your application to Netlify"
+
+#: src/routes/(public)/serverless/+page.ts
+msgid "Deploy your application to Cloudflare"
+msgstr "Deploy your application to Cloudflare"
+
+#: src/routes/(public)/helpers/+page.ts
+msgid "This library is used to interact with PocketBase."
+msgstr "This library is used to interact with PocketBase."
+
+#: src/routes/(public)/helpers/+page.ts
+msgid "This library is used to interact with PostgreSQL."
+msgstr "This library is used to interact with PostgreSQL."
+
+#: src/routes/(public)/helpers/+page.ts
+msgid "The GitHub Action for deploying Vela projects to a VPS."
+msgstr "The GitHub Action for deploying Vela projects to a VPS."
+
+#: src/routes/(public)/legal/+page.ts
+msgid "Privacy Policy"
+msgstr "Privacy Policy"
+
+#: src/routes/(public)/legal/+page.ts
+msgid "Create a demo privacy policy for the application."
+msgstr "Create a demo privacy policy for the application."
+
+#: src/routes/(public)/legal/+page.ts
+msgid "Terms of Service"
+msgstr "Terms of Service"
+
+#: src/routes/(public)/legal/+page.ts
+msgid "Create a demo terms of service for the application."
+msgstr "Create a demo terms of service for the application."
+
+#: src/routes/(public)/ui/+page.ts
+msgid "Add a new Shadcn-Svelte component to the application."
+msgstr "Add a new Shadcn-Svelte component to the application."
+
+#: src/routes/(public)/ui/+page.ts
+msgid "Change the base color of the application."
+msgstr "Change the base color of the application."

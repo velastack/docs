@@ -12,12 +12,20 @@
 	import { deLocalizeDefault } from 'wuchale/url';
 	import { goto } from '$app/navigation';
 	import { translateUrl, defaultLocale } from '$lib/url';
+	import * as Item from '$lib/components/ui/item';
 
 	import { page } from '$app/state';
 
 	let breadcrumbs = $derived(page.data.breadcrumbs || []) as { title: string; url: string }[];
 	let badges = $derived(page.data.badges || []) as string[];
 	let title = $derived(page.data.title || '');
+	let learnMore = $derived(page.data.learnMore || []) as {
+		title: string;
+		url: string;
+		badge?: string;
+		description?: string;
+	}[];
+
 	let { data, children } = $props();
 
 	let locale: Locale = $derived.by(() => {
@@ -96,6 +104,21 @@
 					</div>
 				{/if}
 				{@render children?.()}
+				{#if learnMore.length > 0}
+					<div class="not-prose space-y-2 mt-4">
+						{#each learnMore as item}
+							<Item.Root variant="outline">
+								<Item.Content>
+									<Item.Title>{item.title}</Item.Title>
+									<Item.Description>{item.description}</Item.Description>
+								</Item.Content>
+								<Item.Actions>
+									<Button variant="outline" size="sm" href={item.url}>Learn more</Button>
+								</Item.Actions>
+							</Item.Root>
+						{/each}
+					</div>
+				{/if}
 			</div>
 		</Sidebar.Inset>
 	</Sidebar.Provider>
