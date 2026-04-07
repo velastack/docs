@@ -1,0 +1,69 @@
+<!-- @en -->
+The disable command is used to disable features enabled by the enable command.
+
+### Syntax
+
+```
+$ vela disable
+```
+
+The following features can be disabled:
+
+- `auth` - Disable auth
+
+- `api` - Disable API
+
+- `api-keys` - Disable API keys
+
+- `s3` - Disable S3
+
+- `smtp` - Disable SMTP
+
+- `i18n` - Disable internationalization
+
+- `teams` - Disable teams
+
+- `payments` - Disable payments
+
+- `subscriptions` - Disable subscriptions
+
+- `cms` - Disable the content management system
+
+- `workflow` - Disable Workflow
+
+- `whatsapp` - Disable WhatsApp
+<!-- @es -->
+El comando disable se utiliza para desactivar características habilitadas por el comando enable.
+
+### Sintaxis
+
+```
+$ vela disable
+```
+
+Las siguientes características pueden ser deshabilitadas:
+
+- `auth` - Deshabilitar autenticación
+
+- `api` - Deshabilitar API
+
+- `api-keys` - Deshabilitar claves de API
+
+- `s3` - Deshabilitar S3
+
+- `smtp` - Deshabilitar SMTP
+
+- `i18n` - Deshabilitar internacionalización
+
+- `teams` - Deshabilitar equipos
+
+- `payments` - Deshabilitar pagos
+
+- `subscriptions` - Deshabilitar suscripciones
+
+- `cms` - Deshabilitar CMS
+
+- `workflow` - Deshabilitar workflow
+
+- `whatsapp` - Deshabilitar WhatsApp
+<!-- @end -->

@@ -1,0 +1,17 @@
+<!-- @en -->
+Clean unused translation keys.
+
+### Syntax
+
+```
+$ vela i18n clean
+```
+<!-- @es -->
+Limpiar claves de traducción sin usar.
+
+### Sintaxis
+
+```
+$ vela i18n clean
+```
+<!-- @end -->

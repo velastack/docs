@@ -1,0 +1,33 @@
+<!-- @en -->
+Integration tests cover the full application stack, including the database.
+
+### Syntax
+
+```
+$ vela test:integration
+```
+
+### Test files
+
+Integration tests match the pattern `*.integration.ts` and run on Vitest. A test database will be created and all migrations applied before the tests are run. Any seed data and fixtures will be loaded before the tests are run. Integration tests created by Vela mostly run as HTTP requests to the application.
+
+### Frontend
+
+Integration tests do not include any frontend code. They are only concerned with the backend and database. Large speed benefits are gained by excluding the frontend bundle from the test runner.
+<!-- @es -->
+Las pruebas de integración cubren toda la pila de la aplicación, incluida la base de datos.
+
+### Sintaxis
+
+```
+$ vela test:integration
+```
+
+### Archivos de prueba
+
+Las pruebas de integración coinciden con el patrón `*.integration.ts` y se ejecutan en Vitest. Se creará una base de datos de prueba y todas las migraciones se aplicarán antes de que se ejecuten las pruebas. Cualquier dato de semilla y fixtures se cargará antes de que se ejecuten las pruebas. Las pruebas de integración creadas por Vela suelen ser solicitudes HTTP a la aplicación.
+
+### Interfaz de prueba
+
+Las pruebas de integración no incluyen ningún código frontend. Solo se preocupan por el backend y la base de datos. Se ganan grandes beneficios de velocidad al excluir el bundle frontend del ejecutor de pruebas.
+<!-- @end -->

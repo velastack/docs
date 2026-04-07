@@ -1,0 +1,21 @@
+<!-- @en -->
+Logout of your account on velastack.dev.
+
+### Syntax
+
+```
+$ vela logout
+```
+
+This will log you out of your account.
+<!-- @es -->
+Cierra sesión de tu cuenta en velastack.dev.
+
+### Sintaxis
+
+```
+$ vela logout
+```
+
+Esto cerrará tu sesión.
+<!-- @end -->

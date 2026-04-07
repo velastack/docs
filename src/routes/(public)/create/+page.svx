@@ -1,0 +1,68 @@
+<!-- @en -->
+The create command is used to initialize a new Vela project.
+
+### Syntax
+
+```
+$ vela create
+```
+
+```
+$ vela create my-project
+```
+
+This will create a directory called `my-project` with the new SvelteKit project. The CLI
+prompts will ask you for the superuser email and password for the new PocketBase database. The CLI
+will also prompt for the template to use for the project. Browse all of the available templates here.
+
+### Included Features
+
+Out of the box, before enabling any modules, all Vela templates include these minimum features,
+which are deemed essential for a production-ready application:
+
+- Database connection
+
+- App metadata (app name, canonical domain)
+
+- Tailwind CSS full height grid layout
+
+- Error fallback page
+
+- Light/dark mode support
+
+- Integration tests
+
+- Flash messages
+
+- Toast notifications
+<!-- @es -->
+El comando create se usa para inicializar un nuevo proyecto de Vela.
+
+### Sintaxis
+
+```
+$ vela create
+```
+
+```
+$ vela create my-project
+```
+
+### Características incluidas
+
+- Conexión a la base de datos
+
+- Metadatos de la aplicación (nombre de la aplicación, dominio canónico)
+
+- Diseño de cuadrícula de altura completa con Tailwind CSS
+
+- Página de respaldo para errores
+
+- Soporte de modo claro/oscuro
+
+- Pruebas de integración
+
+- Mensajes flash
+
+- Notificaciones toast
+<!-- @end -->

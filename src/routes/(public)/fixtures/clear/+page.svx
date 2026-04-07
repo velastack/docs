@@ -1,0 +1,21 @@
+<!-- @en -->
+Clear fixture data from the database.
+
+### Syntax
+
+```
+$ vela fixtures clear
+```
+
+This will clear all fixture data from the database.
+<!-- @es -->
+Borrar datos de fixture de la base de datos.
+
+### Sintaxis
+
+```
+$ vela fixtures clear
+```
+
+Esto borrará todos los datos de fixture de la base de datos.
+<!-- @end -->

@@ -1,0 +1,103 @@
+<script lang="ts">
+    import { Badge } from '$lib/components/ui/badge';
+</script>
+
+<!-- @en -->
+Enable payment processing with Stripe.
+
+### Syntax
+
+```
+$ vela enable payments
+```
+
+The payments module creates the necessary database tables and code for payment processing, webhook events, receipts, sweeps and more.
+
+### Database tables
+
+The payments module creates the following database tables:
+
+```
+stripe_products
+stripe_prices
+```
+
+### Webhooks
+
+Stripe webhooks are scaffolded in `src/routes/webhooks/stripe`, with the payment intent succeeded event included by default.
+
+### Customers
+
+<div class="flex gap-1">
+	<Badge variant="outline" href="/enable/auth" class="no-underline">Depends: auth</Badge>
+</div>
+
+If authentication is enabled with the `vela enable auth` command, Stripe customers will be created for the authenticated user on sign up and a user's payment methods can be saved and managed in the user's billing settings page.
+
+### Database tables
+
+These additional tables are created if authentication is enabled:
+
+```
+stripe_customers
+stripe_payment_methods
+transactions
+```
+
+### Webhooks
+
+In addition to the payment intent succeeded event, the payment method attached event is included by default for the authenticated user.
+
+### Cron jobs
+
+PocketBase cron jobs run to keep the application database in sync with Stripe. Products and prices are synced every two minutes, configured in `data/hooks/stripe.pb.js`. Stripe customers are synced as well if authentication is enabled. The cron jobs trigger HTTP requests to the application at `'/api/stripe/sync/<type>'`, with a shared secret key stored as an environment variable `INTERNAL_JOB_SECRET`.
+<!-- @es -->
+Habilita el procesamiento de pagos con Stripe.
+
+### Sintaxis
+
+```
+$ vela enable payments
+```
+
+The payments module creates the necessary database tables and code for payment processing, webhook events, receipts, sweeps and more.
+
+### Tablas de la base de datos
+
+El módulo de pagos crea las siguientes tablas de base de datos:
+
+```
+stripe_products
+stripe_prices
+```
+
+### Webhooks
+
+Stripe webhooks are scaffolded in `src/routes/webhooks/stripe`, with the payment intent succeeded event included by default.
+
+### Clientes
+
+<div class="flex gap-1">
+	<Badge variant="outline" href="/es/enable/auth" class="no-underline">Depende de: auth</Badge>
+</div>
+
+Si la autenticación está habilitada con el comando `vela enable auth`, los clientes de Stripe se crearán para el usuario autenticado en el registro y los métodos de pago del usuario se pueden guardar y gestionar en la página de configuración de facturación del usuario.
+
+### Tablas de la base de datos
+
+Estas tablas adicionales se crean si la autenticación está habilitada:
+
+```
+stripe_customers
+stripe_payment_methods
+transactions
+```
+
+### Webhooks
+
+Además del evento de pago intentado exitoso, el evento de método de pago adjunto se incluye por defecto para el usuario autenticado.
+
+### Tareas programadas (cron jobs)
+
+Las tareas programadas de PocketBase se ejecutan para mantener la base de datos de la aplicación sincronizada con Stripe. Los productos y precios se sincronizan cada dos minutos, configurados en `data/hooks/stripe.pb.js`. Los clientes de Stripe se sincronizan también si la autenticación está habilitada. Las tareas programadas trigger HTTP requests to the application at `'/api/stripe/sync/<type>'`, with a shared secret key stored as an environment variable `INTERNAL_JOB_SECRET`.
+<!-- @end -->

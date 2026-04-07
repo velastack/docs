@@ -1,0 +1,21 @@
+<!-- @en -->
+Enable internationalization in the SvelteKit project, powered by [Wuchale](https://wuchale.dev/). You'll be prompted for configuration options for the internationalization. Once enabled, use the `vela i18n` [subcommands](/i18n) to manage the internationalization.
+
+### Syntax
+
+```
+$ vela enable i18n
+```
+
+Once enable, the routing provides a base URL for internationalization: `example.com/en` or `example.com/es`.
+<!-- @es -->
+Habilitar la internacionalización en el proyecto de SvelteKit, powered by [Wuchale](https://wuchale.dev/). Se te pedirán opciones de configuración para la internacionalización. Una vez habilitado, usa los [subcomandos](/es/i18n) de `vela i18n` para gestionar la internacionalización.
+
+### Sintaxis
+
+```
+$ vela enable i18n
+```
+
+Una vez habilitado, la routing proporciona una URL base para la internacionalización: `example.com/en` o `example.com/es`.
+<!-- @end -->

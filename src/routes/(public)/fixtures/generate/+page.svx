@@ -1,0 +1,49 @@
+<script lang="ts">
+    import { Badge } from '$lib/components/ui/badge';
+</script>
+
+<!-- @en -->
+Generate fixture data for testing and development.
+
+### Syntax
+
+```
+$ vela fixtures generate
+```
+
+This will generate fixture data in the `data/fixtures` directory. The order of files is determined by the database schema, tables that depend on other tables are saved later.
+
+Fixture data is generated with Faker.js via [@anatine/zod-mock](https://github.com/anatine/zod-plugins/tree/main/packages/zod-mock). The data is generated based on the database schema and the fields defined in the database models.
+
+### AI
+
+<Badge variant="outline">Pro</Badge>
+
+The fixtures generate command supports the `--ai` option for more realistic data generation.
+
+```
+$ vela fixtures generate --ai
+```
+<!-- @es -->
+Generar datos de prueba para testing y desarrollo.
+
+### Sintaxis
+
+```
+$ vela fixtures generate
+```
+
+Este comando generará datos de prueba en el directorio `data/fixtures`. El orden de los archivos se determina por el esquema de la base de datos, las tablas que dependen de otras tablas se guardan más tarde.
+
+Los datos de prueba se generan con Faker.js via [@anatine/zod-mock](https://github.com/anatine/zod-plugins/tree/main/packages/zod-mock). Los datos se generan basados en el esquema de la base de datos y los campos definidos en los modelos de la base de datos.
+
+### IA
+
+<Badge variant="outline">Pro</Badge>
+
+El comando de generación de fixtures admite la opción `--ai` para generar datos más realistas.
+
+```
+$ vela fixtures generate --ai
+```
+<!-- @end -->

@@ -1,0 +1,77 @@
+<!-- @en -->
+Vela is a fullstack command line tool for rapidly scaffolding modern web apps. Rather than a framework, Vela prioritizes extensibility and developer control by generating editable code, not hidden abstractions.
+
+### Installation
+
+To install the CLI, run the following command:
+
+```
+npm install -g vela
+```
+
+Verify the installation by running:
+
+```
+vela --version
+```
+
+### Create a Project
+
+To create a new project, run the following command:
+
+```
+vela create my-project
+```
+
+This will create a new directory called `my-project` with the project files.
+
+### Run the Project
+
+To run the project, run the following command:
+
+```
+cd my-project
+```
+
+```
+npm run dev
+```
+<!-- @es -->
+Vela es una herramienta de línea de comandos para crear aplicaciones web modernas de forma rápida. En lugar de un framework, Vela prioriza la extensibilidad y el control del desarrollador al generar código editable, no abstracciones ocultas.
+
+### Instalación
+
+Para instalar la CLI, ejecuta el siguiente comando:
+
+```
+npm install -g vela
+```
+
+Verifica la instalación ejecutando:
+
+```
+vela --version
+```
+
+### Crear un Proyecto
+
+Para crear un nuevo proyecto, ejecuta el siguiente comando:
+
+```
+vela create my-project
+```
+
+Este comando creará un nuevo directorio llamado `my-project` con los archivos del proyecto.
+
+### Ejecutar el Proyecto
+
+Para ejecutar el proyecto, navega al directorio del proyecto y ejecuta el siguiente comando:
+
+```
+cd my-project
+```
+
+```
+npm run dev
+```
+<!-- @end -->

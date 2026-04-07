@@ -1,0 +1,17 @@
+<!-- @en -->
+Show i18n status.
+
+### Syntax
+
+```
+$ vela i18n status
+```
+<!-- @es -->
+Mostrar estado de i18n.
+
+### Sintaxis
+
+```
+$ vela i18n status
+```
+<!-- @end -->

@@ -1,0 +1,17 @@
+<!-- @en -->
+Enable notifications for your application.
+
+### Syntax
+
+```
+$ vela enable notifications
+```
+<!-- @es -->
+Habilita notificaciones para tu aplicación.
+
+### Sintaxis
+
+```
+$ vela enable notifications
+```
+<!-- @end -->

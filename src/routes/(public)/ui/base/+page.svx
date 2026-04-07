@@ -1,0 +1,53 @@
+<!-- @en -->
+The base command changes the base color of the application.
+
+### Syntax
+
+```
+$ vela ui base
+```
+
+```
+$ vela ui base slate
+```
+
+This will change the base color of the application to slate.
+
+### Colors
+
+Vela supports the following colors:
+
+```
+slate
+gray
+zinc
+neutral
+stone
+```
+<!-- @es -->
+El comando base cambia el color base de la aplicación.
+
+### Sintaxis
+
+```
+$ vela ui base
+```
+
+```
+$ vela ui base slate
+```
+
+Esto cambiará el color base de la aplicación a pizarra.
+
+### Colores
+
+Vela admite los siguientes colores:
+
+```
+slate
+gray
+zinc
+neutral
+stone
+```
+<!-- @end -->

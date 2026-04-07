@@ -1,0 +1,37 @@
+<!-- @en -->
+The destroy command is a tool for removing resources created with generate. It can be used to delete forms, resources, schemas and scaffolds. Generally, it's a no-op to call vela generate and then `vela destroy` on the same resource, with the exception that newly installed components or dependencies won't be removed as they may be required by other resources.
+
+### Syntax
+
+```
+$ vela destroy
+```
+
+The type can be one of the following:
+
+- `form` - Destroy a form
+
+- `resource` - Destroy a resource
+
+- `schema` - Destroy a schema
+
+- `scaffold` - Destroy a scaffold
+<!-- @es -->
+El comando destroy se utiliza para eliminar recursos creados con generate. Puede ser usado para eliminar formularios, recursos, esquemas y scaffolds. Generalmente, es un no-op llamar a vela generate y luego `vela destroy` en el mismo recurso, con la excepción de que los componentes o dependencias recién instalados no se eliminarán ya que pueden ser requeridos por otros recursos.
+
+### Sintaxis
+
+```
+$ vela destroy
+```
+
+El tipo puede ser uno de los siguientes:
+
+- `form` - Eliminar un formulario
+
+- `resource` - Eliminar un recurso
+
+- `schema` - Eliminar un esquema
+
+- `scaffold` - Eliminar un scaffold
+<!-- @end -->

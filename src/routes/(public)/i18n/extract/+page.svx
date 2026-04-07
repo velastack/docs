@@ -1,0 +1,17 @@
+<!-- @en -->
+Extract translatable strings.
+
+### Syntax
+
+```
+$ vela i18n extract
+```
+<!-- @es -->
+Extraer cadenas traducibles.
+
+### Sintaxis
+
+```
+$ vela i18n extract
+```
+<!-- @end -->

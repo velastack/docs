@@ -1,0 +1,41 @@
+<!-- @en -->
+Vela includes a static build mode to create a static site, ready to be deployed to any hosting provider.
+
+### Limitations
+
+#### Forms are not supported
+
+Form actions are not supported in static builds, you'll need to remove any forms from the project.
+
+#### User authentication is not supported
+
+Static builds do not support dynamic server-side rendering, so user authentication is not supported.
+
+### Syntax
+
+```
+$ vela build --static
+```
+
+This will build the application for production and create a static site in the `dist` directory.
+<!-- @es -->
+Vela incluye un modo de compilación estático para crear un sitio estático, listo para ser desplegado en cualquier proveedor de alojamiento.
+
+### Limitaciones
+
+#### Los formularios no son compatibles
+
+Las acciones de formulario no son compatibles en las compilaciones estáticas, tendrás que eliminar cualquier formulario del proyecto.
+
+#### La autenticación de usuario no es compatible
+
+La autenticación de usuario no es compatible en las compilaciones estáticas, tendrás que eliminar cualquier autenticación del proyecto.
+
+### Sintaxis
+
+```
+$ vela build --static
+```
+
+Esto compilará la aplicación para producción y creará un sitio estático en el directorio `dist`.
+<!-- @end -->

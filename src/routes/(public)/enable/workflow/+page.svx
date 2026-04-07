@@ -1,0 +1,17 @@
+<!-- @en -->
+Enable [Workflow](https://useworkflow.dev/) in the SvelteKit project.
+
+### Syntax
+
+```
+$ vela enable workflow
+```
+<!-- @es -->
+Habilitar [Workflow](https://useworkflow.dev/) in the SvelteKit project.
+
+### Sintaxis
+
+```
+$ vela enable workflow
+```
+<!-- @end -->

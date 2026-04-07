@@ -1,0 +1,21 @@
+<!-- @en -->
+Load fixture data into the database. Run automatically for integration tests.
+
+### Syntax
+
+```
+$ vela fixtures load
+```
+
+This will load fixture data into the database from the `data/fixtures` directory. Fixtures are loaded in alphabetical order and prefixed with a number to ensure deterministic loading order.
+<!-- @es -->
+Carga datos de prueba en la base de datos. Se ejecuta automáticamente para pruebas de integración.
+
+### Sintaxis
+
+```
+$ vela fixtures load
+```
+
+Esto cargará datos de prueba en la base de datos desde el directorio `data/fixtures`. Los datos de prueba se cargan en orden alfabético y se prefijan con un número para asegurar un orden de carga determinista.
+<!-- @end -->

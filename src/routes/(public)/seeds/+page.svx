@@ -1,0 +1,34 @@
+<!-- @en -->
+Seed data is used to populate the database with initial data that is essential for the application
+to function. They are stored in `data/seeds` directory.
+
+### Syntax
+
+```
+$ vela seeds
+```
+
+The action can be one of the following:
+
+- `load` - Load seed data from the database
+
+- `save` - Save seed data to the database
+
+- `clear` - Clear all seed data from the database
+<!-- @es -->
+Datos de semilla se utilizan para poblar la base de datos con datos iniciales que son esenciales para que la aplicación funcione. Se almacenan en el directorio `data/seeds`.
+
+### Sintaxis
+
+```
+$ vela seeds
+```
+
+La acción puede ser una de las siguientes:
+
+- `load` - Cargar datos de semilla desde la base de datos
+
+- `save` - Guardar datos de semilla en la base de datos
+
+- `clear` - Borrar todos los datos de semilla de la base de datos
+<!-- @end -->

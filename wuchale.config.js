@@ -12,7 +12,8 @@ export default defineConfig({
 		}),
 		js: js({
 			loader: 'vite',
-			files: ['src/**/+{page,layout}.{js,ts}', 'src/**/+{page,layout}.server.{js,ts}']
+			files: ['src/**/+{page,layout}.{js,ts}', 'src/**/+{page,layout}.server.{js,ts}'],
+			url: { localize: 'src/lib/url.ts', patterns: ['/', '/*rest'] }
 		})
 	}
 });

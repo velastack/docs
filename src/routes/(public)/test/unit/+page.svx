@@ -1,0 +1,25 @@
+<!-- @en -->
+Unit tests are used to test individual units of code.
+
+### Syntax
+
+```
+$ vela test:unit
+```
+
+### Tests
+
+Unit tests match the pattern `*.test.ts/*.spec.ts` and run on Vitest. They do not depend on the database and no test database will be created, unlike integration tests.
+<!-- @es -->
+Las pruebas unitarias se utilizan para probar unidades de código individuales.
+
+### Sintaxis
+
+```
+$ vela test:unit
+```
+
+### Pruebas
+
+Las pruebas unitarias coinciden con el patrón `*.test.ts/*.spec.ts` y se ejecutan en Vitest. No dependen de la base de datos y no se creará una base de datos de prueba, a diferencia de las pruebas de integración.
+<!-- @end -->

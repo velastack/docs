@@ -1,0 +1,77 @@
+<!-- @en -->
+The REST API is enabled by running the `vela enable api` command, or by modifying the `hooks.server.ts` file. This exposes the PocketBase REST API at `/api`. Any SvelteKit API routes in the `src/routes/api` directory are served alongside the PocketBase API.
+
+### Syntax
+
+```
+$ vela enable api
+```
+
+### API Configuration
+
+The API is configured in the `hooks.server.ts` file. The default configuration is:
+
+```ts
+import { handlePocketbase } from '@vela/pocketbase';
+
+export const handle = handlePocketbase({
+  api: {
+    enabled: true
+  }
+});
+```
+
+### PocketBase API Routes
+
+The following PocketBase API routes are exposed and take precedence over any SvelteKit API routes.
+
+```
+/api/batch
+/api/collections
+/api/realtime
+/api/files
+/api/settings
+/api/logs
+/api/crons
+/api/backups
+/api/health
+```
+<!-- @es -->
+La API REST se habilita ejecutando el comando `vela enable api`, o modificando el archivo `hooks.server.ts`. Esto expone la API REST de PocketBase en `/api`. Cualquier ruta de API de SvelteKit en el directorio `src/routes/api` se sirve junto a la API de PocketBase.
+
+### Sintaxis
+
+```
+$ vela enable api
+```
+
+### Configuración de la API
+
+La API se configura en el archivo `hooks.server.ts`. La configuración por defecto es:
+
+```ts
+import { handlePocketbase } from '@vela/pocketbase';
+
+export const handle = handlePocketbase({
+  api: {
+    enabled: true
+  }
+})
+```
+
+### Rutas de la API de PocketBase
+
+Las siguientes rutas de la API de PocketBase están expuestas y tienen prioridad sobre cualquier ruta de la API de SvelteKit.
+
+```
+/api/batch
+/api/collections
+/api/realtime
+/api/files
+/api/settings
+/api/logs
+/api/crons
+/api/backups
+/api/health
+```
+<!-- @end -->

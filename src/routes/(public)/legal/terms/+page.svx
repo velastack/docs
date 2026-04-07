@@ -1,0 +1,21 @@
+<!-- @en -->
+Vela includes a terms of service generator to create a demo terms of service for your application.
+
+### Syntax
+
+```
+$ vela legal terms
+```
+
+This will start a wizard to guide you through the process of creating a demo terms of service for
+your application. The generated terms of service is a placeholder and not a legal document. Seek
+legal advice for your specific use case.
+<!-- @es -->
+Vela incluye un generador de términos de servicio para crear unos términos de servicio de demostración para tu aplicación.
+
+### Sintaxis
+
+```
+$ vela legal terms
+```
+<!-- @end -->

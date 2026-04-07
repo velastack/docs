@@ -1,0 +1,72 @@
+<script lang="ts">
+    import * as Item from '$lib/components/ui/item';
+    import { Button } from '$lib/components/ui/button';
+</script>
+
+<!-- @en -->
+Although Vela has no runtime, it does include a few helpers for common tasks.
+
+<div class="not-prose space-y-2">
+	<Item.Root variant="outline">
+		<Item.Content>
+			<Item.Title>@vela/pocketbase</Item.Title>
+			<Item.Description>This library is used to interact with PocketBase.</Item.Description>
+		</Item.Content>
+		<Item.Actions>
+			<Button variant="outline" size="sm" href="/helpers/pocketbase">Learn more</Button>
+		</Item.Actions>
+	</Item.Root>
+
+	<Item.Root variant="outline">
+		<Item.Content>
+			<Item.Title>@vela/postgres</Item.Title>
+			<Item.Description>This library is used to interact with PostgreSQL.</Item.Description>
+		</Item.Content>
+		<Item.Actions>
+			<Button variant="outline" size="sm" href="/helpers/postgres">Learn more</Button>
+		</Item.Actions>
+	</Item.Root>
+	<Item.Root variant="outline">
+		<Item.Content>
+			<Item.Title>velastack/action</Item.Title>
+			<Item.Description>The GitHub Action for deploying Vela projects to a VPS.</Item.Description>
+		</Item.Content>
+		<Item.Actions>
+			<Button variant="outline" size="sm" href="/helpers/github-action">Learn more</Button>
+		</Item.Actions>
+	</Item.Root>
+</div>
+<!-- @es -->
+Aunque Vela no tiene tiempo de ejecución, incluye algunas herramientas de ayuda para tareas comunes.
+
+<div class="not-prose space-y-2">
+	<Item.Root variant="outline">
+		<Item.Content>
+			<Item.Title>@vela/pocketbase</Item.Title>
+			<Item.Description>Esta librería se utiliza para interactuar con PocketBase.</Item.Description>
+		</Item.Content>
+		<Item.Actions>
+			<Button variant="outline" size="sm" href="/es/helpers/pocketbase">Más información</Button>
+		</Item.Actions>
+	</Item.Root>
+
+	<Item.Root variant="outline">
+		<Item.Content>
+			<Item.Title>@vela/postgres</Item.Title>
+			<Item.Description>Esta librería se utiliza para interactuar con PostgreSQL.</Item.Description>
+		</Item.Content>
+		<Item.Actions>
+			<Button variant="outline" size="sm" href="/es/helpers/postgres">Más información</Button>
+		</Item.Actions>
+	</Item.Root>
+	<Item.Root variant="outline">
+		<Item.Content>
+			<Item.Title>velastack/action</Item.Title>
+			<Item.Description>La acción de GitHub para implementar proyectos de Vela en un VPS.</Item.Description>
+		</Item.Content>
+		<Item.Actions>
+			<Button variant="outline" size="sm" href="/es/helpers/github-action">Más información</Button>
+		</Item.Actions>
+	</Item.Root>
+</div>
+<!-- @end -->

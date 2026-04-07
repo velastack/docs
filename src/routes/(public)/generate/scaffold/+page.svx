@@ -1,0 +1,79 @@
+<script lang="ts">
+    import { Badge } from '$lib/components/ui/badge';
+</script>
+
+<!-- @en -->
+A scaffold is a full CRUD interface for a resource. It includes the index, view, create and edit pages, a schema definition and a database model. If `fields` isn't provided, the scaffold will be generated based on the existing database schema.
+
+### Syntax
+
+```
+$ vela generate scaffold <name> [fields...]
+```
+
+```
+$ vela generate scaffold pets name:string age:number
+```
+
+This will create a full CRUD interface for the pets resource at `/pets`, the database model and Zod schema definition, and the database migration file. The files created are:
+
+```
+src/routes/pets/+page.svelte
+src/routes/pets/+page.server.ts
+src/routes/pets/new/+page.svelte
+src/routes/pets/new/+page.server.ts
+src/routes/pets/[id]/+page.svelte
+src/routes/pets/[id]/+page.server.ts
+src/routes/pets/[id]/edit/+page.svelte
+src/routes/pets/[id]/edit/+page.server.ts
+src/lib/schemas/pet.ts
+migrations/created_pets.ts
+```
+
+### AI
+
+<Badge variant="outline">Pro</Badge>
+
+The generate scaffold command supports the `--ai` option for freeform text input in place of specifying the fields.
+
+```
+$ vela generate scaffold hotels --ai "listing info for hotels"
+```
+<!-- @es -->
+Un scaffold es una interfaz CRUD completa para un recurso. Incluye las páginas de index, vista, creación y edición, una definición de esquema y un modelo de base de datos. Si `fields` no se proporciona, el scaffold se generará basado en el esquema de base de datos existente.
+
+### Sintaxis
+
+```
+$ vela generate scaffold <name> [fields...]
+```
+
+```
+$ vela generate scaffold pets name:string age:number
+```
+
+Esto creará una interfaz CRUD completa para el recurso pets en `/pets`, el modelo de base de datos y la definición de esquema Zod, y el archivo de migración de base de datos. Los archivos creados son:
+
+```
+src/routes/pets/+page.svelte
+src/routes/pets/+page.server.ts
+src/routes/pets/new/+page.svelte
+src/routes/pets/new/+page.server.ts
+src/routes/pets/[id]/+page.svelte
+src/routes/pets/[id]/+page.server.ts
+src/routes/pets/[id]/edit/+page.svelte
+src/routes/pets/[id]/edit/+page.server.ts
+src/lib/schemas/pet.ts
+migrations/created_pets.ts
+```
+
+### IA
+
+<Badge variant="outline">Pro</Badge>
+
+El comando de generación de scaffold admite la opción `--ai` para entrada de texto libre en lugar de especificar los campos.
+
+```
+$ vela generate scaffold hotels --ai "listing info for hotels"
+```
+<!-- @end -->

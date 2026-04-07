@@ -1,0 +1,33 @@
+<!-- @en -->
+To install the CLI, run the following command:
+
+```
+npm install -g vela
+```
+
+or
+
+```
+pnpm install -g vela
+```
+
+or
+
+```
+yarn install -g vela
+```
+<!-- @es -->
+Para instalar la CLI, ejecuta el siguiente comando:
+
+```
+npm install -g vela
+```
+
+```
+pnpm install -g vela
+```
+
+```
+yarn install -g vela
+```
+<!-- @end -->

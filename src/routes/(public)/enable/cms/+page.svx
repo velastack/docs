@@ -1,0 +1,17 @@
+<!-- @en -->
+Enable Vela's content management system.
+
+### Syntax
+
+```
+$ vela enable cms
+```
+<!-- @es -->
+Habilita el sistema de gestión de contenido de Vela.
+
+### Sintaxis
+
+```
+$ vela enable cms
+```
+<!-- @end -->

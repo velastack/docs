@@ -4,6 +4,7 @@
 	import { Separator } from '$lib/components/ui/separator';
 	import AppSidebar from '$lib/components/app-sidebar.svelte';
 	import * as Breadcrumb from '$lib/components/ui/breadcrumb';
+	import { Badge } from '$lib/components/ui/badge';
 	import { Button } from '$lib/components/ui/button';
 	import * as Navbar from '$lib/components/ui/navbar';
 	import * as ButtonGroup from '$lib/components/ui/button-group';
@@ -15,6 +16,8 @@
 	import { page } from '$app/state';
 
 	let breadcrumbs = $derived(page.data.breadcrumbs || []) as { title: string; url: string }[];
+	let badges = $derived(page.data.badges || []) as string[];
+	let title = $derived(page.data.title || '');
 	let { data, children } = $props();
 
 	let locale: Locale = $derived.by(() => {
@@ -84,6 +87,14 @@
 			<div
 				class="markdown-content flex flex-1 flex-col p-6 pt-0 text-foreground prose dark:prose-invert dark:prose-pre:bg-card prose-headings:mt-0 prose-headings:mb-2 prose-p:mt-0 prose-p:mb-4 prose-p:leading-relaxed prose-pre:mt-0 prose-pre:mb-4 prose-ul:mt-0"
 			>
+				<h1>{title}</h1>
+				{#if badges.length > 0}
+					<div class="not-prose mb-4 flex flex-wrap gap-1">
+						{#each badges as text}
+							<Badge variant="outline">{text}</Badge>
+						{/each}
+					</div>
+				{/if}
 				{@render children?.()}
 			</div>
 		</Sidebar.Inset>

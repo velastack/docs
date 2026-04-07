@@ -1,0 +1,21 @@
+<!-- @en -->
+Load seed data from the database. Run automatically for integration tests.
+
+### Syntax
+
+```
+$ vela seeds load
+```
+
+This will load seed data into the database. Seed data files are loaded in alphabetical order and prefixed with a number to ensure deterministic loading order.
+<!-- @es -->
+Cargar datos de inicialización desde la base de datos. Se ejecuta automáticamente para pruebas de integración.
+
+### Sintaxis
+
+```
+$ vela seeds load
+```
+
+Esto cargará datos de semilla en la base de datos. Los archivos de datos de semilla se cargan en orden alfabético y se prefijan con un número para asegurar un orden de carga determinista.
+<!-- @end -->

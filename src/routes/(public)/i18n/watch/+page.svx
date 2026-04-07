@@ -1,0 +1,17 @@
+<!-- @en -->
+Watch for changes and extract strings.
+
+### Syntax
+
+```
+$ vela i18n watch
+```
+<!-- @es -->
+Vigila los cambios y extrae cadenas.
+
+### Sintaxis
+
+```
+$ vela i18n watch
+```
+<!-- @end -->

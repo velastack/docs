@@ -1,0 +1,21 @@
+<!-- @en -->
+Login to your account on velastack.dev.
+
+### Syntax
+
+```
+$ vela login
+```
+
+You'll be prompted for your email and password.
+<!-- @es -->
+Inicia sesión en tu cuenta de velastack.dev.
+
+### Sintaxis
+
+```
+$ vela login
+```
+
+Se te pedirá tu correo electrónico y contraseña.
+<!-- @end -->

@@ -1,0 +1,21 @@
+<!-- @en -->
+Enable S3 storage for file uploads. Normally, file uploads are stored on the local filesystem.
+
+### Syntax
+
+```
+$ vela enable s3
+```
+
+You'll be prompted for configuration options for the S3 storage. Once configured, file uploads will be stored in the S3 bucket. No other changes are necessary, file retrievals are handled automatically.
+<!-- @es -->
+Habilita el almacenamiento S3 para subir archivos. Normalmente, los archivos subidos se almacenan en el sistema de archivos local.
+
+### Sintaxis
+
+```
+$ vela enable s3
+```
+
+Se te pedirán opciones de configuración para el almacenamiento S3. Una vez configurado, los archivos subidos se almacenarán en el bucket S3. No se necesitan otras cambios, la recuperación de archivos se maneja automáticamente.
+<!-- @end -->

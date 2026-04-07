@@ -1,0 +1,21 @@
+<!-- @en -->
+Clear seed data from the database.
+
+### Syntax
+
+```
+$ vela seeds clear
+```
+
+This will clear all seed data from the database.
+<!-- @es -->
+Borrar datos de semilla de la base de datos.
+
+### Sintaxis
+
+```
+$ vela seeds clear
+```
+
+Esto borrará todos los datos de inicialización de la base de datos.
+<!-- @end -->

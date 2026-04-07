@@ -1,0 +1,21 @@
+<!-- @en -->
+Enable SMTP email sending for your application.
+
+### Syntax
+
+```
+$ vela enable smtp
+```
+
+You'll be prompted for configuration options for the SMTP email sending.
+<!-- @es -->
+Habilitar el envío de correo electrónico SMTP para su aplicación.
+
+### Sintaxis
+
+```
+$ vela enable smtp
+```
+
+Se le pedirá que configure las opciones para el envío de correo electrónico SMTP.
+<!-- @end -->

@@ -20,25 +20,37 @@ msgid "Take me home"
 msgstr "Llévame a casa"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/+page.ts
+#: src/routes/(public)/+page.ts
 #: src/routes/+layout.ts
 msgid "Getting Started"
 msgstr "Para Empezar"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/ethos/+page.ts
+#: src/routes/(public)/ethos/+page.ts
 msgid "Ethos"
 msgstr "Filosofía"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backend/+page.ts
+#: src/routes/(public)/backend/+page.ts
+#: src/routes/(public)/backend/pocketbase/+page.ts
+#: src/routes/(public)/backend/postgres/+page.ts
 msgid "Backend"
 msgstr "Backend"
 
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backend/pocketbase/+page.ts
+#: src/routes/(public)/backend/pocketbase/+page.ts
 msgid "PocketBase"
 msgstr "PocketBase"
 
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backend/postgres/+page.ts
+#: src/routes/(public)/backend/postgres/+page.ts
 msgid "PostgreSQL"
 msgstr "PostgreSQL"
 
@@ -53,47 +65,78 @@ msgid "Preview"
 msgstr "Previa"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/cli/+page.ts
+#: src/routes/(public)/cli/+page.ts
+#: src/routes/(public)/cli/environment-variables/+page.ts
+#: src/routes/(public)/cli/installation/+page.ts
 msgid "CLI Reference"
 msgstr "Referencia de la CLI"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/cli/installation/+page.ts
+#: src/routes/(public)/cli/installation/+page.ts
 msgid "Installation"
 msgstr "Instalación"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/cli/environment-variables/+page.ts
+#: src/routes/(public)/cli/environment-variables/+page.ts
 msgid "Environment Variables"
 msgstr "Variables de entorno"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/create/+page.ts
+#: src/routes/(public)/create/+page.ts
 msgid "Create"
 msgstr "Crear"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/dev/+page.ts
+#: src/routes/(public)/dev/+page.ts
 msgid "Dev"
 msgstr "Desarrollo"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/build/+page.ts
+#: src/routes/(public)/build/+page.ts
 msgid "Build"
 msgstr "Construir"
 
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/fixtures/generate/+page.ts
+#: src/routes/(public)/fixtures/generate/+page.ts
+#: src/routes/(public)/generate/+page.ts
+#: src/routes/(public)/generate/+page.ts
+#: src/routes/(public)/generate/ai/+page.ts
+#: src/routes/(public)/generate/form/+page.ts
+#: src/routes/(public)/generate/resource/+page.ts
+#: src/routes/(public)/generate/scaffold/+page.ts
+#: src/routes/(public)/generate/schema/+page.ts
 msgid "Generate"
 msgstr "Generar"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/generate/form/+page.ts
+#: src/routes/(public)/generate/form/+page.ts
 msgid "Form"
 msgstr "Formulario"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/generate/resource/+page.ts
+#: src/routes/(public)/generate/resource/+page.ts
 msgid "Resource"
 msgstr "Recurso"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/generate/schema/+page.ts
+#: src/routes/(public)/generate/schema/+page.ts
 msgid "Schema"
 msgstr "Esquema"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/generate/scaffold/+page.ts
+#: src/routes/(public)/generate/scaffold/+page.ts
 msgid "Scaffold"
 msgstr "Scaffold"
 
@@ -104,172 +147,293 @@ msgid "Pro"
 msgstr "Pro"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/destroy/+page.ts
+#: src/routes/(public)/destroy/+page.ts
 msgid "Destroy"
 msgstr "Destruir"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/api-keys/+page.ts
+#: src/routes/(public)/enable/api/+page.ts
+#: src/routes/(public)/enable/auth/+page.ts
+#: src/routes/(public)/enable/cms/+page.ts
+#: src/routes/(public)/enable/i18n/+page.ts
+#: src/routes/(public)/enable/notifications/+page.ts
+#: src/routes/(public)/enable/payments/+page.ts
+#: src/routes/(public)/enable/s3/+page.ts
+#: src/routes/(public)/enable/smtp/+page.ts
+#: src/routes/(public)/enable/subscriptions/+page.ts
+#: src/routes/(public)/enable/teams/+page.ts
+#: src/routes/(public)/enable/whatsapp/+page.ts
+#: src/routes/(public)/enable/workflow/+page.ts
 msgid "Enable"
 msgstr "Habilitar"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/auth/+page.ts
+#: src/routes/(public)/enable/auth/+page.ts
 msgid "Auth"
 msgstr "Autenticación"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/api-keys/+page.ts
+#: src/routes/(public)/enable/api-keys/+page.ts
 msgid "API Keys"
 msgstr "Claves de API"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/notifications/+page.ts
+#: src/routes/(public)/enable/notifications/+page.ts
 msgid "Notifications"
 msgstr "Notificaciones"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/teams/+page.ts
+#: src/routes/(public)/enable/teams/+page.ts
 msgid "Teams"
 msgstr "Equipos"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/payments/+page.ts
+#: src/routes/(public)/enable/payments/+page.ts
 msgid "Payments"
 msgstr "Pagos"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/subscriptions/+page.ts
+#: src/routes/(public)/enable/subscriptions/+page.ts
 msgid "Subscriptions"
 msgstr "Suscripciones"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/workflow/+page.ts
+#: src/routes/(public)/enable/workflow/+page.ts
 msgid "Workflow"
 msgstr "Workflow"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/disable/+page.ts
+#: src/routes/(public)/disable/+page.ts
 msgid "Disable"
 msgstr "Deshabilitar"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/i18n/extract/+page.ts
+#: src/routes/(public)/i18n/extract/+page.ts
 msgid "Extract"
 msgstr "Extraer"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/i18n/watch/+page.ts
+#: src/routes/(public)/i18n/watch/+page.ts
 msgid "Watch"
 msgstr "Vigilar"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/i18n/status/+page.ts
+#: src/routes/(public)/i18n/status/+page.ts
 msgid "Status"
 msgstr "Estado"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/i18n/clean/+page.ts
+#: src/routes/(public)/i18n/clean/+page.ts
 msgid "Clean"
 msgstr "Limpiar"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/sync/+page.ts
+#: src/routes/(public)/sync/+page.ts
 msgid "Sync"
 msgstr "Sincronizar"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/test/+page.ts
+#: src/routes/(public)/test/+page.ts
+#: src/routes/(public)/test/integration/+page.ts
+#: src/routes/(public)/test/unit/+page.ts
 msgid "Test"
 msgstr "Prueba"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/test/unit/+page.ts
+#: src/routes/(public)/test/unit/+page.ts
 msgid "Unit"
 msgstr "Unidad"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/test/integration/+page.ts
+#: src/routes/(public)/test/integration/+page.ts
 msgid "Integration"
 msgstr "Integración"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/seeds/+page.ts
+#: src/routes/(public)/seeds/+page.ts
+#: src/routes/(public)/seeds/clear/+page.ts
+#: src/routes/(public)/seeds/load/+page.ts
+#: src/routes/(public)/seeds/save/+page.ts
 msgid "Seeds"
 msgstr "Semillas"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/seeds/save/+page.ts
+#: src/routes/(public)/seeds/save/+page.ts
 msgid "Save"
 msgstr "Guardar"
 
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/fixtures/load/+page.ts
+#: src/routes/(public)/fixtures/load/+page.ts
+#: src/routes/(public)/seeds/load/+page.ts
+#: src/routes/(public)/seeds/load/+page.ts
 msgid "Load"
 msgstr "Cargar"
 
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/fixtures/clear/+page.ts
+#: src/routes/(public)/fixtures/clear/+page.ts
+#: src/routes/(public)/seeds/clear/+page.ts
+#: src/routes/(public)/seeds/clear/+page.ts
 msgid "Clear"
 msgstr "Borrar"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/fixtures/+page.ts
+#: src/routes/(public)/fixtures/+page.ts
+#: src/routes/(public)/fixtures/clear/+page.ts
+#: src/routes/(public)/fixtures/generate/+page.ts
+#: src/routes/(public)/fixtures/load/+page.ts
 msgid "Fixtures"
 msgstr "Fixtures"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/legal/+page.ts
+#: src/routes/(public)/legal/+page.ts
+#: src/routes/(public)/legal/privacy/+page.ts
+#: src/routes/(public)/legal/terms/+page.ts
 msgid "Legal"
 msgstr "Legal"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/legal/privacy/+page.ts
+#: src/routes/(public)/legal/privacy/+page.ts
 msgid "Privacy"
 msgstr "Privacidad"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/legal/terms/+page.ts
+#: src/routes/(public)/legal/terms/+page.ts
 msgid "Terms"
 msgstr "Términos"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/ui/add/+page.ts
+#: src/routes/(public)/ui/add/+page.ts
 msgid "Add"
 msgstr "Añadir"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/ui/base/+page.ts
+#: src/routes/(public)/ui/base/+page.ts
 msgid "Base"
 msgstr "Base"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/routes/+page.ts
+#: src/routes/(public)/routes/+page.ts
 msgid "Routes"
 msgstr "Rutas"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/provision/+page.ts
+#: src/routes/(public)/provision/+page.ts
 msgid "Provision"
 msgstr "Provisionar"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/deploy/+page.ts
+#: src/routes/(public)/deploy/+page.ts
 msgid "Deploy"
 msgstr "Desplegar"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/serverless/+page.ts
+#: src/routes/(public)/serverless/+page.ts
+#: src/routes/(public)/serverless/cloudflare/+page.ts
+#: src/routes/(public)/serverless/netlify/+page.ts
+#: src/routes/(public)/serverless/vercel/+page.ts
 msgid "Serverless"
 msgstr "Serverless"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/serverless/vercel/+page.ts
+#: src/routes/(public)/serverless/vercel/+page.ts
 msgid "Vercel"
 msgstr "Vercel"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/serverless/netlify/+page.ts
+#: src/routes/(public)/serverless/netlify/+page.ts
 msgid "Netlify"
 msgstr "Netlify"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/serverless/cloudflare/+page.ts
+#: src/routes/(public)/serverless/cloudflare/+page.ts
 msgid "Cloudflare"
 msgstr "Cloudflare"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/static/+page.ts
+#: src/routes/(public)/static/+page.ts
 msgid "Static Site Generator"
 msgstr "Sitios Estáticos"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/account/+page.ts
+#: src/routes/(public)/account/+page.ts
+#: src/routes/(public)/account/login/+page.ts
+#: src/routes/(public)/account/logout/+page.ts
+#: src/routes/(public)/account/signup/+page.ts
+#: src/routes/(public)/account/whoami/+page.ts
 msgid "Account"
 msgstr "Cuenta"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/account/signup/+page.ts
+#: src/routes/(public)/account/signup/+page.ts
 msgid "Sign Up"
 msgstr "Registrarse"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/account/login/+page.ts
+#: src/routes/(public)/account/login/+page.ts
 msgid "Login"
 msgstr "Iniciar sesión"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/account/whoami/+page.ts
+#: src/routes/(public)/account/whoami/+page.ts
 msgid "Who Am I"
 msgstr "¿Quién soy?"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/account/logout/+page.ts
+#: src/routes/(public)/account/logout/+page.ts
 msgid "Logout"
 msgstr "Cerrar sesión"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/helpers/+page.ts
+#: src/routes/(public)/helpers/+page.ts
+#: src/routes/(public)/helpers/github-action/+page.ts
+#: src/routes/(public)/helpers/pocketbase/+page.ts
+#: src/routes/(public)/helpers/postgres/+page.ts
 msgid "Helpers"
 msgstr "Ayudantes"
 
@@ -329,6 +493,8 @@ msgid "Español"
 msgstr "Español"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/whatsapp/+page.ts
+#: src/routes/(public)/enable/whatsapp/+page.ts
 msgid "WhatsApp"
 msgstr "WhatsApp"
 
@@ -336,6 +502,11 @@ msgstr "WhatsApp"
 msgid "404 - Page not found"
 msgstr "404 - Página no encontrada"
 
-#: src/routes/(public)/[...path]/+page.ts
-msgid "Page not found"
-msgstr "Página no encontrada"
+#: src/routes/(public)/enable/api-keys/+page.ts
+#: src/routes/(public)/enable/notifications/+page.ts
+msgid "Depends: auth"
+msgstr ""
+
+#: src/routes/(public)/enable/api-keys/+page.ts
+msgid "Depends: api"
+msgstr ""

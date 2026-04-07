@@ -1,0 +1,103 @@
+<!-- @en -->
+This library is used to interact with PocketBase.
+
+#### handlePocketbase
+
+This function is used to configure the PocketBase middleware in `hooks.server.ts`.
+
+```ts
+import { handlePocketbase } from '@vela/pocketbase';
+
+export const handle = handlePocketbase({
+  pocketbaseUrl: POCKETBASE_URL,
+  superuserEmail: POCKETBASE_SUPERUSER_EMAIL,
+  superuserPassword: POCKETBASE_SUPERUSER_PASSWORD
+})
+```
+
+#### setDefaultData
+
+This function is used to set the default data for a form from a PocketBase record in a server action.
+
+```ts
+import { setDefaultData } from '@vela/pocketbase';
+
+export const actions = {
+  default: async ({ locals, request }) => {
+    const record = await locals.admin.collection('posts').getOne(1);
+    setDefaultData(form, record);
+    return { form };
+  }
+}
+```
+
+#### setPocketbaseErrors
+
+This function is used to set PocketBase errors as Superforms errors when a form submission fails.
+
+```ts
+import { setPocketbaseErrors } from '@vela/pocketbase';
+
+export const actions = {
+  default: async ({ locals, request }) => {
+    try {
+      await locals.admin.collection('posts').create(form.data);
+    } catch (error) {
+      setPocketbaseErrors(form, error);
+      return fail(400, { form });
+    }
+  }
+},
+```
+<!-- @es -->
+Esta librería se utiliza para interactuar con PocketBase.
+
+#### handlePocketbase
+
+Esta función se utiliza para configurar el middleware de PocketBase en `hooks.server.ts`.
+
+```ts
+import { handlePocketbase } from '@vela/pocketbase';
+
+export const handle = handlePocketbase({
+  pocketbaseUrl: POCKETBASE_URL,
+  superuserEmail: POCKETBASE_SUPERUSER_EMAIL,
+  superuserPassword: POCKETBASE_SUPERUSER_PASSWORD
+})
+```
+
+#### setDefaultData
+
+Esta función se utiliza para establecer los datos por defecto para un formulario desde un registro de PocketBase en una acción del servidor.
+
+```ts
+import { setDefaultData } from '@vela/pocketbase';
+
+export const actions = {
+  default: async ({ locals, request }) => {
+    const record = await locals.admin.collection('posts').getOne(1);
+    setDefaultData(form, record);
+    return { form };
+  }
+}
+```
+
+#### setPocketbaseErrors
+
+Esta función se utiliza para establecer los errores de PocketBase como errores de Superforms cuando falla el envío de un formulario.
+
+```ts
+import { setPocketbaseErrors } from '@vela/pocketbase';
+
+export const actions = {
+  default: async ({ locals, request }) => {
+    try {
+      await locals.admin.collection('posts').create(form.data);
+    } catch (error) {
+      setPocketbaseErrors(form, error);
+      return fail(400, { form });
+    }
+  }
+}
+```
+<!-- @end -->

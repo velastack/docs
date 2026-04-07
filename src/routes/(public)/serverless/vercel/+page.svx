@@ -1,0 +1,19 @@
+<!-- @en -->
+Deploy your application to Vercel. You'll need a hosted database backend (we recommend PocketHost) and configured Vercel environment variables.
+
+```
+$ vercel env add POCKETBASE_URL
+$ vercel env add POCKETBASE_SUPERUSER_EMAIL
+$ vercel env add POCKETBASE_SUPERUSER_PASSWORD
+$ vercel deploy
+```
+<!-- @es -->
+Despliega tu aplicación en Vercel. Necesitarás un backend de base de datos alojada (recomendamos PocketHost) y variables de entorno de Vercel configuradas.
+
+```
+$ vercel env add POCKETBASE_URL
+$ vercel env add POCKETBASE_SUPERUSER_EMAIL
+$ vercel env add POCKETBASE_SUPERUSER_PASSWORD
+$ vercel deploy
+```
+<!-- @end -->

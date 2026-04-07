@@ -1,0 +1,21 @@
+<!-- @en -->
+Sign up for a new account on velastack.dev.
+
+### Syntax
+
+```
+$ vela signup
+```
+
+You'll be prompted for your email and password.
+<!-- @es -->
+Regístrate para una nueva cuenta en velastack.dev.
+
+### Sintaxis
+
+```
+$ vela signup
+```
+
+Se te pedirá tu correo electrónico y contraseña.
+<!-- @end -->

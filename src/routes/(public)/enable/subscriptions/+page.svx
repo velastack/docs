@@ -1,0 +1,17 @@
+<!-- @en -->
+Enable plans and subscriptions with Stripe.
+
+### Syntax
+
+```
+$ vela enable subscriptions
+```
+<!-- @es -->
+Habilite planes y suscripciones con Stripe.
+
+### Sintaxis
+
+```
+$ vela enable subscriptions
+```
+<!-- @end -->

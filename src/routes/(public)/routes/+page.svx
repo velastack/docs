@@ -1,0 +1,17 @@
+<!-- @en -->
+The routes command is used to list all routes in the application.
+
+### Syntax
+
+```
+$ vela routes
+```
+<!-- @es -->
+El comando routes se utiliza para listar todas las rutas en la aplicación.
+
+### Sintaxis
+
+```
+$ vela routes
+```
+<!-- @end -->
