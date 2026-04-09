@@ -8,7 +8,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import * as Navbar from '$lib/components/ui/navbar';
 	import * as ButtonGroup from '$lib/components/ui/button-group';
-	import { locales, type Locale } from '../../locales/data.js';
+	import { locales, type Locale } from '$locales/data.js';
 	import { deLocalizeDefault } from 'wuchale/url';
 	import { goto } from '$app/navigation';
 	import { translateUrl, defaultLocale } from '$lib/url';

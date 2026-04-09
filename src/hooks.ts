@@ -1,6 +1,6 @@
-import { matchUrl } from './locales/main.url';
+import { matchUrl } from '$locales/main.url';
 import { deLocalizeDefault } from 'wuchale/url';
-import { locales } from './locales/data';
+import { locales } from '$locales/data';
 
 export const reroute = ({ url }) => {
 	const [upath, locale] = deLocalizeDefault(url.pathname, locales);

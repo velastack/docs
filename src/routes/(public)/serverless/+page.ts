@@ -1,21 +1,21 @@
 export const load = async ({ parent }) => {
 	await parent();
 	return {
-		title: 'Serverless',
+		pageMetaTags: { title: 'Serverless' },
 		breadcrumbs: [{ title: 'Serverless', url: /* @wc-url */ '/serverless' }],
 		learnMore: [
 			{
-				title: 'Vercel',
+				pageMetaTags: { title: 'Vercel' },
 				url: /* @wc-url */ '/serverless/vercel',
 				description: 'Deploy your application to Vercel'
 			},
 			{
-				title: 'Netlify',
+				pageMetaTags: { title: 'Netlify' },
 				url: /* @wc-url */ '/serverless/netlify',
 				description: 'Deploy your application to Netlify'
 			},
 			{
-				title: 'Cloudflare',
+				pageMetaTags: { title: 'Cloudflare' },
 				url: /* @wc-url */ '/serverless/cloudflare',
 				description: 'Deploy your application to Cloudflare'
 			}

@@ -1,7 +1,7 @@
 export const load = async ({ parent }) => {
 	await parent();
 	return {
-		title: '@vela/pocketbase',
+		pageMetaTags: { title: '@vela/pocketbase' },
 		breadcrumbs: [
 			{ title: 'Helpers', url: /* @wc-url */ '/helpers' },
 			{ title: '@vela/pocketbase', url: /* @wc-url */ '/helpers/pocketbase' }

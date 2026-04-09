@@ -1,8 +1,8 @@
-import * as main from './locales/main.loader.server.svelte.js';
-import * as js from './locales/js.loader.server.js';
+import * as main from '$locales/main.loader.server.svelte.js';
+import * as js from '$locales/js.loader.server.js';
 import { runWithLocale, loadLocales } from 'wuchale/load-utils/server';
-import { locales } from './locales/data.js';
-import { getLocale } from './locales/main.url';
+import { locales } from '$locales/data.js';
+import { getLocale } from '$locales/main.url';
 
 // load at server startup
 loadLocales(main.key, main.loadIDs, main.loadCatalog, locales);

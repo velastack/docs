@@ -1,7 +1,7 @@
 import { deLocalizeDefault, fillParams } from 'wuchale/url';
-import type { Locale } from '../locales/data';
-import { matchUrl } from '../locales/main.url';
-import { locales } from '../locales/data';
+import type { Locale } from '$locales/data';
+import { matchUrl } from '$locales/main.url';
+import { locales } from '$locales/data';
 
 export const defaultLocale = 'en';
 

@@ -1,7 +1,7 @@
 export const load = async ({ parent }) => {
 	await parent();
 	return {
-		title: 'Build',
+		pageMetaTags: { title: 'Build' },
 		breadcrumbs: [{ title: 'Build', url: /* @wc-url */ '/build' }]
 	};
 };
