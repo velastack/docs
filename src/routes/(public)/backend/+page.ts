@@ -5,12 +5,12 @@ export const load = async ({ parent }) => {
 		breadcrumbs: [{ title: 'Backend', url: /* @wc-url */ '/backend' }],
 		learnMore: [
 			{
-				pageMetaTags: { title: 'PocketBase' },
+				title: 'PocketBase',
 				url: /* @wc-url */ '/backend/pocketbase',
 				description: 'A lightweight, open-source database backend.'
 			},
 			{
-				pageMetaTags: { title: 'PostgreSQL' },
+				title: 'PostgreSQL',
 				url: /* @wc-url */ '/backend/postgres',
 				badge: 'Preview',
 				description: 'A powerful, full-featured database backend.'

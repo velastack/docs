@@ -5,12 +5,12 @@ export const load = async ({ parent }) => {
 		breadcrumbs: [{ title: 'UI', url: /* @wc-url */ '/ui' }],
 		learnMore: [
 			{
-				pageMetaTags: { title: 'Add' },
+				title: 'Add',
 				url: /* @wc-url */ '/ui/add',
 				description: 'Add a new Shadcn-Svelte component to the application.'
 			},
 			{
-				pageMetaTags: { title: 'Base' },
+				title: 'Base',
 				url: /* @wc-url */ '/ui/base',
 				description: 'Change the base color of the application.'
 			}

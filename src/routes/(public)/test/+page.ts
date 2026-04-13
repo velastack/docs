@@ -5,12 +5,12 @@ export const load = async ({ parent }) => {
 		breadcrumbs: [{ title: 'Test', url: /* @wc-url */ '/test' }],
 		learnMore: [
 			{
-				pageMetaTags: { title: 'Unit' },
+				title: 'Unit',
 				url: /* @wc-url */ '/test/unit',
 				description: 'Unit tests for your application.'
 			},
 			{
-				pageMetaTags: { title: 'Integration' },
+				title: 'Integration',
 				url: /* @wc-url */ '/test/integration',
 				description: 'Integration tests for your application.'
 			}

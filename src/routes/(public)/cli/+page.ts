@@ -5,12 +5,12 @@ export const load = async ({ parent }) => {
 		breadcrumbs: [{ title: 'CLI Reference', url: /* @wc-url */ '/cli' }],
 		learnMore: [
 			{
-				pageMetaTags: { title: 'Installation' },
+				title: 'Installation',
 				url: /* @wc-url */ '/cli/installation',
 				description: 'How to install the CLI.'
 			},
 			{
-				pageMetaTags: { title: 'Environment Variables' },
+				title: 'Environment Variables',
 				url: /* @wc-url */ '/cli/environment-variables',
 				description: 'Environment variables used by the CLI and backend.'
 			}

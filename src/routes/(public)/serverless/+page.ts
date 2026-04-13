@@ -5,17 +5,17 @@ export const load = async ({ parent }) => {
 		breadcrumbs: [{ title: 'Serverless', url: /* @wc-url */ '/serverless' }],
 		learnMore: [
 			{
-				pageMetaTags: { title: 'Vercel' },
+				title: 'Vercel',
 				url: /* @wc-url */ '/serverless/vercel',
 				description: 'Deploy your application to Vercel'
 			},
 			{
-				pageMetaTags: { title: 'Netlify' },
+				title: 'Netlify',
 				url: /* @wc-url */ '/serverless/netlify',
 				description: 'Deploy your application to Netlify'
 			},
 			{
-				pageMetaTags: { title: 'Cloudflare' },
+				title: 'Cloudflare',
 				url: /* @wc-url */ '/serverless/cloudflare',
 				description: 'Deploy your application to Cloudflare'
 			}
