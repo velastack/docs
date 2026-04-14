@@ -62,7 +62,6 @@ msgstr "PostgreSQL"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
-#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/backend/+page.ts
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/+page.ts
@@ -529,6 +528,7 @@ msgstr "404 - Página no encontrada"
 
 #: src/routes/(public)/enable/api-keys/+page.ts
 #: src/routes/(public)/enable/notifications/+page.ts
+#: src/routes/(public)/enable/teams/+page.ts
 msgid "Depends: auth"
 msgstr "Depende de: auth"
 

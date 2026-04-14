@@ -30,7 +30,7 @@
 			},
 			{
 				title: 'CLI Reference',
-				url: /* @wc-url */ '/cli',
+
 				items: [
 					{
 						title: 'Installation',
@@ -114,6 +114,10 @@
 						url: /* @wc-url */ '/enable/notifications'
 					},
 					{
+						title: 'i18n',
+						url: /* @wc-url */ '/enable/i18n'
+					},
+					{
 						title: 'Teams',
 						url: /* @wc-url */ '/enable/teams',
 						badge: 'Pro'
@@ -126,11 +130,6 @@
 					{
 						title: 'Subscriptions',
 						url: /* @wc-url */ '/enable/subscriptions',
-						badge: 'Preview'
-					},
-					{
-						title: 'i18n',
-						url: /* @wc-url */ '/enable/i18n',
 						badge: 'Preview'
 					},
 					{

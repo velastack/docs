@@ -18,7 +18,6 @@ msgstr "/"
 #. /backend
 #. /backend/pocketbase
 #. /backend/postgres
-#. /cli
 #. /cli/installation
 #. /cli/environment-variables
 #. /create
@@ -38,10 +37,10 @@ msgstr "/"
 #. /enable/s3
 #. /enable/smtp
 #. /enable/notifications
+#. /enable/i18n
 #. /enable/teams
 #. /enable/payments
 #. /enable/subscriptions
-#. /enable/i18n
 #. /enable/cms
 #. /enable/workflow
 #. /enable/whatsapp
@@ -235,7 +234,6 @@ msgstr "/"
 #. /ui/add
 #. /ui
 #. /ui/base
-#: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
