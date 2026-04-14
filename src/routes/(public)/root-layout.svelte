@@ -18,7 +18,7 @@
 
 	let breadcrumbs = $derived(page.data.breadcrumbs || []) as { title: string; url: string }[];
 	let badges = $derived(page.data.badges || []) as string[];
-	let title = $derived(page.data.title || '');
+	let title = $derived(page.data.pageMetaTags?.title || '');
 	let learnMore = $derived(page.data.learnMore || []) as {
 		title: string;
 		url: string;
