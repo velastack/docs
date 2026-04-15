@@ -6,7 +6,7 @@ This library is used to interact with PocketBase.
 This function is used to configure the PocketBase middleware in `hooks.server.ts`.
 
 ```ts
-import { handlePocketbase } from '@vela/pocketbase';
+import { handlePocketbase } from '@velastack/pocketbase';
 
 export const handle = handlePocketbase({
   pocketbaseUrl: POCKETBASE_URL,
@@ -20,7 +20,7 @@ export const handle = handlePocketbase({
 This function is used to set the default data for a form from a PocketBase record in a server action.
 
 ```ts
-import { setDefaultData } from '@vela/pocketbase';
+import { setDefaultData } from '@velastack/pocketbase';
 
 export const actions = {
   default: async ({ locals, request }) => {
@@ -36,7 +36,7 @@ export const actions = {
 This function is used to set PocketBase errors as Superforms errors when a form submission fails.
 
 ```ts
-import { setPocketbaseErrors } from '@vela/pocketbase';
+import { setPocketbaseErrors } from '@velastack/pocketbase';
 
 export const actions = {
   default: async ({ locals, request }) => {
@@ -57,7 +57,7 @@ Esta librería se utiliza para interactuar con PocketBase.
 Esta función se utiliza para configurar el middleware de PocketBase en `hooks.server.ts`.
 
 ```ts
-import { handlePocketbase } from '@vela/pocketbase';
+import { handlePocketbase } from '@velastack/pocketbase';
 
 export const handle = handlePocketbase({
   pocketbaseUrl: POCKETBASE_URL,
@@ -71,7 +71,7 @@ export const handle = handlePocketbase({
 Esta función se utiliza para establecer los datos por defecto para un formulario desde un registro de PocketBase en una acción del servidor.
 
 ```ts
-import { setDefaultData } from '@vela/pocketbase';
+import { setDefaultData } from '@velastack/pocketbase';
 
 export const actions = {
   default: async ({ locals, request }) => {
@@ -87,7 +87,7 @@ export const actions = {
 Esta función se utiliza para establecer los errores de PocketBase como errores de Superforms cuando falla el envío de un formulario.
 
 ```ts
-import { setPocketbaseErrors } from '@vela/pocketbase';
+import { setPocketbaseErrors } from '@velastack/pocketbase';
 
 export const actions = {
   default: async ({ locals, request }) => {

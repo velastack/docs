@@ -6,7 +6,7 @@ interface and a REST API.
 In Vela, the PocketBase database is configured in `hooks.server.ts`:
 
 ```ts
-import { handlePocketbase } from '@vela/pocketbase';
+import { handlePocketbase } from '@velastack/pocketbase';
 import {
   POCKETBASE_URL,
   POCKETBASE_SUPERUSER_EMAIL,
@@ -40,7 +40,7 @@ PocketBase es un backend de base de datos ligero y de código abierto. Es una ex
 En Vela, la base de datos PocketBase se configura en `hooks.server.ts`:
 
 ```ts
-import { handlePocketbase } from '@vela/pocketbase';
+import { handlePocketbase } from '@velastack/pocketbase';
 import {
   POCKETBASE_URL,
   POCKETBASE_SUPERUSER_EMAIL,

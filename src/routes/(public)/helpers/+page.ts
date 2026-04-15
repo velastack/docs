@@ -5,12 +5,12 @@ export const load = async ({ parent }) => {
 		breadcrumbs: [{ title: 'Helpers', url: /* @wc-url */ '/helpers' }],
 		learnMore: [
 			{
-				title: '@vela/pocketbase',
+				title: '@velastack/pocketbase',
 				url: /* @wc-url */ '/helpers/pocketbase',
 				description: 'This library is used to interact with PocketBase.'
 			},
 			{
-				title: '@vela/postgres',
+				title: '@velastack/postgres',
 				url: /* @wc-url */ '/helpers/postgres',
 				description: 'This library is used to interact with PostgreSQL.'
 			},

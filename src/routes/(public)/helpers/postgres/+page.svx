@@ -6,7 +6,7 @@ This library is used to interact with PostgreSQL.
 This function is used to configure the Postgres middleware in `hooks.server.ts`.
 
 ```ts
-import { handlePostgres } from '@vela/postgres';
+import { handlePostgres } from '@velastack/postgres';
 
 export const handle = handlePostgres({
 	connectionString: POSTGRES_CONNECTION_STRING
@@ -20,7 +20,7 @@ Esta librería se utiliza para interactuar con PostgreSQL.
 Esta función se utiliza para configurar el middleware de Postgres en `hooks.server.ts`.
 
 ```ts
-import { handlePostgres } from '@vela/postgres';
+import { handlePostgres } from '@velastack/postgres';
 
 export const handle = handlePostgres({
 	connectionString: POSTGRES_CONNECTION_STRING

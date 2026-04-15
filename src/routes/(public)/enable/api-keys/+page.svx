@@ -10,7 +10,7 @@ $ vela enable api-keys
 In SvelteKit, protected routes can be accessed with the API key in the `Authorization` header. The API key is validated using the PocketBase middleware in `hooks.server.ts`. The PocketBase collection used for API keys is `api_keys` by default.
 
 ```ts
-import { handlePocketbase } from '@vela/pocketbase';
+import { handlePocketbase } from '@velastack/pocketbase';
 
 export const handle = handlePocketbase({
   api: {
@@ -42,7 +42,7 @@ $ vela enable api-keys
 In SvelteKit, protected routes can be accessed with the API key in the `Authorization` header. The API key is validated using the PocketBase middleware in `hooks.server.ts`. The PocketBase collection used for API keys is `api_keys` by default.
 
 ```ts
-import { handlePocketbase } from '@vela/pocketbase';
+import { handlePocketbase } from '@velastack/pocketbase';
 
 export const handle = handlePocketbase({
   api: {

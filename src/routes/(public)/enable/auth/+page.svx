@@ -9,10 +9,10 @@ $ vela enable auth
 
 ### Protected routes
 
-Once enabled, a group of protected routes is automatically created, defaulting to (app). Any routes placed within this group will be protected and require authentication to access. Unauthenticated users will be redirected to the login page. The protected routes and the login path for redirection can be configured in the middleware in `hooks.server.ts`, defaults shown below:
+Once enabled, a group of protected routes is automatically created, defaulting to `(app)`. Any routes placed within this group will be protected and require authentication to access. Unauthenticated users will be redirected to the login page. The protected routes and the login path for redirection can be configured in the middleware in `hooks.server.ts`, defaults shown below:
 
 ```ts
-import { handlePocketbase } from '@vela/pocketbase';
+import { handlePocketbase } from '@velastack/pocketbase';
 
 export const handle = handlePocketbase({
   auth: {
@@ -44,7 +44,7 @@ $ vela enable auth
 Una vez habilitado, un grupo de rutas protegidas se crea automáticamente, por defecto `(app)`. Cualquier ruta colocada dentro de este grupo estará protegida y requerirá autenticación para acceder. Los usuarios no autenticados serán redirigidos a la página de login. Las rutas protegidas y la ruta de login para redirección se pueden configurar en el middleware en `hooks.server.ts`, configuraciones por defecto mostradas a continuación:
 
 ```ts
-import { handlePocketbase } from '@vela/pocketbase';
+import { handlePocketbase } from '@velastack/pocketbase';
 
 export const handle = handlePocketbase({
   auth: {

@@ -12,7 +12,7 @@ $ vela enable api
 The API is configured in the `hooks.server.ts` file. The default configuration is:
 
 ```ts
-import { handlePocketbase } from '@vela/pocketbase';
+import { handlePocketbase } from '@velastack/pocketbase';
 
 export const handle = handlePocketbase({
   api: {
@@ -50,7 +50,7 @@ $ vela enable api
 La API se configura en el archivo `hooks.server.ts`. La configuración por defecto es:
 
 ```ts
-import { handlePocketbase } from '@vela/pocketbase';
+import { handlePocketbase } from '@velastack/pocketbase';
 
 export const handle = handlePocketbase({
   api: {

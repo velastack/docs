@@ -2,7 +2,7 @@
 PostgreSQL support is coming soon. Configuration is done in `hooks.server.ts`:
 
 ```ts
-import { handlePostgres } from '@vela/postgres';
+import { handlePostgres } from '@velastack/postgres';
 import {
     POSTGRES_CONNECTION_STRING
 } from '$env/static/private';
@@ -15,7 +15,7 @@ export const handle = handlePostgres({
 Soporte para PostgreSQL está próximamente. La configuración se realiza en `hooks.server.ts`:
 
 ```ts
-import { handlePostgres } from '@vela/postgres';
+import { handlePostgres } from '@velastack/postgres';
 import {
     POSTGRES_CONNECTION_STRING
 } from '$env/static/private';
