@@ -3,17 +3,39 @@
 </script>
 
 <!-- @en -->
-Generate fixture data for testing and development.
+Generate fixture data files for your application collections. This creates reusable development and test datasets based on your current schema.
+
+Generated fixtures are useful for populating empty projects with realistic records, relationships, and varied states so you can build against working data immediately.
+
+By default, fixture generation creates a modest number of records per collection. You can increase or reduce volume depending on your needs.
+
+Fixtures are stored in the `data/fixtures` directory. Fixtures are loaded automatically during testing with `vela test`. Fixtures load after seed data and can depend on seed data records.
 
 ### Syntax
 
 ```
-$ vela fixtures generate
+$ vela fixtures generate [options]
 ```
 
-This will generate fixture data in the `data/fixtures` directory. The order of files is determined by the database schema, tables that depend on other tables are saved later.
+### Options
 
-Fixture data is generated with Faker.js via [@anatine/zod-mock](https://github.com/anatine/zod-plugins/tree/main/packages/zod-mock). The data is generated based on the database schema and the fields defined in the database models.
+#### `-c, --count <count>`
+
+Set how many records to generate for each collection.
+
+Use smaller counts for quick local testing and larger counts for stress testing tables, dashboards, pagination, and filtering.
+
+#### `-s, --seed <seed>`
+
+Use a deterministic random seed.
+
+This ensures the same fixture data is generated each time, which is useful for automated tests, reproducible bug reports, and shared team environments.
+
+#### `-f, --force`
+
+Overwrite existing fixture files and clear any currently loaded fixtures first.
+
+Use when you want to fully replace prior generated datasets.
 
 ### AI
 
@@ -25,7 +47,13 @@ The fixtures generate command supports the `--ai` option for more realistic data
 $ vela fixtures generate --ai
 ```
 <!-- @es -->
-Generar datos de prueba para testing y desarrollo.
+Generar archivos de datos de fixture para tus colecciones de aplicación. Esto crea conjuntos de datos reutilizables para desarrollo y pruebas basados en tu esquema actual.
+
+Los datos de fixture son útiles para poblar proyectos vacíos con registros realistas, relaciones, y estados variados para que puedas construir contra datos de trabajo inmediatamente.
+
+Por defecto, la generación de fixtures crea un número modesto de registros por colección. Puedes aumentar o reducir el volumen dependiendo de tus necesidades.
+
+Los archivos de datos de fixture se almacenan en el directorio `data/fixtures`. Los archivos de datos de fixture se cargan automáticamente durante las pruebas con `vela test`. Los archivos de datos de fixture se cargan después de los datos de semilla y pueden depender de los datos de semilla.
 
 ### Sintaxis
 
@@ -33,9 +61,25 @@ Generar datos de prueba para testing y desarrollo.
 $ vela fixtures generate
 ```
 
-Este comando generará datos de prueba en el directorio `data/fixtures`. El orden de los archivos se determina por el esquema de la base de datos, las tablas que dependen de otras tablas se guardan más tarde.
+### Opciones
 
-Los datos de prueba se generan con Faker.js via [@anatine/zod-mock](https://github.com/anatine/zod-plugins/tree/main/packages/zod-mock). Los datos se generan basados en el esquema de la base de datos y los campos definidos en los modelos de la base de datos.
+#### `-c, --count <count>`
+
+Define el número de registros a generar para cada colección.
+
+Use smaller counts for quick local testing and larger counts for stress testing tables, dashboards, pagination, and filtering.
+
+#### `-s, --seed <seed>`
+
+Define una semilla determinista para la generación de datos.
+
+Mantiene los datos de fixture generados estables en todas las ejecuciones.
+
+#### `-f, --force`
+
+Sobrescribe archivos de datos de fixture existentes y borra cualquier fixture cargado actualmente.
+
+Use cuando quieras reemplazar completamente los conjuntos de datos generados previamente.
 
 ### IA
 

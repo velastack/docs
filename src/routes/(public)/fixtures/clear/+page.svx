@@ -1,5 +1,9 @@
 <!-- @en -->
-Clear fixture data from the database.
+Clear loaded fixtures from the database.
+
+Use this when you want to return to an empty state, remove demo data, or prepare for a fresh fixture load.
+
+This command is useful during testing, schema iteration, and when switching between fixture scenarios.
 
 ### Syntax
 
@@ -7,15 +11,16 @@ Clear fixture data from the database.
 $ vela fixtures clear
 ```
 
-This will clear all fixture data from the database.
 <!-- @es -->
 Borrar datos de fixture de la base de datos.
+
+Usa este comando cuando quieras volver a un estado vacío, eliminar datos de demostración, o preparar para una carga de fixtures nueva.
+
+Este comando es útil durante pruebas, iteración de esquema, y cuando se cambia entre escenarios de fixtures.
 
 ### Sintaxis
 
 ```
 $ vela fixtures clear
 ```
-
-Esto borrará todos los datos de fixture de la base de datos.
 <!-- @end -->

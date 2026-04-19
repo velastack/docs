@@ -1,21 +1,62 @@
 <!-- @en -->
-Load seed data from the database. Run automatically for integration tests.
+Load seed data into the database from the `data/seeds` directory. Seed data files are loaded in alphabetical order and prefixed with a number to ensure deterministic loading order.
+
+Use this to install the baseline records your application depends on. Seeds are appropriate for development, testing, preview, and production environments.
+
+Typical seeded records include:
+
+* roles and permission levels
+* statuses
+* subscription plans
+* default locales
+* feature definitions
+* global settings
+* system-owned records
+
+Seed loading should produce a clean, predictable starting state for required app data.
 
 ### Syntax
 
 ```
-$ vela seeds load
+$ vela seeds load [options]
 ```
 
-This will load seed data into the database. Seed data files are loaded in alphabetical order and prefixed with a number to ensure deterministic loading order.
+### Options
+
+#### `-f, --force`
+
+Load seeds even if target collections already contain records.
+
+Use when intentionally replacing or reapplying seed data in a non-empty database. This should be used carefully in shared or production environments.
+
 <!-- @es -->
-Cargar datos de inicialización desde la base de datos. Se ejecuta automáticamente para pruebas de integración.
+Cargar datos de semilla en la base de datos desde el directorio `data/seeds`. Los archivos de datos de semilla se cargan en orden alfabético y se prefijan con un número para asegurar un orden de carga determinista.
+
+Usa este comando para instalar los registros base en los que tu aplicación depende. Las semillas son adecuadas para entornos de desarrollo, pruebas, vista previa, y producción.
+
+Los registros semilla típicos incluyen:
+
+* roles y niveles de permiso
+* estados
+* planes de suscripción
+* locales predeterminados
+* definiciones de características
+* configuraciones globales
+* registros de sistema
+
+El cargado de semillas debería producir un estado inicial limpio y predecible para los datos de la aplicación requeridos.
 
 ### Sintaxis
 
 ```
-$ vela seeds load
+$ vela seeds load [options]
 ```
 
-Esto cargará datos de semilla en la base de datos. Los archivos de datos de semilla se cargan en orden alfabético y se prefijan con un número para asegurar un orden de carga determinista.
+### Opciones
+
+#### `-f, --force`
+
+Cargar semillas incluso si las colecciones de destino ya contienen registros.
+
+Use cuando quieras reemplazar o reaplicar intencionalmente datos de semilla en una base de datos no vacía. Esto debería usarse con cuidado en entornos compartidos o productivos.
 <!-- @end -->

@@ -1,0 +1,52 @@
+<!-- @en -->
+Clear the database, regenerate fixture files, and reload them in one step.
+
+This is the fastest way to rebuild your full fixture environment after schema changes or when you want a clean fresh dataset.
+
+Use regen during rapid development when models are changing and fixture files need to stay in sync.
+
+### Syntax
+
+```
+$ vela fixtures regen [options]
+```
+
+### Options
+
+#### `-c, --count <count>`
+
+Set how many records to generate for each collection.
+
+Useful when rebuilding with larger or smaller datasets.
+
+#### `-s, --seed <seed>`
+
+Use a deterministic random seed.
+
+Keeps regenerated fixture data stable across runs.
+
+<!-- @es -->
+Borrar fixtures de la base de datos, regenerar archivos de fixtures con el último esquema de base de datos, y recargarlos.
+
+Es el comando más rápido para reconstruir tu entorno de fixtures completo después de cambios en el esquema o cuando quieres un dataset limpio y fresco.
+
+Usa regen durante el desarrollo rápido cuando los modelos están cambiando y los archivos de fixtures necesitan mantenerse sincronizados.
+
+### Sintaxis
+
+```
+$ vela fixtures regen [options]
+```
+
+### Opciones
+
+#### `-c, --count <count>`
+
+Define el número de registros a generar para cada colección.
+
+#### `-s, --seed <seed>`
+
+Define una semilla determinista para la generación de datos.
+
+Mantiene los datos de fixture regenerados estables en todas las ejecuciones.
+<!-- @end -->

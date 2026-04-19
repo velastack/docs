@@ -226,6 +226,14 @@
 					{
 						title: 'Clear',
 						url: /* @wc-url */ '/fixtures/clear'
+					},
+					{
+						title: 'Reset',
+						url: /* @wc-url */ '/fixtures/reset'
+					},
+					{
+						title: 'Regen',
+						url: /* @wc-url */ '/fixtures/regen'
 					}
 				]
 			},

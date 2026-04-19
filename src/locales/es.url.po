@@ -62,6 +62,8 @@ msgstr "/"
 #. /fixtures/generate
 #. /fixtures/load
 #. /fixtures/clear
+#. /fixtures/reset
+#. /fixtures/regen
 #. /legal
 #. /legal/privacy
 #. /legal/terms
@@ -158,6 +160,10 @@ msgstr "/"
 #. /fixtures/generate
 #. /fixtures
 #. /fixtures/load
+#. /fixtures
+#. /fixtures/regen
+#. /fixtures
+#. /fixtures/reset
 #. /generate
 #. /generate
 #. /generate/ai
@@ -305,6 +311,8 @@ msgstr "/"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/account/+page.ts
 #: src/routes/(public)/account/login/+page.ts
 #: src/routes/(public)/account/login/+page.ts
@@ -378,6 +386,10 @@ msgstr "/"
 #: src/routes/(public)/fixtures/generate/+page.ts
 #: src/routes/(public)/fixtures/load/+page.ts
 #: src/routes/(public)/fixtures/load/+page.ts
+#: src/routes/(public)/fixtures/regen/+page.ts
+#: src/routes/(public)/fixtures/regen/+page.ts
+#: src/routes/(public)/fixtures/reset/+page.ts
+#: src/routes/(public)/fixtures/reset/+page.ts
 #: src/routes/(public)/generate/+page.ts
 #: src/routes/(public)/generate/ai/+page.ts
 #: src/routes/(public)/generate/ai/+page.ts

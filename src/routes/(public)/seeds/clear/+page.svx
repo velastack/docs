@@ -1,5 +1,9 @@
 <!-- @en -->
-Clear seed data from the database.
+Clear seeded records from the database.
+
+Use this when you need to remove baseline seed data before reseeding, resetting an environment, or restructuring canonical records.
+
+Because seeds often contain configuration and required system data, this command is typically used in development or controlled environments.
 
 ### Syntax
 
@@ -7,15 +11,16 @@ Clear seed data from the database.
 $ vela seeds clear
 ```
 
-This will clear all seed data from the database.
 <!-- @es -->
 Borrar datos de semilla de la base de datos.
+
+Usa este comando cuando necesites eliminar datos de semilla antes de volver a sembrar, restablecer un entorno, o reorganizar registros canónicos.
+
+Porque las semillas a menudo contienen configuración y datos de sistema requeridos, este comando se usa generalmente en entornos de desarrollo o controlados.
 
 ### Sintaxis
 
 ```
 $ vela seeds clear
 ```
-
-Esto borrará todos los datos de inicialización de la base de datos.
 <!-- @end -->

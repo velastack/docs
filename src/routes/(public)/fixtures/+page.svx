@@ -1,33 +1,85 @@
 <!-- @en -->
-Fixtures are mock data for testing and development. They are stored in `data/fixtures` directory. Fixtures are loaded automatically for integration tests. Fixtures load after seed data and can depend on seed data records.
+Fixtures are reusable datasets for development, testing, demos, and preview environments. They populate your application with realistic records so you can build against real states instead of empty tables.
+
+Use fixtures when you need users, content, orders, bookings, memberships, notifications, or any other working data that helps exercise the application.
+
+Fixtures are not part of the required structure of your app. They exist to simulate usage and accelerate development.
+
+Typical uses include:
+
+* building UI against realistic data
+* testing permissions and ownership rules
+* verifying dashboards, filters, and counts
+* previewing templates with believable content
+* reproducing bugs with known datasets
+* running automated tests against stable scenarios
+
+Fixtures often model relationships and workflow states, not just isolated rows. A useful fixture set might include active and archived records, users with different roles, empty states, overdue items, draft content, or translated content.
+
+Good fixtures are deterministic, repeatable, and disposable. You should be able to load them whenever needed and replace them without affecting core application data.
+
+Think of fixtures as working data for environments where speed, realism, and repeatability matter.
+
+Fixtures are stored in `data/fixtures` directory. Fixtures are loaded automatically during testing with `vela test`. Fixtures load after seed data and can depend on seed data records.
 
 ### Syntax
 
 ```
-$ vela fixtures
+$ vela fixtures <subcommand>
 ```
 
-The action can be one of the following:
+The subcommand can be one of the following:
 
-- `load` - Load fixture data from the database
+- `generate` - Generate fixture data
 
-- `save` - Save fixture data to the database
+- `load` - Load fixtures into the database
 
-- `clear` - Clear all fixture data from the database
+- `clear` - Clear loaded fixtures from the database
+
+- `reset` - Clear and reload fixtures
+
+- `regen` - Clear fixtures from the database, regenerate fixture files, and reload them
+
 <!-- @es -->
-Datos de prueba para testing y desarrollo. Se almacenan en el directorio `data/fixtures`. Los datos de prueba se cargan automáticamente para pruebas de integración. Los datos de prueba se cargan después de los datos de semilla y pueden depender de los datos de semilla.
+
+Fixtures son conjuntos de datos reutilizables para desarrollo, pruebas, demos, y entornos de vista previa. Rellenan su aplicación con registros realistas para que pueda construir contra estados reales en lugar de tablas vacías.
+
+Use fixtures cuando necesite usuarios, contenido, pedidos, reservas, membresías, notificaciones, o cualquier otro dato de trabajo que ayude a ejercitar la aplicación.
+
+Fixtures no son parte de la estructura requerida de su app. Existen para simular uso y acelerar el desarrollo.
+
+Los usos típicos incluyen:
+
+* construir UI contra datos realistas
+* probar permisos y reglas de propiedad
+* verificar paneles, filtros, y conteos
+* previsualizar plantillas con contenido creíble
+* reproducir errores con conjuntos de datos conocidos
+* ejecutar pruebas automatizadas contra escenarios estables
+
+Las fixtures a menudo modelan relaciones y estados de flujo, no solo filas aisladas. Un conjunto de fixtures útil podría incluir registros activos y archivados, usuarios con diferentes roles, estados vacíos, elementos vencidos, contenido borrador, o contenido traducido.
+
+Las fixtures deben ser deterministas, repetibles, y descartables. Debería poder cargarlas cuando sea necesario y reemplazarlas sin afectar los datos principales de la aplicación.
+
+Piense en las fixtures como datos de trabajo para entornos donde importa la velocidad, la realidad, y la repetibilidad.
+
+Las fixtures se almacenan en el directorio `data/fixtures`. Las fixtures se cargan automáticamente durante las pruebas con `vela test`. Las fixtures se cargan después de los datos de semilla y pueden depender de los datos de semilla.
 
 ### Sintaxis
 
 ```
-$ vela fixtures
+$ vela fixtures <subcommand>
 ```
 
-La acción puede ser una de las siguientes:
+La subcomando puede ser una de las siguientes:
 
-- `load` - Cargar datos de prueba en la base de datos
+- `generate` - Generar datos de fixture
 
-- `save` - Guardar datos de prueba en la base de datos
+- `load` - Cargar fixtures en la base de datos
 
-- `clear` - Borrar todos los datos de prueba de la base de datos
+- `clear` - Borrar fixtures de la base de datos
+
+- `reset` - Borrar y recargar fixtures
+
+- `regen` - Borrar fixtures de la base de datos, regenerar archivos de fixture, y recargarlos
 <!-- @end -->

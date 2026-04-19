@@ -1,5 +1,11 @@
 <!-- @en -->
-Load fixture data into the database. Run automatically for integration tests.
+Load fixture data into the database from the `data/fixtures` directory. Fixtures are loaded in alphanumeric order. Files are prefixed with a number to ensure deterministic loading order.
+
+Use this after generating fixtures, or whenever you need to repopulate a development, preview, or test database with known data.
+
+Loading fixtures gives your app realistic working records such as users, content, orders, memberships, or other model data depending on your schema.
+
+Fixtures are intended for non-production environments where repeatable working data is useful.
 
 ### Syntax
 
@@ -7,9 +13,14 @@ Load fixture data into the database. Run automatically for integration tests.
 $ vela fixtures load
 ```
 
-This will load fixture data into the database from the `data/fixtures` directory. Fixtures are loaded in alphabetical order and prefixed with a number to ensure deterministic loading order.
 <!-- @es -->
-Carga datos de prueba en la base de datos. Se ejecuta automáticamente para pruebas de integración.
+Carga datos de prueba en la base de datos desde el directorio `data/fixtures`. Los datos de prueba se cargan en orden alfanumérico. Los archivos se prefijan con un número para asegurar un orden de carga determinista.
+
+Usa este comando después de generar fixtures, o cuando necesites repopular una base de datos de desarrollo, vista previa, o prueba con datos conocidos.
+
+Cargar fixtures da a tu app registros de trabajo realistas como usuarios, contenido, pedidos, membresías, o otros datos de modelos dependiendo de tu esquema.
+
+Las fixtures están destinadas a entornos no productivos donde los datos de trabajo repetibles son útiles.
 
 ### Sintaxis
 
@@ -17,5 +28,4 @@ Carga datos de prueba en la base de datos. Se ejecuta automáticamente para prue
 $ vela fixtures load
 ```
 
-Esto cargará datos de prueba en la base de datos desde el directorio `data/fixtures`. Los datos de prueba se cargan en orden alfabético y se prefijan con un número para asegurar un orden de carga determinista.
 <!-- @end -->

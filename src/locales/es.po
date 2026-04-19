@@ -327,6 +327,8 @@ msgstr "Borrar"
 #: src/routes/(public)/fixtures/clear/+page.ts
 #: src/routes/(public)/fixtures/generate/+page.ts
 #: src/routes/(public)/fixtures/load/+page.ts
+#: src/routes/(public)/fixtures/regen/+page.ts
+#: src/routes/(public)/fixtures/reset/+page.ts
 msgid "Fixtures"
 msgstr "Fixtures"
 
@@ -663,3 +665,15 @@ msgstr "Añadir un nuevo componente Shadcn-Svelte a la aplicación."
 #: src/routes/(public)/ui/+page.ts
 msgid "Change the base color of the application."
 msgstr "Cambiar el color base de la aplicación."
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/fixtures/reset/+page.ts
+#: src/routes/(public)/fixtures/reset/+page.ts
+msgid "Reset"
+msgstr "Reset"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/fixtures/regen/+page.ts
+#: src/routes/(public)/fixtures/regen/+page.ts
+msgid "Regen"
+msgstr "Regen"

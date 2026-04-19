@@ -1,21 +1,46 @@
 <!-- @en -->
-Save seed data from the database.
+Save the current database records as seed files in the `data/seeds` directory.
+
+Use this when you have established baseline application data that should be versioned with the project and reused across environments. Seeds are intended for canonical records such as roles, plans, statuses, locales, settings, and other small system datasets.
+
+This command captures the current records and writes them as reusable seed data for future loads.
+
+Seeds should remain intentional, stable, and low in volume.
 
 ### Syntax
 
 ```
-$ vela seeds save
+$ vela seeds save [options]
 ```
 
-This will save seed data from the database to the `data/seeds` directory. The order of files is determined by the database schema, tables that depend on other tables are saved later.
+### Options
+
+#### `-f, --force`
+
+Overwrite existing seed files.
+
+Use when updating the canonical seed dataset and replacing previously saved seed definitions.
+
 <!-- @es -->
-Guardar datos de inicialización de la base de datos.
+Guardar los registros actuales de la base de datos como archivos de semilla en el directorio `data/seeds`.
+
+Usa este comando cuando tengas datos base de aplicación establecidos que deberían ser versionados con el proyecto y reutilizados en todos los entornos. Las semillas están destinadas a registros canónicos como roles, planes, estados, locales, configuraciones, y otros pequeños datasets del sistema.
+
+Este comando captura los registros actuales y los escribe como datos de semilla reutilizables para futuras cargas.
+
+Las semillas deberían permanecer intencionales, estables, y de bajo volumen.
 
 ### Sintaxis
 
 ```
-$ vela seeds save
+$ vela seeds save [options]
 ```
 
-Esto guardará datos de semilla en la base de datos en el directorio `data/seeds`. El orden de los archivos se determina por el esquema de la base de datos, las tablas que dependen de otras tablas se guardan más tarde.
+### Opciones
+
+#### `-f, --force`
+
+Sobrescribe archivos de semilla existentes.
+
+Use cuando actualices el dataset de semilla canónica y reemplaces las definiciones de semilla guardadas previamente.
 <!-- @end -->

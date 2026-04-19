@@ -1,34 +1,81 @@
 <!-- @en -->
-Seed data is used to populate the database with initial data that is essential for the application
-to function. They are stored in `data/seeds` directory.
+Seeds are small, canonical records required for the application to operate correctly across environments. They define baseline data that belongs with the app itself.
+
+Use seeds for records that are effectively part of your system design rather than normal business data.
+
+Typical examples include:
+
+* roles and permission levels
+* statuses and enums stored in tables
+* subscription plans
+* default locales
+* global settings
+* required system-owned records
+* feature definitions
+* email template definitions
+
+Seeds should be safe to run in development, testing, and production. They are expected to be idempotent, stable, and low in volume.
+
+Unlike fixtures, seeds are not demo data and should not contain arbitrary sample content. If removing a record would break application behavior or configuration, it likely belongs in seeds.
+
+Good seeds behave like schema-adjacent data: versioned with the application, intentionally maintained, and consistent across environments.
+
+Think of seeds as the baseline records your app depends on.
+
+Seeds are stored in `data/seeds` directory.
 
 ### Syntax
 
 ```
-$ vela seeds
+$ vela seeds <subcommand>
 ```
 
-The action can be one of the following:
+The subcommand can be one of the following:
 
-- `load` - Load seed data from the database
+- `load` - Load seeds into the database
 
-- `save` - Save seed data to the database
+- `save` - Save the current data as seeds
 
 - `clear` - Clear all seed data from the database
+
 <!-- @es -->
-Datos de semilla se utilizan para poblar la base de datos con datos iniciales que son esenciales para que la aplicación funcione. Se almacenan en el directorio `data/seeds`.
+
+Semillas son pequeños, canónicos registros requeridos para que la aplicación opere correctamente en todos los entornos. Definen datos base que pertenecen con la aplicación.
+
+Use semillas para registros que son efectivamente parte del diseño del sistema en lugar de datos normales de negocio.
+
+Tipos comunes incluyen:
+
+* roles y niveles de permiso
+* estados y enums almacenados en tablas
+* planes de suscripción
+* locales predeterminados
+* configuraciones globales
+* registros requeridos de sistema
+* definiciones de características
+* definiciones de plantillas de correo electrónico
+
+Las semillas deben ser seguras para ejecutar en desarrollo, pruebas, y producción. Se esperan que sean idempotentes, estables, y de bajo volumen.
+
+A diferencia de fixtures, las semillas no son datos de demostración y no deben contener contenido arbitrario. Si la eliminación de un registro rompería el comportamiento o la configuración de la aplicación, probablemente pertenezca a las semillas.
+
+Buenas semillas se comportan como datos adyacentes a la schema: versionadas con la aplicación, intencionamente mantenidas, y consistentes en todos los entornos.
+
+Piense en las semillas como los registros base en los que su app depende.
+
+Las semillas se almacenan en el directorio `data/seeds`.
 
 ### Sintaxis
 
 ```
-$ vela seeds
+$ vela seeds <subcommand>
 ```
 
-La acción puede ser una de las siguientes:
+La subcomando puede ser una de las siguientes:
 
-- `load` - Cargar datos de semilla desde la base de datos
+- `load` - Cargar semillas en la base de datos
 
-- `save` - Guardar datos de semilla en la base de datos
+- `save` - Guardar la data actual como semillas
 
-- `clear` - Borrar todos los datos de semilla de la base de datos
+- `clear` - Borrar todas las semillas de la base de datos
 <!-- @end -->
