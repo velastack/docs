@@ -530,6 +530,7 @@ msgstr "404 - Página no encontrada"
 
 #: src/routes/(public)/enable/api-keys/+page.ts
 #: src/routes/(public)/enable/notifications/+page.ts
+#: src/routes/(public)/enable/subscriptions/+page.ts
 #: src/routes/(public)/enable/teams/+page.ts
 msgid "Depends: auth"
 msgstr "Depende de: auth"
@@ -677,3 +678,7 @@ msgstr "Reset"
 #: src/routes/(public)/fixtures/regen/+page.ts
 msgid "Regen"
 msgstr "Regen"
+
+#: src/routes/(public)/enable/subscriptions/+page.ts
+msgid "Depends: payments"
+msgstr "Depende de: payments"
