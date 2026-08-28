@@ -1,0 +1,33 @@
+<!-- @en -->
+List the environment variable names configured for a target.
+
+### Syntax
+
+```
+$ vela env list
+```
+
+```
+$ vela env list -t production
+```
+
+Names only, never values — the same rule locally and on a server, so the output is safe to paste into an issue or a screenshot wherever it came from. To read a value back, look in `.env` yourself, or on the server as root.
+
+Defaults to `-t local`. See [env](/env) for the full option list.
+<!-- @es -->
+Lista los nombres de las variables de entorno configuradas para un objetivo.
+
+### Sintaxis
+
+```
+$ vela env list
+```
+
+```
+$ vela env list -t production
+```
+
+Solo nombres, nunca valores — la misma regla en local y en un servidor, así que la salida se puede pegar en una incidencia o una captura venga de donde venga. Para leer un valor, mira tú mismo en `.env`, o en el servidor como root.
+
+Por defecto usa `-t local`. Consulta [env](/es/env) para la lista completa de opciones.
+<!-- @end -->

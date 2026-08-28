@@ -1,25 +1,47 @@
----
-title: 'Dev'
----
-
 <!-- @en -->
-# Dev
-
 Start the development server.
-<!-- @es -->
-# Desarrollo
 
-Iniciar el servidor de desarrollo.
-<!-- @end -->
-
-### <!-- @t en="Syntax" es="Sintaxis" -->
+### Syntax
 
 ```
 $ vela dev
 ```
 
-<!-- @en -->
 This will start the development server and the database. The server will be available at `http://localhost:5173` and the admin interface at `http://localhost:5173/admin`.
+
+### Options
+
+- `--open [path]` - Open the app in a browser once the server is ready
+- `--host [host]` - Expose the server on the network
+- `--port <port>` - Port to listen on
+- `--strictPort` - Exit if the port is already in use instead of taking the next one
+- `--cors` - Enable CORS
+- `--force` - Re-bundle dependencies, ignoring the optimizer cache
+
+```
+$ vela dev --open --port 3000
+```
 <!-- @es -->
-El servidor de desarrollo se iniciará y la base de datos se iniciará. El servidor estará disponible en `http://localhost:5173` y la interfaz de administración en `http://localhost:5173/admin`.
+Inicia el servidor de desarrollo.
+
+### Sintaxis
+
+```
+$ vela dev
+```
+
+Esto iniciará el servidor de desarrollo y la base de datos. El servidor estará disponible en `http://localhost:5173` y la interfaz de administración en `http://localhost:5173/admin`.
+
+### Opciones
+
+- `--open [path]` - Abrir la aplicación en un navegador cuando el servidor esté listo
+- `--host [host]` - Exponer el servidor en la red
+- `--port <port>` - Puerto en el que escuchar
+- `--strictPort` - Salir si el puerto ya está en uso en lugar de tomar el siguiente
+- `--cors` - Habilitar CORS
+- `--force` - Reempaquetar las dependencias, ignorando la caché del optimizador
+
+```
+$ vela dev --open --port 3000
+```
 <!-- @end -->

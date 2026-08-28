@@ -1,17 +1,37 @@
 <!-- @en -->
-Enable notifications for your application.
+Enable in-app notifications for your application.
 
 ### Syntax
 
 ```
 $ vela enable notifications
 ```
+
+Not yet shipped — `vela enable` has no `notifications` subcommand today.
+
+### Planned
+
+The notifications module will add:
+
+- A `notifications` collection
+- A bell dropdown in the nav, polling every 30 seconds
+- A `/notifications` page for managing read state
 <!-- @es -->
-Habilita notificaciones para tu aplicación.
+Habilita las notificaciones dentro de la aplicación.
 
 ### Sintaxis
 
 ```
 $ vela enable notifications
 ```
+
+Aún no está disponible — `vela enable` no tiene hoy un subcomando `notifications`.
+
+### Planificado
+
+El módulo de notificaciones añadirá:
+
+- Una colección `notifications`
+- Un desplegable de campana en la navegación, que consulta cada 30 segundos
+- Una página `/notifications` para gestionar el estado de lectura
 <!-- @end -->

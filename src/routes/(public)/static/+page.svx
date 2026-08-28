@@ -1,41 +1,77 @@
 <!-- @en -->
-Vela includes a static build mode to create a static site, ready to be deployed to any hosting provider.
-
-### Limitations
-
-#### Forms are not supported
-
-Form actions are not supported in static builds, you'll need to remove any forms from the project.
-
-#### User authentication is not supported
-
-Static builds do not support dynamic server-side rendering, so user authentication is not supported.
+Vela can scaffold a frontend-only project, prerendered with `@sveltejs/adapter-static` and ready to deploy to any static host.
 
 ### Syntax
 
 ```
-$ vela build --static
+$ vela create my-site --template static
 ```
 
-This will build the application for production and create a static site in the `dist` directory.
+The static template ships without a `data` directory, so there is no PocketBase to run. Build it like any other project:
+
+```
+$ vela build
+```
+
+The adapter is configured in `vite.config.ts` with a `200.html` fallback, so client-side routing works on hosts that serve a single fallback document.
+
+### Converting an existing project
+
+A project created with the default template can drop its backend, which removes the database, the migrations and the PocketBase middleware:
+
+```
+$ vela disable backend
+```
+
+### Limitations
+
+#### Form actions are not supported
+
+Form actions need a server. Any generated form that posts back to `+page.server.ts` has to be replaced with a client-side submission to an external endpoint.
+
+#### User authentication is not supported
+
+Static builds do not support dynamic server-side rendering, so the auth module and its protected route group have nothing to run on.
+
+#### No database at request time
+
+Data can be read at build time and baked into the prerendered pages, but there is no database to query once the site is deployed.
 <!-- @es -->
-Vela incluye un modo de compilación estático para crear un sitio estático, listo para ser desplegado en cualquier proveedor de alojamiento.
-
-### Limitaciones
-
-#### Los formularios no son compatibles
-
-Las acciones de formulario no son compatibles en las compilaciones estáticas, tendrás que eliminar cualquier formulario del proyecto.
-
-#### La autenticación de usuario no es compatible
-
-La autenticación de usuario no es compatible en las compilaciones estáticas, tendrás que eliminar cualquier autenticación del proyecto.
+Vela puede generar un proyecto solo de frontend, prerenderizado con `@sveltejs/adapter-static` y listo para desplegar en cualquier alojamiento estático.
 
 ### Sintaxis
 
 ```
-$ vela build --static
+$ vela create my-site --template static
 ```
 
-Esto compilará la aplicación para producción y creará un sitio estático en el directorio `dist`.
+La plantilla estática se distribuye sin directorio `data`, así que no hay ningún PocketBase que ejecutar. Compílala como cualquier otro proyecto:
+
+```
+$ vela build
+```
+
+El adaptador se configura en `vite.config.ts` con un fallback `200.html`, de modo que el enrutado en el cliente funciona en alojamientos que sirven un único documento de respaldo.
+
+### Convertir un proyecto existente
+
+Un proyecto creado con la plantilla por defecto puede prescindir de su backend, lo que elimina la base de datos, las migraciones y el middleware de PocketBase:
+
+```
+$ vela disable backend
+```
+
+### Limitaciones
+
+#### Las acciones de formulario no están soportadas
+
+Las acciones de formulario necesitan un servidor. Cualquier formulario generado que haga POST a `+page.server.ts` tiene que sustituirse por un envío desde el cliente a un endpoint externo.
+
+#### La autenticación de usuarios no está soportada
+
+Las compilaciones estáticas no admiten renderizado dinámico en el servidor, así que el módulo de autenticación y su grupo de rutas protegidas no tienen dónde ejecutarse.
+
+#### Sin base de datos en tiempo de petición
+
+Los datos pueden leerse en tiempo de compilación e incrustarse en las páginas prerenderizadas, pero no hay base de datos que consultar una vez desplegado el sitio.
 <!-- @end -->

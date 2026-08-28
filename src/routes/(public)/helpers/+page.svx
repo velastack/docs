@@ -1,5 +1,5 @@
 <!-- @en -->
-Although Vela has no runtime, it does include a few helpers for common tasks.
+Although Vela has no runtime, it does publish a few packages for common tasks. Everything Vela generates is ordinary code in your project; these are the libraries that code imports.
 <!-- @es -->
-Aunque Vela no tiene tiempo de ejecución, incluye algunas herramientas de ayuda para tareas comunes.
+Aunque Vela no tiene runtime, sí publica algunos paquetes para tareas comunes. Todo lo que Vela genera es código corriente en tu proyecto; estas son las bibliotecas que ese código importa.
 <!-- @end -->

@@ -1,5 +1,5 @@
 <!-- @en -->
-PostgreSQL support is coming soon. Configuration is done in `hooks.server.ts`:
+PostgreSQL support is planned. `@velastack/postgres` is not published yet. Configuration is intended to mirror the PocketBase bindings, in `hooks.server.ts`:
 
 ```ts
 import { handlePostgres } from '@velastack/postgres';
@@ -11,8 +11,10 @@ export const handle = handlePostgres({
     connectionString: POSTGRES_CONNECTION_STRING
 })
 ```
+
+Until then, [PocketBase](/backend/pocketbase) is the backend Vela ships with. See [@velastack/postgres](/helpers/postgres) for the package itself.
 <!-- @es -->
-Soporte para PostgreSQL está próximamente. La configuración se realiza en `hooks.server.ts`:
+El soporte para PostgreSQL está planificado. `@velastack/postgres` aún no está publicado. La configuración pretende reflejar las vinculaciones de PocketBase, en `hooks.server.ts`:
 
 ```ts
 import { handlePostgres } from '@velastack/postgres';
@@ -24,4 +26,6 @@ export const handle = handlePostgres({
     connectionString: POSTGRES_CONNECTION_STRING
 })
 ```
+
+Hasta entonces, [PocketBase](/es/backend/pocketbase) es el backend con el que se distribuye Vela. Consulta [@velastack/postgres](/es/helpers/postgres) para el paquete en sí.
 <!-- @end -->

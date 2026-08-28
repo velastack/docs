@@ -1,0 +1,39 @@
+<!-- @en -->
+Revert the last N applied migrations.
+
+### Syntax
+
+```
+$ vela migrate down [number]
+```
+
+```
+$ vela migrate down       # revert the last one
+$ vela migrate down 3     # revert the last three
+```
+
+The number defaults to `1` and must be a positive integer. Reverting runs each migration's down handler, so a migration with no down handler cannot be reverted.
+
+`vela migrate rollback` is an alias for this command. It reverts migrations — to put a previous _release_ back on a server, see [`vela rollback`](/rollback).
+
+Follow with [`vela sync`](/sync) to regenerate types, and [`vela migrate up`](/migrate/up) to reapply when ready.
+<!-- @es -->
+Revierte las últimas N migraciones aplicadas.
+
+### Sintaxis
+
+```
+$ vela migrate down [number]
+```
+
+```
+$ vela migrate down       # revierte la última
+$ vela migrate down 3     # revierte las tres últimas
+```
+
+El número es `1` por defecto y debe ser un entero positivo. Revertir ejecuta el manejador down de cada migración, así que una migración sin manejador down no puede revertirse.
+
+`vela migrate rollback` es un alias de este comando. Revierte migraciones — para restaurar una _release_ anterior en un servidor, consulta [`vela rollback`](/es/rollback).
+
+Continúa con [`vela sync`](/es/sync) para regenerar los tipos, y [`vela migrate up`](/es/migrate/up) para volver a aplicarlas cuando toque.
+<!-- @end -->

@@ -1,0 +1,49 @@
+<!-- @en -->
+Remove the PocketBase backend, turning the project into a frontend-only [static site](/static).
+
+### Syntax
+
+```
+$ vela disable backend
+```
+
+### Options
+
+- `-y, --yes` - Skip the confirmation prompt
+
+### What it removes
+
+- `hooks.server.ts`
+- The `data/` scaffold — the database and everything in it
+- The `test/setup.ts` database wiring
+
+The SvelteKit adapter is switched back to static with an SPA fallback. Disable the features that depend on the backend — [auth](/disable/auth), [api](/disable/api) and the rest — before running this.
+
+### What it leaves
+
+`@velastack/pocketbase` and `pocketbase-sveltekit` stay in `package.json`. Uninstall them yourself if you want them gone.
+<!-- @es -->
+Elimina el backend de PocketBase, convirtiendo el proyecto en un [sitio estático](/es/static) solo de frontend.
+
+### Sintaxis
+
+```
+$ vela disable backend
+```
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+
+### Qué elimina
+
+- `hooks.server.ts`
+- El andamiaje de `data/` — la base de datos y todo lo que contiene
+- La configuración de la base de datos en `test/setup.ts`
+
+El adaptador de SvelteKit se cambia de nuevo a estático con un fallback de SPA. Desactiva las funciones que dependen del backend — [auth](/es/disable/auth), [api](/es/disable/api) y el resto — antes de ejecutar esto.
+
+### Qué deja
+
+`@velastack/pocketbase` y `pocketbase-sveltekit` permanecen en `package.json`. Desinstálalos tú mismo si quieres eliminarlos.
+<!-- @end -->

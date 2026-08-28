@@ -1,25 +1,25 @@
 <!-- @en -->
-Unit tests are used to test individual units of code.
+A separate runner for tests that don't need a database is planned. There is no `vela test:unit` command today.
 
-### Syntax
+### Today
+
+Everything runs through [`vela test:server`](/test/server), which starts a database whether or not a given test needs one. Tests that don't touch it simply ignore the clients in the test context.
+
+To run only a subset, pass a filter — it is matched against the test file paths:
 
 ```
-$ vela test:unit
+$ vela test:server utils
 ```
-
-### Tests
-
-Unit tests match the pattern `*.test.ts/*.spec.ts` and run on Vitest. They do not depend on the database and no test database will be created, unlike integration tests.
 <!-- @es -->
-Las pruebas unitarias se utilizan para probar unidades de código individuales.
+Está previsto un ejecutor separado para las pruebas que no necesitan base de datos. Hoy no existe un comando `vela test:unit`.
 
-### Sintaxis
+### Hoy
+
+Todo se ejecuta con [`vela test:server`](/es/test/server), que arranca una base de datos necesite o no una prueba concreta. Las pruebas que no la tocan simplemente ignoran los clientes del contexto de prueba.
+
+Para ejecutar solo un subconjunto, pasa un filtro — se compara con las rutas de los archivos de prueba:
 
 ```
-$ vela test:unit
+$ vela test:server utils
 ```
-
-### Pruebas
-
-Las pruebas unitarias coinciden con el patrón `*.test.ts/*.spec.ts` y se ejecutan en Vitest. No dependen de la base de datos y no se creará una base de datos de prueba, a diferencia de las pruebas de integración.
 <!-- @end -->

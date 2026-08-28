@@ -1,0 +1,25 @@
+<!-- @en -->
+Turn off SMTP, configured by [`vela enable smtp`](/enable/smtp).
+
+### Syntax
+
+```
+$ vela disable smtp
+```
+
+This flips the SMTP setting in PocketBase — no files in the project change, so there is no confirmation prompt and no options. PocketBase falls back to its built-in sender for transactional email, which is fine in development and not suitable for production.
+
+Run [`vela enable smtp`](/enable/smtp) to reconfigure.
+<!-- @es -->
+Desactiva SMTP, configurado por [`vela enable smtp`](/es/enable/smtp).
+
+### Sintaxis
+
+```
+$ vela disable smtp
+```
+
+Esto cambia el ajuste de SMTP en PocketBase — no cambia ningún archivo del proyecto, así que no hay confirmación ni opciones. PocketBase vuelve a su emisor integrado para el correo transaccional, lo cual está bien en desarrollo y no es adecuado para producción.
+
+Ejecuta [`vela enable smtp`](/es/enable/smtp) para reconfigurarlo.
+<!-- @end -->

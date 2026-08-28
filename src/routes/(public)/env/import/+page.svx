@@ -1,0 +1,33 @@
+<!-- @en -->
+Merge a dotenv file into the environment.
+
+### Syntax
+
+```
+$ vela env import <file>
+```
+
+```
+$ vela env import .env.production -t production
+```
+
+This is a merge, not a replace: variables already set that the file doesn't mention are left alone. Variables the file does mention are overwritten.
+
+Importing into the same file you are importing from is refused. The instance is restarted afterwards so the values take effect. Defaults to `-t local`.
+<!-- @es -->
+Fusiona un archivo dotenv con el entorno.
+
+### Sintaxis
+
+```
+$ vela env import <file>
+```
+
+```
+$ vela env import .env.production -t production
+```
+
+Esto es una fusión, no un reemplazo: las variables ya definidas que el archivo no menciona se dejan intactas. Las que sí menciona se sobrescriben.
+
+Importar sobre el mismo archivo del que se importa se rechaza. La instancia se reinicia después para que los valores surtan efecto. Por defecto usa `-t local`.
+<!-- @end -->

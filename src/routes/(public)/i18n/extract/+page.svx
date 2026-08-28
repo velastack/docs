@@ -1,17 +1,33 @@
 <!-- @en -->
-Extract translatable strings.
+Extract translatable strings from the source into the catalogs.
 
 ### Syntax
 
 ```
 $ vela i18n extract
 ```
+
+```
+$ vela i18n
+```
+
+This is the default subcommand, so `vela i18n` on its own does the same thing. Strings are read out of the markup rather than maintained as keys in a separate file, so extraction is what keeps the catalogs in step with the code.
+
+Run it after adding or changing user-facing copy, and before handing catalogs to translators.
 <!-- @es -->
-Extraer cadenas traducibles.
+Extrae las cadenas traducibles del código fuente a los catálogos.
 
 ### Sintaxis
 
 ```
 $ vela i18n extract
 ```
+
+```
+$ vela i18n
+```
+
+Este es el subcomando por defecto, así que `vela i18n` por sí solo hace lo mismo. Las cadenas se leen del marcado en lugar de mantenerse como claves en un archivo aparte, así que la extracción es lo que mantiene los catálogos al día con el código.
+
+Ejecútalo después de añadir o cambiar textos visibles para el usuario, y antes de entregar los catálogos a los traductores.
 <!-- @end -->

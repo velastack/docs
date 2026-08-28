@@ -8,11 +8,11 @@ A schema is a Zod schema for validating data. Vela uses TypeScript definitions t
 ### Syntax
 
 ```
-$ vela generate schema <name> [fields...]
+$ vela generate schema [model] [fields...]
 ```
 
 ```
-$ vela generate schema categories name:string
+$ vela generate schema categories name:text
 ```
 
 This will create a Zod schema for a resource. The file created is:
@@ -21,26 +21,34 @@ This will create a Zod schema for a resource. The file created is:
 src/lib/schemas/category.ts
 ```
 
+No database collection is created — use [resource](/generate/resource) for that.
+
+### Options
+
+- `--ai <description>` - Design the schema with AI from a natural-language description
+
 ### AI
 
 <Badge variant="outline">Pro</Badge>
 
-The generate schema command supports the `--ai` option for freeform text input in place of specifying the fields.
+`--ai` designs the schema from a natural-language description. Pass a description _instead of_ a model name and fields — passing both is an error.
 
 ```
-$ vela generate schema recipes --ai "a cooking recipe with ingredients and amounts"
+$ vela generate schema --ai "a cooking recipe with ingredients and amounts"
 ```
+
+Requires an account and a linked project — run [`vela login`](/account/login) and [`vela link`](/link) first.
 <!-- @es -->
-Un esquema es un esquema Zod para validar datos. Vela usa definiciones de TypeScript para asegurar que el esquema Zod se mantenga sincronizado con el esquema de la base de datos. Si `fields` no se proporciona, el esquema se generará basado en el esquema de base de datos existente.
+Un esquema es un esquema Zod para validar datos. Vela usa definiciones de TypeScript para garantizar que el esquema Zod se mantiene sincronizado con el esquema de la base de datos. Si no se proporciona `fields`, el esquema se generará a partir del esquema de base de datos existente.
 
 ### Sintaxis
 
 ```
-$ vela generate schema <name> [fields...]
+$ vela generate schema [model] [fields...]
 ```
 
 ```
-$ vela generate schema categories name:string
+$ vela generate schema categories name:text
 ```
 
 Esto creará un esquema Zod para un recurso. El archivo creado es:
@@ -49,13 +57,21 @@ Esto creará un esquema Zod para un recurso. El archivo creado es:
 src/lib/schemas/category.ts
 ```
 
+No se crea ninguna colección en la base de datos — usa [resource](/es/generate/resource) para eso.
+
+### Opciones
+
+- `--ai <description>` - Diseñar el esquema con IA a partir de una descripción en lenguaje natural
+
 ### IA
 
 <Badge variant="outline">Pro</Badge>
 
-El comando de generación de esquema admite la opción `--ai` para entrada de texto libre en lugar de especificar los campos.
+`--ai` diseña el esquema a partir de una descripción en lenguaje natural. Pasa una descripción _en lugar de_ un nombre de modelo y campos — pasar ambos es un error.
 
 ```
-$ vela generate schema recipes --ai "a cooking recipe with ingredients and amounts"
+$ vela generate schema --ai "a cooking recipe with ingredients and amounts"
 ```
+
+Requiere una cuenta y un proyecto vinculado — ejecuta primero [`vela login`](/es/account/login) y [`vela link`](/es/link).
 <!-- @end -->

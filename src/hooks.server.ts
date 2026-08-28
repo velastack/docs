@@ -5,8 +5,8 @@ import { locales } from '$locales/data.js';
 import { getLocale } from '$locales/main.url';
 
 // load at server startup
-loadLocales(main.key, main.loadIDs, main.loadCatalog, locales);
-loadLocales(js.key, js.loadIDs, js.loadCatalog, locales);
+loadLocales(main.key, main.loadCount, main.loadCatalog, locales);
+loadLocales(js.key, js.loadCount, js.loadCatalog, locales);
 
 export const handle = async ({ event, resolve }) => {
 	let locale = getLocale(event.url);

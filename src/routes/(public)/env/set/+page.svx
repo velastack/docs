@@ -1,0 +1,37 @@
+<!-- @en -->
+Set an environment variable.
+
+### Syntax
+
+```
+$ vela env set <key> [value]
+```
+
+```
+$ vela env set STRIPE_SECRET_KEY                  # prompts, without echo
+$ vela env set PUBLIC_APP_NAME "My App"
+$ vela env set STRIPE_SECRET_KEY -t production
+```
+
+Omit the value and you'll be prompted for it without echo, which keeps secrets out of your shell history. The key has to be a valid environment variable name.
+
+Setting a variable on a remote target restarts the instance so the new value takes effect; setting one locally applies it to the running dev server. Defaults to `-t local`.
+<!-- @es -->
+Define una variable de entorno.
+
+### Sintaxis
+
+```
+$ vela env set <key> [value]
+```
+
+```
+$ vela env set STRIPE_SECRET_KEY                  # pregunta, sin eco
+$ vela env set PUBLIC_APP_NAME "My App"
+$ vela env set STRIPE_SECRET_KEY -t production
+```
+
+Si omites el valor, se te pedirá sin eco, lo que mantiene los secretos fuera del historial del shell. La clave tiene que ser un nombre válido de variable de entorno.
+
+Definir una variable en un objetivo remoto reinicia la instancia para que el nuevo valor surta efecto; definirla en local la aplica al servidor de desarrollo en ejecución. Por defecto usa `-t local`.
+<!-- @end -->

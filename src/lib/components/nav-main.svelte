@@ -13,6 +13,7 @@
 		items: {
 			title: string;
 			url: string;
+			badge?: string;
 			items?: {
 				title: string;
 				url: string;
@@ -41,6 +42,9 @@
 					{#snippet child({ props })}
 						<a href={url} {...props}>
 							<span>{item.title}</span>
+							{#if item.badge}
+								<Badge variant="outline">{item.badge}</Badge>
+							{/if}
 						</a>
 					{/snippet}
 				</Sidebar.MenuButton>

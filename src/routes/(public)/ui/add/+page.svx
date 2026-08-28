@@ -1,29 +1,41 @@
 <!-- @en -->
-The add command is used to add a new Shadcn-Svelte component to the application.
+The add command is used to add shadcn-svelte components to the application.
 
 ### Syntax
 
 ```
-$ vela ui add
+$ vela ui add <components...>
 ```
 
 ```
 $ vela ui add button
 ```
 
-This will add the button component to the application.
+```
+$ vela ui add button card dialog
+```
+
+Several components can be added in one go. They are installed into `src/lib/components/ui`, as ordinary files you own and can edit.
+
+The [generators](/generate) add the components they need on their own, so this is for the ones you reach for yourself.
 <!-- @es -->
-El comando add se utiliza para añadir un nuevo componente Shadcn-Svelte a la aplicación.
+El comando add se usa para añadir componentes de shadcn-svelte a la aplicación.
 
 ### Sintaxis
 
 ```
-$ vela ui add
+$ vela ui add <components...>
 ```
 
 ```
 $ vela ui add button
 ```
 
-Esto agregará el componente de botón a la aplicación.
+```
+$ vela ui add button card dialog
+```
+
+Se pueden añadir varios componentes de una vez. Se instalan en `src/lib/components/ui`, como archivos corrientes que te pertenecen y puedes editar.
+
+Los [generadores](/es/generate) añaden por su cuenta los componentes que necesitan, así que esto es para los que busques tú mismo.
 <!-- @end -->

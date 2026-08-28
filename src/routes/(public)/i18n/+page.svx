@@ -1,5 +1,31 @@
 <!-- @en -->
-Manage internationalization in the SvelteKit project, powered by Wuchale.
+Utilities for working with translations, once [`vela enable i18n`](/enable/i18n) has set the project up. Each is a wrapper around [Wuchale](https://wuchale.dev), run with the project's package manager.
+
+### Syntax
+
+```
+$ vela i18n <command>
+```
+
+- [`extract`](/i18n/extract) - Extract translatable strings
+- [`watch`](/i18n/watch) - Watch and extract translatable strings
+- [`status`](/i18n/status) - Show i18n status
+- [`clean`](/i18n/clean) - Clean unused translatable strings
+
+`extract` is the default: `vela i18n` with no subcommand runs it.
 <!-- @es -->
-Gestiona la internacionalización en el proyecto SvelteKit, potenciado por Wuchale.
+Utilidades para trabajar con las traducciones, una vez que [`vela enable i18n`](/es/enable/i18n) ha preparado el proyecto. Cada una es un envoltorio de [Wuchale](https://wuchale.dev), ejecutado con el gestor de paquetes del proyecto.
+
+### Sintaxis
+
+```
+$ vela i18n <command>
+```
+
+- [`extract`](/es/i18n/extract) - Extraer las cadenas traducibles
+- [`watch`](/es/i18n/watch) - Vigilar y extraer las cadenas traducibles
+- [`status`](/es/i18n/status) - Mostrar el estado de i18n
+- [`clean`](/es/i18n/clean) - Limpiar las cadenas traducibles sin usar
+
+`extract` es el comando por defecto: `vela i18n` sin subcomando lo ejecuta.
 <!-- @end -->

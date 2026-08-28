@@ -12,7 +12,7 @@ export const load = async ({ parent }) => {
 			{
 				title: 'PostgreSQL',
 				url: /* @wc-url */ '/backend/postgres',
-				badge: 'Preview',
+				badge: 'Planned',
 				description: 'A powerful, full-featured database backend.'
 			}
 		]

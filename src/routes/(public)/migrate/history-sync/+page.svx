@@ -1,0 +1,25 @@
+<!-- @en -->
+Drop migration history rows whose files no longer exist.
+
+### Syntax
+
+```
+$ vela migrate history-sync
+```
+
+The database records which migrations it has applied. If a migration file is deleted — a branch switch, a rebase, a squashed set of migrations — the record is left pointing at a file that isn't there. This removes those rows so the history matches what is on disk.
+
+It only touches the history table; it does not undo anything a deleted migration did to the schema. Run [`vela migrate up`](/migrate/up) afterwards if the sync surfaces migrations that now count as pending.
+<!-- @es -->
+Elimina las filas del historial de migraciones cuyos archivos ya no existen.
+
+### Sintaxis
+
+```
+$ vela migrate history-sync
+```
+
+La base de datos registra qué migraciones ha aplicado. Si se borra un archivo de migración — un cambio de rama, un rebase, un conjunto de migraciones aplastadas — el registro queda apuntando a un archivo que no está. Esto elimina esas filas para que el historial coincida con lo que hay en disco.
+
+Solo toca la tabla del historial; no deshace nada de lo que una migración borrada le hizo al esquema. Ejecuta después [`vela migrate up`](/es/migrate/up) si la sincronización deja migraciones que ahora cuentan como pendientes.
+<!-- @end -->

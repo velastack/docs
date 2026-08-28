@@ -1,0 +1,59 @@
+<!-- @en -->
+Remove internationalization, added by [`vela enable i18n`](/enable/i18n).
+
+### Syntax
+
+```
+$ vela disable i18n
+```
+
+### Options
+
+- `-y, --yes` - Skip the confirmation prompt
+
+### What it removes
+
+- The i18n scaffolding files
+- The Wuchale block in `.gitignore`
+
+### Reverted by hand
+
+Wuchale threads through enough of the project's configuration that these files are left for you to revert:
+
+```
+vite.config.ts
+svelte.config.js
+src/hooks.server.ts
+src/app.html
+src/routes/+layout.ts
+```
+<!-- @es -->
+Elimina la internacionalización, añadida por [`vela enable i18n`](/es/enable/i18n).
+
+### Sintaxis
+
+```
+$ vela disable i18n
+```
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+
+### Qué elimina
+
+- Los archivos de andamiaje de i18n
+- El bloque de Wuchale en `.gitignore`
+
+### Revertido a mano
+
+Wuchale se entreteje con suficiente configuración del proyecto como para que estos archivos se dejen para que los reviertas tú:
+
+```
+vite.config.ts
+svelte.config.js
+src/hooks.server.ts
+src/app.html
+src/routes/+layout.ts
+```
+<!-- @end -->

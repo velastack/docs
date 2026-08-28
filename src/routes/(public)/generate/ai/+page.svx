@@ -1,45 +1,53 @@
+<script lang="ts">
+    import { Badge } from '$lib/components/ui/badge';
+</script>
+
 <!-- @en -->
-The AI command takes an optional prompt and spawns a local whiteboard interface for developing the database schema iteratively with AI. Requires a Vela Pro subscription.
+The whiteboard interface described below is planned and not yet shipped. There is no `vela generate ai` command today.
 
-### Syntax
+### Available today
 
-```
-$ vela generate ai [prompt]
-```
+AI design is a `--ai` option on the individual generators. Pass a natural-language description _instead of_ a model name and fields:
 
 ```
-$ vela generate ai "appointment booking system for tailors"
-Generating...
-✨ Open the whiteboard interface at http://localhost:4371
+$ vela generate schema --ai "a cooking recipe with ingredients and amounts"
+$ vela generate form --ai "a feedback form with a 1-5 star rating"
+$ vela generate scaffold --ai "listing info for hotels"
 ```
 
-### Whiteboard
+For forms and scaffolds this runs in two stages — first the schema, then the layout — with a chance to refine each before anything is written. See [schema](/generate/schema), [form](/generate/form) and [scaffold](/generate/scaffold).
 
-The whiteboard interface allows you to design the database schema by dragging and dropping models, forms and scaffolding onto the canvas. Use the prompt input for fine-tuning the schema with AI.
+Requires an account and a linked project — run [`vela login`](/account/login) and [`vela link`](/link) first.
 
-### Committing changes
+### Planned: whiteboard
 
-When you're happy with the schema, you can commit the changes to the database by clicking the Commit button. This will generate the necessary files and migrations.
+<div class="flex gap-1">
+	<Badge variant="outline">Planned</Badge>
+</div>
+
+A local whiteboard interface for developing the database schema iteratively: drag models, forms and scaffolding onto a canvas, refine the schema with a prompt, and commit the result to generate the files and migrations in one step.
 <!-- @es -->
-The AI command takes an optional prompt and spawns a local whiteboard interface for developing the database schema iteratively with AI. Requires a Vela Pro subscription.
+La interfaz de pizarra que se describe a continuación está planificada y aún no está disponible. Hoy no existe un comando `vela generate ai`.
 
-### Sintaxis
+### Disponible hoy
 
-```
-$ vela generate ai [prompt]
-```
+El diseño con IA es una opción `--ai` en los generadores individuales. Pasa una descripción en lenguaje natural _en lugar de_ un nombre de modelo y campos:
 
 ```
-$ vela generate ai "appointment booking system for tailors"
-Generating...
-✨ Open the whiteboard interface at http://localhost:4371
+$ vela generate schema --ai "a cooking recipe with ingredients and amounts"
+$ vela generate form --ai "a feedback form with a 1-5 star rating"
+$ vela generate scaffold --ai "listing info for hotels"
 ```
 
-### Pizarra
+Para formularios y scaffolds esto se ejecuta en dos fases — primero el esquema, después el diseño — con la posibilidad de refinar cada una antes de que se escriba nada. Consulta [schema](/es/generate/schema), [form](/es/generate/form) y [scaffold](/es/generate/scaffold).
 
-La interfaz de pizarra permite diseñar el esquema de la base de datos arrastrando y soltando modelos, formularios y scaffolding sobre el lienzo. Use el input de prompt para ajustar el esquema con IA.
+Requiere una cuenta y un proyecto vinculado — ejecuta primero [`vela login`](/es/account/login) y [`vela link`](/es/link).
 
-### Confirmando cambios
+### Planificado: pizarra
 
-Cuando estés satisfecho con el esquema, puedes confirmar los cambios en la base de datos haciendo clic en el botón Commit. Esto generará los archivos y migraciones necesarios.
+<div class="flex gap-1">
+	<Badge variant="outline">Planned</Badge>
+</div>
+
+Una interfaz de pizarra local para desarrollar el esquema de la base de datos de forma iterativa: arrastra modelos, formularios y scaffolding a un lienzo, refina el esquema con un prompt y confirma el resultado para generar los archivos y las migraciones en un solo paso.
 <!-- @end -->

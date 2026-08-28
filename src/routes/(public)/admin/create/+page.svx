@@ -1,0 +1,51 @@
+<!-- @en -->
+Create a login for the admin panel.
+
+### Syntax
+
+```
+$ vela admin create [email]
+```
+
+```
+$ vela admin create
+$ vela admin create me@example.com -t production
+```
+
+The email is prompted for when omitted, and the password is always prompted for, without echo. It must be at least 10 characters — PocketBase's own minimum for a superuser. Creating a login for an email that already has one updates its password.
+
+The URL to sign in at is printed when the command finishes.
+
+### Options
+
+- `-t, --target <target>` - Which copy of the app to act on, defaults to `local`
+- `--server <ssh>` - Server this target runs on, recorded on first use
+- `-i, --identity <file>` - SSH private key to authenticate with
+- `--ssh-port <port>` - SSH port
+- `--accept-host-keys` - Trust an unknown host key on first connect (CI)
+<!-- @es -->
+Crea un inicio de sesión para el panel de administración.
+
+### Sintaxis
+
+```
+$ vela admin create [email]
+```
+
+```
+$ vela admin create
+$ vela admin create me@example.com -t production
+```
+
+El correo electrónico se solicita cuando se omite, y la contraseña siempre se solicita, sin eco. Debe tener al menos 10 caracteres — el mínimo propio de PocketBase para un superusuario. Crear un inicio de sesión para un correo que ya tiene uno actualiza su contraseña.
+
+La URL para iniciar sesión se imprime cuando el comando termina.
+
+### Opciones
+
+- `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `local`
+- `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
+- `-i, --identity <file>` - Clave privada SSH con la que autenticarse
+- `--ssh-port <port>` - Puerto SSH
+- `--accept-host-keys` - Confiar en una clave de host desconocida en la primera conexión (CI)
+<!-- @end -->

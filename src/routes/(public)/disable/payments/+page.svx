@@ -1,0 +1,47 @@
+<!-- @en -->
+Remove Stripe payments, added by [`vela enable payments`](/enable/payments).
+
+### Syntax
+
+```
+$ vela disable payments
+```
+
+### Options
+
+- `-y, --yes` - Skip the confirmation prompt
+
+### What it removes
+
+- The Stripe collections, and every record in them
+- The Stripe credentials in the environment
+- The generated payment files, webhooks and nav / signup edits
+
+### What it leaves
+
+- Products and prices in your Stripe dashboard — nothing is deleted at Stripe
+- The `stripe` and `@stripe/stripe-js` packages
+<!-- @es -->
+Elimina los pagos con Stripe, añadidos por [`vela enable payments`](/es/enable/payments).
+
+### Sintaxis
+
+```
+$ vela disable payments
+```
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+
+### Qué elimina
+
+- Las colecciones de Stripe, y todos los registros que contienen
+- Las credenciales de Stripe en el entorno
+- Los archivos de pagos generados, los webhooks y las modificaciones de la navegación y el registro
+
+### Qué deja
+
+- Los productos y precios en tu panel de Stripe — no se borra nada en Stripe
+- Los paquetes `stripe` y `@stripe/stripe-js`
+<!-- @end -->

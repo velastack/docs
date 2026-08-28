@@ -1,0 +1,33 @@
+<!-- @en -->
+Manage logins for the PocketBase admin panel.
+
+### Syntax
+
+```
+$ vela admin <command>
+```
+
+- [`create`](/admin/create) - Create a login for the admin panel
+
+### The admin panel
+
+The admin interface is served at `/admin`, in development and on a deployed app alike. It is PocketBase's own UI: collections, records, settings, logs and backups. Admin logins are superusers, entirely separate from your application's [users](/enable/auth).
+
+The first superuser is created for you by [`vela create`](/create), and its credentials are written to `.env`. Use [`vela admin create`](/admin/create) to add a login for a colleague, or to give yourself one on a deployed target.
+<!-- @es -->
+Gestiona los inicios de sesión del panel de administración de PocketBase.
+
+### Sintaxis
+
+```
+$ vela admin <command>
+```
+
+- [`create`](/es/admin/create) - Crear un inicio de sesión para el panel de administración
+
+### El panel de administración
+
+La interfaz de administración se sirve en `/admin`, tanto en desarrollo como en una aplicación desplegada. Es la propia interfaz de PocketBase: colecciones, registros, configuración, logs y copias de seguridad. Los inicios de sesión de administración son superusuarios, completamente separados de los [usuarios](/es/enable/auth) de tu aplicación.
+
+El primer superusuario lo crea por ti [`vela create`](/es/create), y sus credenciales se escriben en `.env`. Usa [`vela admin create`](/es/admin/create) para añadir un inicio de sesión para un colega, o para darte uno a ti mismo en un objetivo desplegado.
+<!-- @end -->

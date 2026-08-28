@@ -14,6 +14,24 @@
 				url: /* @wc-url */ '/ethos'
 			},
 			{
+				title: 'CLI Reference',
+				url: /* @wc-url */ '/cli',
+				items: [
+					{
+						title: 'Installation',
+						url: /* @wc-url */ '/cli/installation'
+					},
+					{
+						title: 'Project Structure',
+						url: /* @wc-url */ '/cli/project-structure'
+					},
+					{
+						title: 'Environment Variables',
+						url: /* @wc-url */ '/cli/environment-variables'
+					}
+				]
+			},
+			{
 				title: 'Backend',
 				url: /* @wc-url */ '/backend',
 				items: [
@@ -24,21 +42,7 @@
 					{
 						title: 'PostgreSQL',
 						url: /* @wc-url */ '/backend/postgres',
-						badge: 'Preview'
-					}
-				]
-			},
-			{
-				title: 'CLI Reference',
-
-				items: [
-					{
-						title: 'Installation',
-						url: /* @wc-url */ '/cli/installation'
-					},
-					{
-						title: 'Environment Variables',
-						url: /* @wc-url */ '/cli/environment-variables'
+						badge: 'Planned'
 					}
 				]
 			},
@@ -47,12 +51,20 @@
 				url: /* @wc-url */ '/create'
 			},
 			{
+				title: 'Bless',
+				url: /* @wc-url */ '/bless'
+			},
+			{
 				title: 'Dev',
 				url: /* @wc-url */ '/dev'
 			},
 			{
 				title: 'Build',
 				url: /* @wc-url */ '/build'
+			},
+			{
+				title: 'Preview',
+				url: /* @wc-url */ '/preview'
 			},
 			{
 				title: 'Generate',
@@ -75,6 +87,10 @@
 						url: /* @wc-url */ '/generate/scaffold'
 					},
 					{
+						title: 'Migration',
+						url: /* @wc-url */ '/generate/migration'
+					},
+					{
 						title: 'AI',
 						url: /* @wc-url */ '/generate/ai',
 						badge: 'Pro'
@@ -83,12 +99,38 @@
 			},
 			{
 				title: 'Destroy',
-				url: /* @wc-url */ '/destroy'
+				url: /* @wc-url */ '/destroy',
+				items: [
+					{
+						title: 'Form',
+						url: /* @wc-url */ '/destroy/form'
+					},
+					{
+						title: 'Resource',
+						url: /* @wc-url */ '/destroy/resource'
+					},
+					{
+						title: 'Schema',
+						url: /* @wc-url */ '/destroy/schema'
+					},
+					{
+						title: 'Scaffold',
+						url: /* @wc-url */ '/destroy/scaffold'
+					},
+					{
+						title: 'Deployment',
+						url: /* @wc-url */ '/destroy/deployment'
+					}
+				]
 			},
 			{
 				title: 'Enable',
 				url: /* @wc-url */ '/enable',
 				items: [
+					{
+						title: 'Backend',
+						url: /* @wc-url */ '/enable/backend'
+					},
 					{
 						title: 'Auth',
 						url: /* @wc-url */ '/enable/auth'
@@ -110,8 +152,12 @@
 						url: /* @wc-url */ '/enable/smtp'
 					},
 					{
-						title: 'Notifications',
-						url: /* @wc-url */ '/enable/notifications'
+						title: 'Blog',
+						url: /* @wc-url */ '/enable/blog'
+					},
+					{
+						title: 'Content Negotiation',
+						url: /* @wc-url */ '/enable/content-negotiation'
 					},
 					{
 						title: 'i18n',
@@ -130,48 +176,91 @@
 					{
 						title: 'Subscriptions',
 						url: /* @wc-url */ '/enable/subscriptions',
-						badge: 'Preview'
+						badge: 'Pro'
+					},
+					{
+						title: 'Notifications',
+						url: /* @wc-url */ '/enable/notifications',
+						badge: 'Planned'
 					},
 					{
 						title: 'CMS',
 						url: /* @wc-url */ '/enable/cms',
-						badge: 'Preview'
-					},
-					{
-						title: 'Workflow',
-						url: /* @wc-url */ '/enable/workflow',
-						badge: 'Preview'
-					},
-					{
-						title: 'WhatsApp',
-						url: /* @wc-url */ '/enable/whatsapp',
-						badge: 'Preview'
+						badge: 'Planned'
 					}
 				]
 			},
 			{
 				title: 'Disable',
-				url: /* @wc-url */ '/disable'
-			},
-			{
-				title: 'i18n',
-				url: /* @wc-url */ '/i18n',
+				url: /* @wc-url */ '/disable',
 				items: [
 					{
-						title: 'Extract',
-						url: /* @wc-url */ '/i18n/extract'
+						title: 'Auth',
+						url: /* @wc-url */ '/disable/auth'
 					},
 					{
-						title: 'Watch',
-						url: /* @wc-url */ '/i18n/watch'
+						title: 'API',
+						url: /* @wc-url */ '/disable/api'
 					},
 					{
-						title: 'Status',
-						url: /* @wc-url */ '/i18n/status'
+						title: 'API Keys',
+						url: /* @wc-url */ '/disable/api-keys'
 					},
 					{
-						title: 'Clean',
-						url: /* @wc-url */ '/i18n/clean'
+						title: 'Backend',
+						url: /* @wc-url */ '/disable/backend'
+					},
+					{
+						title: 'Content Negotiation',
+						url: /* @wc-url */ '/disable/content-negotiation'
+					},
+					{
+						title: 'i18n',
+						url: /* @wc-url */ '/disable/i18n'
+					},
+					{
+						title: 'S3',
+						url: /* @wc-url */ '/disable/s3'
+					},
+					{
+						title: 'SMTP',
+						url: /* @wc-url */ '/disable/smtp'
+					},
+					{
+						title: 'Teams',
+						url: /* @wc-url */ '/disable/teams',
+						badge: 'Pro'
+					},
+					{
+						title: 'Payments',
+						url: /* @wc-url */ '/disable/payments',
+						badge: 'Pro'
+					}
+				]
+			},
+			{
+				title: 'Migrate',
+				url: /* @wc-url */ '/migrate',
+				items: [
+					{
+						title: 'Up',
+						url: /* @wc-url */ '/migrate/up'
+					},
+					{
+						title: 'Down',
+						url: /* @wc-url */ '/migrate/down'
+					},
+					{
+						title: 'Create',
+						url: /* @wc-url */ '/migrate/create'
+					},
+					{
+						title: 'Collections',
+						url: /* @wc-url */ '/migrate/collections'
+					},
+					{
+						title: 'History Sync',
+						url: /* @wc-url */ '/migrate/history-sync'
 					}
 				]
 			},
@@ -184,12 +273,13 @@
 				url: /* @wc-url */ '/test',
 				items: [
 					{
-						title: 'Unit',
-						url: /* @wc-url */ '/test/unit'
+						title: 'Server',
+						url: /* @wc-url */ '/test/server'
 					},
 					{
-						title: 'Integration',
-						url: /* @wc-url */ '/test/integration'
+						title: 'Unit',
+						url: /* @wc-url */ '/test/unit',
+						badge: 'Planned'
 					}
 				]
 			},
@@ -266,8 +356,35 @@
 				]
 			},
 			{
+				title: 'i18n',
+				url: /* @wc-url */ '/i18n',
+				items: [
+					{
+						title: 'Extract',
+						url: /* @wc-url */ '/i18n/extract'
+					},
+					{
+						title: 'Watch',
+						url: /* @wc-url */ '/i18n/watch'
+					},
+					{
+						title: 'Status',
+						url: /* @wc-url */ '/i18n/status'
+					},
+					{
+						title: 'Clean',
+						url: /* @wc-url */ '/i18n/clean'
+					}
+				]
+			},
+			{
 				title: 'Routes',
 				url: /* @wc-url */ '/routes'
+			},
+			{
+				title: 'OAuth',
+				url: /* @wc-url */ '/oauth',
+				badge: 'Planned'
 			},
 			{
 				title: 'Provision',
@@ -276,6 +393,54 @@
 			{
 				title: 'Deploy',
 				url: /* @wc-url */ '/deploy'
+			},
+			{
+				title: 'Status',
+				url: /* @wc-url */ '/status'
+			},
+			{
+				title: 'Logs',
+				url: /* @wc-url */ '/logs'
+			},
+			{
+				title: 'Rollback',
+				url: /* @wc-url */ '/rollback'
+			},
+			{
+				title: 'Targets',
+				url: /* @wc-url */ '/targets'
+			},
+			{
+				title: 'Env',
+				url: /* @wc-url */ '/env',
+				items: [
+					{
+						title: 'List',
+						url: /* @wc-url */ '/env/list'
+					},
+					{
+						title: 'Set',
+						url: /* @wc-url */ '/env/set'
+					},
+					{
+						title: 'Unset',
+						url: /* @wc-url */ '/env/unset'
+					},
+					{
+						title: 'Import',
+						url: /* @wc-url */ '/env/import'
+					}
+				]
+			},
+			{
+				title: 'Admin',
+				url: /* @wc-url */ '/admin',
+				items: [
+					{
+						title: 'Create',
+						url: /* @wc-url */ '/admin/create'
+					}
+				]
 			},
 			{
 				title: 'Serverless',
@@ -322,6 +487,10 @@
 				]
 			},
 			{
+				title: 'Link',
+				url: /* @wc-url */ '/link'
+			},
+			{
 				title: 'Helpers',
 				url: /* @wc-url */ '/helpers',
 				items: [
@@ -330,9 +499,13 @@
 						url: /* @wc-url */ '/helpers/pocketbase'
 					},
 					{
+						title: 'Kit',
+						url: /* @wc-url */ '/helpers/kit'
+					},
+					{
 						title: 'PostgreSQL',
 						url: /* @wc-url */ '/helpers/postgres',
-						badge: 'Preview'
+						badge: 'Planned'
 					},
 					{
 						title: 'GitHub Action',

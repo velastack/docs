@@ -1,0 +1,33 @@
+<!-- @en -->
+Create a new blank migration to fill in by hand.
+
+### Syntax
+
+```
+$ vela migrate create <name>
+```
+
+```
+$ vela migrate create backfill_slugs
+```
+
+The name is snake_case. A timestamped file is written to `migrations` with empty up and down handlers for you to write, then applied with [`vela migrate up`](/migrate/up).
+
+`vela migrate new` is an alias. For a schema change to an existing collection, prefer [`vela generate migration`](/generate/migration), which writes the handlers for you — this command is for data migrations and anything else bespoke.
+<!-- @es -->
+Crea una migración nueva en blanco para completarla a mano.
+
+### Sintaxis
+
+```
+$ vela migrate create <name>
+```
+
+```
+$ vela migrate create backfill_slugs
+```
+
+El nombre va en snake_case. Se escribe en `migrations` un archivo con marca de tiempo y manejadores up y down vacíos para que los escribas, y después se aplica con [`vela migrate up`](/es/migrate/up).
+
+`vela migrate new` es un alias. Para un cambio de esquema en una colección existente, es preferible [`vela generate migration`](/es/generate/migration), que escribe los manejadores por ti — este comando es para migraciones de datos y cualquier otra cosa a medida.
+<!-- @end -->

@@ -1,0 +1,29 @@
+<!-- @en -->
+Configure OAuth providers from the command line.
+
+### Syntax
+
+```
+$ vela oauth
+```
+
+The command is registered but not yet implemented — running it reports that the feature isn't available.
+
+### Today
+
+OAuth works out of the box once [auth](/enable/auth) is enabled. Configure the providers in the PocketBase admin interface at `/admin`, and any provider you enable there appears in the generated sign-in flow. The `oauth_accounts` collection links provider identities to your users.
+<!-- @es -->
+Configura proveedores de OAuth desde la línea de comandos.
+
+### Sintaxis
+
+```
+$ vela oauth
+```
+
+El comando está registrado pero aún no implementado — al ejecutarlo se informa de que la función no está disponible.
+
+### Hoy
+
+OAuth funciona de serie una vez que la [autenticación](/es/enable/auth) está habilitada. Configura los proveedores en la interfaz de administración de PocketBase en `/admin`, y cualquier proveedor que habilites ahí aparecerá en el flujo de inicio de sesión generado. La colección `oauth_accounts` vincula las identidades de los proveedores con tus usuarios.
+<!-- @end -->

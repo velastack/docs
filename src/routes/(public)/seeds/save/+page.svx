@@ -1,46 +1,33 @@
 <!-- @en -->
-Save the current database records as seed files in the `data/seeds` directory.
-
-Use this when you have established baseline application data that should be versioned with the project and reused across environments. Seeds are intended for canonical records such as roles, plans, statuses, locales, settings, and other small system datasets.
-
-This command captures the current records and writes them as reusable seed data for future loads.
-
-Seeds should remain intentional, stable, and low in volume.
+Save the data currently in the database as seed files.
 
 ### Syntax
 
 ```
-$ vela seeds save [options]
+$ vela seeds save
 ```
+
+This writes the current records to the `data/seeds` directory. The order of files is determined by the database schema — collections that depend on other collections are saved later, so the files load back in a workable order.
 
 ### Options
 
-#### `-f, --force`
+- `-f, --force` - Overwrite existing seed files
 
-Overwrite existing seed files.
-
-Use when updating the canonical seed dataset and replacing previously saved seed definitions.
-
+Without `--force`, existing seed files are left alone rather than replaced.
 <!-- @es -->
-Guardar los registros actuales de la base de datos como archivos de semilla en el directorio `data/seeds`.
-
-Usa este comando cuando tengas datos base de aplicación establecidos que deberían ser versionados con el proyecto y reutilizados en todos los entornos. Las semillas están destinadas a registros canónicos como roles, planes, estados, locales, configuraciones, y otros pequeños datasets del sistema.
-
-Este comando captura los registros actuales y los escribe como datos de semilla reutilizables para futuras cargas.
-
-Las semillas deberían permanecer intencionales, estables, y de bajo volumen.
+Guarda los datos que hay actualmente en la base de datos como archivos de seeds.
 
 ### Sintaxis
 
 ```
-$ vela seeds save [options]
+$ vela seeds save
 ```
+
+Esto escribe los registros actuales en el directorio `data/seeds`. El orden de los archivos lo determina el esquema de la base de datos — las colecciones que dependen de otras se guardan después, de modo que los archivos se cargan de vuelta en un orden viable.
 
 ### Opciones
 
-#### `-f, --force`
+- `-f, --force` - Sobrescribir los archivos de seeds existentes
 
-Sobrescribe archivos de semilla existentes.
-
-Use cuando actualices el dataset de semilla canónica y reemplaces las definiciones de semilla guardadas previamente.
+Sin `--force`, los archivos de seeds existentes se dejan intactos en lugar de reemplazarse.
 <!-- @end -->

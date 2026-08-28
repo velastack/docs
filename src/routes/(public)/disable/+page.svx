@@ -9,31 +9,26 @@ $ vela disable <feature>
 
 The following features can be disabled:
 
-- `auth` - Disable auth
+- [`auth`](/disable/auth) - Disable authentication
+- [`api`](/disable/api) - Disable the REST API
+- [`api-keys`](/disable/api-keys) - Disable API key management
+- [`backend`](/disable/backend) - Disable the PocketBase backend
+- [`content-negotiation`](/disable/content-negotiation) - Disable content negotiation
+- [`i18n`](/disable/i18n) - Disable internationalization
+- [`teams`](/disable/teams) - Disable teams
+- [`payments`](/disable/payments) - Disable payments
+- [`s3`](/disable/s3) - Disable S3 file storage
+- [`smtp`](/disable/smtp) - Disable SMTP configuration
 
-- `api` - Disable API
+### Options
 
-- `api-keys` - Disable API keys
+Every feature that changes files prompts before it does so. Pass `-y` or `--yes` to skip that confirmation. `s3` and `smtp` only flip a PocketBase setting, so they take no options.
 
-- `s3` - Disable S3
+### What disabling does not do
 
-- `smtp` - Disable SMTP
-
-- `i18n` - Disable internationalization
-
-- `teams` - Disable teams
-
-- `payments` - Disable payments
-
-- `subscriptions` - Disable subscriptions
-
-- `cms` - Disable the content management system
-
-- `workflow` - Disable Workflow
-
-- `whatsapp` - Disable WhatsApp
+Disabling reverts the code Vela generated. It deliberately stops short of destroying data you may still want: `disable auth` leaves the `users` collection and its records alone, `disable backend` leaves the installed packages in place, and `disable payments` leaves your Stripe dashboard untouched. Each page lists what it leaves behind.
 <!-- @es -->
-El comando disable se utiliza para desactivar características habilitadas por el comando enable.
+El comando disable se usa para desactivar funciones habilitadas con el comando enable.
 
 ### Sintaxis
 
@@ -41,29 +36,24 @@ El comando disable se utiliza para desactivar características habilitadas por e
 $ vela disable <feature>
 ```
 
-Las siguientes características pueden ser deshabilitadas:
+Se pueden desactivar las siguientes funciones:
 
-- `auth` - Deshabilitar autenticación
+- [`auth`](/es/disable/auth) - Desactivar la autenticación
+- [`api`](/es/disable/api) - Desactivar la API REST
+- [`api-keys`](/es/disable/api-keys) - Desactivar la gestión de claves de API
+- [`backend`](/es/disable/backend) - Desactivar el backend de PocketBase
+- [`content-negotiation`](/es/disable/content-negotiation) - Desactivar la negociación de contenido
+- [`i18n`](/es/disable/i18n) - Desactivar la internacionalización
+- [`teams`](/es/disable/teams) - Desactivar los equipos
+- [`payments`](/es/disable/payments) - Desactivar los pagos
+- [`s3`](/es/disable/s3) - Desactivar el almacenamiento de archivos en S3
+- [`smtp`](/es/disable/smtp) - Desactivar la configuración de SMTP
 
-- `api` - Deshabilitar API
+### Opciones
 
-- `api-keys` - Deshabilitar claves de API
+Cada función que modifica archivos pide confirmación antes de hacerlo. Pasa `-y` o `--yes` para omitirla. `s3` y `smtp` solo cambian un ajuste de PocketBase, así que no aceptan opciones.
 
-- `s3` - Deshabilitar S3
+### Lo que desactivar no hace
 
-- `smtp` - Deshabilitar SMTP
-
-- `i18n` - Deshabilitar internacionalización
-
-- `teams` - Deshabilitar equipos
-
-- `payments` - Deshabilitar pagos
-
-- `subscriptions` - Deshabilitar suscripciones
-
-- `cms` - Deshabilitar CMS
-
-- `workflow` - Deshabilitar workflow
-
-- `whatsapp` - Deshabilitar WhatsApp
+Desactivar revierte el código que Vela generó. Se detiene deliberadamente antes de destruir datos que quizá aún quieras: `disable auth` deja intacta la colección `users` y sus registros, `disable backend` deja instalados los paquetes, y `disable payments` no toca tu panel de Stripe. Cada página indica qué deja atrás.
 <!-- @end -->

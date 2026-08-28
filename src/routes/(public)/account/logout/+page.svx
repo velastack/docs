@@ -7,9 +7,9 @@ Logout of your account on velastack.dev.
 $ vela logout
 ```
 
-This will log you out of your account.
+This clears the API key from `~/.vela/config.json`. `vela signout` is an alias.
 <!-- @es -->
-Cierra sesión de tu cuenta en velastack.dev.
+Cierra la sesión de tu cuenta en velastack.dev.
 
 ### Sintaxis
 
@@ -17,5 +17,5 @@ Cierra sesión de tu cuenta en velastack.dev.
 $ vela logout
 ```
 
-Esto cerrará tu sesión.
+Esto borra la clave de API de `~/.vela/config.json`. `vela signout` es un alias.
 <!-- @end -->

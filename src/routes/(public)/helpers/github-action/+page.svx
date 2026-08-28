@@ -1,5 +1,227 @@
 <!-- @en -->
-The GitHub Action for deploying Vela projects to a VPS.
+`velastack/action` deploys a Vela app to your own server from GitHub Actions. It builds on the runner and hands the release to [`vela deploy`](/deploy) over SSH, so a deploy from CI and a deploy from your laptop do the same thing.
+
+### Before you start
+
+Provision the server and deploy once from your own machine — that first deploy is what mints the app id:
+
+```
+$ vela provision root@your-server
+$ vela deploy --server root@your-server --domain example.com
+$ git add .vela/project.json && git commit -m "Add the vela project id"
+```
+
+The action refuses to run until `.vela/project.json` is committed. A runner that finds no id mints a new one, and since its checkout is thrown away at the end of the job, every deploy would land as a brand new app and orphan the last one on the server.
+
+Then give the action a way in:
+
+```
+$ ssh-keygen -t ed25519 -f vela-deploy -C "github actions"
+$ ssh-copy-id -i vela-deploy.pub root@your-server
+```
+
+Add the private key to the repository as a secret named `SSH_PRIVATE_KEY`.
+
+### Usage
+
+```yaml
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: velastack/action@v1
+        with:
+          server: root@your-server
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          domain: example.com
+```
+
+The action installs dependencies, builds, uploads a release, runs migrations, restarts the services and health-checks the result. A deploy that fails its health check puts the previous release back and fails the job. Use a `concurrency` group so two pushes cannot deploy over each other.
+
+### Inputs
+
+- `server` - Required. SSH target, as `user@host` or `host`.
+- `ssh-key` - Required. Private key with access to the server.
+- `ssh-port` - Port, when the server does not listen on 22.
+- `known-hosts` - Contents for `known_hosts`. Without it the host key is fetched on first connect.
+- `target` - Which copy of the app to deploy. Defaults to `production`. `environment` is the deprecated name, still honoured when `target` is unset.
+- `domain` - Hostname(s) to serve on, comma separated. Only needed the first time, or when it changes.
+- `project` - Override the project name.
+- `health-path` - Path the health check requests.
+- `remote-db` - Build against the server's database. Defaults to `false`.
+- `working-directory` - Directory holding the app. Defaults to `.`.
+- `node-version` - Node.js version to build with. Defaults to `.nvmrc` or `.node-version`, then 22.
+- `install` - Run `npm ci` first. Defaults to `true`.
+- `vela-version` - Version of the CLI to run. Defaults to the one the project pins.
+
+### Outputs
+
+- `release` - Identifier of the release that was activated
+- `url` - URL the app is served on
+
+### Pages that prerender from data
+
+A prerendered page is rendered once, at build time, against whatever database the build can see. On a runner that is an empty throwaway database, so those pages come out full of defaults. Set `remote-db: true` to render the build against the database it is being deployed to, tunnelled over the same SSH connection — the superuser credentials come off the server, so no new secrets go into CI.
+
+```yaml
+      - uses: velastack/action@v1
+        with:
+          server: root@your-server
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote-db: true
+```
+
+It is off by default because it lets a build read production data. It also needs the target to have been deployed at least once.
+
+### Secrets
+
+Production environment variables live on your server, not in the action and not in the release. Set them once with [`vela env`](/env). Anything the _build_ needs — as opposed to the running app — belongs in the workflow, because it has to exist on the runner:
+
+```yaml
+      - uses: velastack/action@v1
+        env:
+          POCKETBASE_SUPERUSER_EMAIL: ${{ secrets.POCKETBASE_SUPERUSER_EMAIL }}
+          POCKETBASE_SUPERUSER_PASSWORD: ${{ secrets.POCKETBASE_SUPERUSER_PASSWORD }}
+        with:
+          server: root@your-server
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+```
+
+### Pinning the host key
+
+By default the action trusts the server's host key the first time it connects. To pin it instead, capture it once and pass the output as the `known-hosts` input:
+
+```
+$ ssh-keyscan -H your-server
+```
+
+### Requirements
+
+- The app builds with `@sveltejs/adapter-node`
+- `.vela/project.json` is committed — it carries the app id the server keys everything on
+- The repository uses npm (a `package-lock.json` is present)
 <!-- @es -->
-La acción de GitHub para implementar proyectos de Vela en un VPS.
+`velastack/action` despliega una aplicación de Vela en tu propio servidor desde GitHub Actions. Compila en el runner y entrega la release a [`vela deploy`](/es/deploy) por SSH, de modo que un despliegue desde CI y uno desde tu portátil hacen lo mismo.
+
+### Antes de empezar
+
+Aprovisiona el servidor y despliega una vez desde tu propia máquina — ese primer despliegue es el que genera el id de la aplicación:
+
+```
+$ vela provision root@your-server
+$ vela deploy --server root@your-server --domain example.com
+$ git add .vela/project.json && git commit -m "Add the vela project id"
+```
+
+La acción se niega a ejecutarse hasta que `.vela/project.json` esté versionado. Un runner que no encuentra ningún id genera uno nuevo, y como su copia del repositorio se descarta al final del job, cada despliegue se instalaría como una aplicación nueva y dejaría huérfana la anterior en el servidor.
+
+Después, dale a la acción una forma de entrar:
+
+```
+$ ssh-keygen -t ed25519 -f vela-deploy -C "github actions"
+$ ssh-copy-id -i vela-deploy.pub root@your-server
+```
+
+Añade la clave privada al repositorio como un secreto llamado `SSH_PRIVATE_KEY`.
+
+### Uso
+
+```yaml
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: velastack/action@v1
+        with:
+          server: root@your-server
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          domain: example.com
+```
+
+La acción instala las dependencias, compila, sube una release, ejecuta las migraciones, reinicia los servicios y comprueba la salud del resultado. Un despliegue que falla su comprobación de salud restaura la release anterior y hace fallar el job. Usa un grupo de `concurrency` para que dos pushes no puedan desplegarse uno sobre otro.
+
+### Entradas
+
+- `server` - Obligatorio. Destino SSH, como `user@host` o `host`.
+- `ssh-key` - Obligatorio. Clave privada con acceso al servidor.
+- `ssh-port` - Puerto, cuando el servidor no escucha en el 22.
+- `known-hosts` - Contenido para `known_hosts`. Sin él, la clave del host se obtiene en la primera conexión.
+- `target` - Qué copia de la aplicación desplegar. Por defecto `production`. `environment` es el nombre obsoleto, aún respetado cuando `target` no está definido.
+- `domain` - Nombre(s) de host en los que servir, separados por comas. Solo se necesita la primera vez, o cuando cambia.
+- `project` - Sobrescribir el nombre del proyecto.
+- `health-path` - Ruta que solicita la comprobación de salud.
+- `remote-db` - Compilar contra la base de datos del servidor. Por defecto `false`.
+- `working-directory` - Directorio que contiene la aplicación. Por defecto `.`.
+- `node-version` - Versión de Node.js con la que compilar. Por defecto la de `.nvmrc` o `.node-version`, y si no, 22.
+- `install` - Ejecutar `npm ci` primero. Por defecto `true`.
+- `vela-version` - Versión de la CLI a ejecutar. Por defecto la que fija el proyecto.
+
+### Salidas
+
+- `release` - Identificador de la release que se activó
+- `url` - URL en la que se sirve la aplicación
+
+### Páginas que se prerenderizan a partir de datos
+
+Una página prerenderizada se renderiza una vez, en tiempo de compilación, contra la base de datos que la compilación pueda ver. En un runner esa es una base de datos vacía y desechable, así que esas páginas salen llenas de valores por defecto. Pon `remote-db: true` para renderizar la compilación contra la base de datos a la que se despliega, tunelizada por la misma conexión SSH — las credenciales del superusuario se obtienen del servidor, así que no entran secretos nuevos en CI.
+
+```yaml
+      - uses: velastack/action@v1
+        with:
+          server: root@your-server
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote-db: true
+```
+
+Está desactivado por defecto porque permite que una compilación lea datos de producción. También requiere que el objetivo se haya desplegado al menos una vez.
+
+### Secretos
+
+Las variables de entorno de producción viven en tu servidor, no en la acción ni en la release. Defínelas una vez con [`vela env`](/es/env). Todo lo que necesite la _compilación_ — a diferencia de la aplicación en ejecución — va en el workflow, porque tiene que existir en el runner:
+
+```yaml
+      - uses: velastack/action@v1
+        env:
+          POCKETBASE_SUPERUSER_EMAIL: ${{ secrets.POCKETBASE_SUPERUSER_EMAIL }}
+          POCKETBASE_SUPERUSER_PASSWORD: ${{ secrets.POCKETBASE_SUPERUSER_PASSWORD }}
+        with:
+          server: root@your-server
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+```
+
+### Fijar la clave del host
+
+Por defecto, la acción confía en la clave del host del servidor la primera vez que se conecta. Para fijarla en su lugar, captúrala una vez y pasa la salida como entrada `known-hosts`:
+
+```
+$ ssh-keyscan -H your-server
+```
+
+### Requisitos
+
+- La aplicación se compila con `@sveltejs/adapter-node`
+- `.vela/project.json` está versionado — contiene el id de la aplicación con el que el servidor indexa todo
+- El repositorio usa npm (existe un `package-lock.json`)
 <!-- @end -->

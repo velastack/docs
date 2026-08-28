@@ -1,5 +1,5 @@
 <!-- @en -->
-Enable internationalization in the SvelteKit project, powered by [Wuchale](https://wuchale.dev/). You'll be prompted for configuration options for the internationalization. Once enabled, use the `vela i18n` [subcommands](/i18n) to manage the internationalization.
+Enable internationalization in the SvelteKit project.
 
 ### Syntax
 
@@ -7,9 +7,24 @@ Enable internationalization in the SvelteKit project, powered by [Wuchale](https
 $ vela enable i18n
 ```
 
-Once enable, the routing provides a base URL for internationalization: `example.com/en` or `example.com/es`.
+This sets up [Wuchale](https://wuchale.dev) with locale-aware routing. Translatable strings are extracted from the source rather than written into message files by hand, so no keys are maintained separately from the markup.
+
+Has no dependencies — it works with or without a backend, and composes with [content negotiation](/enable/content-negotiation)'s reroute hook.
+
+### Working with translations
+
+Once enabled, the [`vela i18n`](/i18n) commands manage the catalogs:
+
+- [`vela i18n extract`](/i18n/extract) - Extract translatable strings
+- [`vela i18n watch`](/i18n/watch) - Extract on change
+- [`vela i18n status`](/i18n/status) - Show what is translated
+- [`vela i18n clean`](/i18n/clean) - Drop strings no longer used
+
+### Reverting
+
+[`vela disable i18n`](/disable/i18n) removes the scaffolding, but `vite.config.ts`, `svelte.config.js`, `hooks.server.ts`, `app.html` and `+layout.ts` have to be reverted by hand.
 <!-- @es -->
-Habilitar la internacionalización en el proyecto de SvelteKit, powered by [Wuchale](https://wuchale.dev/). Se te pedirán opciones de configuración para la internacionalización. Una vez habilitado, usa los [subcomandos](/es/i18n) de `vela i18n` para gestionar la internacionalización.
+Habilita la internacionalización en el proyecto de SvelteKit.
 
 ### Sintaxis
 
@@ -17,5 +32,20 @@ Habilitar la internacionalización en el proyecto de SvelteKit, powered by [Wuch
 $ vela enable i18n
 ```
 
-Una vez habilitado, la routing proporciona una URL base para la internacionalización: `example.com/en` o `example.com/es`.
+Esto configura [Wuchale](https://wuchale.dev) con enrutado según el idioma. Las cadenas traducibles se extraen del código fuente en lugar de escribirse a mano en archivos de mensajes, así que no se mantienen claves aparte del marcado.
+
+No tiene dependencias — funciona con o sin backend, y se combina con el hook reroute de la [negociación de contenido](/es/enable/content-negotiation).
+
+### Trabajar con las traducciones
+
+Una vez habilitado, los comandos [`vela i18n`](/es/i18n) gestionan los catálogos:
+
+- [`vela i18n extract`](/es/i18n/extract) - Extraer las cadenas traducibles
+- [`vela i18n watch`](/es/i18n/watch) - Extraer al cambiar
+- [`vela i18n status`](/es/i18n/status) - Mostrar qué está traducido
+- [`vela i18n clean`](/es/i18n/clean) - Eliminar las cadenas que ya no se usan
+
+### Revertir
+
+[`vela disable i18n`](/es/disable/i18n) elimina el andamiaje, pero `vite.config.ts`, `svelte.config.js`, `hooks.server.ts`, `app.html` y `+layout.ts` hay que revertirlos a mano.
 <!-- @end -->

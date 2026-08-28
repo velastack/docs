@@ -1,0 +1,65 @@
+<!-- @en -->
+Generate a migration that alters a collection that already exists. Use this to add, remove or rename fields after the collection has been generated.
+
+### Syntax
+
+```
+$ vela generate migration <collection> <op> [args...]
+```
+
+```
+$ vela generate migration pets add birthday:date
+```
+
+The collection has to exist already — Vela reads its current fields to work out the change. Run [`vela migrate up`](/migrate/up) to apply the generated migration.
+
+### Operations
+
+- `add` - Add one or more fields
+- `remove` - Remove one or more fields
+- `rename` - Rename a field
+- `references` - Add a relation to another collection
+
+### Examples
+
+```
+$ vela generate migration pets add birthday:date weight:number
+$ vela generate migration pets remove weight
+$ vela generate migration pets rename birthday born_on
+$ vela generate migration pets references owner:user
+```
+
+Field definitions use the same [field syntax](/generate) as the other generators. For a blank migration to write by hand, use [`vela migrate create`](/migrate/create).
+<!-- @es -->
+Genera una migración que altera una colección que ya existe. Úsalo para añadir, eliminar o renombrar campos después de que la colección se haya generado.
+
+### Sintaxis
+
+```
+$ vela generate migration <collection> <op> [args...]
+```
+
+```
+$ vela generate migration pets add birthday:date
+```
+
+La colección tiene que existir ya — Vela lee sus campos actuales para deducir el cambio. Ejecuta [`vela migrate up`](/es/migrate/up) para aplicar la migración generada.
+
+### Operaciones
+
+- `add` - Añadir uno o más campos
+- `remove` - Eliminar uno o más campos
+- `rename` - Renombrar un campo
+- `references` - Añadir una relación a otra colección
+
+### Ejemplos
+
+```
+$ vela generate migration pets add birthday:date weight:number
+$ vela generate migration pets remove weight
+$ vela generate migration pets rename birthday born_on
+$ vela generate migration pets references owner:user
+```
+
+Las definiciones de campo usan la misma [sintaxis de campos](/es/generate) que los demás generadores. Para una migración en blanco que escribir a mano, usa [`vela migrate create`](/es/migrate/create).
+<!-- @end -->

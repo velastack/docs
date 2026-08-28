@@ -1,0 +1,33 @@
+<!-- @en -->
+Serve the same route as HTML, Markdown or JSON, depending on what the client asks for. Useful for making pages readable by agents and scripts without building a parallel API.
+
+### Syntax
+
+```
+$ vela enable content-negotiation
+```
+
+This wires up [`sveltekit-negotiate`](https://github.com/nathancahill/sveltekit-negotiate) in `hooks.server.ts`, adds a `reroute` hook and drops a `<Negotiate />` component into the root layout. A request for `text/markdown` or `application/json` then gets that representation of the page instead of HTML.
+
+Has no dependencies — it works with or without a backend, and composes with [i18n](/enable/i18n)'s own reroute hook.
+
+### Reverting
+
+[`vela disable content-negotiation`](/disable/content-negotiation) removes the wiring and the generated files.
+<!-- @es -->
+Sirve la misma ruta como HTML, Markdown o JSON, según lo que pida el cliente. Útil para hacer las páginas legibles por agentes y scripts sin construir una API paralela.
+
+### Sintaxis
+
+```
+$ vela enable content-negotiation
+```
+
+Esto configura [`sveltekit-negotiate`](https://github.com/nathancahill/sveltekit-negotiate) en `hooks.server.ts`, añade un hook `reroute` y coloca un componente `<Negotiate />` en el layout raíz. Una petición de `text/markdown` o `application/json` recibe entonces esa representación de la página en lugar de HTML.
+
+No tiene dependencias — funciona con o sin backend, y se combina con el propio hook reroute de [i18n](/es/enable/i18n).
+
+### Revertir
+
+[`vela disable content-negotiation`](/es/disable/content-negotiation) elimina la configuración y los archivos generados.
+<!-- @end -->

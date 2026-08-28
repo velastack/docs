@@ -6,12 +6,16 @@ The enable command is used to enable features in a Vela project. It can be used 
 ```
 $ vela enable <feature>
 ```
+
+Features have dependencies on each other — enabling API keys, for example, needs both auth and the API first. Each page lists what it depends on. Anything enabled can be turned back off with [`vela disable`](/disable).
 <!-- @es -->
-El comando enable se utiliza para habilitar características en un proyecto de Vela. Puede ser usado para habilitar autenticación, acceso a API, almacenamiento S3, envío de correo electrónico SMTP, equipos, pagos y más. Se te pedirán opciones de configuración para cada característica y el comando generará el código necesario.
+El comando enable se usa para habilitar funciones en un proyecto de Vela. Puede usarse para habilitar la autenticación, el acceso a la API, el almacenamiento en S3, el envío de correo por SMTP, los equipos, los pagos y más. Se te pedirán opciones de configuración para cada función y el comando generará el código necesario.
 
 ### Sintaxis
 
 ```
 $ vela enable <feature>
 ```
+
+Las funciones dependen unas de otras — habilitar las claves de API, por ejemplo, requiere primero la autenticación y la API. Cada página indica de qué depende. Todo lo que se habilita puede desactivarse de nuevo con [`vela disable`](/es/disable).
 <!-- @end -->

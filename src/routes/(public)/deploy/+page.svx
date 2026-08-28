@@ -1,126 +1,289 @@
 <!-- @en -->
-Deploy the application to a previously provisioned VPS.
+Deploy the application to a previously provisioned server.
 
 ### Syntax
 
 ```
-$ vela deploy  --domain
+$ vela deploy
 ```
 
-Vela will deploy the application to the previously provisioned VPS. The connection is made via SSH and the application is deployed using the `vela-deploy` script. On deploy, any new migrations are run against the server's database.
+```
+$ vela deploy --server root@example.com --domain example.com
+```
+
+Deploy takes no positional arguments. It builds the app locally, uploads the release over SSH, runs any pending migrations against the server's database, restarts the services and health-checks the result. A release that fails its health check is rolled back automatically.
+
+### Targets
+
+A **target** names a copy of the app, never a machine. `production` is the default; any name you choose, such as `staging`, is a separate copy on the same or a different server. `local` is the project on your own computer.
+
+The server behind a target is recorded the first time you name it, in `.vela/project.json`, so it isn't retyped on every command:
+
+```
+$ vela deploy --server root@example.com --domain example.com
+$ vela deploy                                     # same server, remembered
+$ vela deploy -t staging --server root@staging.example.com --domain staging.example.com
+$ vela deploy -t staging                          # staging, remembered
+```
+
+Commit `.vela/project.json`. It carries the permanent app id that the server keys every release, env file and database on — a fresh id would land as a brand new app and orphan the old one. Use [`vela targets`](/targets) to list what a project is bound to.
+
+### Options
+
+- `-t, --target <target>` - Which copy of the app to act on, defaults to `production`
+- `--server <ssh>` - Server this target runs on, recorded on first use
+- `--domain <hosts>` - Hostname(s) to serve on, comma separated
+- `--project <name>` - Override the project name
+- `--health-path <path>` - Path the health check requests
+- `--keep <count>` - How many old releases to keep on the server
+- `--pb-version <version>` - PocketBase version to run
+- `--no-build` - Deploy the existing build output without rebuilding
+- `--remote-db` - Render the build against the database on the server, over an SSH tunnel. Needed when pages are prerendered from data.
+- `-i, --identity <file>` - SSH private key to authenticate with
+- `--ssh-port <port>` - SSH port
+- `--accept-host-keys` - Trust an unknown host key on first connect (CI)
+
+### Prerendered pages
+
+A prerendered page is rendered once, at build time, against whatever database the build can see. On a clean checkout that is an empty throwaway database, so those pages come out full of defaults. `--remote-db` renders the build against the database it is being deployed to, tunnelled over the same SSH connection. It is off by default because it lets a build read production data.
+
+### Configuration
+
+Defaults can be committed to `velastack.config.ts` at the project root, so they don't have to be passed every time:
+
+```ts
+export default {
+    project: 'my-app',
+    deploy: {
+        domain: 'example.com',
+        healthCheckPath: '/',
+        keepReleases: 5,
+        buildAgainstRemote: false
+    }
+};
+```
+
+Every field is optional, and `velastack.config.js`, `.mjs` and `.json` are read too. Command line options win over the config file, which in turn wins over what was recorded on the last deploy.
+
+### Environment variables
+
+Production environment variables live on the server, not in the release. A deploy never reads, uploads or overwrites them. Manage them with [`vela env`](/env):
+
+```
+$ vela env set STRIPE_SECRET_KEY
+$ vela env import .env.production
+$ vela env list
+```
+
+### After deploying
+
+- [`vela status`](/status) - Show what is deployed
+- [`vela logs`](/logs) - Tail the logs of a deployed app
+- [`vela rollback`](/rollback) - Put the previous release back
+- [`vela destroy deployment`](/destroy/deployment) - Remove a deployed environment
 
 ### Deploy History
 
-If logged in, you can view your project's deploy history on velastack.dev.
+If logged in, you can view your project's deploy history on [velastack.dev](https://velastack.dev).
 
 ### GitHub Action
 
-Use the `velastack/action` to deploy the application from a GitHub workflow. We recommend using the `webfactory/ssh-agent` action to manage the deploy host SSH key secret. The `velastack/action` API key is not required but allows deployment history to be tracked on velastack.dev.
+Use [`velastack/action`](/helpers/github-action) to deploy from a GitHub workflow. It builds on the runner and hands the release to `vela deploy` over SSH, so a deploy from CI and a deploy from your laptop do the same thing. The action manages the SSH key itself.
 
 ```yaml
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - uses: actions/checkout@v6
       - uses: velastack/action@v1
         with:
-          host: ${{ secrets.DEPLOY_HOST }}
+          server: root@your-server
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
           domain: example.com
-          api_key: ${{ secrets.VELA_API_KEY }}
 ```
 
-### Preview and Branch Deploys
+Provision the server and deploy once from your machine first — that first deploy is what mints the app id. Use a `concurrency` group so two pushes cannot deploy over each other.
 
-Multiple instances of the application can be deployed to the same VPS, internally using different
-ports. Point a wildcard subdomain to the VPS's IP address, for example *.dev.example.com.
+### Branch Deploys
+
+Multiple copies of the application can be deployed to the same server, each on its own target and internally on its own port. Point a wildcard subdomain at the server, for example `*.dev.example.com`, and derive the target and domain from the branch.
 
 ```yaml
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Select domain
+      - uses: actions/checkout@v6
+      - name: Select target
         run: |
-          BRANCH="$\{GITHUB_REF_NAME}"
-          if [ "$\{BRANCH}" = "main" ]; then
-            echo "DOMAIN=example.com" >> "$\{GITHUB_ENV}"
+          BRANCH="${GITHUB_REF_NAME}"
+          if [ "${BRANCH}" = "main" ]; then
+            echo "TARGET=production" >> "${GITHUB_ENV}"
+            echo "DOMAIN=example.com" >> "${GITHUB_ENV}"
           else
-            echo "DOMAIN=$\{BRANCH}.dev.example.com" >> "$\{GITHUB_ENV}"
+            echo "TARGET=${BRANCH}" >> "${GITHUB_ENV}"
+            echo "DOMAIN=${BRANCH}.dev.example.com" >> "${GITHUB_ENV}"
           fi
       - uses: velastack/action@v1
         with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          api_key: ${{ secrets.VELA_API_KEY }}
+          server: root@your-server
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          target: ${{ env.TARGET }}
           domain: ${{ env.DOMAIN }}
 ```
 <!-- @es -->
-Despliegue la aplicación en un VPS previamente aprovisionado.
+Despliega la aplicación en un servidor previamente aprovisionado.
 
 ### Sintaxis
 
 ```
-$ vela deploy  --domain
+$ vela deploy
 ```
 
-Vela desplegará la aplicación en el VPS previamente aprovisionado. La conexión se realiza via SSH y la aplicación se despliega usando el script `vela-deploy`. Al desplegar, se ejecutan las nuevas migraciones contra la base de datos del servidor.
+```
+$ vela deploy --server root@example.com --domain example.com
+```
+
+Deploy no acepta argumentos posicionales. Compila la aplicación localmente, sube la release por SSH, ejecuta las migraciones pendientes contra la base de datos del servidor, reinicia los servicios y comprueba la salud del resultado. Una release que falla su comprobación de salud se revierte automáticamente.
+
+### Objetivos
+
+Un **objetivo** nombra una copia de la aplicación, nunca una máquina. `production` es el valor por defecto; cualquier nombre que elijas, como `staging`, es una copia separada en el mismo servidor o en otro. `local` es el proyecto en tu propio ordenador.
+
+El servidor detrás de un objetivo se registra la primera vez que lo nombras, en `.vela/project.json`, para no tener que reescribirlo en cada comando:
+
+```
+$ vela deploy --server root@example.com --domain example.com
+$ vela deploy                                     # el mismo servidor, recordado
+$ vela deploy -t staging --server root@staging.example.com --domain staging.example.com
+$ vela deploy -t staging                          # staging, recordado
+```
+
+Sube `.vela/project.json` al repositorio. Contiene el id permanente de la aplicación con el que el servidor indexa cada release, archivo de entorno y base de datos — un id nuevo se instalaría como una aplicación distinta y dejaría huérfana la anterior. Usa [`vela targets`](/es/targets) para listar a qué está vinculado un proyecto.
+
+### Opciones
+
+- `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `production`
+- `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
+- `--domain <hosts>` - Nombre(s) de host en los que servir, separados por comas
+- `--project <name>` - Sobrescribir el nombre del proyecto
+- `--health-path <path>` - Ruta que solicita la comprobación de salud
+- `--keep <count>` - Cuántas releases antiguas conservar en el servidor
+- `--pb-version <version>` - Versión de PocketBase a ejecutar
+- `--no-build` - Desplegar la salida de compilación existente sin recompilar
+- `--remote-db` - Renderizar la compilación contra la base de datos del servidor, a través de un túnel SSH. Necesario cuando las páginas se prerenderizan a partir de datos.
+- `-i, --identity <file>` - Clave privada SSH con la que autenticarse
+- `--ssh-port <port>` - Puerto SSH
+- `--accept-host-keys` - Confiar en una clave de host desconocida en la primera conexión (CI)
+
+### Páginas prerenderizadas
+
+Una página prerenderizada se renderiza una vez, en tiempo de compilación, contra la base de datos que la compilación pueda ver. En una copia limpia del repositorio esa es una base de datos vacía y desechable, así que esas páginas salen llenas de valores por defecto. `--remote-db` renderiza la compilación contra la base de datos a la que se está desplegando, tunelizada por la misma conexión SSH. Está desactivado por defecto porque permite que una compilación lea datos de producción.
+
+### Configuración
+
+Los valores por defecto pueden versionarse en `velastack.config.ts` en la raíz del proyecto, para no tener que pasarlos cada vez:
+
+```ts
+export default {
+    project: 'my-app',
+    deploy: {
+        domain: 'example.com',
+        healthCheckPath: '/',
+        keepReleases: 5,
+        buildAgainstRemote: false
+    }
+};
+```
+
+Todos los campos son opcionales, y también se leen `velastack.config.js`, `.mjs` y `.json`. Las opciones de la línea de comandos ganan al archivo de configuración, que a su vez gana a lo registrado en el último despliegue.
+
+### Variables de entorno
+
+Las variables de entorno de producción viven en el servidor, no en la release. Un despliegue nunca las lee, sube ni sobrescribe. Gestiónalas con [`vela env`](/es/env):
+
+```
+$ vela env set STRIPE_SECRET_KEY
+$ vela env import .env.production
+$ vela env list
+```
+
+### Después de desplegar
+
+- [`vela status`](/es/status) - Mostrar qué está desplegado
+- [`vela logs`](/es/logs) - Seguir los logs de una aplicación desplegada
+- [`vela rollback`](/es/rollback) - Restaurar la release anterior
+- [`vela destroy deployment`](/es/destroy/deployment) - Eliminar un entorno desplegado
 
 ### Historial de despliegues
 
-Si has iniciado sesión, puedes ver el historial de despliegues de tu proyecto en velastack.dev.
+Si has iniciado sesión, puedes ver el historial de despliegues de tu proyecto en [velastack.dev](https://velastack.dev).
 
 ### Acción de GitHub
 
-Usa la acción `velastack/action` para desplegar la aplicación desde un flujo de GitHub. Recomendamos usar la acción `webfactory/ssh-agent` para gestionar la clave SSH del host de despliegue. La clave API de `velastack/action` no es requerida pero permite rastrear el historial de despliegues en velastack.dev.
+Usa [`velastack/action`](/es/helpers/github-action) para desplegar desde un workflow de GitHub. Compila en el runner y entrega la release a `vela deploy` por SSH, de modo que un despliegue desde CI y uno desde tu portátil hacen lo mismo. La acción gestiona la clave SSH por sí misma.
 
 ```yaml
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - uses: actions/checkout@v6
       - uses: velastack/action@v1
         with:
-          host: ${{ secrets.DEPLOY_HOST }}
+          server: root@your-server
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
           domain: example.com
-          api_key: ${{ secrets.VELA_API_KEY }}
 ```
 
-### Despliegues de vista previa y de rama
+Aprovisiona el servidor y despliega una vez desde tu máquina primero — ese primer despliegue es el que genera el id de la aplicación. Usa un grupo de `concurrency` para que dos pushes no puedan desplegarse uno sobre otro.
 
-Multiples instancias de la aplicación pueden desplegarse en el mismo VPS, internamente usando diferentes puertos. Punto un subdominio wildcard al IP del VPS, por ejemplo *.dev.example.com.
+### Despliegues por rama
+
+Se pueden desplegar varias copias de la aplicación en el mismo servidor, cada una en su propio objetivo e internamente en su propio puerto. Apunta un subdominio comodín al servidor, por ejemplo `*.dev.example.com`, y deriva el objetivo y el dominio de la rama.
 
 ```yaml
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Select domain
+      - uses: actions/checkout@v6
+      - name: Select target
         run: |
-          BRANCH="$\{GITHUB_REF_NAME}"
-          if [ "$\{BRANCH}" = "main" ]; then
-            echo "DOMAIN=example.com" >> "$\{GITHUB_ENV}"
+          BRANCH="${GITHUB_REF_NAME}"
+          if [ "${BRANCH}" = "main" ]; then
+            echo "TARGET=production" >> "${GITHUB_ENV}"
+            echo "DOMAIN=example.com" >> "${GITHUB_ENV}"
           else
-            echo "DOMAIN=$\{BRANCH}.dev.example.com" >> "$\{GITHUB_ENV}"
+            echo "TARGET=${BRANCH}" >> "${GITHUB_ENV}"
+            echo "DOMAIN=${BRANCH}.dev.example.com" >> "${GITHUB_ENV}"
           fi
       - uses: velastack/action@v1
         with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          api_key: ${{ secrets.VELA_API_KEY }}
+          server: root@your-server
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          target: ${{ env.TARGET }}
           domain: ${{ env.DOMAIN }}
 ```
 <!-- @end -->

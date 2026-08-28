@@ -1,0 +1,65 @@
+<!-- @en -->
+Remove teams, added by [`vela enable teams`](/enable/teams).
+
+### Syntax
+
+```
+$ vela disable teams
+```
+
+### Options
+
+- `-y, --yes` - Skip the confirmation prompt
+
+### What it removes
+
+The team collections, and every record in them:
+
+```
+teams
+team_memberships
+team_invites
+team_invite_links
+```
+
+The generated team routes and the Teams nav item are deleted as well.
+
+### Reverted by hand
+
+```
+src/lib/components/app-sidebar.svelte
+src/routes/(app)/+layout.server.ts
+```
+<!-- @es -->
+Elimina los equipos, añadidos por [`vela enable teams`](/es/enable/teams).
+
+### Sintaxis
+
+```
+$ vela disable teams
+```
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+
+### Qué elimina
+
+Las colecciones de equipos, y todos los registros que contienen:
+
+```
+teams
+team_memberships
+team_invites
+team_invite_links
+```
+
+Las rutas de equipos generadas y el elemento Teams de la navegación también se eliminan.
+
+### Revertido a mano
+
+```
+src/lib/components/app-sidebar.svelte
+src/routes/(app)/+layout.server.ts
+```
+<!-- @end -->

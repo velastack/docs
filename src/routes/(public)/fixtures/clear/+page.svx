@@ -1,26 +1,25 @@
 <!-- @en -->
 Clear loaded fixtures from the database.
 
-Use this when you want to return to an empty state, remove demo data, or prepare for a fresh fixture load.
-
-This command is useful during testing, schema iteration, and when switching between fixture scenarios.
-
 ### Syntax
 
 ```
 $ vela fixtures clear
 ```
 
+Only fixture records are removed. Fixtures are written with ids prefixed `vela`, and clear matches on that prefix — records you created yourself, and records loaded from [seeds](/seeds), are left in place.
+
+The files in `data/fixtures` are not deleted, so they can be loaded again.
 <!-- @es -->
-Borrar datos de fixture de la base de datos.
-
-Usa este comando cuando quieras volver a un estado vacío, eliminar datos de demostración, o preparar para una carga de fixtures nueva.
-
-Este comando es útil durante pruebas, iteración de esquema, y cuando se cambia entre escenarios de fixtures.
+Elimina de la base de datos los fixtures cargados.
 
 ### Sintaxis
 
 ```
 $ vela fixtures clear
 ```
+
+Solo se eliminan los registros de fixtures. Los fixtures se escriben con ids con el prefijo `vela`, y clear busca ese prefijo — los registros que has creado tú, y los cargados desde [seeds](/es/seeds), se dejan en su sitio.
+
+Los archivos de `data/fixtures` no se borran, así que pueden volver a cargarse.
 <!-- @end -->

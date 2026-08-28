@@ -1,25 +1,25 @@
 <!-- @en -->
-Clear the database and reload existing fixtures.
-
-Unlike regen, reset does not create new fixture files. It simply reapplies the current fixture dataset.
-
-Use reset when you want to restore a known state quickly during development or before running tests.
+Clear and reload fixtures in one step.
 
 ### Syntax
 
 ```
 $ vela fixtures reset
 ```
+
+Equivalent to running [`vela fixtures clear`](/fixtures/clear) followed by [`vela fixtures load`](/fixtures/load). The fixture files themselves are reused as they are — use [`regen`](/fixtures/regen) to generate new ones.
+
+Use this to get back to a known state after poking at fixture data in development.
 <!-- @es -->
-Borrar y recargar fixtures de la base de datos.
-
-No como regen, reset no crea nuevos archivos de fixtures. Simplemente reaplica el dataset de fixtures actual.
-
-Usa reset cuando quieras restaurar un estado conocido rápidamente durante el desarrollo o antes de ejecutar pruebas.
+Elimina y vuelve a cargar los fixtures en un solo paso.
 
 ### Sintaxis
 
 ```
 $ vela fixtures reset
 ```
+
+Equivale a ejecutar [`vela fixtures clear`](/es/fixtures/clear) seguido de [`vela fixtures load`](/es/fixtures/load). Los propios archivos de fixtures se reutilizan tal cual — usa [`regen`](/es/fixtures/regen) para generar unos nuevos.
+
+Úsalo para volver a un estado conocido después de trastear con los datos de fixtures en desarrollo.
 <!-- @end -->

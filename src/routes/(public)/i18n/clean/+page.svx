@@ -1,17 +1,25 @@
 <!-- @en -->
-Clean unused translation keys.
+Remove translatable strings that are no longer used.
 
 ### Syntax
 
 ```
 $ vela i18n clean
 ```
+
+Extraction adds strings as they appear in the source but leaves ones that have gone, so catalogs accumulate entries for copy that no longer exists. This drops them.
+
+Clean deletes translations along with the strings, so run [`extract`](/i18n/extract) first and check the diff before committing.
 <!-- @es -->
-Limpiar claves de traducción sin usar.
+Elimina las cadenas traducibles que ya no se usan.
 
 ### Sintaxis
 
 ```
 $ vela i18n clean
 ```
+
+La extracción añade las cadenas según aparecen en el código fuente pero deja las que han desaparecido, así que los catálogos acumulan entradas de textos que ya no existen. Esto las elimina.
+
+Clean borra las traducciones junto con las cadenas, así que ejecuta antes [`extract`](/es/i18n/extract) y revisa el diff antes de confirmar los cambios.
 <!-- @end -->

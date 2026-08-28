@@ -1,0 +1,125 @@
+<!-- @en -->
+Backend-agnostic SvelteKit plumbing, shared by Vela's backend bindings. Nothing in this package knows about any particular database — [@velastack/pocketbase](/helpers/pocketbase) and its siblings build on it.
+
+```
+npm install @velastack/kit
+```
+
+#### Match&lt;RouteId&gt;
+
+Turns a SvelteKit route id into the shape of the URLs that match it — route groups are stripped and `[param]` segments widen to `string`. Useful for keeping test URLs honest:
+
+```ts
+import type { Match } from '@velastack/kit';
+import type { RouteId } from './$types';
+
+const res = await context.request.get('/dashboard' satisfies Match<RouteId>);
+```
+
+Segments that may match nothing — `[[optional]]` and `[...rest]` — widen to a union including the variant where the segment is absent, so both of these hold for `/[[lang]]/blog`:
+
+```ts
+'/blog' satisfies Match<'/[[lang]]/blog'>;
+'/en/blog' satisfies Match<'/[[lang]]/blog'>;
+```
+
+The widening is deliberately loose — `string` also spans `/`, so a URL with extra segments can still satisfy a single `[param]`.
+
+#### proxy
+
+`proxy(url, event)` forwards the current request to `url` and returns the upstream response. Hop-by-hop headers are stripped and `accept-encoding: identity` is pinned so the body streams through untouched. The incoming `event.request.headers` is copied, never mutated.
+
+#### protectedRouteRedirect
+
+Returns a 302 to `loginPath`, with the original destination in a `redirect` query parameter, when an unauthenticated request matches one of `protectedRoutes` by route-id prefix — or `null` when the request may proceed. This is what backs the [auth](/enable/auth) module's `(app)` group.
+
+```ts
+protectedRouteRedirect({
+	routeId: event.route.id,
+	url: event.url,
+	protectedRoutes: ['/(app)'],
+	loginPath: '/login',
+	authenticated: pb.authStore.isValid,
+	clearCookies: ['pb_auth']
+});
+```
+
+#### errorPage
+
+`errorPage(status, message)` renders a standalone HTML error page styled for both colour schemes. `message` is interpolated as **trusted HTML** and is not escaped — never pass user input to it.
+
+#### handleStatic
+
+The whole server hook for a project with no backend. In development it answers a 404 on a page a `vela` command has yet to generate with the command that creates it, and does nothing otherwise. It takes no options — there is no backend to point it at.
+
+```ts
+// src/hooks.server.ts
+import { handleStatic } from '@velastack/kit';
+
+export const handle = handleStatic();
+```
+
+`LEGAL_PAGES` and `AUTH_PAGES` map those paths to the command that creates them, and `generatedPageResponse(pathname, pages)` turns one into a 404 that says so, or returns `null` and leaves your own 404 alone. A project with a backend gets the same behaviour, plus the auth pages, from [`handlePocketbase`](/helpers/pocketbase).
+<!-- @es -->
+Fontanería de SvelteKit agnóstica del backend, compartida por las vinculaciones de backend de Vela. Nada en este paquete conoce ninguna base de datos concreta — [@velastack/pocketbase](/es/helpers/pocketbase) y sus hermanos se construyen sobre él.
+
+```
+npm install @velastack/kit
+```
+
+#### Match&lt;RouteId&gt;
+
+Convierte un id de ruta de SvelteKit en la forma de las URLs que coinciden con él — los grupos de rutas se eliminan y los segmentos `[param]` se ensanchan a `string`. Útil para mantener honestas las URLs de las pruebas:
+
+```ts
+import type { Match } from '@velastack/kit';
+import type { RouteId } from './$types';
+
+const res = await context.request.get('/dashboard' satisfies Match<RouteId>);
+```
+
+Los segmentos que pueden no coincidir con nada — `[[optional]]` y `[...rest]` — se ensanchan a una unión que incluye la variante en la que el segmento está ausente, así que ambas se cumplen para `/[[lang]]/blog`:
+
+```ts
+'/blog' satisfies Match<'/[[lang]]/blog'>;
+'/en/blog' satisfies Match<'/[[lang]]/blog'>;
+```
+
+El ensanchamiento es deliberadamente laxo — `string` también abarca `/`, así que una URL con segmentos adicionales aún puede satisfacer un único `[param]`.
+
+#### proxy
+
+`proxy(url, event)` reenvía la petición actual a `url` y devuelve la respuesta del servidor de destino. Las cabeceras salto a salto se eliminan y se fija `accept-encoding: identity` para que el cuerpo fluya sin tocar. Las `event.request.headers` entrantes se copian, nunca se modifican.
+
+#### protectedRouteRedirect
+
+Devuelve un 302 a `loginPath`, con el destino original en un parámetro de consulta `redirect`, cuando una petición no autenticada coincide con uno de los `protectedRoutes` por prefijo de id de ruta — o `null` cuando la petición puede continuar. Esto es lo que sustenta el grupo `(app)` del módulo de [autenticación](/es/enable/auth).
+
+```ts
+protectedRouteRedirect({
+	routeId: event.route.id,
+	url: event.url,
+	protectedRoutes: ['/(app)'],
+	loginPath: '/login',
+	authenticated: pb.authStore.isValid,
+	clearCookies: ['pb_auth']
+});
+```
+
+#### errorPage
+
+`errorPage(status, message)` renderiza una página de error HTML autónoma con estilo para ambos esquemas de color. `message` se interpola como **HTML de confianza** y no se escapa — nunca le pases entrada del usuario.
+
+#### handleStatic
+
+El hook de servidor completo para un proyecto sin backend. En desarrollo responde con un 404 en una página que un comando `vela` aún no ha generado, indicando el comando que la crea, y no hace nada en otro caso. No acepta opciones — no hay backend al que apuntar.
+
+```ts
+// src/hooks.server.ts
+import { handleStatic } from '@velastack/kit';
+
+export const handle = handleStatic();
+```
+
+`LEGAL_PAGES` y `AUTH_PAGES` asocian esas rutas con el comando que las crea, y `generatedPageResponse(pathname, pages)` convierte una de ellas en un 404 que lo indica, o devuelve `null` y deja tu propio 404 en paz. Un proyecto con backend obtiene el mismo comportamiento, más las páginas de autenticación, de [`handlePocketbase`](/es/helpers/pocketbase).
+<!-- @end -->

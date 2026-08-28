@@ -1,17 +1,21 @@
 <!-- @en -->
-Watch for changes and extract strings.
+Watch the source and extract translatable strings as they change.
 
 ### Syntax
 
 ```
 $ vela i18n watch
 ```
+
+The same as [`extract`](/i18n/extract), kept running. Useful alongside [`vela dev`](/dev) while writing copy, so the catalogs never fall behind.
 <!-- @es -->
-Vigila los cambios y extrae cadenas.
+Vigila el código fuente y extrae las cadenas traducibles a medida que cambian.
 
 ### Sintaxis
 
 ```
 $ vela i18n watch
 ```
+
+Lo mismo que [`extract`](/es/i18n/extract), pero en ejecución continua. Útil junto a [`vela dev`](/es/dev) mientras escribes textos, para que los catálogos nunca se queden atrás.
 <!-- @end -->

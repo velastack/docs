@@ -1,0 +1,29 @@
+<!-- @en -->
+Snapshot the local collections into a new migration.
+
+### Syntax
+
+```
+$ vela migrate collections
+```
+
+Compares the collections in your local database against the migrations on disk and writes a migration for the difference. This is how changes made by hand in the PocketBase admin interface get captured into version control.
+
+If the migrations already describe the current schema, nothing is written. `vela migrate snapshot` is an alias.
+
+Review the generated file, commit it so teammates pick up the schema, and run [`vela migrate up`](/migrate/up) on other environments to apply it.
+<!-- @es -->
+Captura las colecciones locales en una migración nueva.
+
+### Sintaxis
+
+```
+$ vela migrate collections
+```
+
+Compara las colecciones de tu base de datos local con las migraciones en disco y escribe una migración con la diferencia. Así es como los cambios hechos a mano en la interfaz de administración de PocketBase se capturan en el control de versiones.
+
+Si las migraciones ya describen el esquema actual, no se escribe nada. `vela migrate snapshot` es un alias.
+
+Revisa el archivo generado, súbelo al repositorio para que tus compañeros reciban el esquema, y ejecuta [`vela migrate up`](/es/migrate/up) en los demás entornos para aplicarlo.
+<!-- @end -->

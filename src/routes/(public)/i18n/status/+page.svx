@@ -1,17 +1,21 @@
 <!-- @en -->
-Show i18n status.
+Show the state of the translation catalogs.
 
 ### Syntax
 
 ```
 $ vela i18n status
 ```
+
+Reports how much of each locale is translated and what is still outstanding. Worth running in CI to catch copy that shipped without translations.
 <!-- @es -->
-Mostrar estado de i18n.
+Muestra el estado de los catálogos de traducción.
 
 ### Sintaxis
 
 ```
 $ vela i18n status
 ```
+
+Informa de cuánto está traducido de cada idioma y qué queda pendiente. Vale la pena ejecutarlo en CI para detectar textos que se publicaron sin traducir.
 <!-- @end -->

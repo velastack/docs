@@ -1,0 +1,49 @@
+<!-- @en -->
+Revert the authentication module added by [`vela enable auth`](/enable/auth).
+
+### Syntax
+
+```
+$ vela disable auth
+```
+
+### Options
+
+- `-y, --yes` - Skip the confirmation prompt
+
+### What it removes
+
+- The auth routes under `(public)/(auth)`
+- The layout and `hooks.server.ts` edits that protect the `(app)` group
+- The `oauth_accounts` collection
+
+This also reverts the remote-functions variant of the auth module, if that is what was generated.
+
+### What it leaves
+
+The `users` collection and every user record in it. Disabling auth removes the sign-in flow, not your users — drop the collection yourself if that is what you want.
+<!-- @es -->
+Revierte el módulo de autenticación añadido por [`vela enable auth`](/es/enable/auth).
+
+### Sintaxis
+
+```
+$ vela disable auth
+```
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+
+### Qué elimina
+
+- Las rutas de autenticación bajo `(public)/(auth)`
+- Las modificaciones del layout y de `hooks.server.ts` que protegen el grupo `(app)`
+- La colección `oauth_accounts`
+
+Esto también revierte la variante del módulo de autenticación basada en remote functions, si es la que se generó.
+
+### Qué deja
+
+La colección `users` y todos los registros de usuario que contiene. Desactivar la autenticación elimina el flujo de inicio de sesión, no tus usuarios — elimina la colección tú mismo si eso es lo que quieres.
+<!-- @end -->

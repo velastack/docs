@@ -1,13 +1,35 @@
 <!-- @en -->
-An account is not required to use the Vela CLI. Paid features, templates and AI options require it however. An API key is generated for the CLI and stored in `~/.vela/config.json`.
+An account is not required to use the Vela CLI. Creating, generating, building, testing and deploying all work without one. Paid features, templates and the AI options require an account. An API key is generated for the CLI and stored in `~/.vela/config.json`.
+
+### Commands
+
+- [`vela signup`](/account/signup) - Sign up for an account
+- [`vela login`](/account/login) - Log in
+- [`vela whoami`](/account/whoami) - Show the current user
+- [`vela logout`](/account/logout) - Log out
+
+### Linking a project
+
+Logging in authenticates the CLI; [`vela link`](/link) associates the project in front of you with a project on velastack.dev. The AI options on the [generators](/generate) need both.
 
 ### Deploy History
 
 If logged in, you can view your deploy history on velastack.dev.
 <!-- @es -->
-Una cuenta no es requerida para usar el CLI de Vela. Las características pagas, plantillas y opciones de IA requieren una cuenta. Se genera una clave de API para el CLI y se almacena en `~/.vela/config.json`.
+No se requiere una cuenta para usar la CLI de Vela. Crear, generar, construir, probar y desplegar funcionan sin una. Las funciones de pago, las plantillas y las opciones de IA sí requieren una cuenta. Se genera una clave de API para la CLI y se almacena en `~/.vela/config.json`.
+
+### Comandos
+
+- [`vela signup`](/es/account/signup) - Registrarse para obtener una cuenta
+- [`vela login`](/es/account/login) - Iniciar sesión
+- [`vela whoami`](/es/account/whoami) - Mostrar el usuario actual
+- [`vela logout`](/es/account/logout) - Cerrar sesión
+
+### Vincular un proyecto
+
+Iniciar sesión autentica la CLI; [`vela link`](/es/link) asocia el proyecto que tienes delante con un proyecto en velastack.dev. Las opciones de IA de los [generadores](/es/generate) necesitan ambos.
 
 ### Historial de despliegues
 
-Si ha iniciado sesión, puede ver su historial de despliegues en velastack.dev.
+Si has iniciado sesión, puedes ver tu historial de despliegues en velastack.dev.
 <!-- @end -->

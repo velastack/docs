@@ -1,0 +1,67 @@
+<!-- @en -->
+Tail the logs of a deployed app.
+
+### Syntax
+
+```
+$ vela logs
+```
+
+```
+$ vela logs -f -n 500
+```
+
+Reads the systemd journal for the target's service over SSH. By default it prints the last 100 lines and exits. There are no logs for the copy on your own machine — [`vela dev`](/dev) prints those as it runs.
+
+### Options
+
+- `-t, --target <target>` - Which copy of the app to act on, defaults to `production`
+- `--server <ssh>` - Server this target runs on, recorded on first use
+- `-f, --follow` - Keep streaming new output
+- `-n, --lines <count>` - How many lines of history to show, defaults to `100`
+- `--pocketbase` - Show the PocketBase service instead of the app
+- `-i, --identity <file>` - SSH private key to authenticate with
+- `--ssh-port <port>` - SSH port
+- `--accept-host-keys` - Trust an unknown host key on first connect (CI)
+
+### The two services
+
+Each deployed target runs the Node server and the database as separate systemd units. Logs shows the app by default; pass `--pocketbase` for the database:
+
+```
+$ vela logs --pocketbase -f
+```
+<!-- @es -->
+Sigue los logs de una aplicación desplegada.
+
+### Sintaxis
+
+```
+$ vela logs
+```
+
+```
+$ vela logs -f -n 500
+```
+
+Lee por SSH el journal de systemd del servicio del objetivo. Por defecto imprime las últimas 100 líneas y termina. No hay logs para la copia de tu propia máquina — [`vela dev`](/es/dev) los imprime mientras se ejecuta.
+
+### Opciones
+
+- `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `production`
+- `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
+- `-f, --follow` - Seguir mostrando la salida nueva
+- `-n, --lines <count>` - Cuántas líneas de historial mostrar, por defecto `100`
+- `--pocketbase` - Mostrar el servicio de PocketBase en lugar del de la aplicación
+- `-i, --identity <file>` - Clave privada SSH con la que autenticarse
+- `--ssh-port <port>` - Puerto SSH
+- `--accept-host-keys` - Confiar en una clave de host desconocida en la primera conexión (CI)
+
+### Los dos servicios
+
+Cada objetivo desplegado ejecuta el servidor de Node y la base de datos como unidades de systemd separadas. Logs muestra la aplicación por defecto; pasa `--pocketbase` para la base de datos:
+
+```
+$ vela logs --pocketbase -f
+```
+<!-- @end -->

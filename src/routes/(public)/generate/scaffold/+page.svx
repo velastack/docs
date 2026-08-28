@@ -3,77 +3,113 @@
 </script>
 
 <!-- @en -->
-A scaffold is a full CRUD interface for a resource. It includes the index, view, create and edit pages, a schema definition and a database model. If `fields` isn't provided, the scaffold will be generated based on the existing database schema.
+A scaffold is a full CRUD interface for a resource. It includes the index, view, create and edit pages, a schema definition and a database collection. If `fields` isn't provided, the scaffold will be generated based on the existing database schema.
 
 ### Syntax
 
 ```
-$ vela generate scaffold <name> [fields...]
+$ vela generate scaffold [model] [fields...]
 ```
 
 ```
-$ vela generate scaffold pets name:string age:number
+$ vela generate scaffold pets name:text age:number
 ```
 
-This will create a full CRUD interface for the pets resource at `/pets`, the database model and Zod schema definition, and the database migration file. The files created are:
+This will create a full CRUD interface for the pets resource at `/pets`, the database collection and the Zod schema definition. The files created are:
 
 ```
-src/routes/pets/+page.svelte
-src/routes/pets/+page.server.ts
-src/routes/pets/new/+page.svelte
-src/routes/pets/new/+page.server.ts
-src/routes/pets/[id]/+page.svelte
-src/routes/pets/[id]/+page.server.ts
-src/routes/pets/[id]/edit/+page.svelte
-src/routes/pets/[id]/edit/+page.server.ts
 src/lib/schemas/pet.ts
-migrations/created_pets.ts
+src/routes/(public)/pets/+page.svelte
+src/routes/(public)/pets/+page.server.ts
+src/routes/(public)/pets/new/+page.svelte
+src/routes/(public)/pets/new/+page.server.ts
+src/routes/(public)/pets/[id]/+page.svelte
+src/routes/(public)/pets/[id]/+page.server.ts
+src/routes/(public)/pets/[id]/edit/+page.svelte
+src/routes/(public)/pets/[id]/edit/+page.server.ts
+src/routes/(public)/pets/server.test.ts
 ```
+
+The `pets` collection is created in the database and the TypeScript definitions are [synced](/sync). The data table, form and dialog components it needs are installed automatically.
+
+### Options
+
+- `--remote` - Generate a scaffold backed by a remote PocketBase collection
+- `--route <route>` - Place the scaffold at a custom route. Defaults to the pluralized model name under `(app)` when auth is enabled, or `(public)` when it isn't.
+- `--ai <description>` - Design the scaffold with AI from a natural-language description
+
+### Route
+
+```
+$ vela generate scaffold projects name:text! --route "(app)/[team_id]/projects"
+```
+
+Keep the route you used — [`vela destroy scaffold`](/destroy/scaffold) needs the same `--route` to find the files again.
 
 ### AI
 
 <Badge variant="outline">Pro</Badge>
 
-The generate scaffold command supports the `--ai` option for freeform text input in place of specifying the fields.
+`--ai` designs the scaffold from a natural-language description, in two stages: first the schema, then the layout. Pass a description _instead of_ a model name and fields — passing both is an error.
 
 ```
-$ vela generate scaffold hotels --ai "listing info for hotels"
+$ vela generate scaffold --ai "listing info for hotels"
 ```
+
+Requires an account and a linked project — run [`vela login`](/account/login) and [`vela link`](/link) first.
 <!-- @es -->
-Un scaffold es una interfaz CRUD completa para un recurso. Incluye las páginas de index, vista, creación y edición, una definición de esquema y un modelo de base de datos. Si `fields` no se proporciona, el scaffold se generará basado en el esquema de base de datos existente.
+Un scaffold es una interfaz CRUD completa para un recurso. Incluye las páginas de índice, vista, creación y edición, una definición de esquema y una colección de base de datos. Si no se proporciona `fields`, el scaffold se generará a partir del esquema de base de datos existente.
 
 ### Sintaxis
 
 ```
-$ vela generate scaffold <name> [fields...]
+$ vela generate scaffold [model] [fields...]
 ```
 
 ```
-$ vela generate scaffold pets name:string age:number
+$ vela generate scaffold pets name:text age:number
 ```
 
-Esto creará una interfaz CRUD completa para el recurso pets en `/pets`, el modelo de base de datos y la definición de esquema Zod, y el archivo de migración de base de datos. Los archivos creados son:
+Esto creará una interfaz CRUD completa para el recurso pets en `/pets`, la colección de la base de datos y la definición del esquema Zod. Los archivos creados son:
 
 ```
-src/routes/pets/+page.svelte
-src/routes/pets/+page.server.ts
-src/routes/pets/new/+page.svelte
-src/routes/pets/new/+page.server.ts
-src/routes/pets/[id]/+page.svelte
-src/routes/pets/[id]/+page.server.ts
-src/routes/pets/[id]/edit/+page.svelte
-src/routes/pets/[id]/edit/+page.server.ts
 src/lib/schemas/pet.ts
-migrations/created_pets.ts
+src/routes/(public)/pets/+page.svelte
+src/routes/(public)/pets/+page.server.ts
+src/routes/(public)/pets/new/+page.svelte
+src/routes/(public)/pets/new/+page.server.ts
+src/routes/(public)/pets/[id]/+page.svelte
+src/routes/(public)/pets/[id]/+page.server.ts
+src/routes/(public)/pets/[id]/edit/+page.svelte
+src/routes/(public)/pets/[id]/edit/+page.server.ts
+src/routes/(public)/pets/server.test.ts
 ```
+
+La colección `pets` se crea en la base de datos y las definiciones de TypeScript se [sincronizan](/es/sync). Los componentes de tabla de datos, formulario y diálogo que necesita se instalan automáticamente.
+
+### Opciones
+
+- `--remote` - Generar un scaffold respaldado por una colección remota de PocketBase
+- `--route <route>` - Colocar el scaffold en una ruta personalizada. Por defecto es el nombre del modelo en plural bajo `(app)` cuando la autenticación está habilitada, o `(public)` cuando no lo está.
+- `--ai <description>` - Diseñar el scaffold con IA a partir de una descripción en lenguaje natural
+
+### Ruta
+
+```
+$ vela generate scaffold projects name:text! --route "(app)/[team_id]/projects"
+```
+
+Recuerda la ruta que usaste — [`vela destroy scaffold`](/es/destroy/scaffold) necesita el mismo `--route` para volver a encontrar los archivos.
 
 ### IA
 
 <Badge variant="outline">Pro</Badge>
 
-El comando de generación de scaffold admite la opción `--ai` para entrada de texto libre en lugar de especificar los campos.
+`--ai` diseña el scaffold a partir de una descripción en lenguaje natural, en dos fases: primero el esquema, después el diseño. Pasa una descripción _en lugar de_ un nombre de modelo y campos — pasar ambos es un error.
 
 ```
-$ vela generate scaffold hotels --ai "listing info for hotels"
+$ vela generate scaffold --ai "listing info for hotels"
 ```
+
+Requiere una cuenta y un proyecto vinculado — ejecuta primero [`vela login`](/es/account/login) y [`vela link`](/es/link).
 <!-- @end -->

@@ -1,47 +1,103 @@
 <!-- @en -->
-Provision a VPS for deploys. Any host that supports SSH can be used.
+Prepare a server to host Vela apps. Any Debian-based host reachable over SSH can be used. Run this once per server, before the first [deploy](/deploy).
 
 ### Syntax
 
 ```
-$ vela provision
+$ vela provision <target>
 ```
 
-Vela will provision a VPS for the application. The connection is made via SSH and the VPS is provisioned using the `vela-provision` script. After provisioning, the application can be deployed with the `vela deploy` command.
+```
+$ vela provision root@example.com
+```
+
+The target is an SSH destination: an alias from `~/.ssh/config`, or `user@host`. Provisioning is idempotent — running it again on a prepared server brings it up to date rather than starting over.
+
+### Options
+
+- `-i, --identity <file>` - SSH private key to authenticate with
+- `--ssh-port <port>` - SSH port
+- `--accept-host-keys` - Trust an unknown host key on first connect (CI)
+- `--pb-version <version>` - PocketBase version to install, defaults to the one this CLI develops against
+- `--node-major <version>` - Node.js major version to install, defaults to `22`
 
 ### Stack
 
-Vela sets up the following stack on the VPS:
+Vela installs the following on the server:
 
-- Caddy with automatic HTTPS
-- Systemd for process management
+- Node.js
+- Caddy, with automatic HTTPS
+- PocketBase
+- systemd units for the app and the database
 
-Deploys are pushed to `/opt/velastack` on the VPS. Two processes are started with systemd: the Node server and the database.
+A system user `vela` is created to own and run the apps. Caddy gets an `import /etc/vela/caddy/*.caddy` line appended to its existing `Caddyfile` — an existing configuration is otherwise left alone, and the result is validated before Caddy is reloaded.
+
+### Layout
+
+Apps live under `/var/lib/vela`, with configuration in `/etc/vela`:
+
+```
+/var/lib/vela/apps/<app>     releases and data, per app
+/var/lib/vela/state          server-wide state, including port assignments
+/var/lib/vela/scripts        the server scripts vela uploads
+/etc/vela/apps               environment files, readable only by root
+/etc/vela/caddy              generated Caddy snippets, one per app
+```
+
+Each deployed target runs two systemd services, `vela-web@` for the Node server and `vela-pb@` for the database, on an internally assigned port. Several apps and several targets of the same app can share one server.
 
 ### Requirements
 
-For HTTPS to be automatically provisioned on deploy, the VPS must have a public IP address and a domain must be pointed to the IP address. This enables Caddy to automatically provision HTTPS certificates.
+For HTTPS to be provisioned automatically on deploy, the server must have a public IP address and the domain must point at it. This is what lets Caddy obtain certificates. Provisioning needs root, either directly or through `sudo`.
 <!-- @es -->
-Provisión de un VPS para despliegues. Se puede utilizar cualquier host que admita SSH.
+Prepara un servidor para alojar aplicaciones de Vela. Puede usarse cualquier host basado en Debian accesible por SSH. Ejecútalo una vez por servidor, antes del primer [despliegue](/es/deploy).
 
 ### Sintaxis
 
 ```
-$ vela provision
+$ vela provision <target>
 ```
 
-Vela provisionará un VPS para la aplicación. La conexión se realiza via SSH y el VPS se aprovisiona usando el script `vela-provision`. Al aprovisionar, se ejecutan las nuevas migraciones contra la base de datos del servidor.
+```
+$ vela provision root@example.com
+```
+
+El destino es una dirección SSH: un alias de `~/.ssh/config`, o `user@host`. El aprovisionamiento es idempotente — ejecutarlo de nuevo en un servidor ya preparado lo actualiza en lugar de empezar de cero.
+
+### Opciones
+
+- `-i, --identity <file>` - Clave privada SSH con la que autenticarse
+- `--ssh-port <port>` - Puerto SSH
+- `--accept-host-keys` - Confiar en una clave de host desconocida en la primera conexión (CI)
+- `--pb-version <version>` - Versión de PocketBase a instalar, por defecto aquella contra la que se desarrolla esta CLI
+- `--node-major <version>` - Versión mayor de Node.js a instalar, por defecto `22`
 
 ### Stack
 
-Vela configura la siguiente stack en el VPS:
+Vela instala lo siguiente en el servidor:
 
-- Caddy con HTTPS automático
-- Systemd para la gestión de procesos
+- Node.js
+- Caddy, con HTTPS automático
+- PocketBase
+- Unidades de systemd para la aplicación y la base de datos
 
-Los despliegues se realizan en `/opt/velastack` en el VPS. Se inician dos procesos con systemd: el servidor Node y la base de datos.
+Se crea un usuario del sistema `vela` para ser el propietario de las aplicaciones y ejecutarlas. A Caddy se le añade una línea `import /etc/vela/caddy/*.caddy` a su `Caddyfile` existente — por lo demás, la configuración existente se deja intacta, y el resultado se valida antes de recargar Caddy.
+
+### Estructura
+
+Las aplicaciones viven bajo `/var/lib/vela`, con la configuración en `/etc/vela`:
+
+```
+/var/lib/vela/apps/<app>     releases y datos, por aplicación
+/var/lib/vela/state          estado de todo el servidor, incluida la asignación de puertos
+/var/lib/vela/scripts        los scripts de servidor que sube vela
+/etc/vela/apps               archivos de entorno, legibles solo por root
+/etc/vela/caddy              fragmentos de Caddy generados, uno por aplicación
+```
+
+Cada objetivo desplegado ejecuta dos servicios de systemd, `vela-web@` para el servidor de Node y `vela-pb@` para la base de datos, en un puerto asignado internamente. Varias aplicaciones y varios objetivos de la misma aplicación pueden compartir un servidor.
 
 ### Requisitos
 
-Para que HTTPS se aprovisione automáticamente en el despliegue, el VPS debe tener una dirección IP pública y un dominio debe apuntar a la dirección IP. Esto permite a Caddy aprovisionar automáticamente certificados HTTPS.
+Para que el HTTPS se aprovisione automáticamente al desplegar, el servidor debe tener una dirección IP pública y el dominio debe apuntar a ella. Eso es lo que permite a Caddy obtener certificados. El aprovisionamiento necesita root, directamente o mediante `sudo`.
 <!-- @end -->

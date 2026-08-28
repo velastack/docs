@@ -1,0 +1,87 @@
+<!-- @en -->
+Run the server tests: the full application stack, including the database.
+
+### Syntax
+
+```
+$ vela test:server
+```
+
+```
+$ vela test:server pets
+```
+
+Each run:
+
+- Creates a throwaway PocketBase database in `test-data`, with all migrations applied
+- Starts a Vite server with the page components stubbed out
+- Runs Vitest against it
+- Tears the database down again afterwards
+
+A bare positional argument filters which tests run, and any other arguments are passed straight through to Vitest.
+
+### Test files
+
+Server tests match `src/**/*.{test,spec}.{js,ts}` and run in the Vitest project named `server`. Component tests — `*.svelte.test.ts` — are excluded. The generators write a `server.test.ts` next to the routes they create.
+
+### Test context
+
+`test/setup.ts` gives every test a fresh user and a set of clients, so tests read as HTTP requests against the running app:
+
+- `request` - A supertest client, unauthenticated
+- `agent` - A supertest agent that keeps cookies, with `authenticateUser()`
+- `admin` - The PocketBase admin client
+- `pb` - The PocketBase client scoped to the test user
+- `user` - The user record created for this test
+
+### Frontend
+
+Page, layout and error components are replaced with stubs for the duration of the run. Server tests are only concerned with the backend and the database, and skipping the frontend bundle is a large speed win.
+
+### Seeds and fixtures
+
+The test database starts empty apart from the migrations. Load [seeds](/seeds) or [fixtures](/fixtures) yourself if a test needs them, or create the records it needs in the test.
+<!-- @es -->
+Ejecuta las pruebas de servidor: toda la pila de la aplicación, incluida la base de datos.
+
+### Sintaxis
+
+```
+$ vela test:server
+```
+
+```
+$ vela test:server pets
+```
+
+Cada ejecución:
+
+- Crea una base de datos PocketBase desechable en `test-data`, con todas las migraciones aplicadas
+- Inicia un servidor de Vite con los componentes de página sustituidos por stubs
+- Ejecuta Vitest contra él
+- Desmonta la base de datos al terminar
+
+Un argumento posicional simple filtra qué pruebas se ejecutan, y cualquier otro argumento se pasa directamente a Vitest.
+
+### Archivos de prueba
+
+Las pruebas de servidor coinciden con `src/**/*.{test,spec}.{js,ts}` y se ejecutan en el proyecto de Vitest llamado `server`. Las pruebas de componentes — `*.svelte.test.ts` — quedan excluidas. Los generadores escriben un `server.test.ts` junto a las rutas que crean.
+
+### Contexto de prueba
+
+`test/setup.ts` da a cada prueba un usuario nuevo y un conjunto de clientes, de modo que las pruebas se leen como peticiones HTTP contra la aplicación en ejecución:
+
+- `request` - Un cliente de supertest, sin autenticar
+- `agent` - Un agente de supertest que conserva las cookies, con `authenticateUser()`
+- `admin` - El cliente de administración de PocketBase
+- `pb` - El cliente de PocketBase con ámbito del usuario de prueba
+- `user` - El registro de usuario creado para esta prueba
+
+### Frontend
+
+Los componentes de página, layout y error se sustituyen por stubs durante la ejecución. Las pruebas de servidor solo se ocupan del backend y la base de datos, y saltarse el bundle del frontend supone una gran ganancia de velocidad.
+
+### Seeds y fixtures
+
+La base de datos de pruebas empieza vacía salvo por las migraciones. Carga tú mismo los [seeds](/es/seeds) o los [fixtures](/es/fixtures) si una prueba los necesita, o crea en la prueba los registros que requiera.
+<!-- @end -->

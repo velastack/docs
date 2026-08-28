@@ -6,6 +6,8 @@ Enable Vela's content management system.
 ```
 $ vela enable cms
 ```
+
+The subcommand is registered but not yet implemented — running it reports that the feature isn't available. For file-based content today, see [blog](/enable/blog).
 <!-- @es -->
 Habilita el sistema de gestión de contenido de Vela.
 
@@ -14,4 +16,6 @@ Habilita el sistema de gestión de contenido de Vela.
 ```
 $ vela enable cms
 ```
+
+El subcomando está registrado pero aún no implementado — al ejecutarlo se informa de que la función no está disponible. Para contenido basado en archivos hoy, consulta [blog](/es/enable/blog).
 <!-- @end -->

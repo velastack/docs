@@ -1,0 +1,25 @@
+<!-- @en -->
+Preview the built app — production output, served locally.
+
+### Syntax
+
+```
+$ vela preview
+```
+
+Run [`vela build`](/build) first. As with build and [dev](/dev), if the project has a backend the database is started alongside the preview server and stopped again on exit, so the built app has something to talk to. If `POCKETBASE_URL` is already set, that database is used instead.
+
+This is the last check before [deploying](/deploy): it runs the real build output rather than the dev server, so prerendering, adapter behaviour and anything that only differs in production shows up here.
+<!-- @es -->
+Previsualiza la aplicación compilada — la salida de producción, servida en local.
+
+### Sintaxis
+
+```
+$ vela preview
+```
+
+Ejecuta antes [`vela build`](/es/build). Igual que con build y [dev](/es/dev), si el proyecto tiene backend la base de datos se inicia junto al servidor de previsualización y se detiene al salir, para que la aplicación compilada tenga con qué hablar. Si `POCKETBASE_URL` ya está definida, se usa esa base de datos.
+
+Esta es la última comprobación antes de [desplegar](/es/deploy): ejecuta la salida de compilación real en lugar del servidor de desarrollo, así que el prerenderizado, el comportamiento del adaptador y todo lo que solo difiere en producción se manifiesta aquí.
+<!-- @end -->

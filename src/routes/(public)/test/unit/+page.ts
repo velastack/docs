@@ -5,6 +5,7 @@ export const load = async ({ parent }) => {
 		breadcrumbs: [
 			{ title: 'Test', url: /* @wc-url */ '/test' },
 			{ title: 'Unit', url: /* @wc-url */ '/test/unit' }
-		]
+		],
+		badges: ['Planned']
 	};
 };

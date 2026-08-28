@@ -1,0 +1,59 @@
+<!-- @en -->
+List the targets this project can deploy to.
+
+### Syntax
+
+```
+$ vela targets
+```
+
+Each row is a copy of the app — `local` first, then every target bound to a server in `.vela/project.json` — with the server behind it, the domain it serves, the release it is running and whether it answered:
+
+```
+TARGET       KIND    SERVER              DOMAIN                    RELEASE
+local        local   —                   http://localhost:5173     —
+production   remote  root@example.com    example.com               20260827120000
+staging      remote  root@example.com    staging.example.com       20260826094500
+```
+
+One connection is made per machine rather than per target, since a server usually hosts several. Listing never mints an app id — running `vela targets` has no side effects.
+
+### Options
+
+- `--json` - Print raw JSON
+- `--offline` - Skip connecting to servers
+- `-i, --identity <file>` - SSH private key to authenticate with
+- `--ssh-port <port>` - SSH port
+- `--accept-host-keys` - Trust an unknown host key on first connect (CI)
+
+`--offline` reports what the project is bound to without reaching out, which is quicker and works without network access. Release and reachability are left blank.
+<!-- @es -->
+Lista los objetivos a los que este proyecto puede desplegar.
+
+### Sintaxis
+
+```
+$ vela targets
+```
+
+Cada fila es una copia de la aplicación — primero `local`, después cada objetivo vinculado a un servidor en `.vela/project.json` — con el servidor que hay detrás, el dominio que sirve, la release que ejecuta y si respondió:
+
+```
+TARGET       KIND    SERVER              DOMAIN                    RELEASE
+local        local   —                   http://localhost:5173     —
+production   remote  root@example.com    example.com               20260827120000
+staging      remote  root@example.com    staging.example.com       20260826094500
+```
+
+Se hace una conexión por máquina en lugar de por objetivo, ya que un servidor suele alojar varios. Listar nunca genera un id de aplicación — ejecutar `vela targets` no tiene efectos secundarios.
+
+### Opciones
+
+- `--json` - Imprimir JSON sin formato
+- `--offline` - No conectarse a los servidores
+- `-i, --identity <file>` - Clave privada SSH con la que autenticarse
+- `--ssh-port <port>` - Puerto SSH
+- `--accept-host-keys` - Confiar en una clave de host desconocida en la primera conexión (CI)
+
+`--offline` informa de a qué está vinculado el proyecto sin salir a la red, lo que es más rápido y funciona sin acceso a internet. La release y la accesibilidad se dejan en blanco.
+<!-- @end -->

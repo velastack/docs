@@ -1,5 +1,27 @@
 <!-- @en -->
-Vela uses shadcn-svelte for its UI components with no modifications. The `add` command is a wrapper around the shadcn-svelte add command. All components are installed to the `src/lib/components/ui` directory.
+Vela uses shadcn-svelte for its UI components with no modifications. The add command is a wrapper around the shadcn-svelte add command. All components are installed to the `src/lib/components/ui` directory.
+
+### Syntax
+
+```
+$ vela ui <command>
+```
+
+- [`add`](/ui/add) - Add components to the application
+- [`base`](/ui/base) - Change the base color
+
+The shadcn-svelte configuration lives in `components.json` at the project root.
 <!-- @es -->
-Vela usa shadcn-svelte para sus componentes de UI con ninguna modificación. El comando `add` es un wrapper alrededor del comando add de shadcn-svelte. Todos los componentes se instalan en el directorio `src/lib/components/ui`.
+Vela usa shadcn-svelte para sus componentes de interfaz sin modificaciones. El comando add es un envoltorio del comando add de shadcn-svelte. Todos los componentes se instalan en el directorio `src/lib/components/ui`.
+
+### Sintaxis
+
+```
+$ vela ui <command>
+```
+
+- [`add`](/es/ui/add) - Añadir componentes a la aplicación
+- [`base`](/es/ui/base) - Cambiar el color base
+
+La configuración de shadcn-svelte vive en `components.json`, en la raíz del proyecto.
 <!-- @end -->

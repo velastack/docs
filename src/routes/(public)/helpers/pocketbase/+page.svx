@@ -1,103 +1,175 @@
 <!-- @en -->
-This library is used to interact with PocketBase.
+PocketBase bindings for SvelteKit: a `hooks.server.ts` middleware, a typed client and type-safe collection schemas. This is the package the generated code imports.
+
+```
+npm install @velastack/pocketbase
+```
+
+Installed for you by [`vela create`](/create) and [`vela enable backend`](/enable/backend).
+
+### Entrypoints
+
+- `@velastack/pocketbase` - The middleware and the client
+- `@velastack/pocketbase/form` - Superforms helpers
+- `@velastack/pocketbase/api-key` - API key generation and verification
+- `@velastack/pocketbase/testing` - The `TestContext` type for server tests
 
 #### handlePocketbase
 
-This function is used to configure the PocketBase middleware in `hooks.server.ts`.
+Configures the PocketBase middleware in `hooks.server.ts`.
 
 ```ts
 import { handlePocketbase } from '@velastack/pocketbase';
+import {
+    POCKETBASE_URL,
+    POCKETBASE_SUPERUSER_EMAIL,
+    POCKETBASE_SUPERUSER_PASSWORD
+} from '$env/static/private';
 
 export const handle = handlePocketbase({
-  pocketbaseUrl: POCKETBASE_URL,
-  superuserEmail: POCKETBASE_SUPERUSER_EMAIL,
-  superuserPassword: POCKETBASE_SUPERUSER_PASSWORD
+	pocketbaseUrl: POCKETBASE_URL,
+	superuserEmail: POCKETBASE_SUPERUSER_EMAIL,
+	superuserPassword: POCKETBASE_SUPERUSER_PASSWORD
 })
 ```
 
+The `auth`, `api` and `apiKeys` blocks are added to this call by the [enable](/enable) commands. It puts two clients on `locals`: `admin`, which queries the database directly, and `pb`, which is scoped to the authenticated user.
+
 #### setDefaultData
 
-This function is used to set the default data for a form from a PocketBase record in a server action.
+Sets the default data for a form from a PocketBase record. Exported from the `/form` entrypoint.
 
 ```ts
-import { setDefaultData } from '@velastack/pocketbase';
+import { setDefaultData } from '@velastack/pocketbase/form';
 
 export const actions = {
-  default: async ({ locals, request }) => {
-    const record = await locals.admin.collection('posts').getOne(1);
-    setDefaultData(form, record);
-    return { form };
-  }
+	default: async ({ locals, request }) => {
+        const record = await locals.admin.collection('posts').getOne(1);
+        setDefaultData(form, record);
+        return { form };
+    }
 }
 ```
 
 #### setPocketbaseErrors
 
-This function is used to set PocketBase errors as Superforms errors when a form submission fails.
+Sets PocketBase errors as Superforms errors when a form submission fails.
 
 ```ts
-import { setPocketbaseErrors } from '@velastack/pocketbase';
+import { setPocketbaseErrors } from '@velastack/pocketbase/form';
 
 export const actions = {
-  default: async ({ locals, request }) => {
-    try {
-      await locals.admin.collection('posts').create(form.data);
-    } catch (error) {
-      setPocketbaseErrors(form, error);
-      return fail(400, { form });
+	default: async ({ locals, request }) => {
+        try {
+            await locals.admin.collection('posts').create(form.data);
+        } catch (error) {
+            setPocketbaseErrors(form, error);
+            return fail(400, { form });
+        }
     }
-  }
-},
+}
 ```
+
+#### API keys
+
+The primitives behind [`vela enable api-keys`](/enable/api-keys). Keys are stored hashed, so the secret is only ever shown once, at generation.
+
+```ts
+import {
+    generateApiKeySecret,
+    hashApiKey,
+    verifyApiKey
+} from '@velastack/pocketbase/api-key';
+```
+
+#### Generated types
+
+[`vela sync`](/sync) augments this package with `Models`, `Collections` and `Schemas` for your project's collections, so `locals.pb.collection('posts')` is typed.
 <!-- @es -->
-Esta librería se utiliza para interactuar con PocketBase.
+Vinculaciones de PocketBase para SvelteKit: un middleware para `hooks.server.ts`, un cliente tipado y esquemas de colección con tipos seguros. Este es el paquete que importa el código generado.
+
+```
+npm install @velastack/pocketbase
+```
+
+Lo instalan por ti [`vela create`](/es/create) y [`vela enable backend`](/es/enable/backend).
+
+### Puntos de entrada
+
+- `@velastack/pocketbase` - El middleware y el cliente
+- `@velastack/pocketbase/form` - Helpers de Superforms
+- `@velastack/pocketbase/api-key` - Generación y verificación de claves de API
+- `@velastack/pocketbase/testing` - El tipo `TestContext` para las pruebas de servidor
 
 #### handlePocketbase
 
-Esta función se utiliza para configurar el middleware de PocketBase en `hooks.server.ts`.
+Configura el middleware de PocketBase en `hooks.server.ts`.
 
 ```ts
 import { handlePocketbase } from '@velastack/pocketbase';
+import {
+    POCKETBASE_URL,
+    POCKETBASE_SUPERUSER_EMAIL,
+    POCKETBASE_SUPERUSER_PASSWORD
+} from '$env/static/private';
 
 export const handle = handlePocketbase({
-  pocketbaseUrl: POCKETBASE_URL,
-  superuserEmail: POCKETBASE_SUPERUSER_EMAIL,
-  superuserPassword: POCKETBASE_SUPERUSER_PASSWORD
+	pocketbaseUrl: POCKETBASE_URL,
+	superuserEmail: POCKETBASE_SUPERUSER_EMAIL,
+	superuserPassword: POCKETBASE_SUPERUSER_PASSWORD
 })
 ```
 
+Los bloques `auth`, `api` y `apiKeys` los añaden a esta llamada los comandos [enable](/es/enable). Coloca dos clientes en `locals`: `admin`, que consulta la base de datos directamente, y `pb`, que está limitado al usuario autenticado.
+
 #### setDefaultData
 
-Esta función se utiliza para establecer los datos por defecto para un formulario desde un registro de PocketBase en una acción del servidor.
+Establece los datos por defecto de un formulario a partir de un registro de PocketBase. Se exporta desde el punto de entrada `/form`.
 
 ```ts
-import { setDefaultData } from '@velastack/pocketbase';
+import { setDefaultData } from '@velastack/pocketbase/form';
 
 export const actions = {
-  default: async ({ locals, request }) => {
-    const record = await locals.admin.collection('posts').getOne(1);
-    setDefaultData(form, record);
-    return { form };
-  }
+	default: async ({ locals, request }) => {
+        const record = await locals.admin.collection('posts').getOne(1);
+        setDefaultData(form, record);
+        return { form };
+    }
 }
 ```
 
 #### setPocketbaseErrors
 
-Esta función se utiliza para establecer los errores de PocketBase como errores de Superforms cuando falla el envío de un formulario.
+Establece los errores de PocketBase como errores de Superforms cuando falla el envío de un formulario.
 
 ```ts
-import { setPocketbaseErrors } from '@velastack/pocketbase';
+import { setPocketbaseErrors } from '@velastack/pocketbase/form';
 
 export const actions = {
-  default: async ({ locals, request }) => {
-    try {
-      await locals.admin.collection('posts').create(form.data);
-    } catch (error) {
-      setPocketbaseErrors(form, error);
-      return fail(400, { form });
+	default: async ({ locals, request }) => {
+        try {
+            await locals.admin.collection('posts').create(form.data);
+        } catch (error) {
+            setPocketbaseErrors(form, error);
+            return fail(400, { form });
+        }
     }
-  }
 }
 ```
+
+#### Claves de API
+
+Las primitivas detrás de [`vela enable api-keys`](/es/enable/api-keys). Las claves se guardan con hash, así que el secreto solo se muestra una vez, al generarlo.
+
+```ts
+import {
+    generateApiKeySecret,
+    hashApiKey,
+    verifyApiKey
+} from '@velastack/pocketbase/api-key';
+```
+
+#### Tipos generados
+
+[`vela sync`](/es/sync) amplía este paquete con `Models`, `Collections` y `Schemas` para las colecciones de tu proyecto, de modo que `locals.pb.collection('posts')` queda tipado.
 <!-- @end -->

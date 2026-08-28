@@ -33,10 +33,17 @@ msgid "Ethos"
 msgstr "Ethos"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/backend/+page.ts
 #: src/routes/(public)/backend/+page.ts
 #: src/routes/(public)/backend/pocketbase/+page.ts
 #: src/routes/(public)/backend/postgres/+page.ts
+#: src/routes/(public)/disable/backend/+page.ts
+#: src/routes/(public)/disable/backend/+page.ts
+#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/backend/+page.ts
+#: src/routes/(public)/enable/backend/+page.ts
 msgid "Backend"
 msgstr "Backend"
 
@@ -57,14 +64,8 @@ msgid "PostgreSQL"
 msgstr "PostgreSQL"
 
 #: src/lib/components/app-sidebar.svelte
-#: src/lib/components/app-sidebar.svelte
-#: src/lib/components/app-sidebar.svelte
-#: src/lib/components/app-sidebar.svelte
-#: src/lib/components/app-sidebar.svelte
-#: src/lib/components/app-sidebar.svelte
-#: src/routes/(public)/backend/+page.ts
-#: src/routes/(public)/enable/+page.ts
-#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/preview/+page.ts
+#: src/routes/(public)/preview/+page.ts
 msgid "Preview"
 msgstr "Preview"
 
@@ -73,6 +74,7 @@ msgstr "Preview"
 #: src/routes/(public)/cli/+page.ts
 #: src/routes/(public)/cli/environment-variables/+page.ts
 #: src/routes/(public)/cli/installation/+page.ts
+#: src/routes/(public)/cli/project-structure/+page.ts
 msgid "CLI Reference"
 msgstr "CLI Reference"
 
@@ -91,8 +93,14 @@ msgid "Environment Variables"
 msgstr "Environment Variables"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/admin/create/+page.ts
+#: src/routes/(public)/admin/create/+page.ts
 #: src/routes/(public)/create/+page.ts
 #: src/routes/(public)/create/+page.ts
+#: src/routes/(public)/migrate/create/+page.ts
+#: src/routes/(public)/migrate/create/+page.ts
 msgid "Create"
 msgstr "Create"
 
@@ -116,6 +124,7 @@ msgstr "Build"
 #: src/routes/(public)/generate/+page.ts
 #: src/routes/(public)/generate/ai/+page.ts
 #: src/routes/(public)/generate/form/+page.ts
+#: src/routes/(public)/generate/migration/+page.ts
 #: src/routes/(public)/generate/resource/+page.ts
 #: src/routes/(public)/generate/scaffold/+page.ts
 #: src/routes/(public)/generate/schema/+page.ts
@@ -123,24 +132,36 @@ msgid "Generate"
 msgstr "Generate"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/destroy/form/+page.ts
+#: src/routes/(public)/destroy/form/+page.ts
 #: src/routes/(public)/generate/form/+page.ts
 #: src/routes/(public)/generate/form/+page.ts
 msgid "Form"
 msgstr "Form"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/destroy/resource/+page.ts
+#: src/routes/(public)/destroy/resource/+page.ts
 #: src/routes/(public)/generate/resource/+page.ts
 #: src/routes/(public)/generate/resource/+page.ts
 msgid "Resource"
 msgstr "Resource"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/destroy/schema/+page.ts
+#: src/routes/(public)/destroy/schema/+page.ts
 #: src/routes/(public)/generate/schema/+page.ts
 #: src/routes/(public)/generate/schema/+page.ts
 msgid "Schema"
 msgstr "Schema"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/destroy/scaffold/+page.ts
+#: src/routes/(public)/destroy/scaffold/+page.ts
 #: src/routes/(public)/generate/scaffold/+page.ts
 #: src/routes/(public)/generate/scaffold/+page.ts
 msgid "Scaffold"
@@ -149,14 +170,29 @@ msgstr "Scaffold"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/disable/payments/+page.ts
+#: src/routes/(public)/disable/teams/+page.ts
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/payments/+page.ts
+#: src/routes/(public)/enable/subscriptions/+page.ts
+#: src/routes/(public)/enable/teams/+page.ts
+#: src/routes/(public)/generate/ai/+page.ts
 msgid "Pro"
 msgstr "Pro"
 
 #: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/destroy/+page.ts
 #: src/routes/(public)/destroy/+page.ts
+#: src/routes/(public)/destroy/deployment/+page.ts
+#: src/routes/(public)/destroy/form/+page.ts
+#: src/routes/(public)/destroy/resource/+page.ts
+#: src/routes/(public)/destroy/scaffold/+page.ts
+#: src/routes/(public)/destroy/schema/+page.ts
 msgid "Destroy"
 msgstr "Destroy"
 
@@ -166,7 +202,10 @@ msgstr "Destroy"
 #: src/routes/(public)/enable/api-keys/+page.ts
 #: src/routes/(public)/enable/api/+page.ts
 #: src/routes/(public)/enable/auth/+page.ts
+#: src/routes/(public)/enable/backend/+page.ts
+#: src/routes/(public)/enable/blog/+page.ts
 #: src/routes/(public)/enable/cms/+page.ts
+#: src/routes/(public)/enable/content-negotiation/+page.ts
 #: src/routes/(public)/enable/i18n/+page.ts
 #: src/routes/(public)/enable/notifications/+page.ts
 #: src/routes/(public)/enable/payments/+page.ts
@@ -174,12 +213,13 @@ msgstr "Destroy"
 #: src/routes/(public)/enable/smtp/+page.ts
 #: src/routes/(public)/enable/subscriptions/+page.ts
 #: src/routes/(public)/enable/teams/+page.ts
-#: src/routes/(public)/enable/whatsapp/+page.ts
-#: src/routes/(public)/enable/workflow/+page.ts
 msgid "Enable"
 msgstr "Enable"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/disable/auth/+page.ts
+#: src/routes/(public)/disable/auth/+page.ts
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/auth/+page.ts
 #: src/routes/(public)/enable/auth/+page.ts
@@ -187,6 +227,9 @@ msgid "Auth"
 msgstr "Auth"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/disable/api-keys/+page.ts
+#: src/routes/(public)/disable/api-keys/+page.ts
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/api-keys/+page.ts
 #: src/routes/(public)/enable/api-keys/+page.ts
@@ -194,12 +237,16 @@ msgid "API Keys"
 msgstr "API Keys"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/notifications/+page.ts
 #: src/routes/(public)/enable/notifications/+page.ts
 msgid "Notifications"
 msgstr "Notifications"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/disable/teams/+page.ts
+#: src/routes/(public)/disable/teams/+page.ts
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/teams/+page.ts
 #: src/routes/(public)/enable/teams/+page.ts
@@ -207,6 +254,9 @@ msgid "Teams"
 msgstr "Teams"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/disable/payments/+page.ts
+#: src/routes/(public)/disable/payments/+page.ts
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/payments/+page.ts
 #: src/routes/(public)/enable/payments/+page.ts
@@ -221,40 +271,43 @@ msgid "Subscriptions"
 msgstr "Subscriptions"
 
 #: src/lib/components/app-sidebar.svelte
-#: src/routes/(public)/enable/workflow/+page.ts
-#: src/routes/(public)/enable/workflow/+page.ts
-msgid "Workflow"
-msgstr "Workflow"
-
-#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/disable/+page.ts
 #: src/routes/(public)/disable/+page.ts
+#: src/routes/(public)/disable/api-keys/+page.ts
+#: src/routes/(public)/disable/api/+page.ts
+#: src/routes/(public)/disable/auth/+page.ts
+#: src/routes/(public)/disable/backend/+page.ts
+#: src/routes/(public)/disable/content-negotiation/+page.ts
+#: src/routes/(public)/disable/i18n/+page.ts
+#: src/routes/(public)/disable/payments/+page.ts
+#: src/routes/(public)/disable/s3/+page.ts
+#: src/routes/(public)/disable/smtp/+page.ts
+#: src/routes/(public)/disable/teams/+page.ts
 msgid "Disable"
 msgstr "Disable"
 
 #: src/lib/components/app-sidebar.svelte
-#: src/routes/(public)/i18n/+page.ts
 #: src/routes/(public)/i18n/extract/+page.ts
 #: src/routes/(public)/i18n/extract/+page.ts
 msgid "Extract"
 msgstr "Extract"
 
 #: src/lib/components/app-sidebar.svelte
-#: src/routes/(public)/i18n/+page.ts
 #: src/routes/(public)/i18n/watch/+page.ts
 #: src/routes/(public)/i18n/watch/+page.ts
 msgid "Watch"
 msgstr "Watch"
 
 #: src/lib/components/app-sidebar.svelte
-#: src/routes/(public)/i18n/+page.ts
+#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/i18n/status/+page.ts
 #: src/routes/(public)/i18n/status/+page.ts
+#: src/routes/(public)/status/+page.ts
+#: src/routes/(public)/status/+page.ts
 msgid "Status"
 msgstr "Status"
 
 #: src/lib/components/app-sidebar.svelte
-#: src/routes/(public)/i18n/+page.ts
 #: src/routes/(public)/i18n/clean/+page.ts
 #: src/routes/(public)/i18n/clean/+page.ts
 msgid "Clean"
@@ -269,7 +322,7 @@ msgstr "Sync"
 #: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/test/+page.ts
 #: src/routes/(public)/test/+page.ts
-#: src/routes/(public)/test/integration/+page.ts
+#: src/routes/(public)/test/server/+page.ts
 #: src/routes/(public)/test/unit/+page.ts
 msgid "Test"
 msgstr "Test"
@@ -280,13 +333,6 @@ msgstr "Test"
 #: src/routes/(public)/test/unit/+page.ts
 msgid "Unit"
 msgstr "Unit"
-
-#: src/lib/components/app-sidebar.svelte
-#: src/routes/(public)/test/+page.ts
-#: src/routes/(public)/test/integration/+page.ts
-#: src/routes/(public)/test/integration/+page.ts
-msgid "Integration"
-msgstr "Integration"
 
 #: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/seeds/+page.ts
@@ -353,14 +399,12 @@ msgid "Terms"
 msgstr "Terms"
 
 #: src/lib/components/app-sidebar.svelte
-#: src/routes/(public)/ui/+page.ts
 #: src/routes/(public)/ui/add/+page.ts
 #: src/routes/(public)/ui/add/+page.ts
 msgid "Add"
 msgstr "Add"
 
 #: src/lib/components/app-sidebar.svelte
-#: src/routes/(public)/ui/+page.ts
 #: src/routes/(public)/ui/base/+page.ts
 #: src/routes/(public)/ui/base/+page.ts
 msgid "Base"
@@ -458,6 +502,7 @@ msgstr "Logout"
 #: src/routes/(public)/helpers/+page.ts
 #: src/routes/(public)/helpers/+page.ts
 #: src/routes/(public)/helpers/github-action/+page.ts
+#: src/routes/(public)/helpers/kit/+page.ts
 #: src/routes/(public)/helpers/pocketbase/+page.ts
 #: src/routes/(public)/helpers/postgres/+page.ts
 msgid "Helpers"
@@ -518,12 +563,6 @@ msgstr "English"
 msgid "Español"
 msgstr "Español"
 
-#: src/lib/components/app-sidebar.svelte
-#: src/routes/(public)/enable/whatsapp/+page.ts
-#: src/routes/(public)/enable/whatsapp/+page.ts
-msgid "WhatsApp"
-msgstr "WhatsApp"
-
 #: src/routes/(public)/+error.svelte
 msgid "404 - Page not found"
 msgstr "404 - Page not found"
@@ -583,30 +622,6 @@ msgstr "Subscription plans for your application."
 msgid "Content management system for your application."
 msgstr "Content management system for your application."
 
-#: src/routes/(public)/i18n/+page.ts
-msgid "Extract translatable strings."
-msgstr "Extract translatable strings."
-
-#: src/routes/(public)/i18n/+page.ts
-msgid "Watch for changes and extract strings."
-msgstr "Watch for changes and extract strings."
-
-#: src/routes/(public)/i18n/+page.ts
-msgid "Show i18n status."
-msgstr "Show i18n status."
-
-#: src/routes/(public)/i18n/+page.ts
-msgid "Clean unused translation keys."
-msgstr "Clean unused translation keys."
-
-#: src/routes/(public)/test/+page.ts
-msgid "Unit tests for your application."
-msgstr "Unit tests for your application."
-
-#: src/routes/(public)/test/+page.ts
-msgid "Integration tests for your application."
-msgstr "Integration tests for your application."
-
 #: src/routes/(public)/root-layout.svelte
 msgid "Learn more"
 msgstr "Learn more"
@@ -631,18 +646,6 @@ msgstr "Deploy your application to Netlify"
 msgid "Deploy your application to Cloudflare"
 msgstr "Deploy your application to Cloudflare"
 
-#: src/routes/(public)/helpers/+page.ts
-msgid "This library is used to interact with PocketBase."
-msgstr "This library is used to interact with PocketBase."
-
-#: src/routes/(public)/helpers/+page.ts
-msgid "This library is used to interact with PostgreSQL."
-msgstr "This library is used to interact with PostgreSQL."
-
-#: src/routes/(public)/helpers/+page.ts
-msgid "The GitHub Action for deploying Vela projects to a VPS."
-msgstr "The GitHub Action for deploying Vela projects to a VPS."
-
 #: src/routes/(public)/legal/+page.ts
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
@@ -659,14 +662,6 @@ msgstr "Terms of Service"
 msgid "Create a demo terms of service for the application."
 msgstr "Create a demo terms of service for the application."
 
-#: src/routes/(public)/ui/+page.ts
-msgid "Add a new Shadcn-Svelte component to the application."
-msgstr "Add a new Shadcn-Svelte component to the application."
-
-#: src/routes/(public)/ui/+page.ts
-msgid "Change the base color of the application."
-msgstr "Change the base color of the application."
-
 #: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/fixtures/reset/+page.ts
 #: src/routes/(public)/fixtures/reset/+page.ts
@@ -682,3 +677,239 @@ msgstr "Regen"
 #: src/routes/(public)/enable/subscriptions/+page.ts
 msgid "Depends: payments"
 msgstr "Depends: payments"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/cli/+page.ts
+#: src/routes/(public)/cli/project-structure/+page.ts
+#: src/routes/(public)/cli/project-structure/+page.ts
+msgid "Project Structure"
+msgstr "Project Structure"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backend/+page.ts
+#: src/routes/(public)/backend/postgres/+page.ts
+#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/cms/+page.ts
+#: src/routes/(public)/enable/notifications/+page.ts
+#: src/routes/(public)/generate/ai/+page.ts
+#: src/routes/(public)/helpers/+page.ts
+#: src/routes/(public)/helpers/postgres/+page.ts
+#: src/routes/(public)/oauth/+page.ts
+#: src/routes/(public)/test/+page.ts
+#: src/routes/(public)/test/unit/+page.ts
+msgid "Planned"
+msgstr "Planned"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/bless/+page.ts
+#: src/routes/(public)/bless/+page.ts
+msgid "Bless"
+msgstr "Bless"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/generate/migration/+page.ts
+#: src/routes/(public)/generate/migration/+page.ts
+msgid "Migration"
+msgstr "Migration"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/destroy/deployment/+page.ts
+#: src/routes/(public)/destroy/deployment/+page.ts
+msgid "Deployment"
+msgstr "Deployment"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/blog/+page.ts
+#: src/routes/(public)/enable/blog/+page.ts
+msgid "Blog"
+msgstr "Blog"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/disable/content-negotiation/+page.ts
+#: src/routes/(public)/disable/content-negotiation/+page.ts
+#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/content-negotiation/+page.ts
+#: src/routes/(public)/enable/content-negotiation/+page.ts
+msgid "Content Negotiation"
+msgstr "Content Negotiation"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/migrate/+page.ts
+#: src/routes/(public)/migrate/+page.ts
+#: src/routes/(public)/migrate/collections/+page.ts
+#: src/routes/(public)/migrate/create/+page.ts
+#: src/routes/(public)/migrate/down/+page.ts
+#: src/routes/(public)/migrate/history-sync/+page.ts
+#: src/routes/(public)/migrate/up/+page.ts
+msgid "Migrate"
+msgstr "Migrate"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/migrate/up/+page.ts
+#: src/routes/(public)/migrate/up/+page.ts
+msgid "Up"
+msgstr "Up"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/migrate/down/+page.ts
+#: src/routes/(public)/migrate/down/+page.ts
+msgid "Down"
+msgstr "Down"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/migrate/collections/+page.ts
+#: src/routes/(public)/migrate/collections/+page.ts
+msgid "Collections"
+msgstr "Collections"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/migrate/history-sync/+page.ts
+#: src/routes/(public)/migrate/history-sync/+page.ts
+msgid "History Sync"
+msgstr "History Sync"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/test/+page.ts
+#: src/routes/(public)/test/server/+page.ts
+#: src/routes/(public)/test/server/+page.ts
+msgid "Server"
+msgstr "Server"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/oauth/+page.ts
+#: src/routes/(public)/oauth/+page.ts
+msgid "OAuth"
+msgstr "OAuth"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/logs/+page.ts
+#: src/routes/(public)/logs/+page.ts
+msgid "Logs"
+msgstr "Logs"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/rollback/+page.ts
+#: src/routes/(public)/rollback/+page.ts
+msgid "Rollback"
+msgstr "Rollback"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/targets/+page.ts
+#: src/routes/(public)/targets/+page.ts
+msgid "Targets"
+msgstr "Targets"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/env/+page.ts
+#: src/routes/(public)/env/+page.ts
+#: src/routes/(public)/env/import/+page.ts
+#: src/routes/(public)/env/list/+page.ts
+#: src/routes/(public)/env/set/+page.ts
+#: src/routes/(public)/env/unset/+page.ts
+msgid "Env"
+msgstr "Env"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/env/list/+page.ts
+#: src/routes/(public)/env/list/+page.ts
+msgid "List"
+msgstr "List"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/env/set/+page.ts
+#: src/routes/(public)/env/set/+page.ts
+msgid "Set"
+msgstr "Set"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/env/unset/+page.ts
+#: src/routes/(public)/env/unset/+page.ts
+msgid "Unset"
+msgstr "Unset"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/env/import/+page.ts
+#: src/routes/(public)/env/import/+page.ts
+msgid "Import"
+msgstr "Import"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/admin/+page.ts
+#: src/routes/(public)/admin/+page.ts
+#: src/routes/(public)/admin/create/+page.ts
+msgid "Admin"
+msgstr "Admin"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/link/+page.ts
+#: src/routes/(public)/link/+page.ts
+msgid "Link"
+msgstr "Link"
+
+#: src/lib/components/app-sidebar.svelte
+msgid "Kit"
+msgstr "Kit"
+
+#: src/routes/(public)/enable/+page.ts
+msgid "The PocketBase backend, hooks and data directory."
+msgstr "The PocketBase backend, hooks and data directory."
+
+#: src/routes/(public)/enable/+page.ts
+msgid "An mdsvex blog with posts, tags and an RSS feed."
+msgstr "An mdsvex blog with posts, tags and an RSS feed."
+
+#: src/routes/(public)/enable/+page.ts
+msgid "Serve the same route as HTML, Markdown or JSON."
+msgstr "Serve the same route as HTML, Markdown or JSON."
+
+#: src/routes/(public)/enable/+page.ts
+msgid "Internationalization and locale-aware routing."
+msgstr "Internationalization and locale-aware routing."
+
+#: src/routes/(public)/enable/+page.ts
+msgid "In-app notifications with a bell dropdown."
+msgstr "In-app notifications with a bell dropdown."
+
+#: src/routes/(public)/cli/+page.ts
+msgid "What Vela generates, and where it lives."
+msgstr "What Vela generates, and where it lives."
+
+#: src/routes/(public)/enable/blog/+page.ts
+msgid "Depends: backend"
+msgstr "Depends: backend"
+
+#: src/routes/(public)/helpers/+page.ts
+msgid "PocketBase bindings for SvelteKit: middleware, a typed client and form helpers."
+msgstr "PocketBase bindings for SvelteKit: middleware, a typed client and form helpers."
+
+#: src/routes/(public)/helpers/+page.ts
+msgid "Backend-agnostic SvelteKit plumbing shared by the bindings packages."
+msgstr "Backend-agnostic SvelteKit plumbing shared by the bindings packages."
+
+#: src/routes/(public)/helpers/+page.ts
+msgid "PostgreSQL bindings for SvelteKit."
+msgstr "PostgreSQL bindings for SvelteKit."
+
+#: src/routes/(public)/helpers/+page.ts
+msgid "The GitHub Action for deploying Vela projects to a server."
+msgstr "The GitHub Action for deploying Vela projects to a server."
+
+#: src/routes/(public)/i18n/+page.ts
+msgid "Depends: i18n"
+msgstr "Depends: i18n"
+
+#: src/routes/(public)/test/+page.ts
+msgid "Tests that run against the app and a throwaway database."
+msgstr "Tests that run against the app and a throwaway database."
+
+#: src/routes/(public)/test/+page.ts
+msgid "A separate runner for tests that need no database."
+msgstr "A separate runner for tests that need no database."

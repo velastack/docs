@@ -22,7 +22,7 @@
 					"We couldn't find what you were looking for. Let's get you back on track!"}
 			</p>
 			<div>
-				<Button href="/" variant="default" size="lg">Take me home</Button>
+				<Button href={/* @wc-url */ '/'} variant="default" size="lg">Take me home</Button>
 			</div>
 		</div>
 	</main>

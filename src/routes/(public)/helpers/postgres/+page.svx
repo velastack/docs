@@ -1,29 +1,35 @@
 <!-- @en -->
-This library is used to interact with PostgreSQL.
+PostgreSQL bindings for SvelteKit, built on the same [@velastack/kit](/helpers/kit) plumbing as the PocketBase bindings. Not yet published — `@velastack/postgres` is not on npm.
 
 #### handlePostgres
 
-This function is used to configure the Postgres middleware in `hooks.server.ts`.
+Configuration is planned to mirror [`handlePocketbase`](/helpers/pocketbase), in `hooks.server.ts`:
 
 ```ts
 import { handlePostgres } from '@velastack/postgres';
+import { POSTGRES_CONNECTION_STRING } from '$env/static/private';
 
 export const handle = handlePostgres({
-	connectionString: POSTGRES_CONNECTION_STRING
+    connectionString: POSTGRES_CONNECTION_STRING
 })
 ```
+
+See [Backend → PostgreSQL](/backend/postgres) for the wider plan.
 <!-- @es -->
-Esta librería se utiliza para interactuar con PostgreSQL.
+Vinculaciones de PostgreSQL para SvelteKit, construidas sobre la misma base de [@velastack/kit](/es/helpers/kit) que las de PocketBase. Aún no publicado — `@velastack/postgres` no está en npm.
 
 #### handlePostgres
 
-Esta función se utiliza para configurar el middleware de Postgres en `hooks.server.ts`.
+Está previsto que la configuración refleje la de [`handlePocketbase`](/es/helpers/pocketbase), en `hooks.server.ts`:
 
 ```ts
 import { handlePostgres } from '@velastack/postgres';
+import { POSTGRES_CONNECTION_STRING } from '$env/static/private';
 
 export const handle = handlePostgres({
-	connectionString: POSTGRES_CONNECTION_STRING
+    connectionString: POSTGRES_CONNECTION_STRING
 })
 ```
+
+Consulta [Backend → PostgreSQL](/es/backend/postgres) para el plan más amplio.
 <!-- @end -->

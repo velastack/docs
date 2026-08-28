@@ -1,0 +1,41 @@
+<!-- @en -->
+Add the PocketBase backend to a project that doesn't have one — a project scaffolded from the [static template](/static), or one where the backend was removed.
+
+### Syntax
+
+```
+$ vela enable backend
+```
+
+This installs `@velastack/pocketbase` and `pocketbase-sveltekit`, then:
+
+- Wires up `hooks.server.ts` with the PocketBase middleware
+- Scaffolds the `data/` directory the database runs from
+- Switches the SvelteKit adapter from static to auto
+
+Once enabled, [`vela dev`](/dev) starts the database alongside the app and the admin interface is available at `/admin`. Everything else that needs a database — [auth](/enable/auth), [the API](/enable/api), [scaffolds](/generate/scaffold), [seeds](/seeds) and [fixtures](/fixtures) — depends on this.
+
+### Reverting
+
+[`vela disable backend`](/disable/backend) takes it back out.
+<!-- @es -->
+Añade el backend de PocketBase a un proyecto que no lo tiene — un proyecto generado a partir de la [plantilla estática](/es/static), o uno al que se le quitó el backend.
+
+### Sintaxis
+
+```
+$ vela enable backend
+```
+
+Esto instala `@velastack/pocketbase` y `pocketbase-sveltekit`, y después:
+
+- Configura `hooks.server.ts` con el middleware de PocketBase
+- Genera el directorio `data/` desde el que se ejecuta la base de datos
+- Cambia el adaptador de SvelteKit de estático a auto
+
+Una vez habilitado, [`vela dev`](/es/dev) inicia la base de datos junto a la aplicación y la interfaz de administración está disponible en `/admin`. Todo lo demás que necesita una base de datos — [auth](/es/enable/auth), [la API](/es/enable/api), los [scaffolds](/es/generate/scaffold), los [seeds](/es/seeds) y los [fixtures](/es/fixtures) — depende de esto.
+
+### Revertir
+
+[`vela disable backend`](/es/disable/backend) lo vuelve a quitar.
+<!-- @end -->

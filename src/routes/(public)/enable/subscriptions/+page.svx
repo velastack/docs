@@ -6,12 +6,24 @@ Enable plans and subscriptions with Stripe.
 ```
 $ vela enable subscriptions
 ```
+
+Adds Stripe subscription billing on top of [payments](/enable/payments): plan selection, cancel and resume, and subscription state kept in sync by webhook. Creates one collection:
+
+```
+stripe_subscriptions
+```
 <!-- @es -->
-Habilite planes y suscripciones con Stripe.
+Habilita planes y suscripciones con Stripe.
 
 ### Sintaxis
 
 ```
 $ vela enable subscriptions
+```
+
+Añade la facturación por suscripción de Stripe sobre los [pagos](/es/enable/payments): selección de plan, cancelación y reanudación, y el estado de la suscripción sincronizado por webhook. Crea una colección:
+
+```
+stripe_subscriptions
 ```
 <!-- @end -->

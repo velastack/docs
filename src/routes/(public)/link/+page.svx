@@ -1,0 +1,39 @@
+<!-- @en -->
+Link this project to a project on velastack.dev.
+
+### Syntax
+
+```
+$ vela link
+```
+
+You'll be shown the teams and projects on your account and can pick one, or create a new project. Running it again on an already-linked project reports what it is linked to and does nothing else.
+
+Requires an account — run [`vela login`](/account/login) first.
+
+### What linking is for
+
+- Deploy history for the project on velastack.dev
+- The AI options on the [generators](/generate), which are billed to the project
+
+Linking is optional. An unlinked project builds, tests and deploys exactly the same way — see [Account](/account).
+<!-- @es -->
+Vincula este proyecto con un proyecto en velastack.dev.
+
+### Sintaxis
+
+```
+$ vela link
+```
+
+Se te mostrarán los equipos y proyectos de tu cuenta y podrás elegir uno, o crear un proyecto nuevo. Ejecutarlo de nuevo en un proyecto ya vinculado informa de a qué está vinculado y no hace nada más.
+
+Requiere una cuenta — ejecuta antes [`vela login`](/es/account/login).
+
+### Para qué sirve vincular
+
+- Historial de despliegues del proyecto en velastack.dev
+- Las opciones de IA de los [generadores](/es/generate), que se facturan al proyecto
+
+Vincular es opcional. Un proyecto sin vincular se compila, se prueba y se despliega exactamente igual — consulta [Cuenta](/es/account).
+<!-- @end -->

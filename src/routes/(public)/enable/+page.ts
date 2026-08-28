@@ -5,6 +5,11 @@ export const load = async ({ parent }) => {
 		breadcrumbs: [{ title: 'Enable', url: /* @wc-url */ '/enable' }],
 		learnMore: [
 			{
+				title: 'Backend',
+				url: /* @wc-url */ '/enable/backend',
+				description: 'The PocketBase backend, hooks and data directory.'
+			},
+			{
 				title: 'Auth',
 				url: /* @wc-url */ '/enable/auth',
 				description: 'Authentication for your application.'
@@ -30,6 +35,21 @@ export const load = async ({ parent }) => {
 				description: 'SMTP email sending for your application.'
 			},
 			{
+				title: 'Blog',
+				url: /* @wc-url */ '/enable/blog',
+				description: 'An mdsvex blog with posts, tags and an RSS feed.'
+			},
+			{
+				title: 'Content Negotiation',
+				url: /* @wc-url */ '/enable/content-negotiation',
+				description: 'Serve the same route as HTML, Markdown or JSON.'
+			},
+			{
+				title: 'i18n',
+				url: /* @wc-url */ '/enable/i18n',
+				description: 'Internationalization and locale-aware routing.'
+			},
+			{
 				title: 'Teams',
 				url: /* @wc-url */ '/enable/teams',
 				badge: 'Pro',
@@ -44,13 +64,19 @@ export const load = async ({ parent }) => {
 			{
 				title: 'Subscriptions',
 				url: /* @wc-url */ '/enable/subscriptions',
-				badge: 'Preview',
+				badge: 'Pro',
 				description: 'Subscription plans for your application.'
+			},
+			{
+				title: 'Notifications',
+				url: /* @wc-url */ '/enable/notifications',
+				badge: 'Planned',
+				description: 'In-app notifications with a bell dropdown.'
 			},
 			{
 				title: 'CMS',
 				url: /* @wc-url */ '/enable/cms',
-				badge: 'Preview',
+				badge: 'Planned',
 				description: 'Content management system for your application.'
 			}
 		]

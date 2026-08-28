@@ -1,0 +1,57 @@
+<!-- @en -->
+Remove a deployed environment from its server.
+
+### Syntax
+
+```
+$ vela destroy deployment
+```
+
+```
+$ vela destroy deployment -t staging
+```
+
+This stops and removes the app's systemd services, deletes its releases and withdraws its Caddy configuration, so the site stops being served. Other apps and other targets on the same server are untouched.
+
+### Options
+
+- `-t, --target <target>` - Which copy of the app to act on, defaults to `production`
+- `--server <ssh>` - Server this target runs on, recorded on first use
+- `--purge` - Also delete the database and uploaded files
+- `-y, --yes` - Skip the confirmation prompt
+- `-i, --identity <file>` - SSH private key to authenticate with
+- `--ssh-port <port>` - SSH port
+- `--accept-host-keys` - Trust an unknown host key on first connect (CI)
+
+### Purging data
+
+Without `--purge`, the database and uploaded files are left on the server, so the environment can be deployed again onto its existing data. `--purge` deletes them. There is no undo, and no backup is taken first.
+<!-- @es -->
+Elimina un entorno desplegado de su servidor.
+
+### Sintaxis
+
+```
+$ vela destroy deployment
+```
+
+```
+$ vela destroy deployment -t staging
+```
+
+Esto detiene y elimina los servicios systemd de la aplicación, borra sus releases y retira su configuración de Caddy, con lo que el sitio deja de servirse. Otras aplicaciones y otros objetivos en el mismo servidor quedan intactos.
+
+### Opciones
+
+- `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `production`
+- `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
+- `--purge` - Borrar también la base de datos y los archivos subidos
+- `-y, --yes` - Omitir la confirmación
+- `-i, --identity <file>` - Clave privada SSH con la que autenticarse
+- `--ssh-port <port>` - Puerto SSH
+- `--accept-host-keys` - Confiar en una clave de host desconocida en la primera conexión (CI)
+
+### Purgar los datos
+
+Sin `--purge`, la base de datos y los archivos subidos se dejan en el servidor, de modo que el entorno puede desplegarse de nuevo sobre sus datos existentes. `--purge` los borra. No hay deshacer, y no se hace ninguna copia de seguridad antes.
+<!-- @end -->

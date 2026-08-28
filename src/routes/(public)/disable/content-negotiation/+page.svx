@@ -1,0 +1,39 @@
+<!-- @en -->
+Remove content negotiation, added by [`vela enable content-negotiation`](/enable/content-negotiation).
+
+### Syntax
+
+```
+$ vela disable content-negotiation
+```
+
+### Options
+
+- `-y, --yes` - Skip the confirmation prompt
+
+### What it removes
+
+- The generated `sveltekit-negotiate` files
+- The negotiate wrapper around the `handle` hook
+- The `reroute` hook, preserving the [i18n](/enable/i18n) composition if it is in use
+- The `<Negotiate />` component in the root layout
+<!-- @es -->
+Elimina la negociación de contenido, añadida por [`vela enable content-negotiation`](/es/enable/content-negotiation).
+
+### Sintaxis
+
+```
+$ vela disable content-negotiation
+```
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+
+### Qué elimina
+
+- Los archivos generados de `sveltekit-negotiate`
+- El envoltorio de negociación alrededor del hook `handle`
+- El hook `reroute`, conservando la composición de [i18n](/es/enable/i18n) si está en uso
+- El componente `<Negotiate />` en el layout raíz
+<!-- @end -->

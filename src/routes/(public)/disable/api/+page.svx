@@ -1,0 +1,53 @@
+<!-- @en -->
+Stop exposing the PocketBase REST API, added by [`vela enable api`](/enable/api).
+
+### Syntax
+
+```
+$ vela disable api
+```
+
+### Options
+
+- `-y, --yes` - Skip the confirmation prompt
+
+### What it removes
+
+The API handler in `hooks.server.ts`, so `/api` stops serving the PocketBase API:
+
+```ts
+export const handle = handlePocketbase({
+    api: {
+        enabled: false
+    }
+});
+```
+
+Any SvelteKit routes of your own in `src/routes/api` keep working — only the PocketBase routes that took precedence over them are withdrawn. Disable [API keys](/disable/api-keys) first if they are enabled.
+<!-- @es -->
+Deja de exponer la API REST de PocketBase, añadida por [`vela enable api`](/es/enable/api).
+
+### Sintaxis
+
+```
+$ vela disable api
+```
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+
+### Qué elimina
+
+El manejador de la API en `hooks.server.ts`, de modo que `/api` deja de servir la API de PocketBase:
+
+```ts
+export const handle = handlePocketbase({
+    api: {
+        enabled: false
+    }
+});
+```
+
+Tus propias rutas de SvelteKit en `src/routes/api` siguen funcionando — solo se retiran las rutas de PocketBase que tenían precedencia sobre ellas. Desactiva primero las [claves de API](/es/disable/api-keys) si están habilitadas.
+<!-- @end -->

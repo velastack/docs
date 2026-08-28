@@ -11,6 +11,10 @@ Enable payment processing with Stripe.
 $ vela enable payments
 ```
 
+### Options
+
+- `--provider <provider>` - Payment provider, defaults to `stripe`
+
 The payments module creates the necessary database tables and code for payment processing, webhook events, receipts, sweeps and more.
 
 ### Database tables
@@ -50,7 +54,7 @@ In addition to the payment intent succeeded event, the payment method attached e
 
 ### Cron jobs
 
-PocketBase cron jobs run to keep the application database in sync with Stripe. Products and prices are synced every two minutes, configured in `data/hooks/stripe.pb.js`. Stripe customers are synced as well if authentication is enabled. The cron jobs trigger HTTP requests to the application at `'/api/stripe/sync/<type>'`, with a shared secret key stored as an environment variable `INTERNAL_JOB_SECRET`.
+PocketBase cron jobs run to keep the application database in sync with Stripe. Products and prices are synced every two minutes, configured in `data/hooks/stripe.pb.js`. Stripe customers are synced as well if authentication is enabled. The cron jobs trigger HTTP requests to the application at `/api/stripe/sync/<type>`, with a shared secret key stored as an environment variable `INTERNAL_JOB_SECRET`.
 <!-- @es -->
 Habilita el procesamiento de pagos con Stripe.
 
@@ -60,7 +64,11 @@ Habilita el procesamiento de pagos con Stripe.
 $ vela enable payments
 ```
 
-The payments module creates the necessary database tables and code for payment processing, webhook events, receipts, sweeps and more.
+### Opciones
+
+- `--provider <provider>` - Proveedor de pagos, por defecto `stripe`
+
+El módulo de pagos crea las tablas de base de datos y el código necesarios para el procesamiento de pagos, los eventos de webhook, los recibos, los barridos y más.
 
 ### Tablas de la base de datos
 
@@ -73,7 +81,7 @@ stripe_prices
 
 ### Webhooks
 
-Stripe webhooks are scaffolded in `src/routes/webhooks/stripe`, with the payment intent succeeded event included by default.
+Los webhooks de Stripe se generan en `src/routes/webhooks/stripe`, con el evento de intención de pago completada incluido por defecto.
 
 ### Clientes
 
@@ -95,9 +103,9 @@ transactions
 
 ### Webhooks
 
-Además del evento de pago intentado exitoso, el evento de método de pago adjunto se incluye por defecto para el usuario autenticado.
+Además del evento de intención de pago completada, el evento de método de pago adjuntado se incluye por defecto para el usuario autenticado.
 
-### Tareas programadas (cron jobs)
+### Tareas programadas
 
-Las tareas programadas de PocketBase se ejecutan para mantener la base de datos de la aplicación sincronizada con Stripe. Los productos y precios se sincronizan cada dos minutos, configurados en `data/hooks/stripe.pb.js`. Los clientes de Stripe se sincronizan también si la autenticación está habilitada. Las tareas programadas trigger HTTP requests to the application at `'/api/stripe/sync/<type>'`, with a shared secret key stored as an environment variable `INTERNAL_JOB_SECRET`.
+Las tareas programadas de PocketBase se ejecutan para mantener la base de datos de la aplicación sincronizada con Stripe. Los productos y precios se sincronizan cada dos minutos, configurados en `data/hooks/stripe.pb.js`. Los clientes de Stripe también se sincronizan si la autenticación está habilitada. Las tareas programadas lanzan peticiones HTTP a la aplicación en `/api/stripe/sync/<type>`, con una clave secreta compartida almacenada en la variable de entorno `INTERNAL_JOB_SECRET`.
 <!-- @end -->

@@ -1,0 +1,69 @@
+<!-- @en -->
+Show what is deployed: the running release, the domain it serves and whether the services are up.
+
+### Syntax
+
+```
+$ vela status
+```
+
+```
+$ vela status -t staging
+```
+
+Reports on one [target](/deploy) of this project, defaulting to `production`. Nothing is deployed locally, so `-t local` has nothing to report — [`vela dev`](/dev) prints what it is running.
+
+### Options
+
+- `-t, --target <target>` - Which copy of the app to act on, defaults to `production`
+- `--server <ssh>` - Server this target runs on, recorded on first use
+- `--all` - Show every app on the server, not just this project
+- `--json` - Print raw JSON
+- `-i, --identity <file>` - SSH private key to authenticate with
+- `--ssh-port <port>` - SSH port
+- `--accept-host-keys` - Trust an unknown host key on first connect (CI)
+
+### Every app on a server
+
+`--all` is a question about the machine rather than about this project, so it works outside a project directory as long as a server is given:
+
+```
+$ vela status --all --server root@example.com
+```
+
+`--json` prints the same information unformatted, for scripting.
+<!-- @es -->
+Muestra qué está desplegado: la release en ejecución, el dominio que sirve y si los servicios están levantados.
+
+### Sintaxis
+
+```
+$ vela status
+```
+
+```
+$ vela status -t staging
+```
+
+Informa sobre un [objetivo](/es/deploy) de este proyecto, por defecto `production`. No hay nada desplegado en local, así que `-t local` no tiene nada que informar — [`vela dev`](/es/dev) imprime lo que está ejecutando.
+
+### Opciones
+
+- `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `production`
+- `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
+- `--all` - Mostrar todas las aplicaciones del servidor, no solo este proyecto
+- `--json` - Imprimir JSON sin formato
+- `-i, --identity <file>` - Clave privada SSH con la que autenticarse
+- `--ssh-port <port>` - Puerto SSH
+- `--accept-host-keys` - Confiar en una clave de host desconocida en la primera conexión (CI)
+
+### Todas las aplicaciones de un servidor
+
+`--all` es una pregunta sobre la máquina más que sobre este proyecto, así que funciona fuera del directorio de un proyecto siempre que se indique un servidor:
+
+```
+$ vela status --all --server root@example.com
+```
+
+`--json` imprime la misma información sin formato, para scripts.
+<!-- @end -->

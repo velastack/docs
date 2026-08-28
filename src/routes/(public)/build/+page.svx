@@ -4,40 +4,46 @@ Build the application for production.
 ### Syntax
 
 ```
-$ vela build [--static]
+$ vela build
 ```
 
-This will build the application for production. The build will be available in the dist
-directory.
+This runs `vite build` with the project's package manager. The output directory is determined by the SvelteKit adapter configured in `vite.config.ts` — `build` for the default adapters.
 
-### Static
+### Database during the build
 
-The static build mode will create a static site from the Vela project. The database will be
-started for the duration of the build, enabling data to be fetched from the database. See the Static Site Generator for more information on static builds.
+If the project has a backend, Vela starts PocketBase for the duration of the build and stops it again afterwards. This lets prerendered pages load data from the database without a server running separately. If `POCKETBASE_URL` is already set in the environment, that database is used instead and nothing is started.
+
+### Static builds
+
+Static output is a property of the project, not a build flag. Scaffold with the `static` template and the project is wired up with `@sveltejs/adapter-static` and no backend:
 
 ```
-$ vela build --static
+$ vela create my-site --template static
 ```
 
-Under the hood, the static build mode replaces the SvelteKit adapter with the static adapter.
+An existing project can drop its backend with [`vela disable backend`](/disable/backend). See the [Static Site Generator](/static) page for the limitations that come with it.
 <!-- @es -->
 Compila la aplicación para producción.
 
 ### Sintaxis
 
 ```
-$ vela build [--static]
+$ vela build
 ```
 
-La compilación se realiza para producción. El resultado estará disponible en el directorio `dist`.
+Esto ejecuta `vite build` con el gestor de paquetes del proyecto. El directorio de salida lo determina el adaptador de SvelteKit configurado en `vite.config.ts` — `build` para los adaptadores por defecto.
 
-### Estático
+### La base de datos durante la compilación
 
-El modo de compilación estática creará un sitio estático desde el proyecto de Vela. La base de datos se iniciará durante la compilación, lo que permitirá obtener datos de la base de datos. Para más información sobre las compilaciones estáticas, consulta el Generador de Sitios Estáticos.
+Si el proyecto tiene un backend, Vela inicia PocketBase mientras dura la compilación y lo detiene después. Esto permite que las páginas prerenderizadas carguen datos de la base de datos sin un servidor ejecutándose por separado. Si `POCKETBASE_URL` ya está definida en el entorno, se usa esa base de datos y no se inicia nada.
+
+### Compilaciones estáticas
+
+La salida estática es una propiedad del proyecto, no una opción de compilación. Genera el proyecto con la plantilla `static` y quedará configurado con `@sveltejs/adapter-static` y sin backend:
 
 ```
-$ vela build --static
+$ vela create my-site --template static
 ```
 
-Bajo el capó, el modo de compilación estática reemplaza el adaptador SvelteKit por el adaptador estático.
+Un proyecto existente puede prescindir de su backend con [`vela disable backend`](/es/disable/backend). Consulta la página del [Generador de Sitios Estáticos](/es/static) para conocer las limitaciones que conlleva.
 <!-- @end -->

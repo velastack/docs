@@ -1,0 +1,35 @@
+<!-- @en -->
+Add an mdsvex-powered blog to the project.
+
+### Syntax
+
+```
+$ vela enable blog
+```
+
+This scaffolds:
+
+- A post list and individual post pages, written as Markdown with mdsvex
+- Tag pages
+- An RSS feed
+- A couple of example posts to start from
+
+Posts are files in the repository, not database records, so they version alongside the code.
+<!-- @es -->
+Añade al proyecto un blog basado en mdsvex.
+
+### Sintaxis
+
+```
+$ vela enable blog
+```
+
+Esto genera:
+
+- Una lista de entradas y páginas individuales de cada entrada, escritas en Markdown con mdsvex
+- Páginas de etiquetas
+- Un feed RSS
+- Un par de entradas de ejemplo para empezar
+
+Las entradas son archivos del repositorio, no registros de la base de datos, así que se versionan junto al código.
+<!-- @end -->

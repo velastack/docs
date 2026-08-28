@@ -14,7 +14,7 @@ The teams module creates the necessary database tables and code for team managem
 Once enabled, teams can be used as a target for ownership and permissions using the special `current_team` field type. Members of a team can access data associated with the team.
 
 ```
-$ vela generate model projects title:string team:current_team
+$ vela generate scaffold projects title:string team:current_team
 ```
 
 ### Database tables
@@ -23,10 +23,12 @@ Enabling `teams` creates the following database tables:
 
 ```
 teams
-team_users
 team_memberships
 team_invites
+team_invite_links
 ```
+
+A `team_users` view is created alongside them, exposing team membership as a queryable collection.
 <!-- @es -->
 Habilite la gestión de equipos, roles y permisos para los usuarios de su aplicación.
 
@@ -43,7 +45,7 @@ El módulo de equipos crea las tablas de base de datos y el código necesario pa
 Una vez habilitado, los equipos se pueden usar como objetivo para la propiedad y permisos usando el tipo de campo especial `current_team`. Los miembros de un equipo pueden acceder a los datos asociados con el equipo.
 
 ```
-$ vela generate model projects title:string team:current_team
+$ vela generate scaffold projects title:string team:current_team
 ```
 
 ### Tablas de la base de datos
@@ -52,8 +54,10 @@ Habilitar `teams` crea las siguientes tablas de base de datos:
 
 ```
 teams
-team_users
 team_memberships
 team_invites
+team_invite_links
 ```
+
+Junto a ellas se crea una vista `team_users`, que expone la pertenencia a equipos como una colección consultable.
 <!-- @end -->

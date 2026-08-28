@@ -1,0 +1,75 @@
+<!-- @en -->
+Manage environment variables, locally or on a deployed target. Locally they live in the `.env` file at the project root; on a server they live in `/etc/vela/apps`, readable only by root, and never travel inside a release.
+
+### Syntax
+
+```
+$ vela env <command>
+```
+
+- [`list`](/env/list) - List environment variable names
+- [`set`](/env/set) - Set an environment variable
+- [`unset`](/env/unset) - Remove an environment variable
+- [`import`](/env/import) - Merge a dotenv file into the environment
+
+### Targets
+
+Unlike the deploy commands, `vela env` defaults to `-t local`. Name a target to work on a server instead:
+
+```
+$ vela env list                    # this machine's .env
+$ vela env list -t production      # the production server
+$ vela env list -t staging
+```
+
+### Options
+
+Every subcommand takes the same target and connection options:
+
+- `-t, --target <target>` - Which copy of the app to act on, defaults to `local`
+- `--server <ssh>` - Server this target runs on, recorded on first use
+- `-i, --identity <file>` - SSH private key to authenticate with
+- `--ssh-port <port>` - SSH port
+- `--accept-host-keys` - Trust an unknown host key on first connect (CI)
+
+### Deploys never touch them
+
+[`vela deploy`](/deploy) does not read, upload or overwrite the environment on a server. Production secrets are set once with these commands and stay put across releases. Anything the _build_ needs, as opposed to the running app, has to exist wherever the build runs.
+<!-- @es -->
+Gestiona las variables de entorno, en local o en un objetivo desplegado. En local viven en el archivo `.env` en la raíz del proyecto; en un servidor viven en `/etc/vela/apps`, legible solo por root, y nunca viajan dentro de una release.
+
+### Sintaxis
+
+```
+$ vela env <command>
+```
+
+- [`list`](/es/env/list) - Listar los nombres de las variables de entorno
+- [`set`](/es/env/set) - Definir una variable de entorno
+- [`unset`](/es/env/unset) - Eliminar una variable de entorno
+- [`import`](/es/env/import) - Fusionar un archivo dotenv con el entorno
+
+### Objetivos
+
+A diferencia de los comandos de despliegue, `vela env` usa `-t local` por defecto. Nombra un objetivo para trabajar sobre un servidor:
+
+```
+$ vela env list                    # el .env de esta máquina
+$ vela env list -t production      # el servidor de producción
+$ vela env list -t staging
+```
+
+### Opciones
+
+Todos los subcomandos aceptan las mismas opciones de objetivo y conexión:
+
+- `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `local`
+- `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
+- `-i, --identity <file>` - Clave privada SSH con la que autenticarse
+- `--ssh-port <port>` - Puerto SSH
+- `--accept-host-keys` - Confiar en una clave de host desconocida en la primera conexión (CI)
+
+### Los despliegues nunca las tocan
+
+[`vela deploy`](/es/deploy) no lee, sube ni sobrescribe el entorno de un servidor. Los secretos de producción se definen una vez con estos comandos y permanecen entre releases. Todo lo que necesite la _compilación_, a diferencia de la aplicación en ejecución, tiene que existir allí donde se compile.
+<!-- @end -->

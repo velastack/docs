@@ -1,0 +1,25 @@
+<!-- @en -->
+Turn off S3 file storage, configured by [`vela enable s3`](/enable/s3).
+
+### Syntax
+
+```
+$ vela disable s3
+```
+
+This flips the S3 setting in PocketBase — no files in the project change, so there is no confirmation prompt and no options. PocketBase stores uploads on the local filesystem again.
+
+Files already uploaded to the bucket are not migrated back, and are not deleted from the bucket. Run [`vela enable s3`](/enable/s3) to reconfigure.
+<!-- @es -->
+Desactiva el almacenamiento de archivos en S3, configurado por [`vela enable s3`](/es/enable/s3).
+
+### Sintaxis
+
+```
+$ vela disable s3
+```
+
+Esto cambia el ajuste de S3 en PocketBase — no cambia ningún archivo del proyecto, así que no hay confirmación ni opciones. PocketBase vuelve a guardar las subidas en el sistema de archivos local.
+
+Los archivos ya subidos al bucket no se migran de vuelta, y tampoco se borran del bucket. Ejecuta [`vela enable s3`](/es/enable/s3) para reconfigurarlo.
+<!-- @end -->

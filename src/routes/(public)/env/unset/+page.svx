@@ -1,0 +1,29 @@
+<!-- @en -->
+Remove an environment variable.
+
+### Syntax
+
+```
+$ vela env unset <key>
+```
+
+```
+$ vela env unset STRIPE_SECRET_KEY -t production
+```
+
+Removing a variable that isn't set reports that there was nothing to remove rather than failing. As with [set](/env/set), the instance is restarted so the change takes effect. Defaults to `-t local`.
+<!-- @es -->
+Elimina una variable de entorno.
+
+### Sintaxis
+
+```
+$ vela env unset <key>
+```
+
+```
+$ vela env unset STRIPE_SECRET_KEY -t production
+```
+
+Eliminar una variable que no está definida informa de que no había nada que eliminar en lugar de fallar. Igual que con [set](/es/env/set), la instancia se reinicia para que el cambio surta efecto. Por defecto usa `-t local`.
+<!-- @end -->

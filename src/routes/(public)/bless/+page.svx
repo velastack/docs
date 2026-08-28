@@ -1,0 +1,109 @@
+<!-- @en -->
+Upgrade an existing, vanilla SvelteKit project into a VelaStack project — the equivalent of [`vela create`](/create) for a repository that already exists.
+
+### Syntax
+
+```
+$ vela bless [path]
+```
+
+```
+$ vela bless                 # the project in the current directory
+$ vela bless ./my-app
+```
+
+You'll be prompted for the admin email and password for the new PocketBase database. Blessing a project that has already been blessed is refused.
+
+### Options
+
+- `--template <type>` - Template to scaffold from, defaults to `minimal`. Only templates with a backend can be used — blessing is what adds PocketBase to a project.
+- `--email <email>` - Email of the admin user
+- `--password <password>` - Password of the admin user, at least 8 characters
+- `--install <package-manager>` - Install dependencies with the given package manager, or `--no-install` to skip
+- `--skip-routes` - Preserve `src/routes` even if it looks untouched
+- `--force-routes` - Replace `src/routes` with the Vela template without detection
+
+`--skip-routes` and `--force-routes` are mutually exclusive.
+
+### What it adds
+
+Files Vela owns outright are written in. If your project already has one, it is kept and you're told what Vela's copy would have carried:
+
+```
+src/hooks.server.ts     the handlePocketbase hook
+src/app.css             Tailwind imports and theme tokens
+src/lib/utils.ts        the cn helper and component type utilities
+src/lib/index.ts        a $lib placeholder
+components.json         the shadcn-svelte config `vela ui add` reads
+.npmrc                  engine-strict=true
+.ignore                 search ignores for generated files
+```
+
+Directories are added alongside what you have: `src/lib/components`, `data`, `test` and `static`. Configuration is merged rather than overwritten:
+
+```
+svelte.config.js
+vite.config.ts
+tsconfig.json
+package.json
+.gitignore
+```
+
+### Routes
+
+Vela looks at `src/routes` to decide whether it is still the untouched `npx sv create` placeholder. If it is, it is replaced with the template's routes; if you have written anything real, it is left alone. Override the detection either way with `--skip-routes` or `--force-routes`.
+<!-- @es -->
+Convierte un proyecto SvelteKit existente y sin modificar en un proyecto VelaStack — el equivalente de [`vela create`](/es/create) para un repositorio que ya existe.
+
+### Sintaxis
+
+```
+$ vela bless [path]
+```
+
+```
+$ vela bless                 # el proyecto en el directorio actual
+$ vela bless ./my-app
+```
+
+Se te pedirá el correo electrónico y la contraseña del administrador para la nueva base de datos PocketBase. Bendecir un proyecto que ya ha sido bendecido se rechaza.
+
+### Opciones
+
+- `--template <type>` - Plantilla desde la que generar, por defecto `minimal`. Solo se pueden usar plantillas con backend — bendecir es lo que añade PocketBase a un proyecto.
+- `--email <email>` - Correo electrónico del usuario administrador
+- `--password <password>` - Contraseña del usuario administrador, de al menos 8 caracteres
+- `--install <package-manager>` - Instala las dependencias con el gestor de paquetes indicado, o `--no-install` para omitirlo
+- `--skip-routes` - Conserva `src/routes` aunque parezca intacto
+- `--force-routes` - Reemplaza `src/routes` con la plantilla de Vela sin detección
+
+`--skip-routes` y `--force-routes` son mutuamente excluyentes.
+
+### Qué añade
+
+Los archivos que Vela posee por completo se escriben directamente. Si tu proyecto ya tiene uno, se conserva y se te indica qué habría contenido la copia de Vela:
+
+```
+src/hooks.server.ts     el hook handlePocketbase
+src/app.css             importaciones de Tailwind y tokens del tema
+src/lib/utils.ts        el helper cn y utilidades de tipos de componentes
+src/lib/index.ts        un marcador de posición de $lib
+components.json         la configuración de shadcn-svelte que lee `vela ui add`
+.npmrc                  engine-strict=true
+.ignore                 exclusiones de búsqueda para archivos generados
+```
+
+Los directorios se añaden junto a los que ya tienes: `src/lib/components`, `data`, `test` y `static`. La configuración se fusiona en lugar de sobrescribirse:
+
+```
+svelte.config.js
+vite.config.ts
+tsconfig.json
+package.json
+.gitignore
+```
+
+### Rutas
+
+Vela examina `src/routes` para decidir si sigue siendo el marcador de posición intacto de `npx sv create`. Si lo es, se reemplaza con las rutas de la plantilla; si has escrito algo real, se deja tal cual. Anula la detección en cualquier sentido con `--skip-routes` o `--force-routes`.
+<!-- @end -->

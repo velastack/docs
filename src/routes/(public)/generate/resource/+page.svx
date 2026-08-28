@@ -1,63 +1,49 @@
-<script lang="ts">
-    import { Badge } from '$lib/components/ui/badge';
-</script>
-
 <!-- @en -->
-A resource is a collection of data that is stored in the database. For models that don't require a frontend interface, you can use the resource generator to create a simple resource. For existing models, the `fields` option can be omitted and the generator will use the existing fields.
+A resource is a collection of data that is stored in the database. For models that don't require a frontend interface, you can use the resource generator to create the collection and its schema. For existing models, the `fields` option can be omitted and the generator will use the existing fields.
 
 ### Syntax
 
 ```
-$ vela generate resource <name> [fields...]
+$ vela generate resource <model> [fields...]
 ```
 
 ```
-$ vela generate resource categories name:string
+$ vela generate resource categories name:text
 ```
 
-This will create a database model and a Zod schema definition for the resource. The files created are:
+This will create the database collection and a Zod schema definition for the resource. The file created is:
 
 ```
 src/lib/schemas/category.ts
-migrations/created_categories.ts
 ```
 
-### AI
+The `categories` collection is created in the database and the TypeScript definitions are [synced](/sync). Unlike [scaffold](/generate/scaffold), no routes or components are generated.
 
-<Badge variant="outline">Pro</Badge>
+### Options
 
-The generate resource command supports the `--ai` option for freeform text input in place of specifying the fields.
-
-```
-$ vela generate resource categories --ai "book categories"
-```
+`generate resource` takes no options. To design a model from a description, use [`generate scaffold --ai`](/generate/scaffold) or [`generate schema --ai`](/generate/schema). To place routes at a custom path, use [`generate scaffold --route`](/generate/scaffold).
 <!-- @es -->
-Un recurso es una colección de datos que se almacena en la base de datos. Para modelos que no requieren una interfaz frontend, puedes usar el generador de recursos para crear un recurso simple. Para modelos existentes, la opción `fields` puede omitirse y el generador usará los campos existentes.
+Un recurso es una colección de datos almacenada en la base de datos. Para modelos que no requieren una interfaz de frontend, puedes usar el generador de recursos para crear la colección y su esquema. Para modelos existentes, la opción `fields` puede omitirse y el generador usará los campos existentes.
 
 ### Sintaxis
 
 ```
-$ vela generate resource <name> [fields...]
+$ vela generate resource <model> [fields...]
 ```
 
 ```
-$ vela generate resource categories name:string
+$ vela generate resource categories name:text
 ```
 
-Esto creará un modelo de base de datos y una definición de esquema Zod para el recurso. Los archivos creados son:
+Esto creará la colección de la base de datos y una definición de esquema Zod para el recurso. El archivo creado es:
 
 ```
 src/lib/schemas/category.ts
-migrations/created_categories.ts
 ```
 
-### IA
+La colección `categories` se crea en la base de datos y las definiciones de TypeScript se [sincronizan](/es/sync). A diferencia de [scaffold](/es/generate/scaffold), no se generan rutas ni componentes.
 
-<Badge variant="outline">Pro</Badge>
+### Opciones
 
-El comando de generación de recursos admite la opción `--ai` para entrada de texto libre en lugar de especificar los campos.
-
-```
-$ vela generate resource categories --ai "book categories"
-```
+`generate resource` no acepta opciones. Para diseñar un modelo a partir de una descripción, usa [`generate scaffold --ai`](/es/generate/scaffold) o [`generate schema --ai`](/es/generate/schema). Para colocar las rutas en una ruta personalizada, usa [`generate scaffold --route`](/es/generate/scaffold).
 <!-- @end -->

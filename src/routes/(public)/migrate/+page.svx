@@ -1,0 +1,53 @@
+<!-- @en -->
+Manage database migrations. Migrations are files in the `migrations` directory, applied in order and tracked in the database, so every environment converges on the same schema.
+
+### Syntax
+
+```
+$ vela migrate <command>
+```
+
+- [`up`](/migrate/up) - Apply all pending migrations
+- [`down`](/migrate/down) - Revert the last N applied migrations
+- [`create`](/migrate/create) - Create a new blank migration
+- [`collections`](/migrate/collections) - Snapshot local collections into a new migration
+- [`history-sync`](/migrate/history-sync) - Drop history rows whose files no longer exist
+
+### Where migrations come from
+
+Most of the time you don't write them. The [generators](/generate) create collections as they go, and [`vela generate migration`](/generate/migration) writes the migration for a change to an existing collection. Changes made by hand in the PocketBase admin interface are captured with [`collections`](/migrate/collections).
+
+### On deploy
+
+Pending migrations are applied to the server's database as part of [`vela deploy`](/deploy), before the new release is activated. Commit your migrations so they travel with the code.
+
+### Types
+
+After changing the schema, run [`vela sync`](/sync) to regenerate the TypeScript definitions.
+<!-- @es -->
+Gestiona las migraciones de la base de datos. Las migraciones son archivos del directorio `migrations`, aplicados en orden y registrados en la base de datos, de modo que todos los entornos convergen en el mismo esquema.
+
+### Sintaxis
+
+```
+$ vela migrate <command>
+```
+
+- [`up`](/es/migrate/up) - Aplicar todas las migraciones pendientes
+- [`down`](/es/migrate/down) - Revertir las últimas N migraciones aplicadas
+- [`create`](/es/migrate/create) - Crear una migración nueva en blanco
+- [`collections`](/es/migrate/collections) - Capturar las colecciones locales en una migración nueva
+- [`history-sync`](/es/migrate/history-sync) - Eliminar las filas del historial cuyos archivos ya no existen
+
+### De dónde vienen las migraciones
+
+La mayor parte del tiempo no las escribes tú. Los [generadores](/es/generate) crean colecciones sobre la marcha, y [`vela generate migration`](/es/generate/migration) escribe la migración para un cambio en una colección existente. Los cambios hechos a mano en la interfaz de administración de PocketBase se capturan con [`collections`](/es/migrate/collections).
+
+### Al desplegar
+
+Las migraciones pendientes se aplican a la base de datos del servidor como parte de [`vela deploy`](/es/deploy), antes de activar la nueva release. Versiona tus migraciones para que viajen con el código.
+
+### Tipos
+
+Después de cambiar el esquema, ejecuta [`vela sync`](/es/sync) para regenerar las definiciones de TypeScript.
+<!-- @end -->

@@ -1,9 +1,5 @@
 <!-- @en -->
-Vela projects are designed as traditional full-stack applications: a database and an application.
-With the database running alongside the application, we see baseline performance that's
-significantly better than a serverless PaaS paired with a hosted database. We believe it's the
-better starting point for most projects. Initially, Vela supports PocketBase as a database, with
-PostgreSQL support coming soon.
+Vela projects are designed as traditional full-stack applications: a database and an application. With the database running alongside the application, we see baseline performance that's significantly better than a serverless PaaS paired with a hosted database. We believe it's the better starting point for most projects. Initially, Vela supports PocketBase as a database, with PostgreSQL support coming soon.
 <!-- @es -->
-Los proyectos de Vela se diseñan como aplicaciones de pila completa: una base de datos y una aplicación. Con la base de datos ejecutándose junto a la aplicación, vemos un rendimiento de base que es significativamente mejor que un PaaS serverless emparejado con una base de datos alojada. Creemos que es el mejor punto de partida para la mayoría de los proyectos. Inicialmente, Vela soporta PocketBase como base de datos, con soporte para PostgreSQL próximamente.
+Los proyectos de Vela se diseñan como aplicaciones de pila completa: una base de datos y una aplicación. Con la base de datos ejecutándose junto a la aplicación, vemos un rendimiento de base significativamente mejor que un PaaS serverless emparejado con una base de datos alojada. Creemos que es el mejor punto de partida para la mayoría de los proyectos. Inicialmente, Vela soporta PocketBase como base de datos, con soporte para PostgreSQL próximamente.
 <!-- @end -->

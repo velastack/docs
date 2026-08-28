@@ -1,0 +1,25 @@
+<!-- @en -->
+Apply all pending migrations.
+
+### Syntax
+
+```
+$ vela migrate up
+```
+
+Runs every migration in `migrations` that the database has not recorded yet, in order. Already-applied migrations are skipped, so it is safe to run repeatedly.
+
+Follow with [`vela sync`](/sync) to refresh the generated TypeScript types from the updated schema.
+<!-- @es -->
+Aplica todas las migraciones pendientes.
+
+### Sintaxis
+
+```
+$ vela migrate up
+```
+
+Ejecuta en orden todas las migraciones de `migrations` que la base de datos aún no ha registrado. Las ya aplicadas se omiten, así que es seguro ejecutarlo repetidamente.
+
+Continúa con [`vela sync`](/es/sync) para refrescar los tipos de TypeScript generados a partir del esquema actualizado.
+<!-- @end -->

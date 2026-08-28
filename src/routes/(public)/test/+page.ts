@@ -5,14 +5,15 @@ export const load = async ({ parent }) => {
 		breadcrumbs: [{ title: 'Test', url: /* @wc-url */ '/test' }],
 		learnMore: [
 			{
-				title: 'Unit',
-				url: /* @wc-url */ '/test/unit',
-				description: 'Unit tests for your application.'
+				title: 'Server',
+				url: /* @wc-url */ '/test/server',
+				description: 'Tests that run against the app and a throwaway database.'
 			},
 			{
-				title: 'Integration',
-				url: /* @wc-url */ '/test/integration',
-				description: 'Integration tests for your application.'
+				title: 'Unit',
+				url: /* @wc-url */ '/test/unit',
+				badge: 'Planned',
+				description: 'A separate runner for tests that need no database.'
 			}
 		]
 	};

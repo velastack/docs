@@ -1,0 +1,43 @@
+<!-- @en -->
+Remove API key management, added by [`vela enable api-keys`](/enable/api-keys).
+
+### Syntax
+
+```
+$ vela disable api-keys
+```
+
+### Options
+
+- `-y, --yes` - Skip the confirmation prompt
+
+### What it removes
+
+- The `api_keys` collection, and every key in it
+- The generated API key management routes
+- The `apiKeys` block in `hooks.server.ts`
+- The API keys entry in the user nav
+
+Existing keys stop authenticating as soon as the collection is dropped.
+<!-- @es -->
+Elimina la gestión de claves de API, añadida por [`vela enable api-keys`](/es/enable/api-keys).
+
+### Sintaxis
+
+```
+$ vela disable api-keys
+```
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+
+### Qué elimina
+
+- La colección `api_keys`, y todas las claves que contiene
+- Las rutas de gestión de claves de API generadas
+- El bloque `apiKeys` en `hooks.server.ts`
+- La entrada de claves de API en la navegación del usuario
+
+Las claves existentes dejan de autenticar en cuanto se elimina la colección.
+<!-- @end -->
