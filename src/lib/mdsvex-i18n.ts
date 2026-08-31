@@ -1,5 +1,5 @@
 import type { Plugin } from 'vite';
-import { hasMarkers, parseLocaleBlocks, replaceInlineT } from './i18n-blocks';
+import { hasMarkers, parseLocaleBlocks, replaceInlineT } from './i18n-blocks.js';
 
 const SCRIPT_OPEN = /(<script[^>]*>)/;
 
