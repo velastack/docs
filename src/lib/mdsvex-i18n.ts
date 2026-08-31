@@ -1,62 +1,28 @@
 import type { Plugin } from 'vite';
+import { hasMarkers, parseLocaleBlocks, replaceInlineT } from './i18n-blocks';
 
-const BLOCK_MARKER = /<!--\s*@(\w+)\s*-->/g;
-const INLINE_T = /<!--\s*@t\s+((?:\w+="[^"]*"\s*)+)\s*-->/g;
 const SCRIPT_OPEN = /(<script[^>]*>)/;
 
 function transformBlocks(code: string): string {
-	const markers = [...code.matchAll(BLOCK_MARKER)];
-	if (markers.length === 0) return code;
-
 	let result = '';
-	let cursor = 0;
-	let i = 0;
 
-	while (i < markers.length) {
-		const marker = markers[i];
-		const locale = marker[1];
-		const markerStart = marker.index!;
-
-		if (locale === 'end') {
-			i++;
+	for (const segment of parseLocaleBlocks(code)) {
+		if (segment.type === 'shared') {
+			result += segment.content;
 			continue;
 		}
 
-		result += code.slice(cursor, markerStart);
-
-		const localeBlocks: { locale: string; content: string }[] = [];
-		let j = i;
-
-		while (j < markers.length && markers[j][1] !== 'end') {
-			const blockLocale = markers[j][1];
-			const contentStart = markers[j].index! + markers[j][0].length;
-			const contentEnd = j + 1 < markers.length ? markers[j + 1].index! : code.length;
-			localeBlocks.push({
-				locale: blockLocale,
-				content: code.slice(contentStart, contentEnd)
-			});
-			j++;
-		}
-
-		const endMarkerEnd =
-			j < markers.length ? markers[j].index! + markers[j][0].length : code.length;
-
-		for (let k = 0; k < localeBlocks.length; k++) {
-			const block = localeBlocks[k];
+		segment.blocks.forEach((block, k) => {
 			const content = block.content.trim();
 			if (k === 0) {
 				result += `\n{#if i18nLocale === '${block.locale}'}\n\n${content}\n\n`;
 			} else {
 				result += `{:else if i18nLocale === '${block.locale}'}\n\n${content}\n\n`;
 			}
-		}
+		});
 		result += '{/if}\n';
-
-		cursor = endMarkerEnd;
-		i = j + 1;
 	}
 
-	result += code.slice(cursor);
 	return result;
 }
 
@@ -64,9 +30,9 @@ function transformInlineT(code: string): { code: string; declarations: string[] 
 	const declarations: string[] = [];
 	let counter = 0;
 
-	const transformed = code.replace(INLINE_T, (_match, pairs: string) => {
-		const entries = [...pairs.matchAll(/(\w+)="([^"]*)"/g)].map(
-			([, key, value]) => `${key}: '${value.replace(/'/g, "\\'")}'`
+	const transformed = replaceInlineT(code, (pairs) => {
+		const entries = Object.entries(pairs).map(
+			([key, value]) => `${key}: '${value.replace(/'/g, "\\'")}'`
 		);
 		const varName = `i18nT${counter++}`;
 		declarations.push(`const ${varName} = {${entries.join(', ')}};`);
@@ -110,13 +76,7 @@ export function mdsvexI18n(): Plugin {
 		enforce: 'pre',
 		transform(code, id) {
 			if (!id.endsWith('.svx')) return;
-
-			const hasBlocks = BLOCK_MARKER.test(code);
-			BLOCK_MARKER.lastIndex = 0;
-			const hasInlineT = INLINE_T.test(code);
-			INLINE_T.lastIndex = 0;
-
-			if (!hasBlocks && !hasInlineT) return;
+			if (!hasMarkers(code)) return;
 
 			let transformed = code;
 			transformed = transformBlocks(transformed);

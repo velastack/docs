@@ -1,11 +1,12 @@
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "Source-Language: en\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2\n"
+"X-Plurals-Order: one, other\n"
 
 #: src/routes/+error.svelte
 msgid "Oops! Something went wrong"
@@ -913,3 +914,15 @@ msgstr "Tests that run against the app and a throwaway database."
 #: src/routes/(public)/test/+page.ts
 msgid "A separate runner for tests that need no database."
 msgstr "A separate runner for tests that need no database."
+
+#: src/lib/components/ui/sidebar/sidebar-menu-button.svelte
+msgid "string"
+msgstr "string"
+
+#: src/lib/components/ui/sidebar/sidebar.svelte
+msgid "none"
+msgstr "none"
+
+#: src/lib/components/ui/input/input.svelte
+msgid "file"
+msgstr "file"
