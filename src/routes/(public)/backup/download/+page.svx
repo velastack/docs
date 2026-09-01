@@ -1,0 +1,43 @@
+<!-- @en -->
+Save a backup that is already on a target to this machine.
+
+### Syntax
+
+```
+$ vela backup download vela_myapp_20260901134501.zip
+$ vela backup download vela_myapp_20260901134501.zip -o ~/backups
+```
+
+Use [`vela backup list`](/backup/list) to see the keys.
+
+### Options
+
+- `-o, --output <dir>` - Where to save the archive, defaults to `backups`
+- `-t, --target <target>` - Which copy of the app to act on, defaults to `production`
+- `--server <ssh>` - Server this target runs on, recorded on first use
+
+The transfer is an `rsync`, so an interrupted download resumes rather than starting again.
+
+If the target is configured to keep its backups in a bucket, there is nothing on the server to fetch and the command says so — get it from the bucket instead.
+<!-- @es -->
+Guarda en esta máquina una copia de seguridad que ya está en un objetivo.
+
+### Sintaxis
+
+```
+$ vela backup download vela_myapp_20260901134501.zip
+$ vela backup download vela_myapp_20260901134501.zip -o ~/backups
+```
+
+Usa [`vela backup list`](/es/backup/list) para ver las claves.
+
+### Opciones
+
+- `-o, --output <dir>` - Dónde guardar el archivo, por defecto `backups`
+- `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `production`
+- `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
+
+La transferencia es un `rsync`, así que una descarga interrumpida se reanuda en lugar de empezar de nuevo.
+
+Si el objetivo guarda sus copias en un bucket, no hay nada que descargar del servidor y el comando lo indica — obtenla del bucket.
+<!-- @end -->

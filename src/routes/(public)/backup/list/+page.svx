@@ -1,0 +1,33 @@
+<!-- @en -->
+List the backups stored on a target, with their size and when they were taken.
+
+### Syntax
+
+```
+$ vela backup list
+$ vela backup list -t staging
+```
+
+### Options
+
+- `-t, --target <target>` - Which copy of the app to act on, defaults to `production`
+- `--server <ssh>` - Server this target runs on, recorded on first use
+
+Both the archives you took with [`vela backup create`](/backup/create) and the ones made by [`vela backup schedule`](/backup/schedule) are listed. Scheduled archives are named `@auto_pb_backup_…` and are the only ones the schedule's own `--keep` prunes.
+<!-- @es -->
+Lista las copias de seguridad almacenadas en un objetivo, con su tamaño y cuándo se hicieron.
+
+### Sintaxis
+
+```
+$ vela backup list
+$ vela backup list -t staging
+```
+
+### Opciones
+
+- `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `production`
+- `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
+
+Se listan tanto los archivos creados con [`vela backup create`](/es/backup/create) como los de [`vela backup schedule`](/es/backup/schedule). Los archivos programados se llaman `@auto_pb_backup_…` y son los únicos que el `--keep` de la programación elimina.
+<!-- @end -->

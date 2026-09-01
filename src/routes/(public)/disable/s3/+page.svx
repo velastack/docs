@@ -1,25 +1,53 @@
 <!-- @en -->
-Turn off S3 file storage, configured by [`vela enable s3`](/enable/s3).
+Go back to storing file uploads on the local filesystem.
 
 ### Syntax
 
 ```
-$ vela disable s3
+$ vela disable s3                   # the development database
+$ vela disable s3 -t production     # a deployment
 ```
 
-This flips the S3 setting in PocketBase — no files in the project change, so there is no confirmation prompt and no options. PocketBase stores uploads on the local filesystem again.
+### Options
 
-Files already uploaded to the bucket are not migrated back, and are not deleted from the bucket. Run [`vela enable s3`](/enable/s3) to reconfigure.
+- `--backups` - Keep backups on the server again, rather than uploads
+- `-t, --target <target>` - Which copy of the app to act on, defaults to `local`
+
+### Credentials are kept
+
+Only the `enabled` flag is changed, so the endpoint, bucket and keys stay on record and [`vela enable s3`](/enable/s3) does not mean typing them again.
+
+### Files in the bucket stay there
+
+As with enabling it, nothing is moved. Anything uploaded while S3 was on remains in the bucket and will 404 once PocketBase is reading from disk again. Copy it back first if you need it:
+
+```
+$ rclone copy <remote>:<bucket>/ /var/lib/vela/apps/<instance>/shared/pb_data/storage/
+```
 <!-- @es -->
-Desactiva el almacenamiento de archivos en S3, configurado por [`vela enable s3`](/es/enable/s3).
+Vuelve a almacenar los archivos subidos en el sistema de archivos local.
 
 ### Sintaxis
 
 ```
-$ vela disable s3
+$ vela disable s3                   # la base de datos de desarrollo
+$ vela disable s3 -t production     # un despliegue
 ```
 
-Esto cambia el ajuste de S3 en PocketBase — no cambia ningún archivo del proyecto, así que no hay confirmación ni opciones. PocketBase vuelve a guardar las subidas en el sistema de archivos local.
+### Opciones
 
-Los archivos ya subidos al bucket no se migran de vuelta, y tampoco se borran del bucket. Ejecuta [`vela enable s3`](/es/enable/s3) para reconfigurarlo.
+- `--backups` - Volver a guardar las copias en el servidor, en vez de las subidas
+- `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `local`
+
+### Las credenciales se conservan
+
+Solo cambia el flag `enabled`, así que el endpoint, el bucket y las claves quedan registrados y [`vela enable s3`](/es/enable/s3) no implica volver a escribirlos.
+
+### Los archivos del bucket se quedan ahí
+
+Igual que al activarlo, no se mueve nada. Lo subido mientras S3 estaba activo permanece en el bucket y dará 404 en cuanto PocketBase vuelva a leer del disco. Cópialo de vuelta primero si lo necesitas:
+
+```
+$ rclone copy <remote>:<bucket>/ /var/lib/vela/apps/<instance>/shared/pb_data/storage/
+```
 <!-- @end -->

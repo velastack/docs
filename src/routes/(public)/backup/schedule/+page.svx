@@ -1,0 +1,53 @@
+<!-- @en -->
+Have a target back itself up on a schedule.
+
+PocketBase runs the cron itself, in the process already serving the app, so there is nothing to install on the server.
+
+### Syntax
+
+```
+$ vela backup schedule                 # show the current schedule
+$ vela backup schedule "0 3 * * *"     # every day at 03:00 UTC
+$ vela backup schedule "0 3 * * *" --keep 14
+$ vela backup schedule --off
+```
+
+### Options
+
+- `--keep <n>` - How many scheduled archives to keep, defaults to `7`
+- `--off` - Stop backing up automatically
+- `-t, --target <target>` - Which copy of the app to act on, defaults to `production`
+- `--server <ssh>` - Server this target runs on, recorded on first use
+
+`--keep` prunes only the archives the schedule made. Ones from [`vela backup create`](/backup/create) are left alone.
+
+### A schedule is not yet disaster recovery
+
+By default the archives are written to the same disk as the data they protect. Pair this with [`vela enable s3 --backups`](/enable/s3) to send them somewhere else, or download them on a schedule of your own.
+<!-- @es -->
+Haz que un objetivo se copie a sí mismo de forma programada.
+
+PocketBase ejecuta el cron por su cuenta, en el proceso que ya sirve la aplicación, así que no hay nada que instalar en el servidor.
+
+### Sintaxis
+
+```
+$ vela backup schedule                 # ver la programación actual
+$ vela backup schedule "0 3 * * *"     # cada día a las 03:00 UTC
+$ vela backup schedule "0 3 * * *" --keep 14
+$ vela backup schedule --off
+```
+
+### Opciones
+
+- `--keep <n>` - Cuántos archivos programados conservar, por defecto `7`
+- `--off` - Dejar de hacer copias automáticas
+- `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `production`
+- `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
+
+`--keep` solo elimina los archivos creados por la programación. Los de [`vela backup create`](/es/backup/create) se dejan en paz.
+
+### Una programación todavía no es recuperación ante desastres
+
+Por defecto los archivos se escriben en el mismo disco que los datos que protegen. Combínalo con [`vela enable s3 --backups`](/es/enable/s3) para enviarlos a otro sitio, o descárgalos con tu propia periodicidad.
+<!-- @end -->

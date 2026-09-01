@@ -1,0 +1,101 @@
+<!-- @en -->
+Replace a deployment's database and uploaded files with the contents of a backup.
+
+### Syntax
+
+```
+$ vela restore                                       # choose from the target's backups
+$ vela restore vela_myapp_20260901134501.zip         # a backup on the target
+$ vela restore ./backups/vela_myapp_20260901134501.zip   # one on this machine
+```
+
+A local path is uploaded first. Anything else is looked up among the target's own backups, and with no argument at all you are shown the list to pick from.
+
+### Options
+
+- `-y, --yes` - Skip the confirmation prompt
+- `--no-migrate` - Do not run migrations against the restored database
+- `--keep-previous <n>` - How many replaced databases to keep, defaults to `1`
+- `-t, --target <target>` - Which copy of the app to act on, defaults to `production`
+- `--server <ssh>` - Server this target runs on, recorded on first use
+
+Restoring production asks you to type the app name, the same way [`vela destroy deployment`](/destroy/deployment) does.
+
+### What happens
+
+The app and PocketBase stop, the archive is unpacked beside the data directory, and the two are swapped. Then:
+
+- **Migrations run** from the release that is deployed, so a backup older than the running code is brought up to the schema that code expects.
+- **The superuser is reconciled.** A restored database carries whatever account the backup held, while the environment on the server still holds the one the app signs in with on every render. They are made to agree, and the restore is not called a success until an actual login proves it.
+- **The backup history is carried across**, so restoring does not discard the other archives on the box.
+
+If any step fails, the previous data directory is put back and both services are restarted.
+
+### Undo
+
+The database that was replaced is renamed, never deleted:
+
+```
+/var/lib/vela/apps/<instance>/shared/pb_data.pre-restore-<timestamp>
+```
+
+Its path is printed when the restore finishes. It is the only way back — remove it by hand once you are satisfied, or leave it for `--keep-previous` to prune on the next restore.
+
+### Uploads and S3
+
+An archive taken while [S3 storage](/enable/s3) was on holds no uploaded files. Restoring it keeps the files already on the server rather than deleting them, and says so.
+
+### Local
+
+`vela restore` acts on a deployment. There is no `-t local` yet: rebuild a development database with [`vela migrate up`](/migrate/up) and [`vela seeds load`](/seeds/load).
+<!-- @es -->
+Sustituye la base de datos y los archivos subidos de un despliegue por el contenido de una copia de seguridad.
+
+### Sintaxis
+
+```
+$ vela restore                                       # elegir entre las copias del objetivo
+$ vela restore vela_myapp_20260901134501.zip         # una copia en el objetivo
+$ vela restore ./backups/vela_myapp_20260901134501.zip   # una en esta máquina
+```
+
+Una ruta local se sube primero. Cualquier otra cosa se busca entre las copias del propio objetivo, y sin ningún argumento se te muestra la lista para elegir.
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+- `--no-migrate` - No ejecutar migraciones sobre la base de datos restaurada
+- `--keep-previous <n>` - Cuántas bases de datos sustituidas conservar, por defecto `1`
+- `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `production`
+- `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
+
+Restaurar producción pide escribir el nombre de la aplicación, igual que [`vela destroy deployment`](/es/destroy/deployment).
+
+### Qué ocurre
+
+La aplicación y PocketBase se detienen, el archivo se descomprime junto al directorio de datos, y ambos se intercambian. Después:
+
+- **Se ejecutan las migraciones** de la release desplegada, de modo que una copia más antigua que el código en ejecución se pone al día con el esquema que ese código espera.
+- **Se reconcilia el superusuario.** Una base de datos restaurada trae la cuenta que tuviera la copia, mientras que el entorno del servidor sigue teniendo aquella con la que la aplicación inicia sesión en cada render. Se hacen coincidir, y la restauración no se da por buena hasta que un inicio de sesión real lo demuestra.
+- **Se conserva el historial de copias**, así que restaurar no descarta los demás archivos de la máquina.
+
+Si algún paso falla, se restituye el directorio de datos anterior y se reinician ambos servicios.
+
+### Deshacer
+
+La base de datos sustituida se renombra, nunca se borra:
+
+```
+/var/lib/vela/apps/<instance>/shared/pb_data.pre-restore-<timestamp>
+```
+
+Su ruta se imprime al terminar. Es la única vuelta atrás — bórrala a mano cuando estés conforme, o déjala para que `--keep-previous` la limpie en la siguiente restauración.
+
+### Archivos subidos y S3
+
+Un archivo tomado con [almacenamiento S3](/es/enable/s3) activo no contiene archivos subidos. Restaurarlo conserva los que ya están en el servidor en lugar de borrarlos, y lo indica.
+
+### Local
+
+`vela restore` actúa sobre un despliegue. Todavía no hay `-t local`: reconstruye una base de datos de desarrollo con [`vela migrate up`](/es/migrate/up) y [`vela seeds load`](/es/seeds/load).
+<!-- @end -->

@@ -96,8 +96,12 @@ msgstr "Environment Variables"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/admin/create/+page.ts
 #: src/routes/(public)/admin/create/+page.ts
+#: src/routes/(public)/backup/+page.ts
+#: src/routes/(public)/backup/create/+page.ts
+#: src/routes/(public)/backup/create/+page.ts
 #: src/routes/(public)/create/+page.ts
 #: src/routes/(public)/create/+page.ts
 #: src/routes/(public)/migrate/create/+page.ts
@@ -819,6 +823,10 @@ msgid "Env"
 msgstr "Env"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backup/+page.ts
+#: src/routes/(public)/backup/list/+page.ts
+#: src/routes/(public)/backup/list/+page.ts
 #: src/routes/(public)/env/list/+page.ts
 #: src/routes/(public)/env/list/+page.ts
 msgid "List"
@@ -926,3 +934,61 @@ msgstr "none"
 #: src/lib/components/ui/input/input.svelte
 msgid "file"
 msgstr "file"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backup/+page.ts
+#: src/routes/(public)/backup/download/+page.ts
+#: src/routes/(public)/backup/download/+page.ts
+msgid "Download"
+msgstr "Download"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backup/+page.ts
+#: src/routes/(public)/backup/+page.ts
+#: src/routes/(public)/backup/create/+page.ts
+#: src/routes/(public)/backup/delete/+page.ts
+#: src/routes/(public)/backup/download/+page.ts
+#: src/routes/(public)/backup/list/+page.ts
+#: src/routes/(public)/backup/schedule/+page.ts
+msgid "Backup"
+msgstr "Backup"
+
+#: src/routes/(public)/backup/+page.ts
+msgid "Take a backup and download it."
+msgstr "Take a backup and download it."
+
+#: src/routes/(public)/backup/+page.ts
+msgid "List the backups on a target."
+msgstr "List the backups on a target."
+
+#: src/routes/(public)/backup/+page.ts
+msgid "Save an existing backup off the server."
+msgstr "Save an existing backup off the server."
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backup/+page.ts
+#: src/routes/(public)/backup/delete/+page.ts
+#: src/routes/(public)/backup/delete/+page.ts
+msgid "Delete"
+msgstr "Delete"
+
+#: src/routes/(public)/backup/+page.ts
+msgid "Remove a backup from a target."
+msgstr "Remove a backup from a target."
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backup/+page.ts
+#: src/routes/(public)/backup/schedule/+page.ts
+#: src/routes/(public)/backup/schedule/+page.ts
+msgid "Schedule"
+msgstr "Schedule"
+
+#: src/routes/(public)/backup/+page.ts
+msgid "Back up automatically on a schedule."
+msgstr "Back up automatically on a schedule."
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/restore/+page.ts
+#: src/routes/(public)/restore/+page.ts
+msgid "Restore"
+msgstr "Restore"

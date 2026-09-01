@@ -1,21 +1,95 @@
 <!-- @en -->
-Enable S3 storage for file uploads. Normally, file uploads are stored on the local filesystem.
+Store file uploads in an S3 bucket instead of on the server's local filesystem.
 
 ### Syntax
 
 ```
-$ vela enable s3
+$ vela enable s3                    # the development database
+$ vela enable s3 -t production      # a deployment
 ```
 
-You'll be prompted for configuration options for the S3 storage. Once configured, file uploads will be stored in the S3 bucket. No other changes are necessary, file retrievals are handled automatically.
+You are prompted for the endpoint, bucket, region and credentials. Every value can also be passed as a flag for non-interactive use, and the secret is read from `VELA_S3_SECRET` when set — a secret on the command line lands in shell history and in `ps`.
+
+Once configured, file retrievals are handled automatically; nothing in the app changes.
+
+### Targets
+
+Unlike the deploy commands, `vela enable s3` defaults to `-t local`. S3 settings live in the database of whichever copy you configure, and are deliberately not copied from development into a new deployment — naming the target is how they get to production.
+
+### Options
+
+- `--backups` - Configure where backups are kept, rather than where uploads go
+- `--endpoint <url>`, `--bucket <name>`, `--region <region>`, `--access-key <key>`, `--secret <secret>`
+- `--force-path-style` / `--no-force-path-style` - How the bucket is addressed
+- `--force` - Enable it although uploads already exist on disk
+- `-t, --target <target>` - Which copy of the app to act on, defaults to `local`
+
+### Path style
+
+AWS and Cloudflare R2 address a bucket as a subdomain. MinIO, Ceph, Garage and most self-hosted gateways need it in the path instead, and fail with an unhelpful connection error when they do not get it. The right default is guessed from the endpoint, and the connection test runs immediately so a wrong guess surfaces at once rather than on the first upload.
+
+### Existing files are not moved
+
+Turning S3 on changes where PocketBase reads from. It does not migrate anything, so every file already on disk stops resolving.
+
+`vela enable s3` refuses when it finds uploads already stored locally. The layout is identical on both sides — `<collection>/<record>/<file>` — so copying them across is a plain sync:
+
+```
+$ rclone copy /var/lib/vela/apps/<instance>/shared/pb_data/storage/ <remote>:<bucket>/
+```
+
+Then re-run with `--force`.
+
+### Effect on backups
+
+With S3 storage on, PocketBase leaves `storage/` out of the archives it writes, so [`vela backup create`](/backup/create) captures the databases but not the uploads. Your bucket's versioning is what protects them from that point.
+
+`vela enable s3 --backups` is a separate setting that sends the backup archives themselves to a bucket, so they no longer sit on the same disk as the data they protect.
 <!-- @es -->
-Habilita el almacenamiento S3 para subir archivos. Normalmente, los archivos subidos se almacenan en el sistema de archivos local.
+Almacena los archivos subidos en un bucket S3 en lugar del sistema de archivos local del servidor.
 
 ### Sintaxis
 
 ```
-$ vela enable s3
+$ vela enable s3                    # la base de datos de desarrollo
+$ vela enable s3 -t production      # un despliegue
 ```
 
-Se te pedirán opciones de configuración para el almacenamiento S3. Una vez configurado, los archivos subidos se almacenarán en el bucket S3. No se necesitan otras cambios, la recuperación de archivos se maneja automáticamente.
+Se te pedirán el endpoint, el bucket, la región y las credenciales. Todos los valores pueden pasarse como flags para uso no interactivo, y el secreto se lee de `VELA_S3_SECRET` si está definido — un secreto en la línea de comandos queda en el historial del shell y en `ps`.
+
+Una vez configurado, la recuperación de archivos se maneja automáticamente; nada cambia en la aplicación.
+
+### Objetivos
+
+A diferencia de los comandos de despliegue, `vela enable s3` usa `-t local` por defecto. Los ajustes de S3 viven en la base de datos de la copia que configures, y deliberadamente no se copian de desarrollo a un despliegue nuevo — nombrar el objetivo es como llegan a producción.
+
+### Opciones
+
+- `--backups` - Configurar dónde se guardan las copias, en vez de dónde van las subidas
+- `--endpoint <url>`, `--bucket <name>`, `--region <region>`, `--access-key <key>`, `--secret <secret>`
+- `--force-path-style` / `--no-force-path-style` - Cómo se direcciona el bucket
+- `--force` - Activarlo aunque ya existan archivos subidos en disco
+- `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `local`
+
+### Estilo de ruta
+
+AWS y Cloudflare R2 direccionan el bucket como un subdominio. MinIO, Ceph, Garage y la mayoría de gateways autoalojados lo necesitan en la ruta, y fallan con un error de conexión poco útil cuando no lo reciben. El valor correcto se deduce del endpoint, y la prueba de conexión se ejecuta de inmediato para que un error salga a la luz al momento y no en la primera subida.
+
+### Los archivos existentes no se mueven
+
+Activar S3 cambia de dónde lee PocketBase. No migra nada, así que todos los archivos que ya están en disco dejan de resolverse.
+
+`vela enable s3` se niega cuando encuentra subidas ya almacenadas localmente. La estructura es idéntica en ambos lados — `<collection>/<record>/<file>` — así que copiarlos es una sincronización directa:
+
+```
+$ rclone copy /var/lib/vela/apps/<instance>/shared/pb_data/storage/ <remote>:<bucket>/
+```
+
+Después vuelve a ejecutarlo con `--force`.
+
+### Efecto sobre las copias de seguridad
+
+Con el almacenamiento S3 activo, PocketBase deja `storage/` fuera de los archivos que genera, así que [`vela backup create`](/es/backup/create) captura las bases de datos pero no las subidas. A partir de ahí, el versionado de tu bucket es lo que las protege.
+
+`vela enable s3 --backups` es un ajuste distinto que envía los propios archivos de copia a un bucket, para que dejen de estar en el mismo disco que los datos que protegen.
 <!-- @end -->

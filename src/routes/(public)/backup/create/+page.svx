@@ -1,0 +1,63 @@
+<!-- @en -->
+Take a backup of a target's database and uploaded files, then bring it down to this machine.
+
+### Syntax
+
+```
+$ vela backup create [name]
+```
+
+The name is generated when omitted, from the instance and the time: `vela_myapp_20260901134501.zip`. A name you pass has to be one PocketBase accepts — lowercase letters, digits, `-` and `_`, ending in `.zip`.
+
+### Why it downloads
+
+PocketBase writes the archive into `pb_data/backups`, inside the directory it is a backup of. Left there it survives nothing that matters, so `create` saves a copy to `backups/` in your project by default.
+
+```
+$ vela backup create
+$ vela backup create -o ~/backups
+$ vela backup create --no-download     # leave it on the server
+```
+
+### Options
+
+- `-o, --output <dir>` - Where to save the archive, defaults to `backups`
+- `--no-download` - Leave the archive on the server
+- `-t, --target <target>` - Which copy of the app to act on, defaults to `production`
+- `--server <ssh>` - Server this target runs on, recorded on first use
+
+### Long backups
+
+A large instance can take longer to archive than the client will wait for a reply. That is not a failure: the name is chosen up front, so `vela` goes on watching for the archive to appear rather than reporting a backup that succeeded as a backup that failed.
+<!-- @es -->
+Crea una copia de seguridad de la base de datos y los archivos subidos de un objetivo, y la descarga a esta máquina.
+
+### Sintaxis
+
+```
+$ vela backup create [name]
+```
+
+El nombre se genera si se omite, a partir de la instancia y la hora: `vela_myapp_20260901134501.zip`. Un nombre que pases debe ser válido para PocketBase — minúsculas, dígitos, `-` y `_`, terminando en `.zip`.
+
+### Por qué se descarga
+
+PocketBase escribe el archivo en `pb_data/backups`, dentro del directorio del que es copia. Ahí no sobrevive a nada que importe, así que `create` guarda una copia en `backups/` en tu proyecto por defecto.
+
+```
+$ vela backup create
+$ vela backup create -o ~/backups
+$ vela backup create --no-download     # dejarlo en el servidor
+```
+
+### Opciones
+
+- `-o, --output <dir>` - Dónde guardar el archivo, por defecto `backups`
+- `--no-download` - Dejar el archivo en el servidor
+- `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `production`
+- `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
+
+### Copias largas
+
+Una instancia grande puede tardar más en archivarse de lo que el cliente espera una respuesta. Eso no es un fallo: el nombre se elige de antemano, así que `vela` sigue vigilando la aparición del archivo en lugar de dar por fallida una copia que sí se hizo.
+<!-- @end -->

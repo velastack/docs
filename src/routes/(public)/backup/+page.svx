@@ -1,0 +1,89 @@
+<!-- @en -->
+Back up a deployment's database and uploaded files, and bring the archive off the server.
+
+An archive holds everything PocketBase keeps in its data directory: `data.db`, `auxiliary.db`, and the `storage/` tree that every uploaded file lives in. It is taken while the app keeps serving — the databases are copied with `VACUUM INTO`, so nothing is caught half-written.
+
+### Syntax
+
+```
+$ vela backup <command>
+```
+
+- [`create`](/backup/create) - Take a backup and download it
+- [`list`](/backup/list) - List the backups on a target
+- [`download`](/backup/download) - Save an existing backup off the server
+- [`delete`](/backup/delete) - Remove a backup
+- [`schedule`](/backup/schedule) - Back up automatically
+
+### Where uploads live
+
+Uploaded files are PocketBase's, not the app's. On a server they sit in the instance's shared directory:
+
+```
+/var/lib/vela/apps/<instance>/shared/pb_data/storage/<collection>/<record>/<file>
+```
+
+`shared/` is a sibling of `releases/`, not part of one, so uploads survive a deploy, a rollback, and a [`vela destroy deployment`](/destroy/deployment) without `--purge`. Nothing in a release ever overwrites them, and a developer's local `data/` is never uploaded.
+
+Locally the same tree is `data/storage/`, which is gitignored.
+
+### Targets
+
+`vela backup` defaults to `-t production` — the copy worth protecting. Name another target, or `local`, to work somewhere else:
+
+```
+$ vela backup create                 # production
+$ vela backup create -t staging
+$ vela backup list -t local          # the development database
+```
+
+### With S3 storage
+
+If [`vela enable s3`](/enable/s3) is on, PocketBase leaves `storage/` out of the archive: the files are not on the server to copy. The archive still holds the databases, and the bucket's own versioning is what protects the uploads. `vela backup create` says so when it applies.
+
+[`vela enable s3 --backups`](/enable/s3) is a separate setting, and sends the archives themselves to a bucket rather than leaving them on the disk they are a backup of.
+<!-- @es -->
+Copia de seguridad de la base de datos y los archivos subidos de un despliegue, y descarga del archivo fuera del servidor.
+
+Un archivo contiene todo lo que PocketBase guarda en su directorio de datos: `data.db`, `auxiliary.db` y el árbol `storage/` donde vive cada archivo subido. Se toma mientras la aplicación sigue sirviendo — las bases de datos se copian con `VACUUM INTO`, así que nada se captura a medio escribir.
+
+### Sintaxis
+
+```
+$ vela backup <command>
+```
+
+- [`create`](/es/backup/create) - Crear una copia de seguridad y descargarla
+- [`list`](/es/backup/list) - Listar las copias de seguridad de un objetivo
+- [`download`](/es/backup/download) - Guardar una copia existente fuera del servidor
+- [`delete`](/es/backup/delete) - Eliminar una copia de seguridad
+- [`schedule`](/es/backup/schedule) - Hacer copias automáticamente
+
+### Dónde viven los archivos subidos
+
+Los archivos subidos son de PocketBase, no de la aplicación. En un servidor están en el directorio compartido de la instancia:
+
+```
+/var/lib/vela/apps/<instance>/shared/pb_data/storage/<collection>/<record>/<file>
+```
+
+`shared/` es hermano de `releases/`, no parte de una, así que los archivos subidos sobreviven a un despliegue, a un rollback y a un [`vela destroy deployment`](/es/destroy/deployment) sin `--purge`. Nada dentro de una release los sobrescribe, y el `data/` local de un desarrollador nunca se sube.
+
+En local el mismo árbol es `data/storage/`, que está en el gitignore.
+
+### Objetivos
+
+`vela backup` usa `-t production` por defecto — la copia que merece protección. Nombra otro objetivo, o `local`, para trabajar en otro sitio:
+
+```
+$ vela backup create                 # producción
+$ vela backup create -t staging
+$ vela backup list -t local          # la base de datos de desarrollo
+```
+
+### Con almacenamiento S3
+
+Si [`vela enable s3`](/es/enable/s3) está activo, PocketBase deja `storage/` fuera del archivo: los ficheros no están en el servidor para copiarlos. El archivo sigue conteniendo las bases de datos, y el versionado del bucket es lo que protege las subidas. `vela backup create` lo advierte cuando corresponde.
+
+[`vela enable s3 --backups`](/es/enable/s3) es un ajuste distinto, y envía los propios archivos a un bucket en lugar de dejarlos en el disco del que son copia.
+<!-- @end -->

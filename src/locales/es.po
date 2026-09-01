@@ -96,8 +96,12 @@ msgstr "Variables de entorno"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/admin/create/+page.ts
 #: src/routes/(public)/admin/create/+page.ts
+#: src/routes/(public)/backup/+page.ts
+#: src/routes/(public)/backup/create/+page.ts
+#: src/routes/(public)/backup/create/+page.ts
 #: src/routes/(public)/create/+page.ts
 #: src/routes/(public)/create/+page.ts
 #: src/routes/(public)/migrate/create/+page.ts
@@ -819,6 +823,10 @@ msgid "Env"
 msgstr "Entorno"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backup/+page.ts
+#: src/routes/(public)/backup/list/+page.ts
+#: src/routes/(public)/backup/list/+page.ts
 #: src/routes/(public)/env/list/+page.ts
 #: src/routes/(public)/env/list/+page.ts
 msgid "List"
@@ -926,3 +934,61 @@ msgstr ""
 #: src/lib/components/ui/input/input.svelte
 msgid "file"
 msgstr ""
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backup/+page.ts
+#: src/routes/(public)/backup/download/+page.ts
+#: src/routes/(public)/backup/download/+page.ts
+msgid "Download"
+msgstr "Descargar"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backup/+page.ts
+#: src/routes/(public)/backup/+page.ts
+#: src/routes/(public)/backup/create/+page.ts
+#: src/routes/(public)/backup/delete/+page.ts
+#: src/routes/(public)/backup/download/+page.ts
+#: src/routes/(public)/backup/list/+page.ts
+#: src/routes/(public)/backup/schedule/+page.ts
+msgid "Backup"
+msgstr "Copia de seguridad"
+
+#: src/routes/(public)/backup/+page.ts
+msgid "Take a backup and download it."
+msgstr "Crear una copia de seguridad y descargarla."
+
+#: src/routes/(public)/backup/+page.ts
+msgid "List the backups on a target."
+msgstr "Listar las copias de seguridad de un objetivo."
+
+#: src/routes/(public)/backup/+page.ts
+msgid "Save an existing backup off the server."
+msgstr "Guardar una copia existente fuera del servidor."
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backup/+page.ts
+#: src/routes/(public)/backup/delete/+page.ts
+#: src/routes/(public)/backup/delete/+page.ts
+msgid "Delete"
+msgstr "Eliminar"
+
+#: src/routes/(public)/backup/+page.ts
+msgid "Remove a backup from a target."
+msgstr "Eliminar una copia de seguridad de un objetivo."
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/backup/+page.ts
+#: src/routes/(public)/backup/schedule/+page.ts
+#: src/routes/(public)/backup/schedule/+page.ts
+msgid "Schedule"
+msgstr "Programar"
+
+#: src/routes/(public)/backup/+page.ts
+msgid "Back up automatically on a schedule."
+msgstr "Hacer copias de seguridad automáticamente de forma programada."
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/restore/+page.ts
+#: src/routes/(public)/restore/+page.ts
+msgid "Restore"
+msgstr "Restaurar"

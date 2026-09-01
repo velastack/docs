@@ -72,17 +72,21 @@ The action installs dependencies, builds, uploads a release, runs migrations, re
 
 ### Pages that prerender from data
 
-A prerendered page is rendered once, at build time, against whatever database the build can see. On a runner that is an empty throwaway database, so those pages come out full of defaults. Set `remote-db: true` to render the build against the database it is being deployed to, tunnelled over the same SSH connection — the superuser credentials come off the server, so no new secrets go into CI.
+A prerendered page is rendered once, at build time, against whatever database the build can see. On a runner that would be an empty throwaway database, so those pages would come out full of defaults.
+
+The deploy avoids that on its own: once the target has been deployed to, the build is rendered against that instance's database, tunnelled over the same SSH connection. The superuser credentials come off the server, so no new secrets go into CI, and the build only ever reads. Nothing has to be set for this.
+
+Set `remote-db: false` to opt out and build against a throwaway database instead:
 
 ```yaml
       - uses: velastack/action@v1
         with:
           server: root@your-server
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          remote-db: true
+          remote-db: false
 ```
 
-It is off by default because it lets a build read production data. It also needs the target to have been deployed at least once.
+Pass `domain` on the first deploy from CI, so prerendered pages get their canonical links from the domain rather than from SvelteKit's placeholder host.
 
 ### Secrets
 

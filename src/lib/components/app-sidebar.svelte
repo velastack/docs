@@ -407,6 +407,36 @@
 				url: /* @wc-url */ '/rollback'
 			},
 			{
+				title: 'Backup',
+				url: /* @wc-url */ '/backup',
+				items: [
+					{
+						title: 'Create',
+						url: /* @wc-url */ '/backup/create'
+					},
+					{
+						title: 'List',
+						url: /* @wc-url */ '/backup/list'
+					},
+					{
+						title: 'Download',
+						url: /* @wc-url */ '/backup/download'
+					},
+					{
+						title: 'Delete',
+						url: /* @wc-url */ '/backup/delete'
+					},
+					{
+						title: 'Schedule',
+						url: /* @wc-url */ '/backup/schedule'
+					}
+				]
+			},
+			{
+				title: 'Restore',
+				url: /* @wc-url */ '/restore'
+			},
+			{
 				title: 'Targets',
 				url: /* @wc-url */ '/targets'
 			},

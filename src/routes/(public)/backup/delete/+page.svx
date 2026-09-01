@@ -1,0 +1,37 @@
+<!-- @en -->
+Remove a backup from a target.
+
+### Syntax
+
+```
+$ vela backup delete vela_myapp_20260901134501.zip
+```
+
+It asks first, with the archive's size, unless `-y` is passed.
+
+### Options
+
+- `-y, --yes` - Skip the confirmation
+- `-t, --target <target>` - Which copy of the app to act on, defaults to `production`
+- `--server <ssh>` - Server this target runs on, recorded on first use
+
+This deletes the copy on the server. Anything already downloaded with [`vela backup download`](/backup/download) is untouched.
+<!-- @es -->
+Elimina una copia de seguridad de un objetivo.
+
+### Sintaxis
+
+```
+$ vela backup delete vela_myapp_20260901134501.zip
+```
+
+Pregunta primero, indicando el tamaño del archivo, salvo que se pase `-y`.
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+- `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `production`
+- `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
+
+Esto borra la copia del servidor. Lo que ya se haya descargado con [`vela backup download`](/es/backup/download) no se toca.
+<!-- @end -->

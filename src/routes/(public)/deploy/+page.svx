@@ -38,14 +38,18 @@ Commit `.vela/project.json`. It carries the permanent app id that the server key
 - `--keep <count>` - How many old releases to keep on the server
 - `--pb-version <version>` - PocketBase version to run
 - `--no-build` - Deploy the existing build output without rebuilding
-- `--remote-db` - Render the build against the database on the server, over an SSH tunnel. Needed when pages are prerendered from data.
+- `--remote-db` / `--no-remote-db` - Render the build against the database on the server, over an SSH tunnel. On by default once the target has been deployed to.
 - `-i, --identity <file>` - SSH private key to authenticate with
 - `--ssh-port <port>` - SSH port
 - `--accept-host-keys` - Trust an unknown host key on first connect (CI)
 
 ### Prerendered pages
 
-A prerendered page is rendered once, at build time, against whatever database the build can see. On a clean checkout that is an empty throwaway database, so those pages come out full of defaults. `--remote-db` renders the build against the database it is being deployed to, tunnelled over the same SSH connection. It is off by default because it lets a build read production data.
+A prerendered page is rendered once, at build time, against whatever database the build can see. On a clean checkout that is an empty throwaway database, so those pages come out full of defaults.
+
+Deploys render the build against the database being deployed to, tunnelled over the same SSH connection, as soon as there is one to render against. The build only ever reads, and the superuser credentials come off the server itself. Pass `--no-remote-db` to use a throwaway local database instead — the first deploy of a target does that anyway, since there is nothing deployed yet.
+
+The origin those pages use is separate: prerendering has no request to take one from, so `vela build` sets it from the target's domain. Without a domain configured, canonical links fall back to SvelteKit's placeholder host and the build says so.
 
 ### Configuration
 

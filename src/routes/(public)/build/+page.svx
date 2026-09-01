@@ -9,6 +9,24 @@ $ vela build
 
 This runs `vite build` with the project's package manager. The output directory is determined by the SvelteKit adapter configured in `vite.config.ts` — `build` for the default adapters.
 
+### Options
+
+- `-t, --target <target>` - Which copy of the app to build for. Defaults to `production`.
+
+### Origin of prerendered pages
+
+Prerendering happens with no request to take an origin from, so SvelteKit substitutes a placeholder host and it ends up in every canonical link, `og:url` and `hreflang` on a prerendered page.
+
+Vela sets that origin from the domain bound to the target in `.vela/project.json`, falling back to `deploy.domain` in `velastack.config.ts`. Set `VELA_ORIGIN` to override it. The config reads it as `kit.prerender.origin`:
+
+```ts
+sveltekit({
+    ...(process.env.VELA_ORIGIN ? { prerender: { origin: process.env.VELA_ORIGIN } } : {})
+})
+```
+
+If the target has no domain yet and the build prerendered something, Vela says so rather than shipping the placeholder quietly.
+
 ### Database during the build
 
 If the project has a backend, Vela starts PocketBase for the duration of the build and stops it again afterwards. This lets prerendered pages load data from the database without a server running separately. If `POCKETBASE_URL` is already set in the environment, that database is used instead and nothing is started.
