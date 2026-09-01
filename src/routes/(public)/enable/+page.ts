@@ -76,8 +76,7 @@ export const load = async ({ parent }) => {
 			{
 				title: 'CMS',
 				url: /* @wc-url */ '/enable/cms',
-				badge: 'Planned',
-				description: 'Content management system for your application.'
+				description: 'Inline editing with an admin bar, served from the app itself.'
 			}
 		]
 	};

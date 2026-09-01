@@ -185,8 +185,7 @@
 					},
 					{
 						title: 'CMS',
-						url: /* @wc-url */ '/enable/cms',
-						badge: 'Planned'
+						url: /* @wc-url */ '/enable/cms'
 					}
 				]
 			},

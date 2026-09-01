@@ -623,9 +623,8 @@ msgstr "Payment processing with Stripe."
 msgid "Subscription plans for your application."
 msgstr "Subscription plans for your application."
 
-#: src/routes/(public)/enable/+page.ts
-msgid "Content management system for your application."
-msgstr "Content management system for your application."
+#~ msgid "Content management system for your application."
+#~ msgstr "Content management system for your application."
 
 #: src/routes/(public)/root-layout.svelte
 msgid "Learn more"
@@ -695,12 +694,9 @@ msgstr "Project Structure"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
-#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/backend/+page.ts
 #: src/routes/(public)/backend/postgres/+page.ts
 #: src/routes/(public)/enable/+page.ts
-#: src/routes/(public)/enable/+page.ts
-#: src/routes/(public)/enable/cms/+page.ts
 #: src/routes/(public)/enable/notifications/+page.ts
 #: src/routes/(public)/generate/ai/+page.ts
 #: src/routes/(public)/helpers/+page.ts
@@ -892,6 +888,7 @@ msgid "What Vela generates, and where it lives."
 msgstr "What Vela generates, and where it lives."
 
 #: src/routes/(public)/enable/blog/+page.ts
+#: src/routes/(public)/enable/cms/+page.ts
 msgid "Depends: backend"
 msgstr "Depends: backend"
 
@@ -992,3 +989,7 @@ msgstr "Back up automatically on a schedule."
 #: src/routes/(public)/restore/+page.ts
 msgid "Restore"
 msgstr "Restore"
+
+#: src/routes/(public)/enable/+page.ts
+msgid "Inline editing with an admin bar, served from the app itself."
+msgstr "Inline editing with an admin bar, served from the app itself."

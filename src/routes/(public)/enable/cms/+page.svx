@@ -1,5 +1,5 @@
 <!-- @en -->
-Enable Vela's content management system.
+Add an inline-editing CMS to the project, served from the app's own backend.
 
 ### Syntax
 
@@ -7,9 +7,47 @@ Enable Vela's content management system.
 $ vela enable cms
 ```
 
-The subcommand is registered but not yet implemented — running it reports that the feature isn't available. For file-based content today, see [blog](/enable/blog).
+This installs [`@velastack/cms`](https://www.npmjs.com/package/@velastack/cms) with `better-sqlite3` and `marked`, then wires the CMS into the app:
+
+- The CMS backend, mounted at `/api/cms`, with its SQLite database and uploads in the data directory
+- A `loadCms` call in the root `+layout.server.ts`, so every page receives its content and a deleted page answers 404, 410 or a redirect
+- An `<AdminBar />` in the root `+layout.svelte`, where editors sign in to edit copy in place, upload media and publish
+- The Vite plugin, which finds every editable field at build time
+
+Depends on [backend](/enable/backend): the CMS backend runs inside the app's server, so a static site cannot host it. With [i18n](/enable/i18n) enabled, the CMS uses the site's locales instead of a single default.
+
+### Editors
+
+The admin bar signs in against the CMS's own editor table, which starts empty. Create the first login, then open any page with `?edit` on the URL and sign in:
+
+```
+$ vela cms editor add you@example.com
+```
+
+The password is generated and shown once. `vela cms editor password <email> <password>` sets a new one, and `vela cms editor list` shows who can sign in.
+
+### Making content editable
+
+Wrap copy in the components from `@velastack/cms`. Each takes a `name` for the field and a `fallback` for when nothing has been published yet:
+
+```svelte
+<script lang="ts">
+	import { CmsText, CmsImage } from '@velastack/cms';
+</script>
+
+<h1><CmsText name="hero.title" fallback="Welcome" /></h1>
+<CmsImage name="hero.image" alt="Hero" />
+```
+
+### Re-running
+
+Running the command again only fills in what is missing. `src/lib/cms.ts`, `src/lib/server/cms.ts` and the two routes are yours once written and are never overwritten, so edits such as adding locales survive.
+
+### Reverting
+
+There is no `vela disable cms` yet. Delete `src/lib/cms.ts`, `src/lib/server/cms.ts`, `src/routes/api/cms` and `src/routes/uploads`, remove `cms()` from `vite.config.ts`, the `loadCms` call from `+layout.server.ts` and `<AdminBar />` from `+layout.svelte`, then uninstall `@velastack/cms`, `better-sqlite3` and `marked`.
 <!-- @es -->
-Habilita el sistema de gestión de contenido de Vela.
+Añade al proyecto un CMS de edición en línea, servido desde el propio backend de la aplicación.
 
 ### Sintaxis
 
@@ -17,5 +55,43 @@ Habilita el sistema de gestión de contenido de Vela.
 $ vela enable cms
 ```
 
-El subcomando está registrado pero aún no implementado — al ejecutarlo se informa de que la función no está disponible. Para contenido basado en archivos hoy, consulta [blog](/es/enable/blog).
+Esto instala [`@velastack/cms`](https://www.npmjs.com/package/@velastack/cms) con `better-sqlite3` y `marked`, y conecta el CMS a la aplicación:
+
+- El backend del CMS, montado en `/api/cms`, con su base de datos SQLite y las subidas en el directorio de datos
+- Una llamada a `loadCms` en el `+layout.server.ts` raíz, para que cada página reciba su contenido y una página eliminada responda 404, 410 o una redirección
+- Un `<AdminBar />` en el `+layout.svelte` raíz, donde los editores inician sesión para editar el texto en el sitio, subir medios y publicar
+- El plugin de Vite, que encuentra cada campo editable al compilar
+
+Depende de [backend](/es/enable/backend): el backend del CMS se ejecuta dentro del servidor de la aplicación, así que un sitio estático no puede alojarlo. Con [i18n](/es/enable/i18n) habilitado, el CMS usa los idiomas del sitio en lugar de uno solo por defecto.
+
+### Editores
+
+La barra de administración inicia sesión contra la propia tabla de editores del CMS, que empieza vacía. Crea el primer acceso, luego abre cualquier página con `?edit` en la URL e inicia sesión:
+
+```
+$ vela cms editor add you@example.com
+```
+
+La contraseña se genera y se muestra una sola vez. `vela cms editor password <email> <password>` establece una nueva, y `vela cms editor list` muestra quién puede iniciar sesión.
+
+### Hacer editable el contenido
+
+Envuelve el texto con los componentes de `@velastack/cms`. Cada uno recibe un `name` para el campo y un `fallback` para cuando aún no se ha publicado nada:
+
+```svelte
+<script lang="ts">
+	import { CmsText, CmsImage } from '@velastack/cms';
+</script>
+
+<h1><CmsText name="hero.title" fallback="Bienvenido" /></h1>
+<CmsImage name="hero.image" alt="Hero" />
+```
+
+### Volver a ejecutar
+
+Ejecutar el comando de nuevo solo completa lo que falta. `src/lib/cms.ts`, `src/lib/server/cms.ts` y las dos rutas son tuyos una vez escritos y nunca se sobrescriben, así que cambios como añadir idiomas se conservan.
+
+### Revertir
+
+Todavía no existe `vela disable cms`. Elimina `src/lib/cms.ts`, `src/lib/server/cms.ts`, `src/routes/api/cms` y `src/routes/uploads`, quita `cms()` de `vite.config.ts`, la llamada a `loadCms` de `+layout.server.ts` y `<AdminBar />` de `+layout.svelte`, y luego desinstala `@velastack/cms`, `better-sqlite3` y `marked`.
 <!-- @end -->
