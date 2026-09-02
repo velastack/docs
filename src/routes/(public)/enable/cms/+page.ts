@@ -5,7 +5,6 @@ export const load = async ({ parent }) => {
 		breadcrumbs: [
 			{ title: 'Enable', url: /* @wc-url */ '/enable' },
 			{ title: 'CMS', url: /* @wc-url */ '/enable/cms' }
-		],
-		badges: ['Depends: backend']
+		]
 	};
 };

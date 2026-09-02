@@ -1,30 +1,36 @@
 <!-- @en -->
-Add an inline-editing CMS to the project, served from the app's own backend.
+Add an inline-editing CMS to the project, served from the app's own backend or from a hosted one.
 
 ### Syntax
 
 ```
 $ vela enable cms
+$ vela enable cms --endpoint https://velastack.dev/v1/projects/<project>/cms
 ```
 
-This installs [`@velastack/cms`](https://www.npmjs.com/package/@velastack/cms) with `better-sqlite3` and `marked`, then wires the CMS into the app:
+This installs [`@velastack/cms`](https://www.npmjs.com/package/@velastack/cms) and `marked`, then wires the CMS into the app:
 
-- The CMS backend, mounted at `/api/cms`, with its SQLite database and uploads in the data directory
-- A `loadCms` call in the root `+layout.server.ts`, so every page receives its content and a deleted page answers 404, 410 or a redirect
+- A `loadCms` call in the root `+layout.server.ts`, created if the project has none, so every page receives its content and a deleted page answers 404, 410 or a redirect
 - An `<AdminBar />` in the root `+layout.svelte`, where editors sign in to edit copy in place, upload media and publish
 - The Vite plugin, which finds every editable field at build time
 
-Depends on [backend](/enable/backend): the CMS backend runs inside the app's server, so a static site cannot host it. With [i18n](/enable/i18n) enabled, the CMS uses the site's locales instead of a single default.
+### Where the CMS lives
+
+Without `--endpoint`, an app with a backend hosts the CMS itself. The command also installs `better-sqlite3` and mounts the backend at `/api/cms`, with its SQLite database and uploads in the data directory.
+
+With `--endpoint`, the app reads from a CMS hosted elsewhere, such as a project on velastack.dev, and the admin bar signs in there. That is the only shape a static site can use, since it has no server to host the backend; `vela build` then prerenders the published content and downloads its media into the site.
+
+With [i18n](/enable/i18n) enabled, either shape uses the site's locales instead of a single default.
 
 ### Editors
 
-The admin bar signs in against the CMS's own editor table, which starts empty. Create the first login, then open any page with `?edit` on the URL and sign in:
+An app that hosts the backend signs editors in against the CMS's own table, which starts empty. Create the first login, then open any page with `?edit` on the URL and sign in:
 
 ```
 $ vela cms editor add you@example.com
 ```
 
-The password is generated and shown once. `vela cms editor password <email> <password>` sets a new one, and `vela cms editor list` shows who can sign in.
+The password is generated and shown once. `vela cms editor password <email> <password>` sets a new one, and `vela cms editor list` shows who can sign in. A hosted CMS manages its own editors.
 
 ### Making content editable
 
@@ -41,38 +47,44 @@ Wrap copy in the components from `@velastack/cms`. Each takes a `name` for the f
 
 ### Re-running
 
-Running the command again only fills in what is missing. `src/lib/cms.ts`, `src/lib/server/cms.ts` and the two routes are yours once written and are never overwritten, so edits such as adding locales survive.
+Running the command again only fills in what is missing. `src/lib/cms.ts` and, for a backend the app hosts, `src/lib/server/cms.ts` and the two routes are yours once written and are never overwritten, so edits such as adding locales survive.
 
 ### Reverting
 
-There is no `vela disable cms` yet. Delete `src/lib/cms.ts`, `src/lib/server/cms.ts`, `src/routes/api/cms` and `src/routes/uploads`, remove `cms()` from `vite.config.ts`, the `loadCms` call from `+layout.server.ts` and `<AdminBar />` from `+layout.svelte`, then uninstall `@velastack/cms`, `better-sqlite3` and `marked`.
+There is no `vela disable cms` yet. Delete `src/lib/cms.ts` and, if the app hosts the backend, `src/lib/server/cms.ts`, `src/routes/api/cms` and `src/routes/uploads`; remove `cms()` from `vite.config.ts`, the `loadCms` call from `+layout.server.ts` and `<AdminBar />` from `+layout.svelte`; then uninstall `@velastack/cms`, `marked` and `better-sqlite3`.
 <!-- @es -->
-Añade al proyecto un CMS de edición en línea, servido desde el propio backend de la aplicación.
+Añade al proyecto un CMS de edición en línea, servido desde el propio backend de la aplicación o desde uno alojado.
 
 ### Sintaxis
 
 ```
 $ vela enable cms
+$ vela enable cms --endpoint https://velastack.dev/v1/projects/<project>/cms
 ```
 
-Esto instala [`@velastack/cms`](https://www.npmjs.com/package/@velastack/cms) con `better-sqlite3` y `marked`, y conecta el CMS a la aplicación:
+Esto instala [`@velastack/cms`](https://www.npmjs.com/package/@velastack/cms) y `marked`, y conecta el CMS a la aplicación:
 
-- El backend del CMS, montado en `/api/cms`, con su base de datos SQLite y las subidas en el directorio de datos
-- Una llamada a `loadCms` en el `+layout.server.ts` raíz, para que cada página reciba su contenido y una página eliminada responda 404, 410 o una redirección
+- Una llamada a `loadCms` en el `+layout.server.ts` raíz, creado si el proyecto no lo tiene, para que cada página reciba su contenido y una página eliminada responda 404, 410 o una redirección
 - Un `<AdminBar />` en el `+layout.svelte` raíz, donde los editores inician sesión para editar el texto en el sitio, subir medios y publicar
 - El plugin de Vite, que encuentra cada campo editable al compilar
 
-Depende de [backend](/es/enable/backend): el backend del CMS se ejecuta dentro del servidor de la aplicación, así que un sitio estático no puede alojarlo. Con [i18n](/es/enable/i18n) habilitado, el CMS usa los idiomas del sitio en lugar de uno solo por defecto.
+### Dónde vive el CMS
+
+Sin `--endpoint`, una aplicación con backend aloja el CMS ella misma. El comando instala además `better-sqlite3` y monta el backend en `/api/cms`, con su base de datos SQLite y las subidas en el directorio de datos.
+
+Con `--endpoint`, la aplicación lee de un CMS alojado en otro lugar, como un proyecto en velastack.dev, y la barra de administración inicia sesión allí. Es la única forma que puede usar un sitio estático, ya que no tiene servidor donde alojar el backend; `vela build` prerrenderiza entonces el contenido publicado y descarga sus medios al sitio.
+
+Con [i18n](/es/enable/i18n) habilitado, cualquiera de las dos formas usa los idiomas del sitio en lugar de uno solo por defecto.
 
 ### Editores
 
-La barra de administración inicia sesión contra la propia tabla de editores del CMS, que empieza vacía. Crea el primer acceso, luego abre cualquier página con `?edit` en la URL e inicia sesión:
+Una aplicación que aloja el backend autentica a los editores contra la propia tabla del CMS, que empieza vacía. Crea el primer acceso, luego abre cualquier página con `?edit` en la URL e inicia sesión:
 
 ```
 $ vela cms editor add you@example.com
 ```
 
-La contraseña se genera y se muestra una sola vez. `vela cms editor password <email> <password>` establece una nueva, y `vela cms editor list` muestra quién puede iniciar sesión.
+La contraseña se genera y se muestra una sola vez. `vela cms editor password <email> <password>` establece una nueva, y `vela cms editor list` muestra quién puede iniciar sesión. Un CMS alojado gestiona sus propios editores.
 
 ### Hacer editable el contenido
 
@@ -89,9 +101,9 @@ Envuelve el texto con los componentes de `@velastack/cms`. Cada uno recibe un `n
 
 ### Volver a ejecutar
 
-Ejecutar el comando de nuevo solo completa lo que falta. `src/lib/cms.ts`, `src/lib/server/cms.ts` y las dos rutas son tuyos una vez escritos y nunca se sobrescriben, así que cambios como añadir idiomas se conservan.
+Ejecutar el comando de nuevo solo completa lo que falta. `src/lib/cms.ts` y, para un backend alojado por la aplicación, `src/lib/server/cms.ts` y las dos rutas son tuyos una vez escritos y nunca se sobrescriben, así que cambios como añadir idiomas se conservan.
 
 ### Revertir
 
-Todavía no existe `vela disable cms`. Elimina `src/lib/cms.ts`, `src/lib/server/cms.ts`, `src/routes/api/cms` y `src/routes/uploads`, quita `cms()` de `vite.config.ts`, la llamada a `loadCms` de `+layout.server.ts` y `<AdminBar />` de `+layout.svelte`, y luego desinstala `@velastack/cms`, `better-sqlite3` y `marked`.
+Todavía no existe `vela disable cms`. Elimina `src/lib/cms.ts` y, si la aplicación aloja el backend, `src/lib/server/cms.ts`, `src/routes/api/cms` y `src/routes/uploads`; quita `cms()` de `vite.config.ts`, la llamada a `loadCms` de `+layout.server.ts` y `<AdminBar />` de `+layout.svelte`; y luego desinstala `@velastack/cms`, `marked` y `better-sqlite3`.
 <!-- @end -->

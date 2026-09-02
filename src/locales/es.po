@@ -888,7 +888,6 @@ msgid "What Vela generates, and where it lives."
 msgstr "Qué genera Vela, y dónde vive."
 
 #: src/routes/(public)/enable/blog/+page.ts
-#: src/routes/(public)/enable/cms/+page.ts
 msgid "Depends: backend"
 msgstr "Depende de: backend"
 
