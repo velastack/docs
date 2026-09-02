@@ -16,6 +16,10 @@ The action can be one of the following:
 ### Seeds vs fixtures
 
 Seeds are real data the application needs — plans, categories, roles, an initial admin. They ship with the project and are loaded on deploy. [Fixtures](/fixtures) are throwaway mock data for development and tests, and are loaded after seeds so they can reference seed records.
+
+### In tests
+
+[`vela test:server`](/test/server) loads seeds into its throwaway database before every run, so tests start from the same data the app ships with.
 <!-- @es -->
 Los datos semilla se usan para poblar la base de datos con datos iniciales esenciales para que la aplicación funcione. Se guardan en el directorio `data/seeds` y deben estar en el control de versiones.
 
@@ -34,4 +38,8 @@ La acción puede ser una de las siguientes:
 ### Seeds frente a fixtures
 
 Los seeds son datos reales que la aplicación necesita — planes, categorías, roles, un administrador inicial. Se distribuyen con el proyecto y se cargan al desplegar. Los [fixtures](/es/fixtures) son datos simulados desechables para desarrollo y pruebas, y se cargan después de los seeds para poder referenciar sus registros.
+
+### En las pruebas
+
+[`vela test:server`](/es/test/server) carga los seeds en su base de datos desechable antes de cada ejecución, de modo que las pruebas parten de los mismos datos con los que se distribuye la aplicación.
 <!-- @end -->

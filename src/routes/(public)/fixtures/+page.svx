@@ -18,6 +18,10 @@ The action can be one of the following:
 ### Fixtures vs seeds
 
 [Seeds](/seeds) are real data your application needs to function, kept in version control and loaded into production. Fixtures are throwaway mock data for development and tests. Fixture records are given ids prefixed with `vela`, which is how `clear` knows what to remove — data you created yourself is never touched.
+
+### In tests
+
+[`vela test:server`](/test/server) loads fixtures, after seeds, into its throwaway database before every run. Tests share that database, so treat fixture records as read-only and create your own for anything a test changes.
 <!-- @es -->
 Los fixtures son datos simulados para pruebas y desarrollo. Se guardan en el directorio `data/fixtures`. Están pensados para cargarse después de los datos semilla, y pueden depender de registros de seeds.
 
@@ -38,4 +42,8 @@ La acción puede ser una de las siguientes:
 ### Fixtures frente a seeds
 
 Los [seeds](/es/seeds) son datos reales que tu aplicación necesita para funcionar, versionados y cargados en producción. Los fixtures son datos simulados desechables para desarrollo y pruebas. A los registros de fixtures se les asignan ids con el prefijo `vela`, que es cómo `clear` sabe qué eliminar — los datos que has creado tú nunca se tocan.
+
+### En las pruebas
+
+[`vela test:server`](/es/test/server) carga los fixtures, después de los seeds, en su base de datos desechable antes de cada ejecución. Las pruebas comparten esa base de datos, así que trata los registros de fixtures como de solo lectura y crea los tuyos para todo lo que una prueba modifique.
 <!-- @end -->

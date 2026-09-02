@@ -14,11 +14,12 @@ $ vela test:server pets
 Each run:
 
 - Creates a throwaway PocketBase database in `test-data`, with all migrations applied
+- Loads [seeds](/seeds), then [fixtures](/fixtures), into it
 - Starts a Vite server with the page components stubbed out
 - Runs Vitest against it
 - Tears the database down again afterwards
 
-A bare positional argument filters which tests run, and any other arguments are passed straight through to Vitest.
+A bare positional argument filters which tests run, and any other arguments are passed straight through to Vitest. The command exits non-zero when a test fails, so it can gate CI.
 
 ### Test files
 
@@ -40,7 +41,9 @@ Page, layout and error components are replaced with stubs for the duration of th
 
 ### Seeds and fixtures
 
-The test database starts empty apart from the migrations. Load [seeds](/seeds) or [fixtures](/fixtures) yourself if a test needs them, or create the records it needs in the test.
+The test database is not empty. After the migrations, every file in `data/seeds` is loaded, then every file in `data/fixtures`, through the same server the tests talk to — so the app's hooks apply to these records as they would to any write. A record the current schema rejects stops the run and is named in the error; `vela fixtures regen` rewrites the fixtures from the schema.
+
+Test files run in parallel against one database, so treat seeds and fixtures as a read-only baseline: read them and look records up by id, but create your own records for anything a test changes or deletes. The generated tests already work this way.
 <!-- @es -->
 Ejecuta las pruebas de servidor: toda la pila de la aplicación, incluida la base de datos.
 
@@ -57,11 +60,12 @@ $ vela test:server pets
 Cada ejecución:
 
 - Crea una base de datos PocketBase desechable en `test-data`, con todas las migraciones aplicadas
+- Carga en ella los [seeds](/es/seeds) y después los [fixtures](/es/fixtures)
 - Inicia un servidor de Vite con los componentes de página sustituidos por stubs
 - Ejecuta Vitest contra él
 - Desmonta la base de datos al terminar
 
-Un argumento posicional simple filtra qué pruebas se ejecutan, y cualquier otro argumento se pasa directamente a Vitest.
+Un argumento posicional simple filtra qué pruebas se ejecutan, y cualquier otro argumento se pasa directamente a Vitest. El comando termina con un código distinto de cero cuando falla una prueba, así que puede usarse como puerta en CI.
 
 ### Archivos de prueba
 
@@ -83,5 +87,7 @@ Los componentes de página, layout y error se sustituyen por stubs durante la ej
 
 ### Seeds y fixtures
 
-La base de datos de pruebas empieza vacía salvo por las migraciones. Carga tú mismo los [seeds](/es/seeds) o los [fixtures](/es/fixtures) si una prueba los necesita, o crea en la prueba los registros que requiera.
+La base de datos de pruebas no está vacía. Tras las migraciones se carga cada archivo de `data/seeds` y después cada archivo de `data/fixtures`, a través del mismo servidor con el que hablan las pruebas — así los hooks de la aplicación se aplican a estos registros como a cualquier otra escritura. Un registro que el esquema actual rechaza detiene la ejecución y aparece nombrado en el error; `vela fixtures regen` reescribe los fixtures a partir del esquema.
+
+Los archivos de prueba se ejecutan en paralelo contra una única base de datos, así que trata los seeds y los fixtures como una base de solo lectura: léelos y busca registros por id, pero crea tus propios registros para todo lo que una prueba modifique o elimine. Las pruebas generadas ya funcionan así.
 <!-- @end -->

@@ -10,6 +10,8 @@ $ vela fixtures load
 This will load fixture data into the database from the `data/fixtures` directory. Fixtures are loaded in alphabetical order and prefixed with a number to ensure a deterministic loading order, so collections that depend on others come later.
 
 [Seeds](/seeds/load) load first — fixtures can reference seed records.
+
+[`vela test:server`](/test/server) loads fixtures into its own database automatically; this command is for the one you develop against.
 <!-- @es -->
 Carga los datos de fixtures en la base de datos.
 
@@ -22,4 +24,6 @@ $ vela fixtures load
 Esto cargará en la base de datos los datos de fixtures del directorio `data/fixtures`. Los fixtures se cargan en orden alfabético y llevan un número como prefijo para garantizar un orden de carga determinista, de modo que las colecciones que dependen de otras van después.
 
 Los [seeds](/es/seeds/load) se cargan primero — los fixtures pueden referenciar registros de seeds.
+
+[`vela test:server`](/es/test/server) carga los fixtures en su propia base de datos automáticamente; este comando es para la que usas al desarrollar.
 <!-- @end -->

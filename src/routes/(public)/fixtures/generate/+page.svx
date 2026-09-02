@@ -13,7 +13,7 @@ $ vela fixtures generate
 
 This will generate fixture files in the `data/fixtures` directory. The order of files is determined by the database schema — collections that depend on other collections are written later.
 
-Data is generated from the database schema with [json-schema-faker](https://github.com/json-schema-faker/json-schema-faker) and [Faker](https://fakerjs.dev). Autodate, file and relation fields are skipped — PocketBase fills the first, and the others need real content to point at.
+Data is generated from the database schema with [json-schema-faker](https://github.com/json-schema-faker/json-schema-faker) and [Faker](https://fakerjs.dev). Autodate and file fields are skipped — PocketBase fills the first, and files need real content. Relation fields point at records generated earlier in the run or at [seed](/seeds) records, so a collection that requires a relation to a seeded one still produces fixtures that load.
 
 ### Options
 
@@ -46,7 +46,7 @@ $ vela fixtures generate
 
 Esto generará archivos de fixtures en el directorio `data/fixtures`. El orden de los archivos lo determina el esquema de la base de datos — las colecciones que dependen de otras se escriben después.
 
-Los datos se generan a partir del esquema de la base de datos con [json-schema-faker](https://github.com/json-schema-faker/json-schema-faker) y [Faker](https://fakerjs.dev). Los campos autodate, de archivo y de relación se omiten — PocketBase rellena el primero, y los otros necesitan contenido real al que apuntar.
+Los datos se generan a partir del esquema de la base de datos con [json-schema-faker](https://github.com/json-schema-faker/json-schema-faker) y [Faker](https://fakerjs.dev). Los campos autodate y de archivo se omiten — PocketBase rellena el primero, y los archivos necesitan contenido real. Los campos de relación apuntan a registros generados antes en la misma ejecución o a registros de [seeds](/es/seeds), de modo que una colección que exige una relación con una colección sembrada sigue produciendo fixtures que se cargan.
 
 ### Opciones
 

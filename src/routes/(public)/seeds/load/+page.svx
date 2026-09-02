@@ -14,6 +14,8 @@ This will load seed data into the database from the `data/seeds` directory. Seed
 - `-f, --force` - Load even if target collections already have records
 
 By default, loading stops short of a collection that already holds data, so seeding twice cannot quietly duplicate it. `--force` loads anyway.
+
+[`vela test:server`](/test/server) loads seeds into its own database automatically; this command is for the one you develop against.
 <!-- @es -->
 Carga los datos semilla en la base de datos.
 
@@ -30,4 +32,6 @@ Esto cargará en la base de datos los datos semilla del directorio `data/seeds`.
 - `-f, --force` - Cargar aunque las colecciones de destino ya tengan registros
 
 Por defecto, la carga se detiene ante una colección que ya contiene datos, de modo que sembrar dos veces no puede duplicarlos en silencio. `--force` carga de todos modos.
+
+[`vela test:server`](/es/test/server) carga los seeds en su propia base de datos automáticamente; este comando es para la que usas al desarrollar.
 <!-- @end -->
