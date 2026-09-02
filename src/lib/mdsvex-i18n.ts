@@ -2,6 +2,32 @@ import type { Plugin } from 'vite';
 import { hasMarkers, parseLocaleBlocks, replaceInlineT } from './i18n-blocks.js';
 
 const SCRIPT_OPEN = /(<script[^>]*>)/;
+const FENCE = /^\s*(```|~~~)/;
+
+/**
+ * Offset just past the opening tag of the page's own `<script>`, or -1.
+ *
+ * A `<script>` inside a fenced code block is prose — an example the page is
+ * showing, not a script the page has. Matching the first tag anywhere used to
+ * inject the preamble into the fence, so it rendered as text inside a `<pre>`
+ * and `i18nLocale` was never declared for the page.
+ */
+export function findScriptOpenEnd(code: string): number {
+	let inFence = false;
+	let offset = 0;
+
+	for (const line of code.split('\n')) {
+		if (FENCE.test(line)) {
+			inFence = !inFence;
+		} else if (!inFence) {
+			const match = line.match(SCRIPT_OPEN);
+			if (match) return offset + match.index! + match[0].length;
+		}
+		offset += line.length + 1;
+	}
+
+	return -1;
+}
 
 function transformBlocks(code: string): string {
 	let result = '';
@@ -53,10 +79,9 @@ const i18nT = (t) => t[i18nLocale] ?? t['en'];
 ${extraDeclarations.join('\n')}
 `;
 
-	const scriptMatch = code.match(SCRIPT_OPEN);
-	if (scriptMatch) {
-		const insertPos = scriptMatch.index! + scriptMatch[0].length;
-		return code.slice(0, insertPos) + preamble + code.slice(insertPos);
+	const scriptOpenEnd = findScriptOpenEnd(code);
+	if (scriptOpenEnd !== -1) {
+		return code.slice(0, scriptOpenEnd) + preamble + code.slice(scriptOpenEnd);
 	}
 
 	const frontmatterEnd = code.indexOf('---', code.indexOf('---') + 3);
