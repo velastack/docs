@@ -180,8 +180,7 @@
 					},
 					{
 						title: 'Notifications',
-						url: /* @wc-url */ '/enable/notifications',
-						badge: 'Planned'
+						url: /* @wc-url */ '/enable/notifications'
 					},
 					{
 						title: 'CMS',

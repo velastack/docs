@@ -1,5 +1,5 @@
 <!-- @en -->
-Enable in-app notifications for your application.
+Enable in-app notifications for your application's users.
 
 ### Syntax
 
@@ -7,17 +7,47 @@ Enable in-app notifications for your application.
 $ vela enable notifications
 ```
 
-Not yet shipped — `vela enable` has no `notifications` subcommand today.
+The notifications module creates a `notifications` collection, a bell dropdown in the app header, and a `/notifications` page. Authentication must be enabled first.
 
-### Planned
+### What you get
 
-The notifications module will add:
+- A bell in the `(app)` layout header with an unread count. Opening it lists the five most recent unread notifications.
+- Polling every 30 seconds while the tab is visible, plus a refresh whenever the tab regains focus. New notifications also appear as toasts.
+- A `/notifications` page listing everything for the signed-in user, with "Mark read" per item and "Mark all read".
+- A `notify` helper in `$lib/server/notifications` for creating notifications from server code.
 
-- A `notifications` collection
-- A bell dropdown in the nav, polling every 30 seconds
-- A `/notifications` page for managing read state
+The `(app)` layout's `+layout.server.ts` is extended to load the unread notifications and register the `app:notifications` dependency, so calling `invalidate('app:notifications')` anywhere refreshes the bell.
+
+### Sending a notification
+
+Notifications are created server-side. Import `notify` in a form action, hook or API route and pass the user's id:
+
+```ts
+import { notify } from '$lib/server/notifications';
+
+export const actions = {
+  invite: async ({ locals }) => {
+    await notify(locals.admin, invitedUserId, {
+      title: 'You were added to Acme',
+      body: 'Open the team page to get started.'
+    });
+  }
+};
+```
+
+Users can only read and delete their own notifications, and can only change the `read` flag. Creating a notification or editing its title and body requires the superuser client, so pass `locals.admin` rather than `locals.pb`.
+
+### Database tables
+
+Enabling `notifications` creates the following database tables:
+
+```
+notifications
+```
+
+Each record holds a `user` relation, `title`, `body` and a `read` flag, indexed by user, read state and creation date.
 <!-- @es -->
-Habilita las notificaciones dentro de la aplicación.
+Habilita las notificaciones dentro de la aplicación para los usuarios de tu aplicación.
 
 ### Sintaxis
 
@@ -25,13 +55,43 @@ Habilita las notificaciones dentro de la aplicación.
 $ vela enable notifications
 ```
 
-Aún no está disponible — `vela enable` no tiene hoy un subcomando `notifications`.
+El módulo de notificaciones crea una colección `notifications`, un desplegable de campana en la cabecera de la aplicación y una página `/notifications`. Antes hay que habilitar la autenticación.
 
-### Planificado
+### Qué obtienes
 
-El módulo de notificaciones añadirá:
+- Una campana en la cabecera del layout `(app)` con el número de no leídas. Al abrirla se muestran las cinco notificaciones no leídas más recientes.
+- Consulta cada 30 segundos mientras la pestaña esté visible, además de una actualización cada vez que la pestaña recupera el foco. Las notificaciones nuevas también aparecen como toasts.
+- Una página `/notifications` con todas las notificaciones del usuario autenticado, con "Marcar como leída" por elemento y "Marcar todas como leídas".
+- Una función `notify` en `$lib/server/notifications` para crear notificaciones desde el código del servidor.
 
-- Una colección `notifications`
-- Un desplegable de campana en la navegación, que consulta cada 30 segundos
-- Una página `/notifications` para gestionar el estado de lectura
+El `+layout.server.ts` del layout `(app)` se amplía para cargar las notificaciones no leídas y registrar la dependencia `app:notifications`, de modo que llamar a `invalidate('app:notifications')` desde cualquier sitio actualiza la campana.
+
+### Enviar una notificación
+
+Las notificaciones se crean en el servidor. Importa `notify` en una acción de formulario, un hook o una ruta de API y pásale el id del usuario:
+
+```ts
+import { notify } from '$lib/server/notifications';
+
+export const actions = {
+  invite: async ({ locals }) => {
+    await notify(locals.admin, invitedUserId, {
+      title: 'Te han añadido a Acme',
+      body: 'Abre la página del equipo para empezar.'
+    });
+  }
+};
+```
+
+Los usuarios solo pueden leer y eliminar sus propias notificaciones, y solo pueden cambiar el indicador `read`. Crear una notificación o editar su título y cuerpo requiere el cliente superusuario, así que pasa `locals.admin` en lugar de `locals.pb`.
+
+### Tablas de la base de datos
+
+Habilitar `notifications` crea las siguientes tablas de base de datos:
+
+```
+notifications
+```
+
+Cada registro contiene una relación `user`, `title`, `body` y un indicador `read`, indexados por usuario, estado de lectura y fecha de creación.
 <!-- @end -->

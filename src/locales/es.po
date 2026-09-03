@@ -693,11 +693,8 @@ msgstr "Estructura del proyecto"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
-#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/backend/+page.ts
 #: src/routes/(public)/backend/postgres/+page.ts
-#: src/routes/(public)/enable/+page.ts
-#: src/routes/(public)/enable/notifications/+page.ts
 #: src/routes/(public)/generate/ai/+page.ts
 #: src/routes/(public)/helpers/+page.ts
 #: src/routes/(public)/helpers/postgres/+page.ts

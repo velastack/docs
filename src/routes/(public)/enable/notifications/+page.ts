@@ -6,6 +6,6 @@ export const load = async ({ parent }) => {
 			{ title: 'Enable', url: /* @wc-url */ '/enable' },
 			{ title: 'Notifications', url: /* @wc-url */ '/enable/notifications' }
 		],
-		badges: ['Planned', 'Depends: auth']
+		badges: ['Depends: auth']
 	};
 };

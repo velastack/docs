@@ -70,7 +70,6 @@ export const load = async ({ parent }) => {
 			{
 				title: 'Notifications',
 				url: /* @wc-url */ '/enable/notifications',
-				badge: 'Planned',
 				description: 'In-app notifications with a bell dropdown.'
 			},
 			{
