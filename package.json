@@ -16,7 +16,7 @@
 		"test": "npm run test:unit -- --run"
 	},
 	"devDependencies": {
-		"@lucide/svelte": "^1.38.0",
+		"@lucide/svelte": "^1.42.0",
 		"@sveltejs/adapter-auto": "^7.0.1",
 		"@sveltejs/kit": "^2.70.3",
 		"@sveltejs/vite-plugin-svelte": "^7.3.0",
@@ -28,7 +28,7 @@
 		"mode-watcher": "^1.1.0",
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^4.1.1",
-		"shadcn-svelte": "^1.0.6",
+		"shadcn-svelte": "^1.6.1",
 		"svelte": "^5.57.0",
 		"svelte-check": "^4.7.6",
 		"svelte-meta-tags": "^5.0.2",
@@ -44,7 +44,7 @@
 		"vitest": "^4.1.11"
 	},
 	"dependencies": {
-		"@wuchale/svelte": "^0.21.1",
+		"@wuchale/svelte": "^0.21.2",
 		"wuchale": "^0.26.4"
 	}
 }
