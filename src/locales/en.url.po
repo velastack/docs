@@ -103,6 +103,8 @@ msgstr "/"
 #. /oauth
 #. /provision
 #. /deploy
+#. /deploy/previews
+#. /deploy/domains
 #. /status
 #. /logs
 #. /rollback
@@ -186,6 +188,10 @@ msgstr "/"
 #. /cli/project-structure
 #. /create
 #. /deploy
+#. /deploy
+#. /deploy/domains
+#. /deploy
+#. /deploy/previews
 #. /destroy
 #. /destroy
 #. /destroy/deployment
@@ -498,6 +504,8 @@ msgstr "/"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/account/+page.ts
 #: src/routes/(public)/account/login/+page.ts
 #: src/routes/(public)/account/login/+page.ts
@@ -547,6 +555,10 @@ msgstr "/"
 #: src/routes/(public)/cli/project-structure/+page.ts
 #: src/routes/(public)/create/+page.ts
 #: src/routes/(public)/deploy/+page.ts
+#: src/routes/(public)/deploy/domains/+page.ts
+#: src/routes/(public)/deploy/domains/+page.ts
+#: src/routes/(public)/deploy/previews/+page.ts
+#: src/routes/(public)/deploy/previews/+page.ts
 #: src/routes/(public)/destroy/+page.ts
 #: src/routes/(public)/destroy/deployment/+page.ts
 #: src/routes/(public)/destroy/deployment/+page.ts

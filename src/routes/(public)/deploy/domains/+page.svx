@@ -1,0 +1,199 @@
+<!-- @en -->
+Every deployed copy of the app is served on a hostname. A project on velastack.dev gets one for free under `velastack.app`, and can add its own domains on top.
+
+### velastack.app hostnames
+
+A [linked](/link) project that deploys while logged in — with [`vela login`](/account/login) or `VELA_API_KEY` set — claims a subdomain on its first deploy. The label comes from the project's slug, so a project called `my-shop` becomes `my-shop.velastack.app`; if that label is taken, a short random suffix is added. Every environment of the project is then named from it:
+
+```
+my-shop.velastack.app                  production
+my-shop--staging.velastack.app         a named target
+my-shop--feature-maps.velastack.app    the preview of feature/maps
+```
+
+The first `--` separates the project from the environment, which is why a label may not contain two hyphens in a row. Names are flat rather than nested because one certificate covers everything one level under `velastack.app`.
+
+Nothing has to be configured on the server. The deploy prints the URL, and a new name goes live within a minute:
+
+```
+Deployed my-shop 20260907120000
+
+  URL   https://my-shop.velastack.app
+  Port  3001 (PocketBase 8091)
+
+my-shop.velastack.app goes live within a minute.
+```
+
+A deploy without a link or a key still works exactly as before; it just serves on whatever `--domain` you gave it, and nothing is recorded on velastack.dev.
+
+### Choosing a label
+
+The label is chosen for you, and can be changed on the project's Domains page with **Change subdomain**. Every environment moves to the new name at once, and the old one stops answering within a minute. A label must be:
+
+- 2 to 40 characters of lowercase letters, digits and hyphens
+- Not starting or ending with a hyphen, and never containing `--`
+- Not a reserved word — infrastructure names like `www`, `api` and `cdn`, sign-in words like `login` and `billing`, mail and DNS names like `smtp` and `ns1`, and environment words like `staging` and `prod`
+- Not containing `velastack` or `velabase` anywhere
+
+The field checks availability as you type.
+
+### How managed names are served
+
+Requests to a `velastack.app` name arrive at the edge, which proxies them to your server over HTTPS. Certificates are issued at the edge, so there is nothing to obtain on the server. Two limits come with that path: uploads are capped at 100 MB, and a realtime connection that stays quiet reconnects after about 100 seconds. A domain of your own has neither limit, because it reaches the server directly.
+
+On its first deploy from a linked project, the server is registered with velastack.dev and given an origin name:
+
+```
+srv-hqnirofzx4yvhcy.origin.velastack.app
+```
+
+That name always points at the server's public address. It is what the edge proxies to, and what your own DNS records alias to. The registration lives in `/etc/vela/origin.json`, readable only by root, and is refreshed on every deploy; if the server's address changes, the origin record follows it.
+
+### Your own domain
+
+There are two ways to attach a domain, and they end up in the same place. The first is the one that has always worked — pass it on deploy, or commit it in `velastack.config.ts`:
+
+```
+$ vela deploy --domain www.example.com
+```
+
+Production hostnames given this way are recorded on the project's Domains page automatically. The second is to add it there first. **Add domain** asks for the hostname and what it is for:
+
+- **Production** - The hostname production is served on
+- **Previews, as a base** - Every preview is also served at `<branch>.` under it, so `preview.example.com` gives `feature-maps.preview.example.com`
+
+Once added, the page shows the DNS record to create. A subdomain is an alias of the server's origin name, so it follows the server if its address ever changes; an apex domain cannot be an alias, so it gets the address instead:
+
+```
+www.example.com        CNAME  srv-hqnirofzx4yvhcy.origin.velastack.app
+example.com            A      203.0.113.10
+*.preview.example.com  CNAME  srv-hqnirofzx4yvhcy.origin.velastack.app
+```
+
+**Check DNS** resolves each hostname and confirms it reaches the server. A domain shows as `DNS ok`, `Not reaching the server` or `DNS unchecked`; there is no verification record to add.
+
+A domain added on the dashboard reaches the server on the next deploy of that environment: the deploy picks it up, Caddy on the server obtains its certificate, and traffic to it goes straight to the server. A hostname can belong to one project at a time, and `velastack.app` names cannot be added this way — change the subdomain instead.
+
+### One hostname per environment
+
+An environment is served on one hostname, because SvelteKit's `ORIGIN` is a single host. When an environment has a domain of its own, that domain is primary and the managed name redirects to it, keeping the path and query string:
+
+```
+Deployed my-shop 20260907120000
+
+  URL   https://www.example.com
+  Also  https://my-shop.velastack.app (redirects here)
+```
+
+Without a domain of its own, the managed name serves. The Domains page shows which is which: **Serving**, **Redirects to** a host, or **Not deployed yet**.
+
+### The Domains page
+
+Each project has a Domains page on velastack.dev with a card per kind of environment:
+
+- **Production** - The managed name, its status, and every production domain with its DNS record
+- **Previews** - One row per deployed preview with its hostnames and branch, plus any preview bases
+- **Other environments** - Named targets such as `staging`
+- **Pointing your own DNS here** - The server's origin name and address, ready to copy
+
+The team's Domains page lists every hostname across all of its projects, read-only. Domains are managed per project.
+<!-- @es -->
+Cada copia desplegada de la aplicación se sirve en un nombre de host. Un proyecto en velastack.dev recibe uno gratis bajo `velastack.app`, y puede añadir sus propios dominios encima.
+
+### Nombres de host en velastack.app
+
+Un proyecto [vinculado](/es/link) que se despliega con sesión iniciada — con [`vela login`](/es/account/login) o `VELA_API_KEY` definida — reclama un subdominio en su primer despliegue. La etiqueta sale del slug del proyecto, así que un proyecto llamado `my-shop` pasa a ser `my-shop.velastack.app`; si esa etiqueta está ocupada, se añade un sufijo corto aleatorio. Cada entorno del proyecto se nombra a partir de ella:
+
+```
+my-shop.velastack.app                  producción
+my-shop--staging.velastack.app         un objetivo con nombre
+my-shop--feature-maps.velastack.app    la previsualización de feature/maps
+```
+
+El primer `--` separa el proyecto del entorno, y por eso una etiqueta no puede contener dos guiones seguidos. Los nombres son planos en lugar de anidados porque un solo certificado cubre todo lo que está un nivel por debajo de `velastack.app`.
+
+No hay que configurar nada en el servidor. El despliegue imprime la URL, y un nombre nuevo está en línea en menos de un minuto:
+
+```
+Deployed my-shop 20260907120000
+
+  URL   https://my-shop.velastack.app
+  Port  3001 (PocketBase 8091)
+
+my-shop.velastack.app goes live within a minute.
+```
+
+Un despliegue sin vínculo ni clave sigue funcionando exactamente igual que antes; simplemente sirve en el `--domain` que le hayas dado, y no se registra nada en velastack.dev.
+
+### Elegir una etiqueta
+
+La etiqueta se elige por ti, y puede cambiarse en la página de Dominios del proyecto con **Cambiar subdominio**. Todos los entornos pasan al nuevo nombre a la vez, y el antiguo deja de responder en menos de un minuto. Una etiqueta debe:
+
+- Tener de 2 a 40 caracteres, con letras minúsculas, dígitos y guiones
+- No empezar ni terminar con guion, y no contener nunca `--`
+- No ser una palabra reservada — nombres de infraestructura como `www`, `api` y `cdn`, palabras de inicio de sesión como `login` y `billing`, nombres de correo y DNS como `smtp` y `ns1`, y palabras de entorno como `staging` y `prod`
+- No contener `velastack` ni `velabase` en ninguna posición
+
+El campo comprueba la disponibilidad mientras escribes.
+
+### Cómo se sirven los nombres gestionados
+
+Las peticiones a un nombre `velastack.app` llegan al borde, que las reenvía a tu servidor por HTTPS. Los certificados se emiten en el borde, así que no hay nada que obtener en el servidor. Ese camino trae dos límites: las subidas están limitadas a 100 MB, y una conexión en tiempo real que permanece inactiva se reconecta pasados unos 100 segundos. Un dominio propio no tiene ninguno de los dos, porque llega al servidor directamente.
+
+En su primer despliegue desde un proyecto vinculado, el servidor se registra en velastack.dev y recibe un nombre de origen:
+
+```
+srv-hqnirofzx4yvhcy.origin.velastack.app
+```
+
+Ese nombre apunta siempre a la dirección pública del servidor. Es a lo que reenvía el borde, y a lo que tus propios registros DNS apuntan como alias. El registro vive en `/etc/vela/origin.json`, legible solo por root, y se refresca en cada despliegue; si la dirección del servidor cambia, el registro de origen la sigue.
+
+### Tu propio dominio
+
+Hay dos formas de añadir un dominio, y acaban en el mismo sitio. La primera es la que siempre ha funcionado — pásalo al desplegar, o súbelo al repositorio en `velastack.config.ts`:
+
+```
+$ vela deploy --domain www.example.com
+```
+
+Los nombres de host de producción dados así se registran automáticamente en la página de Dominios del proyecto. La segunda es añadirlo allí primero. **Añadir dominio** pide el nombre de host y para qué es:
+
+- **Producción** - El nombre de host en el que se sirve producción
+- **Previsualizaciones, como base** - Cada previsualización se sirve también en `<rama>.` bajo él, de modo que `preview.example.com` da `feature-maps.preview.example.com`
+
+Una vez añadido, la página muestra el registro DNS que hay que crear. Un subdominio es un alias del nombre de origen del servidor, así que sigue al servidor si su dirección cambia; un dominio raíz no puede ser un alias, así que recibe la dirección:
+
+```
+www.example.com        CNAME  srv-hqnirofzx4yvhcy.origin.velastack.app
+example.com            A      203.0.113.10
+*.preview.example.com  CNAME  srv-hqnirofzx4yvhcy.origin.velastack.app
+```
+
+**Comprobar DNS** resuelve cada nombre de host y confirma que llega al servidor. Un dominio aparece como `DNS ok`, `Not reaching the server` o `DNS unchecked`; no hay ningún registro de verificación que añadir.
+
+Un dominio añadido en el panel llega al servidor en el siguiente despliegue de ese entorno: el despliegue lo recoge, Caddy en el servidor obtiene su certificado, y el tráfico hacia él va directo al servidor. Un nombre de host puede pertenecer a un solo proyecto a la vez, y los nombres `velastack.app` no pueden añadirse así — cambia el subdominio en su lugar.
+
+### Un nombre de host por entorno
+
+Un entorno se sirve en un solo nombre de host, porque el `ORIGIN` de SvelteKit es un único host. Cuando un entorno tiene un dominio propio, ese dominio es el principal y el nombre gestionado redirige a él, conservando la ruta y la cadena de consulta:
+
+```
+Deployed my-shop 20260907120000
+
+  URL   https://www.example.com
+  Also  https://my-shop.velastack.app (redirects here)
+```
+
+Sin un dominio propio, sirve el nombre gestionado. La página de Dominios muestra cuál es cuál: **Sirviendo**, **Redirige a** un host, o **Aún no desplegado**.
+
+### La página de Dominios
+
+Cada proyecto tiene una página de Dominios en velastack.dev con una tarjeta por tipo de entorno:
+
+- **Producción** - El nombre gestionado, su estado, y cada dominio de producción con su registro DNS
+- **Previsualizaciones** - Una fila por previsualización desplegada con sus nombres de host y su rama, más las bases de previsualización
+- **Otros entornos** - Objetivos con nombre como `staging`
+- **Apuntar tu propio DNS aquí** - El nombre de origen y la dirección del servidor, listos para copiar
+
+La página de Dominios del equipo lista todos los nombres de host de todos sus proyectos, en solo lectura. Los dominios se gestionan por proyecto.
+<!-- @end -->

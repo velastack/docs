@@ -11,7 +11,9 @@ $ vela status
 $ vela status -t staging
 ```
 
-Reports on one [target](/deploy) of this project, defaulting to `production`. Nothing is deployed locally, so `-t local` has nothing to report — [`vela dev`](/dev) prints what it is running.
+Reports on one [target](/deploy) of this project, defaulting to `production`. Nothing is deployed locally, so `-t local` has nothing to report — [`vela dev`](/dev) prints what it is running. A [preview](/deploy/previews) is named as `-t preview:<branch>`.
+
+A `Managed` row lists the `velastack.app` hostnames the target is served or redirected on, when it has any. See [Domains](/deploy/domains).
 
 ### Options
 
@@ -45,7 +47,9 @@ $ vela status
 $ vela status -t staging
 ```
 
-Informa sobre un [objetivo](/es/deploy) de este proyecto, por defecto `production`. No hay nada desplegado en local, así que `-t local` no tiene nada que informar — [`vela dev`](/es/dev) imprime lo que está ejecutando.
+Informa sobre un [objetivo](/es/deploy) de este proyecto, por defecto `production`. No hay nada desplegado en local, así que `-t local` no tiene nada que informar — [`vela dev`](/es/dev) imprime lo que está ejecutando. Una [previsualización](/es/deploy/previews) se nombra como `-t preview:<rama>`.
+
+Una fila `Managed` lista los nombres de host `velastack.app` en los que se sirve o redirige el objetivo, cuando tiene alguno. Consulta [Dominios](/es/deploy/domains).
 
 ### Opciones
 

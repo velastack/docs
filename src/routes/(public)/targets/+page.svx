@@ -27,6 +27,10 @@ One connection is made per machine rather than per target, since a server usuall
 - `--accept-host-keys` - Trust an unknown host key on first connect (CI)
 
 `--offline` reports what the project is bound to without reaching out, which is quicker and works without network access. Release and reachability are left blank.
+
+### Previews
+
+[Previews](/deploy/previews) of a project share one server binding, so they appear as a single `preview` row with no domain and no release, however many branches are deployed. To see the previews that are actually running, ask the server with [`vela status --all`](/status), or name one with `vela status -t preview:<branch>`.
 <!-- @es -->
 Lista los objetivos a los que este proyecto puede desplegar.
 
@@ -56,4 +60,8 @@ Se hace una conexión por máquina en lugar de por objetivo, ya que un servidor 
 - `--accept-host-keys` - Confiar en una clave de host desconocida en la primera conexión (CI)
 
 `--offline` informa de a qué está vinculado el proyecto sin salir a la red, lo que es más rápido y funciona sin acceso a internet. La release y la accesibilidad se dejan en blanco.
+
+### Previsualizaciones
+
+Las [previsualizaciones](/es/deploy/previews) de un proyecto comparten una sola vinculación de servidor, así que aparecen como una única fila `preview` sin dominio ni release, por muchas ramas que estén desplegadas. Para ver las previsualizaciones que realmente se están ejecutando, pregúntale al servidor con [`vela status --all`](/es/status), o nombra una con `vela status -t preview:<rama>`.
 <!-- @end -->

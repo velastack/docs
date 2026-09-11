@@ -390,7 +390,17 @@
 			},
 			{
 				title: 'Deploy',
-				url: /* @wc-url */ '/deploy'
+				url: /* @wc-url */ '/deploy',
+				items: [
+					{
+						title: 'Previews',
+						url: /* @wc-url */ '/deploy/previews'
+					},
+					{
+						title: 'Domains',
+						url: /* @wc-url */ '/deploy/domains'
+					}
+				]
 			},
 			{
 				title: 'Status',

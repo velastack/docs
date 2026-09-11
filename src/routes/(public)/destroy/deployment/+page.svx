@@ -11,7 +11,13 @@ $ vela destroy deployment
 $ vela destroy deployment -t staging
 ```
 
+```
+$ vela destroy deployment -t preview:feature/maps
+```
+
 This stops and removes the app's systemd services, deletes its releases and withdraws its Caddy configuration, so the site stops being served. Other apps and other targets on the same server are untouched.
+
+For a [linked](/link) project the environment is also retired on velastack.dev, and any `velastack.app` hostname it had stops answering at the edge. This is how a finished [preview](/deploy/previews) is removed; a pull request closed through the [GitHub Action](/helpers/github-action) does it automatically.
 
 ### Options
 
@@ -39,7 +45,13 @@ $ vela destroy deployment
 $ vela destroy deployment -t staging
 ```
 
+```
+$ vela destroy deployment -t preview:feature/maps
+```
+
 Esto detiene y elimina los servicios systemd de la aplicación, borra sus releases y retira su configuración de Caddy, con lo que el sitio deja de servirse. Otras aplicaciones y otros objetivos en el mismo servidor quedan intactos.
+
+En un proyecto [vinculado](/es/link) el entorno también se retira en velastack.dev, y cualquier nombre de host `velastack.app` que tuviera deja de responder en el borde. Así es como se elimina una [previsualización](/es/deploy/previews) terminada; un pull request cerrado a través de la [acción de GitHub](/es/helpers/github-action) lo hace automáticamente.
 
 ### Opciones
 

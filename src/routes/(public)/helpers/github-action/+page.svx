@@ -49,19 +49,69 @@ jobs:
 
 The action installs dependencies, builds, uploads a release, runs migrations, restarts the services and health-checks the result. A deploy that fails its health check puts the previous release back and fails the job. Use a `concurrency` group so two pushes cannot deploy over each other.
 
+### Pull request previews
+
+Add pull request events and an API key, and every pull request gets its own [preview](/deploy/previews): a full copy of the app on the server, at `<project>--<branch>.velastack.app`.
+
+```yaml
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: deploy-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: velastack/action@v1
+        with:
+          server: root@your-server
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          api-key: ${{ secrets.VELA_API_KEY }}
+          domain: example.com
+```
+
+The target comes from the event when `target` is left unset: a push deploys `production`, a pull request deploys `preview:<branch>`. Closing the pull request, merged or not, removes the preview from the server and retires its hostname. One comment on the pull request is kept up to date with the preview URL on every push, which is what `pull-requests: write` is for; a fork's token cannot comment, and that never fails the deploy.
+
+Previews never inherit `domain` — that is production's. To serve them on your own domain as well, add a preview base on the project's [Domains](/deploy/domains) page.
+
+`VELA_API_KEY` is what records deploys on velastack.dev and gives previews their hostname. Create one at [velastack.dev/api-keys/new](https://velastack.dev/api-keys/new) and add it as a repository secret. The project must also be [linked](/link), which `vela link` writes into the same `.vela/project.json` you already commit. Without the key the deploy still runs; it just is not recorded, and a preview has nothing to be served on.
+
+If your production target has a name other than `production`, pass it on every event except a pull request, and leave it empty there so the preview target can take over:
+
+```yaml
+          target: ${{ startsWith(github.event_name, 'pull_request') && '' || 'prod' }}
+```
+
 ### Inputs
 
 - `server` - Required. SSH target, as `user@host` or `host`.
 - `ssh-key` - Required. Private key with access to the server.
 - `ssh-port` - Port, when the server does not listen on 22.
 - `known-hosts` - Contents for `known_hosts`. Without it the host key is fetched on first connect.
-- `target` - Which copy of the app to deploy. Defaults to `production`. `environment` is the deprecated name, still honoured when `target` is unset.
-- `domain` - Hostname(s) to serve on, comma separated. Only needed the first time, or when it changes.
+- `target` - Which copy of the app to deploy. Defaults to `production`, or to `preview:<branch>` on a pull request. `environment` is the deprecated name, still honoured when `target` is unset.
+- `domain` - Hostname(s) to serve on, comma separated. Only needed the first time, or when it changes. Never applied to previews.
+- `api-key` - velastack.dev API key, so the deploy is recorded on the linked project and previews get a `velastack.app` hostname.
+- `action` - `deploy`, `destroy`, or `auto`. `auto` deploys on every event except a closed pull request, where it removes the preview. Defaults to `auto`.
+- `comment` - On pull requests, keep one comment up to date with the preview URL. Defaults to `true`.
+- `github-token` - Token the comment is posted with. Defaults to the workflow token, which needs `pull-requests: write`.
 - `project` - Override the project name.
 - `health-path` - Path the health check requests.
-- `remote-db` - Build against the server's database. Defaults to `false`.
+- `remote-db` - Build against the server's database. Left unset, the CLI decides: on once the target has been deployed to. Set `false` to build against a throwaway one.
 - `working-directory` - Directory holding the app. Defaults to `.`.
-- `node-version` - Node.js version to build with. Defaults to `.nvmrc` or `.node-version`, then 22.
+- `node-version` - Node.js version to build with. Defaults to `.nvmrc` or `.node-version`, then 24.
 - `install` - Run `npm ci` first. Defaults to `true`.
 - `vela-version` - Version of the CLI to run. Defaults to the one the project pins.
 
@@ -69,6 +119,10 @@ The action installs dependencies, builds, uploads a release, runs migrations, re
 
 - `release` - Identifier of the release that was activated
 - `url` - URL the app is served on
+- `hostnames` - Every hostname the target is served on, comma separated
+- `target` - The target that was deployed or removed, such as `production` or `preview:my-branch`
+
+On a destroy, `release`, `url` and `hostnames` are empty.
 
 ### Pages that prerender from data
 
@@ -166,19 +220,69 @@ jobs:
 
 La acción instala las dependencias, compila, sube una release, ejecuta las migraciones, reinicia los servicios y comprueba la salud del resultado. Un despliegue que falla su comprobación de salud restaura la release anterior y hace fallar el job. Usa un grupo de `concurrency` para que dos pushes no puedan desplegarse uno sobre otro.
 
+### Previsualizaciones de pull requests
+
+Añade los eventos de pull request y una clave de API, y cada pull request recibe su propia [previsualización](/es/deploy/previews): una copia completa de la aplicación en el servidor, en `<proyecto>--<rama>.velastack.app`.
+
+```yaml
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: deploy-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: velastack/action@v1
+        with:
+          server: root@your-server
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          api-key: ${{ secrets.VELA_API_KEY }}
+          domain: example.com
+```
+
+El objetivo sale del evento cuando `target` no está definido: un push despliega `production`, un pull request despliega `preview:<rama>`. Cerrar el pull request, fusionado o no, elimina la previsualización del servidor y retira su nombre de host. Se mantiene un comentario en el pull request actualizado con la URL de la previsualización en cada push, y para eso sirve `pull-requests: write`; el token de un fork no puede comentar, y eso nunca hace fallar el despliegue.
+
+Las previsualizaciones nunca heredan `domain` — ese es de producción. Para servirlas también en tu propio dominio, añade una base de previsualización en la página de [Dominios](/es/deploy/domains) del proyecto.
+
+`VELA_API_KEY` es lo que registra los despliegues en velastack.dev y da a las previsualizaciones su nombre de host. Crea una en [velastack.dev/api-keys/new](https://velastack.dev/api-keys/new) y añádela como secreto del repositorio. El proyecto también tiene que estar [vinculado](/es/link), lo que `vela link` escribe en el mismo `.vela/project.json` que ya versionas. Sin la clave el despliegue sigue ejecutándose; simplemente no se registra, y una previsualización no tiene dónde servirse.
+
+Si tu objetivo de producción tiene un nombre distinto de `production`, pásalo en todos los eventos salvo en un pull request, y déjalo vacío ahí para que el objetivo de previsualización pueda tomar el relevo:
+
+```yaml
+          target: ${{ startsWith(github.event_name, 'pull_request') && '' || 'prod' }}
+```
+
 ### Entradas
 
 - `server` - Obligatorio. Destino SSH, como `user@host` o `host`.
 - `ssh-key` - Obligatorio. Clave privada con acceso al servidor.
 - `ssh-port` - Puerto, cuando el servidor no escucha en el 22.
 - `known-hosts` - Contenido para `known_hosts`. Sin él, la clave del host se obtiene en la primera conexión.
-- `target` - Qué copia de la aplicación desplegar. Por defecto `production`. `environment` es el nombre obsoleto, aún respetado cuando `target` no está definido.
-- `domain` - Nombre(s) de host en los que servir, separados por comas. Solo se necesita la primera vez, o cuando cambia.
+- `target` - Qué copia de la aplicación desplegar. Por defecto `production`, o `preview:<rama>` en un pull request. `environment` es el nombre obsoleto, aún respetado cuando `target` no está definido.
+- `domain` - Nombre(s) de host en los que servir, separados por comas. Solo se necesita la primera vez, o cuando cambia. Nunca se aplica a las previsualizaciones.
+- `api-key` - Clave de API de velastack.dev, para que el despliegue se registre en el proyecto vinculado y las previsualizaciones reciban un nombre de host `velastack.app`.
+- `action` - `deploy`, `destroy` o `auto`. `auto` despliega en todos los eventos salvo en un pull request cerrado, donde elimina la previsualización. Por defecto `auto`.
+- `comment` - En pull requests, mantener un comentario actualizado con la URL de la previsualización. Por defecto `true`.
+- `github-token` - Token con el que se publica el comentario. Por defecto el token del workflow, que necesita `pull-requests: write`.
 - `project` - Sobrescribir el nombre del proyecto.
 - `health-path` - Ruta que solicita la comprobación de salud.
-- `remote-db` - Compilar contra la base de datos del servidor. Por defecto `false`.
+- `remote-db` - Compilar contra la base de datos del servidor. Sin definir, decide la CLI: activado una vez que el objetivo ha sido desplegado. Pon `false` para compilar contra una desechable.
 - `working-directory` - Directorio que contiene la aplicación. Por defecto `.`.
-- `node-version` - Versión de Node.js con la que compilar. Por defecto la de `.nvmrc` o `.node-version`, y si no, 22.
+- `node-version` - Versión de Node.js con la que compilar. Por defecto la de `.nvmrc` o `.node-version`, y si no, 24.
 - `install` - Ejecutar `npm ci` primero. Por defecto `true`.
 - `vela-version` - Versión de la CLI a ejecutar. Por defecto la que fija el proyecto.
 
@@ -186,6 +290,10 @@ La acción instala las dependencias, compila, sube una release, ejecuta las migr
 
 - `release` - Identificador de la release que se activó
 - `url` - URL en la que se sirve la aplicación
+- `hostnames` - Todos los nombres de host en los que se sirve el objetivo, separados por comas
+- `target` - El objetivo que se desplegó o eliminó, como `production` o `preview:my-branch`
+
+En una eliminación, `release`, `url` y `hostnames` quedan vacíos.
 
 ### Páginas que se prerenderizan a partir de datos
 

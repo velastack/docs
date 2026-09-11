@@ -23,8 +23,22 @@ This will create a directory called `my-project` with the new SvelteKit project.
 
 ### Templates
 
+Two starters ship with the CLI:
+
 - `minimal` - SvelteKit with a PocketBase backend, wired up and migrated. The default.
 - `static` - SvelteKit frontend only, prerendered with adapter-static. See [Static Site Generator](/static).
+
+Themed templates are downloaded from the template registry on first use and cached under `~/.vela/templates`. Each is a complete site built on `minimal`, so everything below still applies. Blog templates (posts are Markdown files under `src/lib/content/blog/`):
+
+- `broadsheet` - Editorial newspaper blog: serif display type, kickers, ruled columns and a dated masthead.
+- `confetti` - Playful blog with rounded pill navigation, doodles and a raspberry-and-lemon palette.
+- `folio` - Typography-first blog set in one serif family, with hairline rules and a narrow reading column.
+- `loudspeaker` - Neobrutalist zine blog: thick borders, hard-offset shadows and one loud accent per mode.
+- `penumbra` - Dark-first cinematic blog with deep slate surfaces and a warm ember accent.
+- `rebar` - Raw monochrome blog with exposed structure: hairline borders, zero radius, zero shadow.
+- `stdout` - Developer log blog styled like a terminal: monospace display type and one green accent.
+
+Passing a name that is not available lists every template, grouped by category. When the registry cannot be reached, the built-in starters still work. Set `VELA_TEMPLATE_INDEX_URL` to point the CLI at a local checkout of the registry while developing a template.
 
 `--email` and `--password` only apply to templates with a backend; passing them to the static template is an error.
 
@@ -65,8 +79,22 @@ Esto creará un directorio llamado `my-project` con el nuevo proyecto de SvelteK
 
 ### Plantillas
 
+Dos plantillas base vienen con la CLI:
+
 - `minimal` - SvelteKit con un backend de PocketBase, configurado y migrado. La opción por defecto.
 - `static` - Solo el frontend de SvelteKit, prerenderizado con adapter-static. Consulta [Generador de Sitios Estáticos](/es/static).
+
+Las plantillas temáticas se descargan del registro de plantillas la primera vez que se usan y se guardan en caché en `~/.vela/templates`. Cada una es un sitio completo construido sobre `minimal`, así que todo lo de abajo sigue aplicando. Plantillas de blog (las entradas son archivos Markdown en `src/lib/content/blog/`):
+
+- `broadsheet` - Blog editorial estilo periódico: tipografía serif, antetítulos, columnas con filetes y una cabecera con fecha.
+- `confetti` - Blog juguetón con navegación en píldoras redondeadas, garabatos y una paleta frambuesa y limón.
+- `folio` - Blog centrado en la tipografía, una sola familia serif, filetes finos y una columna de lectura estrecha.
+- `loudspeaker` - Blog tipo fanzine neobrutalista: bordes gruesos, sombras desplazadas y un acento llamativo por modo.
+- `penumbra` - Blog cinematográfico en modo oscuro por defecto, superficies pizarra y un acento ámbar cálido.
+- `rebar` - Blog monocromo y crudo con estructura expuesta: bordes finos, sin radios, sin sombras.
+- `stdout` - Blog de bitácora para desarrolladores con estilo de terminal: tipografía monoespaciada y un acento verde.
+
+Pasar un nombre que no existe muestra todas las plantillas agrupadas por categoría. Si no se puede acceder al registro, las plantillas base siguen funcionando. Define `VELA_TEMPLATE_INDEX_URL` para apuntar la CLI a una copia local del registro mientras desarrollas una plantilla.
 
 `--email` y `--password` solo se aplican a plantillas con backend; pasarlas a la plantilla estática es un error.
 

@@ -430,6 +430,8 @@ msgstr "Provision"
 #: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/deploy/+page.ts
 #: src/routes/(public)/deploy/+page.ts
+#: src/routes/(public)/deploy/domains/+page.ts
+#: src/routes/(public)/deploy/previews/+page.ts
 msgid "Deploy"
 msgstr "Deploy"
 
@@ -989,3 +991,15 @@ msgstr "Restore"
 #: src/routes/(public)/enable/+page.ts
 msgid "Inline editing with an admin bar, served from the app itself."
 msgstr "Inline editing with an admin bar, served from the app itself."
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/deploy/domains/+page.ts
+#: src/routes/(public)/deploy/domains/+page.ts
+msgid "Domains"
+msgstr "Domains"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/deploy/previews/+page.ts
+#: src/routes/(public)/deploy/previews/+page.ts
+msgid "Previews"
+msgstr "Previews"

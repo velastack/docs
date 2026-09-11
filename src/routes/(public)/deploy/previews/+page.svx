@@ -1,0 +1,201 @@
+<!-- @en -->
+Deploy a branch as its own copy of the app — its own process, its own database, its own hostname — and remove it when the branch is done.
+
+### Syntax
+
+```
+$ vela deploy -t preview
+```
+
+```
+$ vela deploy -t preview:feature/maps
+```
+
+Bare `preview` previews the branch checked out in the working tree. `preview:<branch>` names one explicitly, which is what you need on a detached HEAD or in CI. Only `preview` takes a `:branch` suffix; `-t staging:main` is an error.
+
+### What a preview is
+
+A preview is a complete instance on the server, exactly like production or [staging](/deploy): its own Node process, its own PocketBase database and uploads, its own internally assigned port. Nothing is shared with production or with other previews, so a migration or a data change on a branch cannot touch the live site. Every command that takes a target accepts a preview:
+
+```
+$ vela status -t preview:feature/maps
+$ vela logs -t preview:feature/maps
+$ vela env set -t preview:feature/maps STRIPE_SECRET_KEY
+```
+
+### Hostnames
+
+A preview gets a free hostname from velastack.dev, named after the project's subdomain and the branch:
+
+```
+<project>--<branch>.velastack.app
+```
+
+`feature/maps` becomes `feature-maps` — lowercase, with anything that isn't a letter or digit collapsed to a hyphen. The name is printed at the end of the deploy and goes live within a minute. See [Domains](/deploy/domains) for how these names are chosen and served.
+
+For that the project needs to be [linked](/link) and the CLI logged in, with [`vela login`](/account/login) or `VELA_API_KEY` in the environment. A preview that nothing routes to stops before it builds:
+
+```
+Nothing routes to this preview.
+
+Previews get a free velastack.app hostname from velastack.dev: `vela link` the
+project and `vela login` (or set VELA_API_KEY). Or pass `--domain <host>`
+with DNS of your own pointing at root@example.com.
+```
+
+Previews never inherit production's domain — that is production's alone. To serve previews on your own domain as well, add a preview base such as `preview.example.com` on the project's Domains page; each branch is then also served at `<branch>.preview.example.com`.
+
+### Server
+
+Previews of a project all run on one server. The first `-t preview` asks which, and records it under `preview` in `.vela/project.json`, next to `production` and any named targets. Every branch after that lands on the same machine, so commit the file as usual. Each preview is a full instance, so a server hosts as many as it has memory for.
+
+[`vela targets`](/targets) shows that shared binding as one `preview` row rather than a row per branch. To see what is actually running, ask the server:
+
+```
+$ vela status --all
+```
+
+### Removing a preview
+
+```
+$ vela destroy deployment -t preview:feature/maps
+```
+
+This stops the services, deletes the releases and retires the hostname, which stops answering at the edge. The database and uploads stay on the server unless you pass `--purge`. See [`vela destroy deployment`](/destroy/deployment).
+
+Nothing is pruned automatically. Remove previews as branches are finished, or let a pull request do it for you.
+
+### From pull requests
+
+[`velastack/action`](/helpers/github-action) deploys `preview:<branch>` for every pull request, keeps one comment on the pull request up to date with the URL, and removes the preview when the pull request closes:
+
+```yaml
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: velastack/action@v1
+        with:
+          server: root@your-server
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          api-key: ${{ secrets.VELA_API_KEY }}
+          domain: example.com
+```
+
+The action derives the target from the event: a push to `main` deploys production, a pull request deploys its branch. `VELA_API_KEY` is what gives previews their hostname; create one at [velastack.dev/api-keys/new](https://velastack.dev/api-keys/new).
+
+### On velastack.dev
+
+Every preview shows up on the project's Deployments page with its branch, and on the Domains page under Previews, with the hostnames it is served on. Destroyed previews drop off the Domains page and stay in the deploy history.
+<!-- @es -->
+Despliega una rama como una copia propia de la aplicación — su propio proceso, su propia base de datos, su propio nombre de host — y elimínala cuando la rama termine.
+
+### Sintaxis
+
+```
+$ vela deploy -t preview
+```
+
+```
+$ vela deploy -t preview:feature/maps
+```
+
+`preview` a secas previsualiza la rama que está en el árbol de trabajo. `preview:<rama>` nombra una explícitamente, que es lo que necesitas con un HEAD separado o en CI. Solo `preview` admite un sufijo `:rama`; `-t staging:main` es un error.
+
+### Qué es una previsualización
+
+Una previsualización es una instancia completa en el servidor, exactamente igual que producción o [staging](/es/deploy): su propio proceso de Node, su propia base de datos y archivos subidos de PocketBase, su propio puerto asignado internamente. No comparte nada con producción ni con otras previsualizaciones, así que una migración o un cambio de datos en una rama no puede tocar el sitio en vivo. Todos los comandos que aceptan un objetivo aceptan una previsualización:
+
+```
+$ vela status -t preview:feature/maps
+$ vela logs -t preview:feature/maps
+$ vela env set -t preview:feature/maps STRIPE_SECRET_KEY
+```
+
+### Nombres de host
+
+Una previsualización recibe un nombre de host gratuito de velastack.dev, formado por el subdominio del proyecto y la rama:
+
+```
+<proyecto>--<rama>.velastack.app
+```
+
+`feature/maps` se convierte en `feature-maps` — en minúsculas, y todo lo que no sea letra o dígito se reduce a un guion. El nombre se imprime al final del despliegue y está en línea en menos de un minuto. Consulta [Dominios](/es/deploy/domains) para saber cómo se eligen y se sirven estos nombres.
+
+Para ello el proyecto tiene que estar [vinculado](/es/link) y la CLI con sesión iniciada, con [`vela login`](/es/account/login) o `VELA_API_KEY` en el entorno. Una previsualización a la que nada enruta se detiene antes de compilar:
+
+```
+Nothing routes to this preview.
+
+Previews get a free velastack.app hostname from velastack.dev: `vela link` the
+project and `vela login` (or set VELA_API_KEY). Or pass `--domain <host>`
+with DNS of your own pointing at root@example.com.
+```
+
+Las previsualizaciones nunca heredan el dominio de producción — ese es solo de producción. Para servir también las previsualizaciones en tu propio dominio, añade una base de previsualización como `preview.example.com` en la página de Dominios del proyecto; cada rama se servirá entonces también en `<rama>.preview.example.com`.
+
+### Servidor
+
+Todas las previsualizaciones de un proyecto se ejecutan en un mismo servidor. El primer `-t preview` pregunta cuál, y lo registra bajo `preview` en `.vela/project.json`, junto a `production` y los objetivos con nombre. Cada rama posterior aterriza en la misma máquina, así que sube el archivo al repositorio como de costumbre. Cada previsualización es una instancia completa, de modo que un servidor aloja tantas como memoria tenga.
+
+[`vela targets`](/es/targets) muestra esa vinculación compartida como una sola fila `preview` en lugar de una fila por rama. Para ver qué está ejecutándose realmente, pregúntale al servidor:
+
+```
+$ vela status --all
+```
+
+### Eliminar una previsualización
+
+```
+$ vela destroy deployment -t preview:feature/maps
+```
+
+Esto detiene los servicios, borra las releases y retira el nombre de host, que deja de responder en el borde. La base de datos y los archivos subidos permanecen en el servidor salvo que pases `--purge`. Consulta [`vela destroy deployment`](/es/destroy/deployment).
+
+No se poda nada automáticamente. Elimina las previsualizaciones a medida que terminen las ramas, o deja que un pull request lo haga por ti.
+
+### Desde pull requests
+
+[`velastack/action`](/es/helpers/github-action) despliega `preview:<rama>` por cada pull request, mantiene un comentario en el pull request actualizado con la URL, y elimina la previsualización cuando el pull request se cierra:
+
+```yaml
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: velastack/action@v1
+        with:
+          server: root@your-server
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          api-key: ${{ secrets.VELA_API_KEY }}
+          domain: example.com
+```
+
+La acción deriva el objetivo del evento: un push a `main` despliega producción, un pull request despliega su rama. `VELA_API_KEY` es lo que da a las previsualizaciones su nombre de host; crea una en [velastack.dev/api-keys/new](https://velastack.dev/api-keys/new).
+
+### En velastack.dev
+
+Cada previsualización aparece en la página de Despliegues del proyecto con su rama, y en la página de Dominios bajo Previsualizaciones, con los nombres de host en los que se sirve. Las previsualizaciones eliminadas desaparecen de la página de Dominios y se conservan en el historial de despliegues.
+<!-- @end -->

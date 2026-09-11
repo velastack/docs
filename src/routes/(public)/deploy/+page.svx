@@ -15,7 +15,7 @@ Deploy takes no positional arguments. It builds the app locally, uploads the rel
 
 ### Targets
 
-A **target** names a copy of the app, never a machine. `production` is the default; any name you choose, such as `staging`, is a separate copy on the same or a different server. `local` is the project on your own computer.
+A **target** names a copy of the app, never a machine. `production` is the default; any name you choose, such as `staging`, is a separate copy on the same or a different server. `local` is the project on your own computer. `preview:<branch>` is a copy of one branch, removed when the branch is done — see [Previews](/deploy/previews).
 
 The server behind a target is recorded the first time you name it, in `.vela/project.json`, so it isn't retyped on every command:
 
@@ -32,7 +32,7 @@ Commit `.vela/project.json`. It carries the permanent app id that the server key
 
 - `-t, --target <target>` - Which copy of the app to act on, defaults to `production`
 - `--server <ssh>` - Server this target runs on, recorded on first use
-- `--domain <hosts>` - Hostname(s) to serve on, comma separated
+- `--domain <hosts>` - Hostname(s) to serve on, comma separated. Optional for a linked project, which gets a `velastack.app` name
 - `--project <name>` - Override the project name
 - `--health-path <path>` - Path the health check requests
 - `--keep <count>` - How many old releases to keep on the server
@@ -42,6 +42,12 @@ Commit `.vela/project.json`. It carries the permanent app id that the server key
 - `-i, --identity <file>` - SSH private key to authenticate with
 - `--ssh-port <port>` - SSH port
 - `--accept-host-keys` - Trust an unknown host key on first connect (CI)
+
+### Hostnames
+
+A target is served on the hostname you give it with `--domain`, once DNS for that name points at the server. A project that is [linked](/link) to velastack.dev and deploys while logged in doesn't need one: its first deploy claims `<project>.velastack.app`, named targets get `<project>--staging.velastack.app`, and previews `<project>--<branch>.velastack.app`. The deploy prints the URL, and a new name goes live within a minute.
+
+Both can be combined. With a domain of your own, that domain is primary and the managed name redirects to it. See [Domains](/deploy/domains) for how names are chosen, how your own domains are attached and what the server needs.
 
 ### Prerendered pages
 
@@ -86,9 +92,11 @@ $ vela env list
 - [`vela rollback`](/rollback) - Put the previous release back
 - [`vela destroy deployment`](/destroy/deployment) - Remove a deployed environment
 
-### Deploy History
+### Deploy history
 
-If logged in, you can view your project's deploy history on [velastack.dev](https://velastack.dev).
+A [linked](/link) project records every deploy on velastack.dev: who deployed what, from which commit, to which hostname, and whether it succeeded. This needs an API key on the machine deploying — [`vela login`](/account/login) stores one, and `VELA_API_KEY` in the environment is what CI uses. A linked project without a key warns and deploys anyway; nothing about the deploy itself depends on velastack.dev being reachable.
+
+Recording is also what registers the server and issues the `velastack.app` hostnames above. An unlinked project never touches the network beyond SSH.
 
 ### GitHub Action
 
@@ -119,33 +127,39 @@ jobs:
 
 Provision the server and deploy once from your machine first — that first deploy is what mints the app id. Use a `concurrency` group so two pushes cannot deploy over each other.
 
-### Branch Deploys
+### Pull request previews
 
-Multiple copies of the application can be deployed to the same server, each on its own target and internally on its own port. Point a wildcard subdomain at the server, for example `*.dev.example.com`, and derive the target and domain from the branch.
+Several copies of the app can run on one server, each on its own target and internally on its own port. The action uses that to give every pull request a [preview](/deploy/previews): listen for pull request events, add `pull-requests: write` for the comment it keeps up to date, and pass an API key so the preview gets its `velastack.app` hostname.
 
 ```yaml
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: deploy-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Select target
-        run: |
-          BRANCH="${GITHUB_REF_NAME}"
-          if [ "${BRANCH}" = "main" ]; then
-            echo "TARGET=production" >> "${GITHUB_ENV}"
-            echo "DOMAIN=example.com" >> "${GITHUB_ENV}"
-          else
-            echo "TARGET=${BRANCH}" >> "${GITHUB_ENV}"
-            echo "DOMAIN=${BRANCH}.dev.example.com" >> "${GITHUB_ENV}"
-          fi
       - uses: velastack/action@v1
         with:
           server: root@your-server
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          target: ${{ env.TARGET }}
-          domain: ${{ env.DOMAIN }}
+          api-key: ${{ secrets.VELA_API_KEY }}
+          domain: example.com
 ```
+
+A push to `main` deploys production. A pull request deploys `preview:<branch>` at `<project>--<branch>.velastack.app`, and closing it removes the preview again.
 <!-- @es -->
 Despliega la aplicación en un servidor previamente aprovisionado.
 
@@ -163,7 +177,7 @@ Deploy no acepta argumentos posicionales. Compila la aplicación localmente, sub
 
 ### Objetivos
 
-Un **objetivo** nombra una copia de la aplicación, nunca una máquina. `production` es el valor por defecto; cualquier nombre que elijas, como `staging`, es una copia separada en el mismo servidor o en otro. `local` es el proyecto en tu propio ordenador.
+Un **objetivo** nombra una copia de la aplicación, nunca una máquina. `production` es el valor por defecto; cualquier nombre que elijas, como `staging`, es una copia separada en el mismo servidor o en otro. `local` es el proyecto en tu propio ordenador. `preview:<rama>` es una copia de una sola rama, que se elimina cuando la rama termina — consulta [Previsualizaciones](/es/deploy/previews).
 
 El servidor detrás de un objetivo se registra la primera vez que lo nombras, en `.vela/project.json`, para no tener que reescribirlo en cada comando:
 
@@ -180,16 +194,22 @@ Sube `.vela/project.json` al repositorio. Contiene el id permanente de la aplica
 
 - `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `production`
 - `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
-- `--domain <hosts>` - Nombre(s) de host en los que servir, separados por comas
+- `--domain <hosts>` - Nombre(s) de host en los que servir, separados por comas. Opcional para un proyecto vinculado, que recibe un nombre `velastack.app`
 - `--project <name>` - Sobrescribir el nombre del proyecto
 - `--health-path <path>` - Ruta que solicita la comprobación de salud
 - `--keep <count>` - Cuántas releases antiguas conservar en el servidor
 - `--pb-version <version>` - Versión de PocketBase a ejecutar
 - `--no-build` - Desplegar la salida de compilación existente sin recompilar
-- `--remote-db` - Renderizar la compilación contra la base de datos del servidor, a través de un túnel SSH. Necesario cuando las páginas se prerenderizan a partir de datos.
+- `--remote-db` / `--no-remote-db` - Renderizar la compilación contra la base de datos del servidor, a través de un túnel SSH. Activado por defecto una vez que el objetivo ha sido desplegado.
 - `-i, --identity <file>` - Clave privada SSH con la que autenticarse
 - `--ssh-port <port>` - Puerto SSH
 - `--accept-host-keys` - Confiar en una clave de host desconocida en la primera conexión (CI)
+
+### Nombres de host
+
+Un objetivo se sirve en el nombre de host que le das con `--domain`, una vez que el DNS de ese nombre apunta al servidor. Un proyecto [vinculado](/es/link) a velastack.dev que se despliega con sesión iniciada no necesita uno: su primer despliegue reclama `<proyecto>.velastack.app`, los objetivos con nombre reciben `<proyecto>--staging.velastack.app`, y las previsualizaciones `<proyecto>--<rama>.velastack.app`. El despliegue imprime la URL, y un nombre nuevo está en línea en menos de un minuto.
+
+Ambas cosas se pueden combinar. Con un dominio propio, ese dominio es el principal y el nombre gestionado redirige a él. Consulta [Dominios](/es/deploy/domains) para saber cómo se eligen los nombres, cómo se añaden tus propios dominios y qué necesita el servidor.
 
 ### Páginas prerenderizadas
 
@@ -232,7 +252,9 @@ $ vela env list
 
 ### Historial de despliegues
 
-Si has iniciado sesión, puedes ver el historial de despliegues de tu proyecto en [velastack.dev](https://velastack.dev).
+Un proyecto [vinculado](/es/link) registra cada despliegue en velastack.dev: quién desplegó qué, desde qué commit, en qué nombre de host, y si tuvo éxito. Para ello hace falta una clave de API en la máquina que despliega — [`vela login`](/es/account/login) guarda una, y `VELA_API_KEY` en el entorno es lo que usa CI. Un proyecto vinculado sin clave avisa y despliega de todos modos; nada del despliegue en sí depende de que velastack.dev esté accesible.
+
+El registro es también lo que da de alta el servidor y emite los nombres de host `velastack.app` de arriba. Un proyecto sin vincular nunca toca la red más allá de SSH.
 
 ### Acción de GitHub
 
@@ -263,31 +285,37 @@ jobs:
 
 Aprovisiona el servidor y despliega una vez desde tu máquina primero — ese primer despliegue es el que genera el id de la aplicación. Usa un grupo de `concurrency` para que dos pushes no puedan desplegarse uno sobre otro.
 
-### Despliegues por rama
+### Previsualizaciones de pull requests
 
-Se pueden desplegar varias copias de la aplicación en el mismo servidor, cada una en su propio objetivo e internamente en su propio puerto. Apunta un subdominio comodín al servidor, por ejemplo `*.dev.example.com`, y deriva el objetivo y el dominio de la rama.
+Varias copias de la aplicación pueden ejecutarse en un mismo servidor, cada una en su propio objetivo e internamente en su propio puerto. La acción aprovecha eso para dar a cada pull request una [previsualización](/es/deploy/previews): escucha los eventos de pull request, añade `pull-requests: write` para el comentario que mantiene actualizado, y pasa una clave de API para que la previsualización reciba su nombre de host `velastack.app`.
 
 ```yaml
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: deploy-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Select target
-        run: |
-          BRANCH="${GITHUB_REF_NAME}"
-          if [ "${BRANCH}" = "main" ]; then
-            echo "TARGET=production" >> "${GITHUB_ENV}"
-            echo "DOMAIN=example.com" >> "${GITHUB_ENV}"
-          else
-            echo "TARGET=${BRANCH}" >> "${GITHUB_ENV}"
-            echo "DOMAIN=${BRANCH}.dev.example.com" >> "${GITHUB_ENV}"
-          fi
       - uses: velastack/action@v1
         with:
           server: root@your-server
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          target: ${{ env.TARGET }}
-          domain: ${{ env.DOMAIN }}
+          api-key: ${{ secrets.VELA_API_KEY }}
+          domain: example.com
 ```
+
+Un push a `main` despliega producción. Un pull request despliega `preview:<rama>` en `<proyecto>--<rama>.velastack.app`, y cerrarlo elimina la previsualización de nuevo.
 <!-- @end -->
