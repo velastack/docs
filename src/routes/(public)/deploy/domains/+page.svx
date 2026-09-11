@@ -16,7 +16,7 @@ The first `--` separates the project from the environment, which is why a label 
 Nothing has to be configured on the server. The deploy prints the URL, and a new name goes live within a minute:
 
 ```
-Deployed my-shop 20260907120000
+Deployed my-shop 20260907T120000Z-8e41
 
   URL   https://my-shop.velastack.app
   Port  3001 (PocketBase 8091)
@@ -79,7 +79,7 @@ A domain added on the dashboard reaches the server on the next deploy of that en
 An environment is served on one hostname, because SvelteKit's `ORIGIN` is a single host. When an environment has a domain of its own, that domain is primary and the managed name redirects to it, keeping the path and query string:
 
 ```
-Deployed my-shop 20260907120000
+Deployed my-shop 20260907T120000Z-8e41
 
   URL   https://www.example.com
   Also  https://my-shop.velastack.app (redirects here)
@@ -115,7 +115,7 @@ El primer `--` separa el proyecto del entorno, y por eso una etiqueta no puede c
 No hay que configurar nada en el servidor. El despliegue imprime la URL, y un nombre nuevo está en línea en menos de un minuto:
 
 ```
-Deployed my-shop 20260907120000
+Deployed my-shop 20260907T120000Z-8e41
 
   URL   https://my-shop.velastack.app
   Port  3001 (PocketBase 8091)
@@ -178,7 +178,7 @@ Un dominio añadido en el panel llega al servidor en el siguiente despliegue de 
 Un entorno se sirve en un solo nombre de host, porque el `ORIGIN` de SvelteKit es un único host. Cuando un entorno tiene un dominio propio, ese dominio es el principal y el nombre gestionado redirige a él, conservando la ruta y la cadena de consulta:
 
 ```
-Deployed my-shop 20260907120000
+Deployed my-shop 20260907T120000Z-8e41
 
   URL   https://www.example.com
   Also  https://my-shop.velastack.app (redirects here)

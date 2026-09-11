@@ -12,8 +12,8 @@ Each row is a copy of the app — `local` first, then every target bound to a se
 ```
 TARGET       KIND    SERVER              DOMAIN                    RELEASE
 local        local   —                   http://localhost:5173     —
-production   remote  root@example.com    example.com               20260827120000
-staging      remote  root@example.com    staging.example.com       20260826094500
+production   remote  root@example.com    example.com               20260827T120000Z-3f2a
+staging      remote  root@example.com    staging.example.com       20260826T094500Z-b17c
 ```
 
 One connection is made per machine rather than per target, since a server usually hosts several. Listing never mints an app id — running `vela targets` has no side effects.
@@ -45,8 +45,8 @@ Cada fila es una copia de la aplicación — primero `local`, después cada obje
 ```
 TARGET       KIND    SERVER              DOMAIN                    RELEASE
 local        local   —                   http://localhost:5173     —
-production   remote  root@example.com    example.com               20260827120000
-staging      remote  root@example.com    staging.example.com       20260826094500
+production   remote  root@example.com    example.com               20260827T120000Z-3f2a
+staging      remote  root@example.com    staging.example.com       20260826T094500Z-b17c
 ```
 
 Se hace una conexión por máquina en lugar de por objetivo, ya que un servidor suele alojar varios. Listar nunca genera un id de aplicación — ejecutar `vela targets` no tiene efectos secundarios.

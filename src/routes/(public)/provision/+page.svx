@@ -37,11 +37,12 @@ A system user `vela` is created to own and run the apps. Caddy gets an `import /
 Apps live under `/var/lib/vela`, with configuration in `/etc/vela`:
 
 ```
-/var/lib/vela/apps/<app>     releases and data, per app
-/var/lib/vela/state          server-wide state, including port assignments
-/var/lib/vela/scripts        the server scripts vela uploads
-/etc/vela/apps               environment files, readable only by root
-/etc/vela/caddy              generated Caddy snippets, one per app
+/var/lib/vela/apps/<app>       releases and data, per app
+/var/lib/vela/state            server-wide state: port assignments, one lock per target
+/var/lib/vela/script-versions  the server scripts, one directory per CLI version
+/var/lib/vela/trash            data removed by a purge, kept for two weeks
+/etc/vela/apps                 environment files, readable only by root
+/etc/vela/caddy                generated Caddy snippets, one per app
 ```
 
 Each deployed target runs two systemd services, `vela-web@` for the Node server and `vela-pb@` for the database, on an internally assigned port. Several apps and several targets of the same app can share one server.
@@ -88,11 +89,12 @@ Se crea un usuario del sistema `vela` para ser el propietario de las aplicacione
 Las aplicaciones viven bajo `/var/lib/vela`, con la configuración en `/etc/vela`:
 
 ```
-/var/lib/vela/apps/<app>     releases y datos, por aplicación
-/var/lib/vela/state          estado de todo el servidor, incluida la asignación de puertos
-/var/lib/vela/scripts        los scripts de servidor que sube vela
-/etc/vela/apps               archivos de entorno, legibles solo por root
-/etc/vela/caddy              fragmentos de Caddy generados, uno por aplicación
+/var/lib/vela/apps/<app>       releases y datos, por aplicación
+/var/lib/vela/state            estado de todo el servidor: asignación de puertos, un cerrojo por objetivo
+/var/lib/vela/script-versions  los scripts de servidor, un directorio por versión de la CLI
+/var/lib/vela/trash            datos eliminados por una purga, conservados dos semanas
+/etc/vela/apps                 archivos de entorno, legibles solo por root
+/etc/vela/caddy                fragmentos de Caddy generados, uno por aplicación
 ```
 
 Cada objetivo desplegado ejecuta dos servicios de systemd, `vela-web@` para el servidor de Node y `vela-pb@` para la base de datos, en un puerto asignado internamente. Varias aplicaciones y varios objetivos de la misma aplicación pueden compartir un servidor.

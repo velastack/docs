@@ -47,7 +47,7 @@ jobs:
           domain: example.com
 ```
 
-The action installs dependencies, builds, uploads a release, runs migrations, restarts the services and health-checks the result. A deploy that fails its health check puts the previous release back and fails the job. Use a `concurrency` group so two pushes cannot deploy over each other.
+The action installs dependencies, builds, uploads a release, runs migrations, restarts the services and health-checks the result. A deploy that fails its health check puts the previous release back, migrations included, and fails the job. Use a `concurrency` group so two pushes queue rather than race; the server serializes deploys of one target as well, and drops one that turns out to be older than what went live meanwhile — see [Two deploys at once](/deploy).
 
 ### Pull request previews
 
@@ -83,16 +83,38 @@ jobs:
           domain: example.com
 ```
 
-The target comes from the event when `target` is left unset: a push deploys `production`, a pull request deploys `preview:<branch>`. Closing the pull request, merged or not, removes the preview from the server and retires its hostname. One comment on the pull request is kept up to date with the preview URL on every push, which is what `pull-requests: write` is for; a fork's token cannot comment, and that never fails the deploy.
+The target comes from the event when `target` is left unset: a push deploys `production`, a pull request deploys `preview:<branch>`. Closing the pull request, merged or not, removes the preview from the server — database and uploads included, with a snapshot kept in the server's trash for two weeks — and retires its hostname. One comment on the pull request is kept up to date with the preview URL on every push, which is what `pull-requests: write` is for; a fork's token cannot comment, and that never fails the deploy.
+
+The removal rides on the `closed` event, so keep it in the trigger. If the workflow runs tests before deploying, let that event skip them: a branch is often closed precisely because it is red, and gating the cleanup on green leaves the preview behind for good.
+
+```yaml
+jobs:
+  check:
+    if: github.event.action != 'closed'
+    # ...
+  deploy:
+    needs: check
+    if: ${{ !cancelled() && (github.event.action == 'closed' || needs.check.result == 'success') }}
+    # ...
+```
 
 Previews never inherit `domain` — that is production's. To serve them on your own domain as well, add a preview base on the project's [Domains](/deploy/domains) page.
 
 `VELA_API_KEY` is what records deploys on velastack.dev and gives previews their hostname. Create one at [velastack.dev/api-keys/new](https://velastack.dev/api-keys/new) and add it as a repository secret. The project must also be [linked](/link), which `vela link` writes into the same `.vela/project.json` you already commit. Without the key the deploy still runs; it just is not recorded, and a preview has nothing to be served on.
 
-If your production target has a name other than `production`, pass it on every event except a pull request, and leave it empty there so the preview target can take over:
+If your production target has a name other than `production`, pass it on every event except a pull request, and leave it empty there so the preview target can take over. The empty value has to come last: `''` is falsy in GitHub expressions, so `cond && '' || 'prod'` reads like a ternary but hands back `prod` on every event — and on a closed pull request that would try to remove production. The action refuses to remove anything but a preview in `auto` mode, but the deploys would still have landed on production.
 
 ```yaml
-          target: ${{ startsWith(github.event_name, 'pull_request') && '' || 'prod' }}
+          target: ${{ !startsWith(github.event_name, 'pull_request') && 'prod' || '' }}
+```
+
+### Dependabot and forks
+
+Pull requests opened by Dependabot, and any pull request from a fork, run without the repository's secrets, so the action has no SSH key and cannot reach the server. Skip the job for them rather than let it fail; with no preview deployed there is nothing to remove on close either, so the same condition covers the `closed` event:
+
+```yaml
+  deploy:
+    if: github.event_name != 'pull_request' || (github.event.pull_request.user.login != 'dependabot[bot]' && !github.event.pull_request.head.repo.fork)
 ```
 
 ### Inputs
@@ -104,7 +126,8 @@ If your production target has a name other than `production`, pass it on every e
 - `target` - Which copy of the app to deploy. Defaults to `production`, or to `preview:<branch>` on a pull request. `environment` is the deprecated name, still honoured when `target` is unset.
 - `domain` - Hostname(s) to serve on, comma separated. Only needed the first time, or when it changes. Never applied to previews.
 - `api-key` - velastack.dev API key, so the deploy is recorded on the linked project and previews get a `velastack.app` hostname.
-- `action` - `deploy`, `destroy`, or `auto`. `auto` deploys on every event except a closed pull request, where it removes the preview. Defaults to `auto`.
+- `action` - `deploy`, `destroy`, or `auto`. `auto` deploys on every event except a closed pull request, where it removes the preview — and only ever a preview: a `closed` event whose target is anything else fails the job. Defaults to `auto`.
+- `confirm-name` - The app's name, required when `action: destroy` targets production or a named environment such as `staging`. Never needed for previews.
 - `comment` - On pull requests, keep one comment up to date with the preview URL. Defaults to `true`.
 - `github-token` - Token the comment is posted with. Defaults to the workflow token, which needs `pull-requests: write`.
 - `project` - Override the project name.
@@ -218,7 +241,7 @@ jobs:
           domain: example.com
 ```
 
-La acción instala las dependencias, compila, sube una release, ejecuta las migraciones, reinicia los servicios y comprueba la salud del resultado. Un despliegue que falla su comprobación de salud restaura la release anterior y hace fallar el job. Usa un grupo de `concurrency` para que dos pushes no puedan desplegarse uno sobre otro.
+La acción instala las dependencias, compila, sube una release, ejecuta las migraciones, reinicia los servicios y comprueba la salud del resultado. Un despliegue que falla su comprobación de salud restaura la release anterior, migraciones incluidas, y hace fallar el job. Usa un grupo de `concurrency` para que dos pushes se pongan en cola en lugar de competir; el servidor también serializa los despliegues de un mismo objetivo, y descarta uno que resulte ser más antiguo que lo que se puso en línea entretanto — consulta [Dos despliegues a la vez](/es/deploy).
 
 ### Previsualizaciones de pull requests
 
@@ -254,16 +277,38 @@ jobs:
           domain: example.com
 ```
 
-El objetivo sale del evento cuando `target` no está definido: un push despliega `production`, un pull request despliega `preview:<rama>`. Cerrar el pull request, fusionado o no, elimina la previsualización del servidor y retira su nombre de host. Se mantiene un comentario en el pull request actualizado con la URL de la previsualización en cada push, y para eso sirve `pull-requests: write`; el token de un fork no puede comentar, y eso nunca hace fallar el despliegue.
+El objetivo sale del evento cuando `target` no está definido: un push despliega `production`, un pull request despliega `preview:<rama>`. Cerrar el pull request, fusionado o no, elimina la previsualización del servidor — base de datos y archivos subidos incluidos, con una instantánea que se conserva dos semanas en la papelera del servidor — y retira su nombre de host. Se mantiene un comentario en el pull request actualizado con la URL de la previsualización en cada push, y para eso sirve `pull-requests: write`; el token de un fork no puede comentar, y eso nunca hace fallar el despliegue.
+
+La eliminación va montada en el evento `closed`, así que mantenlo en el disparador. Si el workflow ejecuta pruebas antes de desplegar, deja que ese evento se las salte: una rama se cierra a menudo precisamente porque está en rojo, y condicionar la limpieza a que esté en verde deja la previsualización atrás para siempre.
+
+```yaml
+jobs:
+  check:
+    if: github.event.action != 'closed'
+    # ...
+  deploy:
+    needs: check
+    if: ${{ !cancelled() && (github.event.action == 'closed' || needs.check.result == 'success') }}
+    # ...
+```
 
 Las previsualizaciones nunca heredan `domain` — ese es de producción. Para servirlas también en tu propio dominio, añade una base de previsualización en la página de [Dominios](/es/deploy/domains) del proyecto.
 
 `VELA_API_KEY` es lo que registra los despliegues en velastack.dev y da a las previsualizaciones su nombre de host. Crea una en [velastack.dev/api-keys/new](https://velastack.dev/api-keys/new) y añádela como secreto del repositorio. El proyecto también tiene que estar [vinculado](/es/link), lo que `vela link` escribe en el mismo `.vela/project.json` que ya versionas. Sin la clave el despliegue sigue ejecutándose; simplemente no se registra, y una previsualización no tiene dónde servirse.
 
-Si tu objetivo de producción tiene un nombre distinto de `production`, pásalo en todos los eventos salvo en un pull request, y déjalo vacío ahí para que el objetivo de previsualización pueda tomar el relevo:
+Si tu objetivo de producción tiene un nombre distinto de `production`, pásalo en todos los eventos salvo en un pull request, y déjalo vacío ahí para que el objetivo de previsualización pueda tomar el relevo. El valor vacío tiene que ir al final: `''` es falso en las expresiones de GitHub, así que `cond && '' || 'prod'` parece un ternario pero devuelve `prod` en todos los eventos — y en un pull request cerrado eso intentaría eliminar producción. La acción se niega a eliminar cualquier cosa que no sea una previsualización en modo `auto`, pero los despliegues habrían aterrizado igualmente en producción.
 
 ```yaml
-          target: ${{ startsWith(github.event_name, 'pull_request') && '' || 'prod' }}
+          target: ${{ !startsWith(github.event_name, 'pull_request') && 'prod' || '' }}
+```
+
+### Dependabot y forks
+
+Los pull requests que abre Dependabot, y cualquier pull request desde un fork, se ejecutan sin los secretos del repositorio, así que la acción no tiene clave SSH y no puede llegar al servidor. Sáltate el job para ellos en lugar de dejar que falle; sin previsualización desplegada tampoco hay nada que eliminar al cerrar, de modo que la misma condición cubre el evento `closed`:
+
+```yaml
+  deploy:
+    if: github.event_name != 'pull_request' || (github.event.pull_request.user.login != 'dependabot[bot]' && !github.event.pull_request.head.repo.fork)
 ```
 
 ### Entradas
@@ -275,7 +320,8 @@ Si tu objetivo de producción tiene un nombre distinto de `production`, pásalo 
 - `target` - Qué copia de la aplicación desplegar. Por defecto `production`, o `preview:<rama>` en un pull request. `environment` es el nombre obsoleto, aún respetado cuando `target` no está definido.
 - `domain` - Nombre(s) de host en los que servir, separados por comas. Solo se necesita la primera vez, o cuando cambia. Nunca se aplica a las previsualizaciones.
 - `api-key` - Clave de API de velastack.dev, para que el despliegue se registre en el proyecto vinculado y las previsualizaciones reciban un nombre de host `velastack.app`.
-- `action` - `deploy`, `destroy` o `auto`. `auto` despliega en todos los eventos salvo en un pull request cerrado, donde elimina la previsualización. Por defecto `auto`.
+- `action` - `deploy`, `destroy` o `auto`. `auto` despliega en todos los eventos salvo en un pull request cerrado, donde elimina la previsualización — y únicamente una previsualización: un evento `closed` cuyo objetivo sea cualquier otra cosa hace fallar el job. Por defecto `auto`.
+- `confirm-name` - El nombre de la aplicación, obligatorio cuando `action: destroy` apunta a producción o a un entorno con nombre como `staging`. Nunca hace falta para las previsualizaciones.
 - `comment` - En pull requests, mantener un comentario actualizado con la URL de la previsualización. Por defecto `true`.
 - `github-token` - Token con el que se publica el comentario. Por defecto el token del workflow, que necesita `pull-requests: write`.
 - `project` - Sobrescribir el nombre del proyecto.
@@ -297,17 +343,21 @@ En una eliminación, `release`, `url` y `hostnames` quedan vacíos.
 
 ### Páginas que se prerenderizan a partir de datos
 
-Una página prerenderizada se renderiza una vez, en tiempo de compilación, contra la base de datos que la compilación pueda ver. En un runner esa es una base de datos vacía y desechable, así que esas páginas salen llenas de valores por defecto. Pon `remote-db: true` para renderizar la compilación contra la base de datos a la que se despliega, tunelizada por la misma conexión SSH — las credenciales del superusuario se obtienen del servidor, así que no entran secretos nuevos en CI.
+Una página prerenderizada se renderiza una vez, en tiempo de compilación, contra la base de datos que la compilación pueda ver. En un runner esa sería una base de datos vacía y desechable, así que esas páginas saldrían llenas de valores por defecto.
+
+El despliegue lo evita por sí solo: una vez que el objetivo ha sido desplegado, la compilación se renderiza contra la base de datos de esa instancia, tunelizada por la misma conexión SSH. Las credenciales del superusuario se obtienen del servidor, así que no entran secretos nuevos en CI, y la compilación solo lee. No hay que configurar nada para esto.
+
+Pon `remote-db: false` para renunciar y compilar contra una base de datos desechable:
 
 ```yaml
       - uses: velastack/action@v1
         with:
           server: root@your-server
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          remote-db: true
+          remote-db: false
 ```
 
-Está desactivado por defecto porque permite que una compilación lea datos de producción. También requiere que el objetivo se haya desplegado al menos una vez.
+Pasa `domain` en el primer despliegue desde CI, para que las páginas prerenderizadas tomen sus enlaces canónicos del dominio y no del host de relleno de SvelteKit.
 
 ### Secretos
 

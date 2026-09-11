@@ -16,6 +16,7 @@ A local path is uploaded first. Anything else is looked up among the target's ow
 - `-y, --yes` - Skip the confirmation prompt
 - `--no-migrate` - Do not run migrations against the restored database
 - `--keep-previous <n>` - How many replaced databases to keep, defaults to `1`
+- `--lock-wait <seconds>` - How long to wait for a deploy or rollback of the same target to finish before giving up, defaults to `300`
 - `-t, --target <target>` - Which copy of the app to act on, defaults to `production`
 - `--server <ssh>` - Server this target runs on, recorded on first use
 
@@ -66,6 +67,7 @@ Una ruta local se sube primero. Cualquier otra cosa se busca entre las copias de
 - `-y, --yes` - Omitir la confirmación
 - `--no-migrate` - No ejecutar migraciones sobre la base de datos restaurada
 - `--keep-previous <n>` - Cuántas bases de datos sustituidas conservar, por defecto `1`
+- `--lock-wait <seconds>` - Cuánto esperar a que termine un despliegue o reversión del mismo objetivo antes de rendirse, por defecto `300`
 - `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `production`
 - `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
 

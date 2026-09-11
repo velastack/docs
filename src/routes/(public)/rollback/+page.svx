@@ -8,7 +8,7 @@ $ vela rollback
 ```
 
 ```
-$ vela rollback --to 20260827120000
+$ vela rollback --to 20260827T120000Z-3f2a
 ```
 
 Releases are kept on the server, so rolling back is a matter of pointing the services at an earlier one and restarting — the artifact is not rebuilt or re-uploaded. How many are retained is controlled by `--keep` on [deploy](/deploy).
@@ -18,15 +18,16 @@ Releases are kept on the server, so rolling back is a matter of pointing the ser
 - `-t, --target <target>` - Which copy of the app to act on, defaults to `production`
 - `--server <ssh>` - Server this target runs on, recorded on first use
 - `--to <release>` - Roll back to a specific release instead of the previous one
+- `--lock-wait <seconds>` - How long to wait for a deploy or restore of the same target to finish before giving up, defaults to `300`
 - `-i, --identity <file>` - SSH private key to authenticate with
 - `--ssh-port <port>` - SSH port
 - `--accept-host-keys` - Trust an unknown host key on first connect (CI)
 
 ### Migrations
 
-Code rolls back; the database does not. A release that added migrations leaves them applied, so roll back to a release whose schema the older code can still read, or write a [down migration](/migrate/down) for the change.
+Migrations the newer release added are reverted with their down steps, run from that release's own migration files, before the older code starts. A migration without a working [down step](/migrate/down) stops the rollback with the app still stopped, so write one for every change.
 
-A deploy that fails its health check rolls itself back automatically — this command is for the deploys that succeed and turn out to be wrong.
+A deploy that fails its health check rolls itself back automatically, migrations included — this command is for the deploys that succeed and turn out to be wrong.
 <!-- @es -->
 Restaura la release anterior.
 
@@ -37,7 +38,7 @@ $ vela rollback
 ```
 
 ```
-$ vela rollback --to 20260827120000
+$ vela rollback --to 20260827T120000Z-3f2a
 ```
 
 Las releases se conservan en el servidor, así que revertir consiste en apuntar los servicios a una anterior y reiniciar — el artefacto no se recompila ni se vuelve a subir. Cuántas se conservan lo controla `--keep` en [deploy](/es/deploy).
@@ -47,13 +48,14 @@ Las releases se conservan en el servidor, así que revertir consiste en apuntar 
 - `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `production`
 - `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
 - `--to <release>` - Revertir a una release concreta en lugar de a la anterior
+- `--lock-wait <seconds>` - Cuánto esperar a que termine un despliegue o restauración del mismo objetivo antes de rendirse, por defecto `300`
 - `-i, --identity <file>` - Clave privada SSH con la que autenticarse
 - `--ssh-port <port>` - Puerto SSH
 - `--accept-host-keys` - Confiar en una clave de host desconocida en la primera conexión (CI)
 
 ### Migraciones
 
-El código se revierte; la base de datos no. Una release que añadió migraciones las deja aplicadas, así que revierte a una release cuyo esquema el código más antiguo aún pueda leer, o escribe una [migración down](/es/migrate/down) para el cambio.
+Las migraciones que añadió la release más reciente se revierten con sus pasos down, ejecutados desde los archivos de migración de esa misma release, antes de que arranque el código más antiguo. Una migración sin un [paso down](/es/migrate/down) que funcione detiene la reversión con la aplicación aún parada, así que escribe uno para cada cambio.
 
-Un despliegue que falla su comprobación de salud se revierte a sí mismo automáticamente — este comando es para los despliegues que tienen éxito y resultan estar equivocados.
+Un despliegue que falla su comprobación de salud se revierte a sí mismo automáticamente, migraciones incluidas — este comando es para los despliegues que tienen éxito y resultan estar equivocados.
 <!-- @end -->
