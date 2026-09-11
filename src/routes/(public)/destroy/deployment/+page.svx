@@ -15,7 +15,7 @@ $ vela destroy deployment -t staging
 $ vela destroy deployment -t preview:feature/maps
 ```
 
-This stops and removes the app's systemd services, deletes its releases and withdraws its Caddy configuration, so the site stops being served. Other apps and other targets on the same server are untouched.
+This stops and removes the app's systemd services, deletes its releases and withdraws its Caddy configuration, so the site stops being served. Other apps and other targets on the same server are untouched. A target the server has nothing for is reported as such and the command exits 0 — nothing is removed, and a pull request whose preview never deployed closes cleanly.
 
 For a [linked](/link) project the environment is also retired on velastack.dev, and any `velastack.app` hostname it had stops answering at the edge. This is how a finished [preview](/deploy/previews) is removed; a pull request closed through the [GitHub Action](/helpers/github-action) does it automatically.
 
@@ -23,15 +23,21 @@ For a [linked](/link) project the environment is also retired on velastack.dev, 
 
 - `-t, --target <target>` - Which copy of the app to act on, defaults to `production`
 - `--server <ssh>` - Server this target runs on, recorded on first use
-- `--purge` - Also delete the database and uploaded files
-- `-y, --yes` - Skip the confirmation prompt
+- `--purge` - Also delete the database and uploaded files, after snapshotting them into the server's trash
+- `-y, --yes` - Skip the confirmation prompt. Not enough on its own for production, or for a purge of anything but a preview
+- `--confirm <app-name>` - Confirm removing production, or a purge, by naming the app — what a terminal would ask you to type
+- `--lock-wait <seconds>` - How long to wait for a deploy, rollback or restore of the same target to finish before giving up, defaults to `300`
 - `-i, --identity <file>` - SSH private key to authenticate with
 - `--ssh-port <port>` - SSH port
 - `--accept-host-keys` - Trust an unknown host key on first connect (CI)
 
+### Confirming
+
+Removing production, or purging anything but a preview, asks you to type the app's name. Off a terminal — in CI — pass `--confirm <app-name>` instead. `--yes` alone is refused for both, so a workflow that passes `--yes` on every event cannot take production down by mistake; the [GitHub Action](/helpers/github-action) exposes this as `confirm-name`. Previews need only `--yes`, purge included.
+
 ### Purging data
 
-Without `--purge`, the database and uploaded files are left on the server, so the environment can be deployed again onto its existing data. `--purge` deletes them. There is no undo, and no backup is taken first.
+Without `--purge`, the database and uploaded files are left on the server, so the environment can be deployed again onto its existing data. `--purge` deletes them — after packing them into `/var/lib/vela/trash/<instance>-<time>.tar.gz` on the server, readable by root only and kept for two weeks. Nothing older than that survives, and no backup is taken anywhere else.
 <!-- @es -->
 Elimina un entorno desplegado de su servidor.
 
@@ -49,7 +55,7 @@ $ vela destroy deployment -t staging
 $ vela destroy deployment -t preview:feature/maps
 ```
 
-Esto detiene y elimina los servicios systemd de la aplicación, borra sus releases y retira su configuración de Caddy, con lo que el sitio deja de servirse. Otras aplicaciones y otros objetivos en el mismo servidor quedan intactos.
+Esto detiene y elimina los servicios systemd de la aplicación, borra sus releases y retira su configuración de Caddy, con lo que el sitio deja de servirse. Otras aplicaciones y otros objetivos en el mismo servidor quedan intactos. Un objetivo del que el servidor no tiene nada se comunica como tal y el comando sale con 0 — no se elimina nada, y un pull request cuya previsualización nunca llegó a desplegarse se cierra limpiamente.
 
 En un proyecto [vinculado](/es/link) el entorno también se retira en velastack.dev, y cualquier nombre de host `velastack.app` que tuviera deja de responder en el borde. Así es como se elimina una [previsualización](/es/deploy/previews) terminada; un pull request cerrado a través de la [acción de GitHub](/es/helpers/github-action) lo hace automáticamente.
 
@@ -57,13 +63,19 @@ En un proyecto [vinculado](/es/link) el entorno también se retira en velastack.
 
 - `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `production`
 - `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
-- `--purge` - Borrar también la base de datos y los archivos subidos
-- `-y, --yes` - Omitir la confirmación
+- `--purge` - Borrar también la base de datos y los archivos subidos, tras guardar una instantánea en la papelera del servidor
+- `-y, --yes` - Omitir la confirmación. Por sí solo no basta para producción, ni para purgar cualquier cosa que no sea una previsualización
+- `--confirm <app-name>` - Confirmar la eliminación de producción, o una purga, nombrando la aplicación — lo que un terminal te pediría escribir
+- `--lock-wait <seconds>` - Cuánto esperar a que termine un despliegue, reversión o restauración del mismo objetivo antes de rendirse, por defecto `300`
 - `-i, --identity <file>` - Clave privada SSH con la que autenticarse
 - `--ssh-port <port>` - Puerto SSH
 - `--accept-host-keys` - Confiar en una clave de host desconocida en la primera conexión (CI)
 
+### Confirmar
+
+Eliminar producción, o purgar cualquier cosa que no sea una previsualización, te pide escribir el nombre de la aplicación. Fuera de un terminal — en CI — pasa `--confirm <app-name>` en su lugar. `--yes` por sí solo se rechaza en ambos casos, así que un workflow que pase `--yes` en todos los eventos no puede tirar producción por error; la [acción de GitHub](/es/helpers/github-action) lo expone como `confirm-name`. Las previsualizaciones solo necesitan `--yes`, purga incluida.
+
 ### Purgar los datos
 
-Sin `--purge`, la base de datos y los archivos subidos se dejan en el servidor, de modo que el entorno puede desplegarse de nuevo sobre sus datos existentes. `--purge` los borra. No hay deshacer, y no se hace ninguna copia de seguridad antes.
+Sin `--purge`, la base de datos y los archivos subidos se dejan en el servidor, de modo que el entorno puede desplegarse de nuevo sobre sus datos existentes. `--purge` los borra — después de empaquetarlos en `/var/lib/vela/trash/<instancia>-<hora>.tar.gz` en el servidor, legible solo por root y conservado dos semanas. Nada más antiguo sobrevive, y no se hace ninguna otra copia de seguridad.
 <!-- @end -->

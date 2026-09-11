@@ -31,7 +31,7 @@ A preview gets a free hostname from velastack.dev, named after the project's sub
 <project>--<branch>.velastack.app
 ```
 
-`feature/maps` becomes `feature-maps` — lowercase, with anything that isn't a letter or digit collapsed to a hyphen. The name is printed at the end of the deploy and goes live within a minute. See [Domains](/deploy/domains) for how these names are chosen and served.
+`feature/maps` becomes `feature-maps-1a2b3c`: lowercase, anything that isn't a letter or digit collapsed to a hyphen, and a short hash of the full branch name whenever that changed anything, so `feature/maps` and `feature-maps` can never share an instance. A branch that already is lowercase letters, digits and hyphens keeps its name as it is. The name is printed at the end of the deploy and goes live within a minute. See [Domains](/deploy/domains) for how these names are chosen and served.
 
 For that the project needs to be [linked](/link) and the CLI logged in, with [`vela login`](/account/login) or `VELA_API_KEY` in the environment. A preview that nothing routes to stops before it builds:
 
@@ -61,13 +61,13 @@ $ vela status --all
 $ vela destroy deployment -t preview:feature/maps
 ```
 
-This stops the services, deletes the releases and retires the hostname, which stops answering at the edge. The database and uploads stay on the server unless you pass `--purge`. See [`vela destroy deployment`](/destroy/deployment).
+This stops the services, deletes the releases and retires the hostname, which stops answering at the edge. The database and uploads stay on the server unless you pass `--purge`, which snapshots them into the server's trash for two weeks before deleting; a preview is the one target `--yes` is enough to purge. A pull request closed through the action purges. See [`vela destroy deployment`](/destroy/deployment).
 
-Nothing is pruned automatically. Remove previews as branches are finished, or let a pull request do it for you.
+Previews are not pruned by age. Remove them as branches are finished, or let a pull request do it for you.
 
 ### From pull requests
 
-[`velastack/action`](/helpers/github-action) deploys `preview:<branch>` for every pull request, keeps one comment on the pull request up to date with the URL, and removes the preview when the pull request closes:
+[`velastack/action`](/helpers/github-action) deploys `preview:<branch>` for every pull request, keeps one comment on the pull request up to date with the URL, and removes the preview, data included, when the pull request closes:
 
 ```yaml
 on:
@@ -93,7 +93,7 @@ jobs:
           domain: example.com
 ```
 
-The action derives the target from the event: a push to `main` deploys production, a pull request deploys its branch. `VELA_API_KEY` is what gives previews their hostname; create one at [velastack.dev/api-keys/new](https://velastack.dev/api-keys/new).
+The action derives the target from the event: a push to `main` deploys production, a pull request deploys its branch. `VELA_API_KEY` is what gives previews their hostname; create one at [velastack.dev/api-keys/new](https://velastack.dev/api-keys/new). Pull requests from Dependabot or from forks run without secrets, so they get no preview; the [action page](/helpers/github-action) shows how to skip them, and how to keep the cleanup running when a branch's tests fail.
 
 ### On velastack.dev
 
@@ -131,7 +131,7 @@ Una previsualización recibe un nombre de host gratuito de velastack.dev, formad
 <proyecto>--<rama>.velastack.app
 ```
 
-`feature/maps` se convierte en `feature-maps` — en minúsculas, y todo lo que no sea letra o dígito se reduce a un guion. El nombre se imprime al final del despliegue y está en línea en menos de un minuto. Consulta [Dominios](/es/deploy/domains) para saber cómo se eligen y se sirven estos nombres.
+`feature/maps` se convierte en `feature-maps-1a2b3c`: en minúsculas, todo lo que no sea letra o dígito reducido a un guion, y un hash corto del nombre completo de la rama siempre que eso haya cambiado algo, de modo que `feature/maps` y `feature-maps` nunca puedan compartir una instancia. Una rama que ya es letras minúsculas, dígitos y guiones conserva su nombre tal cual. El nombre se imprime al final del despliegue y está en línea en menos de un minuto. Consulta [Dominios](/es/deploy/domains) para saber cómo se eligen y se sirven estos nombres.
 
 Para ello el proyecto tiene que estar [vinculado](/es/link) y la CLI con sesión iniciada, con [`vela login`](/es/account/login) o `VELA_API_KEY` en el entorno. Una previsualización a la que nada enruta se detiene antes de compilar:
 
@@ -161,13 +161,13 @@ $ vela status --all
 $ vela destroy deployment -t preview:feature/maps
 ```
 
-Esto detiene los servicios, borra las releases y retira el nombre de host, que deja de responder en el borde. La base de datos y los archivos subidos permanecen en el servidor salvo que pases `--purge`. Consulta [`vela destroy deployment`](/es/destroy/deployment).
+Esto detiene los servicios, borra las releases y retira el nombre de host, que deja de responder en el borde. La base de datos y los archivos subidos permanecen en el servidor salvo que pases `--purge`, que antes de borrarlos guarda una instantánea en la papelera del servidor durante dos semanas; una previsualización es el único objetivo para el que `--yes` basta para purgar. Un pull request cerrado a través de la acción purga. Consulta [`vela destroy deployment`](/es/destroy/deployment).
 
-No se poda nada automáticamente. Elimina las previsualizaciones a medida que terminen las ramas, o deja que un pull request lo haga por ti.
+Las previsualizaciones no se podan por antigüedad. Elimínalas a medida que terminen las ramas, o deja que un pull request lo haga por ti.
 
 ### Desde pull requests
 
-[`velastack/action`](/es/helpers/github-action) despliega `preview:<rama>` por cada pull request, mantiene un comentario en el pull request actualizado con la URL, y elimina la previsualización cuando el pull request se cierra:
+[`velastack/action`](/es/helpers/github-action) despliega `preview:<rama>` por cada pull request, mantiene un comentario en el pull request actualizado con la URL, y elimina la previsualización, datos incluidos, cuando el pull request se cierra:
 
 ```yaml
 on:
@@ -193,7 +193,7 @@ jobs:
           domain: example.com
 ```
 
-La acción deriva el objetivo del evento: un push a `main` despliega producción, un pull request despliega su rama. `VELA_API_KEY` es lo que da a las previsualizaciones su nombre de host; crea una en [velastack.dev/api-keys/new](https://velastack.dev/api-keys/new).
+La acción deriva el objetivo del evento: un push a `main` despliega producción, un pull request despliega su rama. `VELA_API_KEY` es lo que da a las previsualizaciones su nombre de host; crea una en [velastack.dev/api-keys/new](https://velastack.dev/api-keys/new). Los pull requests de Dependabot o desde forks se ejecutan sin secretos, así que no reciben previsualización; la [página de la acción](/es/helpers/github-action) muestra cómo saltárselos, y cómo mantener la limpieza en marcha cuando las pruebas de una rama fallan.
 
 ### En velastack.dev
 

@@ -17,7 +17,7 @@ The type can be one of the following:
 
 ### Options
 
-Every subcommand takes `-y` or `--yes` to skip the confirmation prompt. `form` and `scaffold` also take `--route`, which must match the `--route` used when generating.
+Every subcommand takes `-y` or `--yes` to skip the confirmation prompt; `deployment` also needs `--confirm <app-name>` for production or a purge. `form` and `scaffold` also take `--route`, which must match the `--route` used when generating.
 
 ### Round-tripping the generators
 
@@ -41,7 +41,7 @@ El tipo puede ser uno de los siguientes:
 
 ### Opciones
 
-Cada subcomando acepta `-y` o `--yes` para omitir la confirmación. `form` y `scaffold` también aceptan `--route`, que debe coincidir con el `--route` usado al generar.
+Cada subcomando acepta `-y` o `--yes` para omitir la confirmación; `deployment` necesita además `--confirm <app-name>` para producción o una purga. `form` y `scaffold` también aceptan `--route`, que debe coincidir con el `--route` usado al generar.
 
 ### Ida y vuelta con los generadores
 
