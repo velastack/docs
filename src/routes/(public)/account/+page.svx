@@ -10,7 +10,7 @@ An account is not required to use the Vela CLI. Creating, generating, building, 
 
 ### Linking a project
 
-Logging in authenticates the CLI; [`vela link`](/link) associates the project in front of you with a project on velastack.dev. The AI options on the [generators](/generate) need both.
+Logging in authenticates the CLI. [`vela create`](/create) links a new project to velastack.dev on its own while you are logged in, and [`vela link`](/link) does the same for a project that already exists. The AI options on the [generators](/generate) need both a login and a link.
 
 ### Deploy History
 
@@ -27,7 +27,7 @@ No se requiere una cuenta para usar la CLI de Vela. Crear, generar, construir, p
 
 ### Vincular un proyecto
 
-Iniciar sesión autentica la CLI; [`vela link`](/es/link) asocia el proyecto que tienes delante con un proyecto en velastack.dev. Las opciones de IA de los [generadores](/es/generate) necesitan ambos.
+Iniciar sesión autentica la CLI. [`vela create`](/es/create) vincula por sí solo un proyecto nuevo con velastack.dev mientras tienes sesión iniciada, y [`vela link`](/es/link) hace lo mismo con un proyecto que ya existe. Las opciones de IA de los [generadores](/es/generate) necesitan ambas cosas: sesión y vínculo.
 
 ### Historial de despliegues
 

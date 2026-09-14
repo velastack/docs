@@ -1,5 +1,5 @@
 <!-- @en -->
-The create command is used to initialize a new Vela project.
+The create command initializes a new Vela project. Signed in to velastack.dev, it also creates a project there and links the two, so `vela deploy` reports to it and a CMS-ready template reads from the project's hosted CMS from the first build.
 
 ### Syntax
 
@@ -20,6 +20,23 @@ This will create a directory called `my-project` with the new SvelteKit project.
 - `--email <email>` - Email of the PocketBase superuser
 - `--password <password>` - Password of the PocketBase superuser
 - `--install <package-manager>` - Install dependencies with the given package manager. One of `npm`, `yarn`, `pnpm`, `pnpm-rush`, `bun`, `deno`, `nub` or `aube`. Pass `--no-install` to skip installing.
+- `--link <new|none|project-id>` - Link the new project to velastack.dev: create a project there, skip, or use an existing project id. Defaults to creating one when you are logged in at a terminal.
+- `--team <id>` - The team a new velastack.dev project goes into, with `--link new`. Defaults to your personal team.
+- `--cms <url>` - Read content from a CMS at this URL instead of the linked project's. Only for CMS-ready templates.
+
+### The velastack.dev project
+
+Logged in at a terminal, `vela create` creates a project on velastack.dev named after the app, links the new directory to it in `.vela/project.json` and prints the project's page. That is the same link [`vela link`](/link) makes for an existing project: [`vela deploy`](/deploy) reports to it, and a CMS-ready template gets the project's hosted CMS written into `src/lib/site.ts`. Pass `--link none` to keep the project local, or `--link <project-id>` to attach it to a project you already have.
+
+Logged out, a CMS-ready template asks where its content should come from: log in and create a project on the spot, paste the URL of a CMS you already have, or skip for now. Other templates ask nothing and note how to link later.
+
+Off a terminal, such as in CI, nothing is created on velastack.dev unless a flag says so. Set `VELA_API_KEY` and pass `--link new` or `--link <project-id>`; a CMS-ready template scaffolded with neither prints a warning and runs on its fallback copy until `cmsEndpoint` is filled in.
+
+```
+$ vela create my-site --template hearth                # linked, CMS endpoint written into src/lib/site.ts
+$ vela create my-site --template hearth --link none    # keep it local
+$ VELA_API_KEY=… vela create my-site --template hearth --link new --no-install
+```
 
 ### Templates
 
@@ -28,7 +45,7 @@ Two starters ship with the CLI:
 - `minimal` - SvelteKit with a PocketBase backend, wired up and migrated. The default.
 - `static` - SvelteKit frontend only, prerendered with adapter-static. See [Static Site Generator](/static).
 
-Themed templates are downloaded from the template registry on first use and cached under `~/.vela/templates`. Each is a complete site built on `minimal`, so everything below still applies. Blog templates (posts are Markdown files under `src/lib/content/blog/`):
+Themed templates are downloaded from the template registry on first use and cached under `~/.vela/templates`. Each is a complete site built on one of the two starters. Blog templates are built on `minimal`, so everything below still applies (posts are Markdown files under `src/lib/content/blog/`):
 
 - `broadsheet` - Editorial newspaper blog: serif display type, kickers, ruled columns and a dated masthead.
 - `confetti` - Playful blog with rounded pill navigation, doodles and a raspberry-and-lemon palette.
@@ -37,6 +54,17 @@ Themed templates are downloaded from the template registry on first use and cach
 - `penumbra` - Dark-first cinematic blog with deep slate surfaces and a warm ember accent.
 - `rebar` - Raw monochrome blog with exposed structure: hairline borders, zero radius, zero shadow.
 - `stdout` - Developer log blog styled like a terminal: monospace display type and one green accent.
+
+Business and restaurant templates are built on `static` and read their copy from a hosted CMS, so every page is editable in place from the admin bar:
+
+- `blueline` - Four-page engineering practice site drawn like a blueprint sheet: title block masthead, graph-paper grid and dimension lines.
+- `letterhead` - Four-page consultancy site with engraved serif headings and generous margins.
+- `outpost` - Four-page infrastructure monitoring site built like a live control room: status-bar masthead, uptime counter and a scrolling console log.
+- `signet` - Four-page private wealth and trust advisory site set like a sealed dossier: wax-seal emblem, ledger rules and referenced mandates.
+- `waybill` - Four-page freight forwarding site stamped like a loading dock: bill-of-lading masthead, hazard-stripe rules and manifest tables.
+- `hearth` - Three-page restaurant site built around the fire: hours, directions and a menu link, all editable from the CMS.
+
+A CMS-ready template needs nothing beyond the link. Its `src/lib/site.ts` carries the `cmsEndpoint` `vela create` filled in; open any page with `?edit` on the URL and sign in from the admin bar. Editors are managed on velastack.dev, under the project's CMS. With no endpoint the site builds offline and shows the fallback copy written into its pages, and `VELA_CMS_OFFLINE=1` builds that way on purpose when the CMS is out of reach. See [`vela enable cms`](/enable/cms) for how the pieces fit.
 
 Passing a name that is not available lists every template, grouped by category. When the registry cannot be reached, the built-in starters still work. Set `VELA_TEMPLATE_INDEX_URL` to point the CLI at a local checkout of the registry while developing a template.
 
@@ -55,7 +83,7 @@ Out of the box, before enabling any modules, all Vela templates include these mi
 - Flash messages
 - Toast notifications
 <!-- @es -->
-El comando create se usa para inicializar un nuevo proyecto de Vela.
+El comando create inicializa un nuevo proyecto de Vela. Con sesión iniciada en velastack.dev, también crea allí un proyecto y vincula los dos, de modo que `vela deploy` informa a ese proyecto y una plantilla con CMS lee del CMS alojado del proyecto desde la primera compilación.
 
 ### Sintaxis
 
@@ -76,6 +104,23 @@ Esto creará un directorio llamado `my-project` con el nuevo proyecto de SvelteK
 - `--email <email>` - Correo electrónico del superusuario de PocketBase
 - `--password <password>` - Contraseña del superusuario de PocketBase
 - `--install <package-manager>` - Instala las dependencias con el gestor de paquetes indicado. Uno de `npm`, `yarn`, `pnpm`, `pnpm-rush`, `bun`, `deno`, `nub` o `aube`. Pasa `--no-install` para omitir la instalación.
+- `--link <new|none|project-id>` - Vincula el nuevo proyecto con velastack.dev: crea allí un proyecto, omite el paso, o usa el id de un proyecto existente. Por defecto crea uno cuando tienes sesión iniciada en una terminal.
+- `--team <id>` - El equipo en el que se crea el proyecto de velastack.dev, con `--link new`. Por defecto, tu equipo personal.
+- `--cms <url>` - Lee el contenido de un CMS en esta URL en lugar del CMS del proyecto vinculado. Solo para plantillas con CMS.
+
+### El proyecto en velastack.dev
+
+Con sesión iniciada en una terminal, `vela create` crea un proyecto en velastack.dev con el nombre de la aplicación, vincula el nuevo directorio con él en `.vela/project.json` e imprime la página del proyecto. Es el mismo vínculo que [`vela link`](/es/link) crea para un proyecto existente: [`vela deploy`](/es/deploy) informa a ese proyecto, y una plantilla con CMS recibe el CMS alojado del proyecto en `src/lib/site.ts`. Pasa `--link none` para mantener el proyecto local, o `--link <project-id>` para asociarlo a un proyecto que ya tienes.
+
+Sin sesión iniciada, una plantilla con CMS pregunta de dónde debe leer su contenido: iniciar sesión y crear un proyecto en el momento, pegar la URL de un CMS que ya tengas, u omitirlo por ahora. Las demás plantillas no preguntan nada e indican cómo vincular más adelante.
+
+Fuera de una terminal, por ejemplo en CI, no se crea nada en velastack.dev salvo que una opción lo pida. Define `VELA_API_KEY` y pasa `--link new` o `--link <project-id>`; una plantilla con CMS generada sin ninguna de las dos muestra un aviso y funciona con su contenido de respaldo hasta que se rellene `cmsEndpoint`.
+
+```
+$ vela create my-site --template hearth                # vinculado, endpoint del CMS escrito en src/lib/site.ts
+$ vela create my-site --template hearth --link none    # mantenerlo local
+$ VELA_API_KEY=… vela create my-site --template hearth --link new --no-install
+```
 
 ### Plantillas
 
@@ -84,7 +129,7 @@ Dos plantillas base vienen con la CLI:
 - `minimal` - SvelteKit con un backend de PocketBase, configurado y migrado. La opción por defecto.
 - `static` - Solo el frontend de SvelteKit, prerenderizado con adapter-static. Consulta [Generador de Sitios Estáticos](/es/static).
 
-Las plantillas temáticas se descargan del registro de plantillas la primera vez que se usan y se guardan en caché en `~/.vela/templates`. Cada una es un sitio completo construido sobre `minimal`, así que todo lo de abajo sigue aplicando. Plantillas de blog (las entradas son archivos Markdown en `src/lib/content/blog/`):
+Las plantillas temáticas se descargan del registro de plantillas la primera vez que se usan y se guardan en caché en `~/.vela/templates`. Cada una es un sitio completo construido sobre una de las dos plantillas base. Las plantillas de blog se construyen sobre `minimal`, así que todo lo de abajo sigue aplicando (las entradas son archivos Markdown en `src/lib/content/blog/`):
 
 - `broadsheet` - Blog editorial estilo periódico: tipografía serif, antetítulos, columnas con filetes y una cabecera con fecha.
 - `confetti` - Blog juguetón con navegación en píldoras redondeadas, garabatos y una paleta frambuesa y limón.
@@ -93,6 +138,17 @@ Las plantillas temáticas se descargan del registro de plantillas la primera vez
 - `penumbra` - Blog cinematográfico en modo oscuro por defecto, superficies pizarra y un acento ámbar cálido.
 - `rebar` - Blog monocromo y crudo con estructura expuesta: bordes finos, sin radios, sin sombras.
 - `stdout` - Blog de bitácora para desarrolladores con estilo de terminal: tipografía monoespaciada y un acento verde.
+
+Las plantillas de negocio y de restaurante se construyen sobre `static` y leen sus textos de un CMS alojado, así que cada página se edita en el sitio desde la barra de administración:
+
+- `blueline` - Sitio de cuatro páginas para un estudio de ingeniería dibujado como un plano: cabecera con cajetín, cuadrícula de papel milimetrado y líneas de cota.
+- `letterhead` - Sitio de cuatro páginas para una consultoría con títulos serif grabados y márgenes generosos.
+- `outpost` - Sitio de cuatro páginas de monitorización de infraestructura construido como una sala de control: cabecera de barra de estado, contador de disponibilidad y una consola con desplazamiento.
+- `signet` - Sitio de cuatro páginas de asesoría patrimonial y fiduciaria compuesto como un dosier lacrado: emblema de sello de cera, filetes de libro mayor y mandatos referenciados.
+- `waybill` - Sitio de cuatro páginas de transporte de mercancías sellado como un muelle de carga: cabecera de conocimiento de embarque, franjas de peligro y tablas de manifiesto.
+- `hearth` - Sitio de restaurante de tres páginas construido alrededor del fuego: horarios, cómo llegar y enlace al menú, todo editable desde el CMS.
+
+Una plantilla con CMS no necesita nada más que el vínculo. Su `src/lib/site.ts` lleva el `cmsEndpoint` que `vela create` rellenó; abre cualquier página con `?edit` en la URL e inicia sesión desde la barra de administración. Los editores se gestionan en velastack.dev, en el CMS del proyecto. Sin endpoint el sitio se compila sin conexión y muestra el contenido de respaldo escrito en sus páginas, y `VELA_CMS_OFFLINE=1` compila así a propósito cuando el CMS no está disponible. Consulta [`vela enable cms`](/es/enable/cms) para ver cómo encajan las piezas.
 
 Pasar un nombre que no existe muestra todas las plantillas agrupadas por categoría. Si no se puede acceder al registro, las plantillas base siguen funcionando. Define `VELA_TEMPLATE_INDEX_URL` para apuntar la CLI a una copia local del registro mientras desarrollas una plantilla.
 
