@@ -217,6 +217,10 @@
 						url: /* @wc-url */ '/disable/i18n'
 					},
 					{
+						title: 'Notifications',
+						url: /* @wc-url */ '/disable/notifications'
+					},
+					{
 						title: 'S3',
 						url: /* @wc-url */ '/disable/s3'
 					},
@@ -232,6 +236,11 @@
 					{
 						title: 'Payments',
 						url: /* @wc-url */ '/disable/payments',
+						badge: 'Pro'
+					},
+					{
+						title: 'Subscriptions',
+						url: /* @wc-url */ '/disable/subscriptions',
 						badge: 'Pro'
 					}
 				]

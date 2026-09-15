@@ -178,7 +178,9 @@ msgstr "Scaffold"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/disable/payments/+page.ts
+#: src/routes/(public)/disable/subscriptions/+page.ts
 #: src/routes/(public)/disable/teams/+page.ts
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/+page.ts
@@ -242,6 +244,9 @@ msgid "API Keys"
 msgstr "Claves de API"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/disable/notifications/+page.ts
+#: src/routes/(public)/disable/notifications/+page.ts
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/notifications/+page.ts
 #: src/routes/(public)/enable/notifications/+page.ts
@@ -269,6 +274,9 @@ msgid "Payments"
 msgstr "Pagos"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/disable/subscriptions/+page.ts
+#: src/routes/(public)/disable/subscriptions/+page.ts
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/subscriptions/+page.ts
 #: src/routes/(public)/enable/subscriptions/+page.ts
@@ -284,9 +292,11 @@ msgstr "Suscripciones"
 #: src/routes/(public)/disable/backend/+page.ts
 #: src/routes/(public)/disable/content-negotiation/+page.ts
 #: src/routes/(public)/disable/i18n/+page.ts
+#: src/routes/(public)/disable/notifications/+page.ts
 #: src/routes/(public)/disable/payments/+page.ts
 #: src/routes/(public)/disable/s3/+page.ts
 #: src/routes/(public)/disable/smtp/+page.ts
+#: src/routes/(public)/disable/subscriptions/+page.ts
 #: src/routes/(public)/disable/teams/+page.ts
 msgid "Disable"
 msgstr "Deshabilitar"

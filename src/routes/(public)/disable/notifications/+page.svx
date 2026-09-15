@@ -1,0 +1,53 @@
+<!-- @en -->
+Remove in-app notifications, added by [`vela enable notifications`](/enable/notifications).
+
+### Syntax
+
+```
+$ vela disable notifications
+```
+
+### Options
+
+- `-y, --yes` - Skip the confirmation prompt
+
+### What it removes
+
+The notifications collection, and every record in it:
+
+```
+notifications
+```
+
+The generated files are deleted as well: the bell component, the `/notifications` page and the `notify` helper in `$lib/server/notifications`. The bell and its loader are taken back out of the `(app)` layout's `+layout.svelte` and `+layout.server.ts`.
+
+### What it leaves
+
+- The `timeAgo` helper in `$lib/utils` — it is generic, and other code may use it
+<!-- @es -->
+Elimina las notificaciones dentro de la aplicación, añadidas por [`vela enable notifications`](/es/enable/notifications).
+
+### Sintaxis
+
+```
+$ vela disable notifications
+```
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+
+### Qué elimina
+
+La colección de notificaciones, y todos los registros que contiene:
+
+```
+notifications
+```
+
+Los archivos generados también se eliminan: el componente de la campana, la página `/notifications` y la función `notify` de `$lib/server/notifications`. La campana y su carga se quitan del `+layout.svelte` y el `+layout.server.ts` del layout `(app)`.
+
+### Qué deja
+
+- La función `timeAgo` en `$lib/utils` — es genérica, y otro código puede usarla
+<!-- @end -->

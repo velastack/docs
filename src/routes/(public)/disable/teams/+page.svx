@@ -17,19 +17,13 @@ The team collections, and every record in them:
 
 ```
 teams
+team_users
 team_memberships
 team_invites
 team_invite_links
 ```
 
-The generated team routes and the Teams nav item are deleted as well.
-
-### Reverted by hand
-
-```
-src/lib/components/app-sidebar.svelte
-src/routes/(app)/+layout.server.ts
-```
+The generated team routes are deleted as well, and the team switcher, the Teams nav item, and the team props and loader are taken back out of `app-sidebar.svelte`, `nav-user.svelte` and the `(app)` layout.
 <!-- @es -->
 Elimina los equipos, añadidos por [`vela enable teams`](/es/enable/teams).
 
@@ -49,17 +43,11 @@ Las colecciones de equipos, y todos los registros que contienen:
 
 ```
 teams
+team_users
 team_memberships
 team_invites
 team_invite_links
 ```
 
-Las rutas de equipos generadas y el elemento Teams de la navegación también se eliminan.
-
-### Revertido a mano
-
-```
-src/lib/components/app-sidebar.svelte
-src/routes/(app)/+layout.server.ts
-```
+Las rutas de equipos generadas también se eliminan, y el selector de equipo, el elemento Teams de la navegación y las props y la carga de equipos se quitan de `app-sidebar.svelte`, `nav-user.svelte` y el layout `(app)`.
 <!-- @end -->

@@ -15,8 +15,10 @@ The following features can be disabled:
 - [`backend`](/disable/backend) - Disable the PocketBase backend
 - [`content-negotiation`](/disable/content-negotiation) - Disable content negotiation
 - [`i18n`](/disable/i18n) - Disable internationalization
+- [`notifications`](/disable/notifications) - Disable in-app notifications
 - [`teams`](/disable/teams) - Disable teams
 - [`payments`](/disable/payments) - Disable payments
+- [`subscriptions`](/disable/subscriptions) - Disable Stripe subscriptions
 - [`s3`](/disable/s3) - Disable S3 file storage
 - [`smtp`](/disable/smtp) - Disable SMTP configuration
 
@@ -44,8 +46,10 @@ Se pueden desactivar las siguientes funciones:
 - [`backend`](/es/disable/backend) - Desactivar el backend de PocketBase
 - [`content-negotiation`](/es/disable/content-negotiation) - Desactivar la negociación de contenido
 - [`i18n`](/es/disable/i18n) - Desactivar la internacionalización
+- [`notifications`](/es/disable/notifications) - Desactivar las notificaciones dentro de la aplicación
 - [`teams`](/es/disable/teams) - Desactivar los equipos
 - [`payments`](/es/disable/payments) - Desactivar los pagos
+- [`subscriptions`](/es/disable/subscriptions) - Desactivar las suscripciones de Stripe
 - [`s3`](/es/disable/s3) - Desactivar el almacenamiento de archivos en S3
 - [`smtp`](/es/disable/smtp) - Desactivar la configuración de SMTP
 

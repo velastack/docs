@@ -1,0 +1,55 @@
+<!-- @en -->
+Remove Stripe subscriptions, added by [`vela enable subscriptions`](/enable/subscriptions).
+
+### Syntax
+
+```
+$ vela disable subscriptions
+```
+
+### Options
+
+- `-y, --yes` - Skip the confirmation prompt
+
+### What it removes
+
+The subscriptions collection, and every record in it:
+
+```
+stripe_subscriptions
+```
+
+The subscription webhook handlers and the sync endpoint are removed, and the billing pages, nav and `(app)` layout are reverted to the state [`vela enable payments`](/enable/payments) left them in.
+
+### What it leaves
+
+- Payments stay enabled — run [`vela disable payments`](/disable/payments) to remove Stripe entirely
+- Recurring prices in your Stripe dashboard — nothing is deleted at Stripe
+<!-- @es -->
+Elimina las suscripciones de Stripe, añadidas por [`vela enable subscriptions`](/es/enable/subscriptions).
+
+### Sintaxis
+
+```
+$ vela disable subscriptions
+```
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+
+### Qué elimina
+
+La colección de suscripciones, y todos los registros que contiene:
+
+```
+stripe_subscriptions
+```
+
+Se eliminan los manejadores del webhook de suscripciones y el endpoint de sincronización, y las páginas de facturación, la navegación y el layout `(app)` vuelven al estado en que los dejó [`vela enable payments`](/es/enable/payments).
+
+### Qué deja
+
+- Los pagos siguen habilitados — ejecuta [`vela disable payments`](/es/disable/payments) para eliminar Stripe por completo
+- Los precios recurrentes en tu panel de Stripe — no se borra nada en Stripe
+<!-- @end -->
