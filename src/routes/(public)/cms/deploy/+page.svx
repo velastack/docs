@@ -1,0 +1,75 @@
+<!-- @en -->
+Rebuild a site hosted on velastack.dev with the latest published content and put it live.
+
+### Syntax
+
+```
+$ vela cms deploy
+$ vela cms deploy --project <id>
+$ vela cms deploy --no-wait
+```
+
+A site velastack.dev hosts is a prebuilt copy of a template, so what editors publish in the hosted CMS reaches visitors only once the site is built again with that content. This command asks for that build, the same thing as **Deploy Site…** in the admin bar. Nothing is built or uploaded from your machine: velastack.dev runs the build, uploads the result and points the site's hostname at it.
+
+### Requirements
+
+- A site hosted on velastack.dev, as [`vela create`](/create) sets up from a CMS-ready template. A project deployed to a server with [`vela deploy`](/deploy) has no such site; it is updated by deploying again, and this command says so.
+- A project to act on: the one [`vela link`](/link) recorded in `.vela/project.json`, or `--project <id>`. A site created from the dashboard has no checkout to link, so `--project` is how it is deployed from a terminal or CI.
+- An API key. [`vela login`](/account/login) stores one, and `VELA_API_KEY` in the environment is what CI uses.
+
+### Waiting
+
+The command waits for the build, polling every few seconds, and exits once the site is live or the build has failed. A failed build prints its error and exits with status 1. Only one deploy of a site runs at a time; run while one is building, the command reports that and waits for it instead of starting another. A build that has not finished after thirty minutes is left to finish on its own, and the project's deployments page on velastack.dev shows how it ends.
+
+### Options
+
+- `--project <id>` - velastack.dev project whose site to rebuild, instead of the linked one
+- `--no-wait` - Return once the build has started instead of waiting for it
+
+### Deploy history
+
+Every rebuild appears on the project's deployments list on velastack.dev, next to deploys from the admin bar and from `vela deploy`, with who started it and whether it succeeded.
+
+### See also
+
+- [`vela enable cms`](/enable/cms) - Add the CMS to a project
+- [`vela deploy`](/deploy) - Deploy an app to a server
+- [`vela link`](/link) - Link a checkout to a velastack.dev project
+<!-- @es -->
+Reconstruye un sitio alojado en velastack.dev con el último contenido publicado y ponlo en producción.
+
+### Sintaxis
+
+```
+$ vela cms deploy
+$ vela cms deploy --project <id>
+$ vela cms deploy --no-wait
+```
+
+Un sitio que aloja velastack.dev es una copia precompilada de una plantilla, así que lo que los editores publican en el CMS alojado llega a los visitantes solo cuando el sitio se compila de nuevo con ese contenido. Este comando pide esa compilación, lo mismo que **Deploy Site…** en la barra de administración. Nada se compila ni se sube desde tu máquina: velastack.dev ejecuta la compilación, sube el resultado y apunta el nombre de host del sitio hacia él.
+
+### Requisitos
+
+- Un sitio alojado en velastack.dev, como el que [`vela create`](/es/create) prepara a partir de una plantilla con CMS. Un proyecto desplegado en un servidor con [`vela deploy`](/es/deploy) no tiene tal sitio; se actualiza desplegando de nuevo, y este comando lo indica.
+- Un proyecto sobre el que actuar: el que [`vela link`](/es/link) registró en `.vela/project.json`, o `--project <id>`. Un sitio creado desde el panel no tiene un checkout que vincular, así que `--project` es la forma de desplegarlo desde una terminal o desde CI.
+- Una clave de API. [`vela login`](/es/account/login) guarda una, y `VELA_API_KEY` en el entorno es lo que usa CI.
+
+### Espera
+
+El comando espera a la compilación, consultando cada pocos segundos, y termina cuando el sitio está en producción o la compilación ha fallado. Una compilación fallida imprime su error y termina con estado 1. Solo se ejecuta un despliegue de un sitio a la vez; si se ejecuta mientras hay uno compilando, el comando lo informa y espera a ese en lugar de iniciar otro. Una compilación que no ha terminado tras treinta minutos se deja terminar por su cuenta, y la página de despliegues del proyecto en velastack.dev muestra cómo acaba.
+
+### Opciones
+
+- `--project <id>` - Proyecto de velastack.dev cuyo sitio reconstruir, en lugar del vinculado
+- `--no-wait` - Volver en cuanto la compilación haya empezado en lugar de esperarla
+
+### Historial de despliegues
+
+Cada reconstrucción aparece en la lista de despliegues del proyecto en velastack.dev, junto a los despliegues desde la barra de administración y desde `vela deploy`, con quién lo inició y si tuvo éxito.
+
+### Ver también
+
+- [`vela enable cms`](/es/enable/cms) - Añadir el CMS a un proyecto
+- [`vela deploy`](/es/deploy) - Desplegar una aplicación en un servidor
+- [`vela link`](/es/link) - Vincular un checkout a un proyecto de velastack.dev
+<!-- @end -->

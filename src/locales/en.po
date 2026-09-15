@@ -438,6 +438,10 @@ msgid "Provision"
 msgstr "Provision"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/cms/+page.ts
+#: src/routes/(public)/cms/deploy/+page.ts
+#: src/routes/(public)/cms/deploy/+page.ts
 #: src/routes/(public)/deploy/+page.ts
 #: src/routes/(public)/deploy/+page.ts
 #: src/routes/(public)/deploy/domains/+page.ts
@@ -1013,3 +1017,18 @@ msgstr "Domains"
 #: src/routes/(public)/deploy/previews/+page.ts
 msgid "Previews"
 msgstr "Previews"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/cms/+page.ts
+#: src/routes/(public)/cms/editor/+page.ts
+#: src/routes/(public)/cms/editor/+page.ts
+msgid "Editor"
+msgstr "Editor"
+
+#: src/routes/(public)/cms/+page.ts
+msgid "Manage who can sign in to the admin bar."
+msgstr "Manage who can sign in to the admin bar."
+
+#: src/routes/(public)/cms/+page.ts
+msgid "Rebuild a hosted site with the latest published content."
+msgstr "Rebuild a hosted site with the latest published content."

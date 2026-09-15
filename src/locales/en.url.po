@@ -125,6 +125,9 @@ msgstr "/"
 #. /env/import
 #. /admin
 #. /admin/create
+#. /cms
+#. /cms/editor
+#. /cms/deploy
 #. /serverless
 #. /serverless/vercel
 #. /serverless/netlify
@@ -188,6 +191,13 @@ msgstr "/"
 #. /cli/installation
 #. /cli
 #. /cli/project-structure
+#. /cms
+#. /cms/editor
+#. /cms/deploy
+#. /cms
+#. /cms/deploy
+#. /cms
+#. /cms/editor
 #. /create
 #. /deploy
 #. /deploy
@@ -514,6 +524,9 @@ msgstr "/"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/account/+page.ts
 #: src/routes/(public)/account/login/+page.ts
 #: src/routes/(public)/account/login/+page.ts
@@ -561,6 +574,13 @@ msgstr "/"
 #: src/routes/(public)/cli/installation/+page.ts
 #: src/routes/(public)/cli/project-structure/+page.ts
 #: src/routes/(public)/cli/project-structure/+page.ts
+#: src/routes/(public)/cms/+page.ts
+#: src/routes/(public)/cms/+page.ts
+#: src/routes/(public)/cms/+page.ts
+#: src/routes/(public)/cms/deploy/+page.ts
+#: src/routes/(public)/cms/deploy/+page.ts
+#: src/routes/(public)/cms/editor/+page.ts
+#: src/routes/(public)/cms/editor/+page.ts
 #: src/routes/(public)/create/+page.ts
 #: src/routes/(public)/deploy/+page.ts
 #: src/routes/(public)/deploy/domains/+page.ts

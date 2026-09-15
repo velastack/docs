@@ -18,7 +18,7 @@ This installs [`@velastack/cms`](https://www.npmjs.com/package/@velastack/cms) a
 
 Without `--endpoint`, an app with a backend hosts the CMS itself. The command also installs `better-sqlite3` and mounts the backend at `/api/cms`, with its SQLite database and uploads in the data directory.
 
-With `--endpoint`, the app reads from a CMS hosted elsewhere, such as a project on velastack.dev, and the admin bar signs in there. That is the only shape a static site can use, since it has no server to host the backend; `vela build` then prerenders the published content and downloads its media into the site.
+With `--endpoint`, the app reads from a CMS hosted elsewhere, such as a project on velastack.dev, and the admin bar signs in there. That is the only shape a static site can use, since it has no server to host the backend; `vela build` then prerenders the published content and downloads its media into the site. A site velastack.dev hosts is rebuilt that way by [`vela cms deploy`](/cms/deploy) or by **Deploy Site…** in the admin bar.
 
 Every project on velastack.dev has a hosted CMS at `https://velastack.dev/v1/projects/<project>/cms`, where `<project>` is the id [`vela link`](/link) records. The CMS-ready templates from [`vela create`](/create) arrive with this wiring in place and the endpoint of the linked project already in `src/lib/site.ts`, so they need no `vela enable cms`.
 
@@ -32,7 +32,7 @@ An app that hosts the backend signs editors in against the CMS's own table, whic
 $ vela cms editor add you@example.com
 ```
 
-The password is generated and shown once. `vela cms editor password <email> <password>` sets a new one, and `vela cms editor list` shows who can sign in. A hosted CMS manages its own editors.
+The password is generated and shown once. `vela cms editor password <email> <password>` sets a new one, and `vela cms editor list` shows who can sign in; see [`vela cms editor`](/cms/editor). A hosted CMS manages its own editors.
 
 ### Making content editable
 
@@ -74,7 +74,7 @@ Esto instala [`@velastack/cms`](https://www.npmjs.com/package/@velastack/cms) y 
 
 Sin `--endpoint`, una aplicación con backend aloja el CMS ella misma. El comando instala además `better-sqlite3` y monta el backend en `/api/cms`, con su base de datos SQLite y las subidas en el directorio de datos.
 
-Con `--endpoint`, la aplicación lee de un CMS alojado en otro lugar, como un proyecto en velastack.dev, y la barra de administración inicia sesión allí. Es la única forma que puede usar un sitio estático, ya que no tiene servidor donde alojar el backend; `vela build` prerrenderiza entonces el contenido publicado y descarga sus medios al sitio.
+Con `--endpoint`, la aplicación lee de un CMS alojado en otro lugar, como un proyecto en velastack.dev, y la barra de administración inicia sesión allí. Es la única forma que puede usar un sitio estático, ya que no tiene servidor donde alojar el backend; `vela build` prerrenderiza entonces el contenido publicado y descarga sus medios al sitio. Un sitio que aloja velastack.dev se reconstruye así con [`vela cms deploy`](/es/cms/deploy) o con **Deploy Site…** en la barra de administración.
 
 Cada proyecto en velastack.dev tiene un CMS alojado en `https://velastack.dev/v1/projects/<project>/cms`, donde `<project>` es el id que registra [`vela link`](/es/link). Las plantillas con CMS de [`vela create`](/es/create) llegan con esta conexión hecha y con el endpoint del proyecto vinculado ya en `src/lib/site.ts`, así que no necesitan `vela enable cms`.
 
@@ -88,7 +88,7 @@ Una aplicación que aloja el backend autentica a los editores contra la propia t
 $ vela cms editor add you@example.com
 ```
 
-La contraseña se genera y se muestra una sola vez. `vela cms editor password <email> <password>` establece una nueva, y `vela cms editor list` muestra quién puede iniciar sesión. Un CMS alojado gestiona sus propios editores.
+La contraseña se genera y se muestra una sola vez. `vela cms editor password <email> <password>` establece una nueva, y `vela cms editor list` muestra quién puede iniciar sesión; consulta [`vela cms editor`](/es/cms/editor). Un CMS alojado gestiona sus propios editores.
 
 ### Hacer editable el contenido
 

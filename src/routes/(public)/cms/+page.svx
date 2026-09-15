@@ -1,0 +1,35 @@
+<!-- @en -->
+Manage the CMS that [`vela enable cms`](/enable/cms) adds to a project: who can sign in to the admin bar, and when a hosted site is rebuilt with what they publish.
+
+### Syntax
+
+```
+$ vela cms <command>
+```
+
+- [`editor`](/cms/editor) - Manage who can sign in to the admin bar
+- [`deploy`](/cms/deploy) - Rebuild the hosted site with the latest published content
+
+### Two shapes
+
+Where the CMS lives decides which command applies. An app with a backend hosts the CMS itself, in a SQLite database in its data directory; `vela cms editor` writes to that database, and the app reads published content live, so there is nothing to deploy. A static site reads from a CMS hosted on velastack.dev instead, which manages its own editors; what they publish reaches visitors once the site is built again, which is what `vela cms deploy` asks for.
+
+Neither command needs a PocketBase backend, so both work in a static project.
+<!-- @es -->
+Gestiona el CMS que [`vela enable cms`](/es/enable/cms) añade a un proyecto: quién puede iniciar sesión en la barra de administración y cuándo se reconstruye un sitio alojado con lo que publican.
+
+### Sintaxis
+
+```
+$ vela cms <command>
+```
+
+- [`editor`](/es/cms/editor) - Gestionar quién puede iniciar sesión en la barra de administración
+- [`deploy`](/es/cms/deploy) - Reconstruir el sitio alojado con el último contenido publicado
+
+### Dos formas
+
+Dónde vive el CMS decide qué comando aplica. Una aplicación con backend aloja el CMS ella misma, en una base de datos SQLite en su directorio de datos; `vela cms editor` escribe en esa base de datos, y la aplicación lee el contenido publicado en vivo, así que no hay nada que desplegar. Un sitio estático lee en cambio de un CMS alojado en velastack.dev, que gestiona sus propios editores; lo que publican llega a los visitantes cuando el sitio se compila de nuevo, que es lo que pide `vela cms deploy`.
+
+Ninguno de los dos comandos necesita un backend PocketBase, así que ambos funcionan en un proyecto estático.
+<!-- @end -->

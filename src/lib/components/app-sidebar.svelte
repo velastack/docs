@@ -490,6 +490,20 @@
 				]
 			},
 			{
+				title: 'CMS',
+				url: /* @wc-url */ '/cms',
+				items: [
+					{
+						title: 'Editor',
+						url: /* @wc-url */ '/cms/editor'
+					},
+					{
+						title: 'Deploy',
+						url: /* @wc-url */ '/cms/deploy'
+					}
+				]
+			},
+			{
 				title: 'Serverless',
 				url: /* @wc-url */ '/serverless',
 				items: [

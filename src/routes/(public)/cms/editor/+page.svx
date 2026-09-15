@@ -1,0 +1,83 @@
+<!-- @en -->
+Manage who can sign in to the admin bar of a CMS the app hosts.
+
+### Syntax
+
+```
+$ vela cms editor add <email>
+$ vela cms editor password <email> <password>
+$ vela cms editor list
+```
+
+An app that hosts the backend signs editors in against the CMS's own table, which starts empty and has no UI to fill it. These commands are how an editor gets an account. They open the same database the app uses, `data/cms.sqlite` at the project root, through the project's own copy of `@velastack/cms`, so they need [`vela enable cms`](/enable/cms) to have run first.
+
+A CMS hosted on velastack.dev manages its own editors; these commands do not apply to it.
+
+### add
+
+```
+$ vela cms editor add you@example.com
+```
+
+Creates the editor. The password is generated and shown once; copy it before closing the terminal. Then run `vela dev`, open any page with `?edit` on the URL (or press `Ctrl+E`), and sign in.
+
+- `--password <password>` - Set the password instead of generating one
+- `--project <id>` - Project the editor may edit, defaults to `default`, the id a single-tenant CMS resolves every request to
+
+### password
+
+```
+$ vela cms editor password you@example.com <password>
+```
+
+Sets a new password. Every session the editor has open is signed out, so they sign in again with the new one.
+
+### list
+
+```
+$ vela cms editor list
+```
+
+Shows every editor and the projects each may edit.
+<!-- @es -->
+Gestiona quién puede iniciar sesión en la barra de administración de un CMS que aloja la aplicación.
+
+### Sintaxis
+
+```
+$ vela cms editor add <email>
+$ vela cms editor password <email> <password>
+$ vela cms editor list
+```
+
+Una aplicación que aloja el backend autentica a los editores contra la propia tabla del CMS, que empieza vacía y no tiene interfaz para llenarla. Estos comandos son la forma en que un editor obtiene una cuenta. Abren la misma base de datos que usa la aplicación, `data/cms.sqlite` en la raíz del proyecto, a través de la copia de `@velastack/cms` del propio proyecto, así que necesitan que [`vela enable cms`](/es/enable/cms) se haya ejecutado antes.
+
+Un CMS alojado en velastack.dev gestiona sus propios editores; estos comandos no le aplican.
+
+### add
+
+```
+$ vela cms editor add you@example.com
+```
+
+Crea el editor. La contraseña se genera y se muestra una sola vez; cópiala antes de cerrar la terminal. Después ejecuta `vela dev`, abre cualquier página con `?edit` en la URL (o pulsa `Ctrl+E`) e inicia sesión.
+
+- `--password <password>` - Establecer la contraseña en lugar de generarla
+- `--project <id>` - Proyecto que el editor puede editar, por defecto `default`, el id al que un CMS de un solo inquilino resuelve cada petición
+
+### password
+
+```
+$ vela cms editor password you@example.com <password>
+```
+
+Establece una contraseña nueva. Todas las sesiones que el editor tenga abiertas se cierran, así que vuelve a iniciar sesión con la nueva.
+
+### list
+
+```
+$ vela cms editor list
+```
+
+Muestra todos los editores y los proyectos que cada uno puede editar.
+<!-- @end -->
