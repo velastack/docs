@@ -1,0 +1,45 @@
+<!-- @en -->
+List recent workflow runs and their state.
+
+### Syntax
+
+```
+$ vela workflows list
+```
+
+### Options
+
+- `--status <status>` - Only runs in this state: `pending`, `running`, `completed`, `failed` or `canceled`
+- `--name <workflow>` - Only runs of this workflow
+- `--limit <n>` - How many to show, 50 by default
+
+```
+$ vela workflows list --status failed --limit 10
+```
+
+Each line shows the run id, the workflow, its state, the attempt count when there has been more than one, when it last changed and, for a failed run, its error. The same runs, with every step, are under **Workflows** in the PocketBase dashboard.
+
+Talks to the database the dev server is using when [`vela dev`](/dev) is running, and starts a throwaway one otherwise.
+<!-- @es -->
+Lista las ejecuciones de workflow recientes y su estado.
+
+### Sintaxis
+
+```
+$ vela workflows list
+```
+
+### Opciones
+
+- `--status <status>` - Solo las ejecuciones en este estado: `pending`, `running`, `completed`, `failed` o `canceled`
+- `--name <workflow>` - Solo las ejecuciones de este workflow
+- `--limit <n>` - Cuántas mostrar, 50 por defecto
+
+```
+$ vela workflows list --status failed --limit 10
+```
+
+Cada línea muestra el id de la ejecución, el workflow, su estado, el número de intentos cuando ha habido más de uno, cuándo cambió por última vez y, si falló, su error. Las mismas ejecuciones, con todos sus pasos, están en **Workflows**, en el panel de PocketBase.
+
+Habla con la base de datos que usa el servidor de desarrollo cuando [`vela dev`](/es/dev) está en marcha, y arranca una temporal en caso contrario.
+<!-- @end -->

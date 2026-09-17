@@ -1,0 +1,63 @@
+<!-- @en -->
+Add background [workflows](/workflows) to a project created before they were part of every new one.
+
+### Syntax
+
+```
+$ vela enable workflows
+```
+
+Projects created with Vela 0.13 or later already have everything this adds, and running it there changes nothing. On an older project it brings the same files in:
+
+- `src/lib/server/workflows.ts` - The OpenWorkflow client, the superuser client for steps, and the worker
+- `src/lib/workflows/` - Where workflow files go, with a README
+- An `init` hook in `src/hooks.server.ts` that starts the worker when the server does
+
+and installs `openworkflow`, `openworkflow-pocketbase` and `croner`.
+
+### The init hook
+
+The hook is appended to `src/hooks.server.ts` as it is, whether the file exports a bare `handlePocketbase` or a `sequence` of handles:
+
+```ts
+import type { ServerInit } from '@sveltejs/kit';
+import { startWorker } from '$lib/server/workflows';
+
+export const init: ServerInit = () => startWorker();
+```
+
+A file that already exports an `init` is left alone, with a note to call `startWorker()` from it yourself.
+
+After enabling, [`vela generate workflow`](/generate/workflow) adds the first workflow.
+<!-- @es -->
+Añade [workflows](/es/workflows) en segundo plano a un proyecto creado antes de que formaran parte de todos los nuevos.
+
+### Sintaxis
+
+```
+$ vela enable workflows
+```
+
+Los proyectos creados con Vela 0.13 o posterior ya tienen todo lo que esto añade, y ejecutarlo ahí no cambia nada. En un proyecto anterior incorpora los mismos archivos:
+
+- `src/lib/server/workflows.ts` - El cliente de OpenWorkflow, el cliente superusuario para los pasos y el worker
+- `src/lib/workflows/` - Donde van los archivos de workflow, con un README
+- Un hook `init` en `src/hooks.server.ts` que arranca el worker cuando arranca el servidor
+
+e instala `openworkflow`, `openworkflow-pocketbase` y `croner`.
+
+### El hook init
+
+El hook se añade al final de `src/hooks.server.ts` tal cual, tanto si el archivo exporta un `handlePocketbase` a secas como una `sequence` de handles:
+
+```ts
+import type { ServerInit } from '@sveltejs/kit';
+import { startWorker } from '$lib/server/workflows';
+
+export const init: ServerInit = () => startWorker();
+```
+
+Un archivo que ya exporta un `init` se deja intacto, con una nota para que llames tú a `startWorker()` desde él.
+
+Tras habilitarlo, [`vela generate workflow`](/es/generate/workflow) añade el primer workflow.
+<!-- @end -->

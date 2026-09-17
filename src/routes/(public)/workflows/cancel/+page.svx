@@ -1,0 +1,21 @@
+<!-- @en -->
+Cancel a pending or running workflow run.
+
+### Syntax
+
+```
+$ vela workflows cancel <run-id>
+```
+
+The run id comes from [`vela workflows list`](/workflows/list). A pending run never starts; a running one is marked canceled and its worker stops at the next step boundary. A run that has already completed or failed cannot be canceled.
+<!-- @es -->
+Cancela una ejecución de workflow pendiente o en curso.
+
+### Sintaxis
+
+```
+$ vela workflows cancel <run-id>
+```
+
+El id de la ejecución sale de [`vela workflows list`](/es/workflows/list). Una ejecución pendiente no llega a iniciarse; una en curso se marca como cancelada y su worker se detiene en el siguiente límite de paso. Una ejecución ya completada o fallida no se puede cancelar.
+<!-- @end -->

@@ -12,6 +12,8 @@ Adds Stripe subscription billing on top of [payments](/enable/payments): plan se
 ```
 stripe_subscriptions
 ```
+
+The subscription events are added to the webhook dispatcher in `src/routes/webhooks/stripe/handlers/dispatch.ts`, so they run inside the `stripe-event` [workflow](/workflows) with its retries. A `sync-stripe-subscriptions` workflow in `src/lib/workflows` reconciles every subscription with Stripe every ten minutes, so a webhook that never arrived is corrected.
 <!-- @es -->
 Habilita planes y suscripciones con Stripe.
 

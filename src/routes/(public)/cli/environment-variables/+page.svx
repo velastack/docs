@@ -8,6 +8,17 @@ POCKETBASE_SUPERUSER_PASSWORD=password
 ```
 
 You'll be prompted to create a PocketBase superuser account when you run the vela create command. The login details are saved in the `.env` file. The superuser account is used by the CLI, the admin interface and the REST API.
+
+### Workflows
+
+The [workflow](/workflows) worker reads two optional variables:
+
+```ts
+WORKFLOWS_CONCURRENCY=5
+WORKFLOWS_ENABLED=true
+```
+
+`WORKFLOWS_CONCURRENCY` caps how many runs one server executes at once. `WORKFLOWS_ENABLED=false` keeps a server from executing runs while still letting it queue them.
 <!-- @es -->
 Vela utiliza variables de entorno para configurar el proyecto. Las variables de entorno se almacenan en el archivo `.env` local por defecto. La CLI de Vela y el backend PocketBase dependen de las siguientes variables de entorno:
 

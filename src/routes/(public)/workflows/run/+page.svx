@@ -1,0 +1,33 @@
+<!-- @en -->
+Start a run of a workflow from the terminal.
+
+### Syntax
+
+```
+$ vela workflows run <name> [input]
+```
+
+```
+$ vela workflows run send-welcome-email '{"userId":"abc123"}'
+```
+
+`name` is the workflow's name as given in its `defineWorkflow` spec, and `input` is its input as JSON. The run is queued and executes once the app is running — start [`vela dev`](/dev) if it is not — and [`vela workflows list`](/workflows/list) shows how it went.
+
+There is no retry button for a run that has failed for good; starting a fresh run with the same input is how to try again.
+<!-- @es -->
+Inicia una ejecución de un workflow desde el terminal.
+
+### Sintaxis
+
+```
+$ vela workflows run <name> [input]
+```
+
+```
+$ vela workflows run send-welcome-email '{"userId":"abc123"}'
+```
+
+`name` es el nombre del workflow tal como aparece en su `defineWorkflow`, e `input` es su entrada en JSON. La ejecución queda encolada y se procesa en cuanto la aplicación está en marcha — arranca [`vela dev`](/es/dev) si no lo está — y [`vela workflows list`](/es/workflows/list) muestra cómo fue.
+
+No hay botón de reintento para una ejecución que ha fallado definitivamente; iniciar una nueva con la misma entrada es la forma de volver a intentarlo.
+<!-- @end -->

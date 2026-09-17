@@ -19,7 +19,7 @@ The subscriptions collection, and every record in it:
 stripe_subscriptions
 ```
 
-The subscription webhook handlers and the sync endpoint are removed, and the billing pages, nav and `(app)` layout are reverted to the state [`vela enable payments`](/enable/payments) left them in.
+The subscription webhook handlers and the `sync-stripe-subscriptions` workflow are removed, and the billing pages, nav and `(app)` layout are reverted to the state [`vela enable payments`](/enable/payments) left them in.
 
 ### What it leaves
 

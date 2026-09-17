@@ -36,7 +36,7 @@ Stripe webhooks are scaffolded in `src/routes/webhooks/stripe`, with the payment
 	<Badge variant="outline" href="/enable/auth" class="no-underline">Depends: auth</Badge>
 </div>
 
-If authentication is enabled with the `vela enable auth` command, Stripe customers will be created for the authenticated user on sign up and a user's payment methods can be saved and managed in the user's billing settings page.
+If authentication is enabled with the `vela enable auth` command, a Stripe customer is created for each user on sign up and a user's payment methods can be saved and managed in the user's billing settings page. The customer is linked by the `link-stripe-customer` [workflow](/workflows), started by the signup action with the user's id as its idempotency key, so signing up never waits on Stripe and a retry never makes a second customer. The billing page shows a settling-up state for the moment it takes.
 
 ### Database tables
 
@@ -52,9 +52,15 @@ transactions
 
 In addition to the payment intent succeeded event, the payment method attached event is included by default for the authenticated user.
 
-### Cron jobs
+### Workflows
 
-PocketBase cron jobs run to keep the application database in sync with Stripe. Products and prices are synced every two minutes, configured in `data/hooks/stripe.pb.js`. Stripe customers are synced as well if authentication is enabled. The cron jobs trigger HTTP requests to the application at `/api/stripe/sync/<type>`, with a shared secret key stored as an environment variable `INTERNAL_JOB_SECRET`.
+The Stripe work that does not belong on the request path runs as [workflows](/workflows) in `src/lib/workflows`:
+
+- `stripe-event` - The webhook route verifies each event's signature and queues one run per event id. The run calls the handler in `src/routes/webhooks/stripe/handlers/dispatch.ts`; a handler that throws is retried with backoff, and a redelivery of the same event lands on the run that already exists.
+- `sync-stripe-products` and `sync-stripe-prices` - Recurring every ten minutes in `sync-stripe-catalog.ts`, adding products and prices new in Stripe and updating the rest.
+- `sync-stripe-customers` - Recurring every ten minutes when authentication is enabled, linking any user that did not come through signup.
+
+Every run, with its steps and any error, is listed under **Workflows** in the PocketBase dashboard.
 <!-- @es -->
 Habilita el procesamiento de pagos con Stripe.
 
@@ -89,7 +95,7 @@ Los webhooks de Stripe se generan en `src/routes/webhooks/stripe`, con el evento
 	<Badge variant="outline" href="/es/enable/auth" class="no-underline">Depende de: auth</Badge>
 </div>
 
-Si la autenticación está habilitada con el comando `vela enable auth`, los clientes de Stripe se crearán para el usuario autenticado en el registro y los métodos de pago del usuario se pueden guardar y gestionar en la página de configuración de facturación del usuario.
+Si la autenticación está habilitada con el comando `vela enable auth`, se crea un cliente de Stripe para cada usuario en el registro y los métodos de pago del usuario se pueden guardar y gestionar en la página de configuración de facturación del usuario. El cliente lo vincula el [workflow](/es/workflows) `link-stripe-customer`, iniciado por la acción de registro con el id del usuario como clave de idempotencia, así que registrarse nunca espera a Stripe y un reintento nunca crea un segundo cliente. La página de facturación muestra un estado de preparación durante el instante que tarda.
 
 ### Tablas de la base de datos
 
@@ -105,7 +111,13 @@ transactions
 
 Además del evento de intención de pago completada, el evento de método de pago adjuntado se incluye por defecto para el usuario autenticado.
 
-### Tareas programadas
+### Workflows
 
-Las tareas programadas de PocketBase se ejecutan para mantener la base de datos de la aplicación sincronizada con Stripe. Los productos y precios se sincronizan cada dos minutos, configurados en `data/hooks/stripe.pb.js`. Los clientes de Stripe también se sincronizan si la autenticación está habilitada. Las tareas programadas lanzan peticiones HTTP a la aplicación en `/api/stripe/sync/<type>`, con una clave secreta compartida almacenada en la variable de entorno `INTERNAL_JOB_SECRET`.
+El trabajo de Stripe que no pertenece al camino de la petición se ejecuta como [workflows](/es/workflows) en `src/lib/workflows`:
+
+- `stripe-event` - La ruta del webhook verifica la firma de cada evento y encola una ejecución por id de evento. La ejecución llama al manejador de `src/routes/webhooks/stripe/handlers/dispatch.ts`; un manejador que lanza un error se reintenta con espera creciente, y un reenvío del mismo evento cae en la ejecución que ya existe.
+- `sync-stripe-products` y `sync-stripe-prices` - Recurrentes cada diez minutos en `sync-stripe-catalog.ts`, añadiendo los productos y precios nuevos en Stripe y actualizando el resto.
+- `sync-stripe-customers` - Recurrente cada diez minutos cuando la autenticación está habilitada, vinculando a cualquier usuario que no haya pasado por el registro.
+
+Todas las ejecuciones, con sus pasos y cualquier error, aparecen en **Workflows**, en el panel de PocketBase.
 <!-- @end -->

@@ -91,6 +91,10 @@
 						url: /* @wc-url */ '/generate/migration'
 					},
 					{
+						title: 'Workflow',
+						url: /* @wc-url */ '/generate/workflow'
+					},
+					{
 						title: 'AI',
 						url: /* @wc-url */ '/generate/ai',
 						badge: 'Pro'
@@ -185,6 +189,10 @@
 					{
 						title: 'CMS',
 						url: /* @wc-url */ '/enable/cms'
+					},
+					{
+						title: 'Workflows',
+						url: /* @wc-url */ '/enable/workflows'
 					}
 				]
 			},
@@ -287,6 +295,24 @@
 						title: 'Unit',
 						url: /* @wc-url */ '/test/unit',
 						badge: 'Planned'
+					}
+				]
+			},
+			{
+				title: 'Workflows',
+				url: /* @wc-url */ '/workflows',
+				items: [
+					{
+						title: 'List',
+						url: /* @wc-url */ '/workflows/list'
+					},
+					{
+						title: 'Run',
+						url: /* @wc-url */ '/workflows/run'
+					},
+					{
+						title: 'Cancel',
+						url: /* @wc-url */ '/workflows/cancel'
 					}
 				]
 			},

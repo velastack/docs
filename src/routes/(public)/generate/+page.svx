@@ -18,6 +18,7 @@ $ vela generate <type> <name> [fields...]
 - [`resource`](/generate/resource) - A database model and schema, with no frontend
 - [`scaffold`](/generate/scaffold) - A full CRUD interface, model, schema and migration
 - [`migration`](/generate/migration) - A migration that alters an existing collection
+- [`workflow`](/generate/workflow) - A background workflow, with no database model
 
 ### Name
 
@@ -186,6 +187,7 @@ $ vela generate <type> <name> [fields...]
 - [`resource`](/es/generate/resource) - Un modelo de base de datos y su esquema, sin frontend
 - [`scaffold`](/es/generate/scaffold) - Una interfaz CRUD completa, modelo, esquema y migración
 - [`migration`](/es/generate/migration) - Una migración que altera una colección existente
+- [`workflow`](/es/generate/workflow) - Un workflow en segundo plano, sin modelo de base de datos
 
 ### Nombre
 

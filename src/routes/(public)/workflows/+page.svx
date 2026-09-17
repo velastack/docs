@@ -1,0 +1,241 @@
+<!-- @en -->
+Background work that survives restarts. A workflow is a function whose steps are saved as they complete: a run that fails is retried with backoff, a run interrupted by a deploy resumes from its last finished step, and every run is listed with its input, output and error under **Workflows** in the PocketBase dashboard.
+
+Workflows run on the OpenWorkflow engine built into Vela's PocketBase, using the [`openworkflow`](https://openworkflow.dev) library directly. Every project created with Vela has them; a project created before they were built in gets them with [`vela enable workflows`](/enable/workflows).
+
+### Syntax
+
+```
+$ vela workflows <command>
+```
+
+- [`list`](/workflows/list) - List recent runs and their state
+- [`run`](/workflows/run) - Start a run from the terminal
+- [`cancel`](/workflows/cancel) - Cancel a pending or running run
+
+### How it fits together
+
+`src/lib/server/workflows.ts` holds the client and the worker. It exports `ow`, the OpenWorkflow client your workflows are defined with, `getAdmin()`, a superuser PocketBase client for use inside steps, and `startWorker()`, which the `init` hook in `src/hooks.server.ts` calls once when the server starts.
+
+The worker runs inside the web server, in development and in production alike, so there is no second process to run or deploy. It claims runs from PocketBase and executes them in-process; several servers behind one database share the work safely, since a run is leased to one worker at a time. A project with no workflow files never starts a worker at all.
+
+### Defining a workflow
+
+Workflows live in `src/lib/workflows/`, one file per workflow, and [`vela generate workflow`](/generate/workflow) writes one:
+
+```
+$ vela generate workflow send-welcome-email
+```
+
+```ts
+import { z } from 'zod';
+import { ow } from '$lib/server/workflows';
+
+export const sendWelcomeEmail = ow.defineWorkflow(
+	{
+		name: 'send-welcome-email',
+		schema: z.object({ userId: z.string() }),
+		retryPolicy: { maximumAttempts: 3 }
+	},
+	async ({ input, step }) => {
+		const user = await step.run({ name: 'load-user' }, async () => {
+			const admin = await getAdmin();
+			return admin.collection('users').getOne(input.userId);
+		});
+
+		await step.run({ name: 'send' }, async () => {
+			// ...
+		});
+	}
+);
+```
+
+`schema` is what `run()` accepts, checked before the run is queued. Each `step.run` saves its return value, so a retry or a restart carries on after the last step that finished rather than starting over. That makes steps the unit of retry: keep each one safe to repeat. The value a step returns has to be JSON.
+
+A workflow gets one attempt unless `retryPolicy` says otherwise. `step.sleep`, `step.waitForSignal` and child workflows through `step.runWorkflow` are the library's own API and are documented at [openworkflow.dev](https://openworkflow.dev).
+
+### Starting a run
+
+Import the workflow anywhere on the server — a form action, an API route, a hook, another workflow — and call `run()`:
+
+```ts
+import { sendWelcomeEmail } from '$lib/workflows/send-welcome-email';
+
+await sendWelcomeEmail.run({ userId: user.id }, { idempotencyKey: user.id });
+```
+
+`run()` returns as soon as the run is queued. Its handle has `result()` to wait for the output and `cancel()`; waiting inside a request handler is rarely what you want, since the point is to get the work off the request path.
+
+- `idempotencyKey` - Calling `run()` again with the same key within 24 hours returns the existing run instead of starting another. Key on the thing the run is about — a user id, a Stripe event id — and a retried request or a redelivered webhook cannot do the work twice.
+- `availableAt` - A `Date` or a duration such as `'10m'`; the run waits until then.
+- `deadlineAt` - A `Date` after which the run is failed rather than retried.
+
+### Recurring workflows
+
+A file that exports a cron expression runs every workflow it defines on that schedule:
+
+```
+$ vela generate workflow sync-prices --cron '*/5 * * * *'
+```
+
+```ts
+export const cron = '*/5 * * * *';
+```
+
+The schedule fires once per minute at most, and once across all servers: each firing is keyed on the workflow name and the minute, so however many servers are running, one run starts. A minute that passes while nothing is running is skipped, not caught up. In tests the schedule is off; `tickCron()` from `$lib/server/workflows` starts every recurring workflow on demand.
+
+### Testing
+
+The generator writes a `<name>.server.test.ts` next to each workflow, which [`vela test:server`](/test/server) runs. The test process starts a worker of its own, so a run started in a test completes without going through the dev server:
+
+```ts
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { startWorker, stopWorker } from '$lib/server/workflows';
+import { sendWelcomeEmail } from './send-welcome-email';
+
+describe('send-welcome-email', () => {
+	beforeAll(() => startWorker());
+	afterAll(() => stopWorker());
+
+	it('completes', async (context) => {
+		const handle = await sendWelcomeEmail.run({ userId: context.user.id });
+		await expect(handle.result({ timeoutMs: 15_000 })).resolves.toBeNull();
+	});
+});
+```
+
+### Settings
+
+Two environment variables tune the worker; neither is required:
+
+```
+WORKFLOWS_CONCURRENCY=5
+WORKFLOWS_ENABLED=true
+```
+
+`WORKFLOWS_CONCURRENCY` caps how many runs one server executes at once. `WORKFLOWS_ENABLED=false` keeps a server from executing runs while still letting it queue them — the switch for moving the work to a dedicated process later.
+
+### In production
+
+The worker lives inside the `vela-web` service, so a [deploy](/deploy) or a restart stops it along with the web server: it finishes the runs it has in flight, and a run it does not finish in time is picked up again after its lease expires, from the last completed step. Runs and their steps are stored in `openworkflow.db` next to the application database, and are part of every [backup](/backup).
+<!-- @es -->
+Trabajo en segundo plano que sobrevive a los reinicios. Un workflow es una función cuyos pasos se guardan a medida que se completan: una ejecución que falla se reintenta con espera creciente, una interrumpida por un despliegue continúa desde su último paso terminado, y todas aparecen con su entrada, salida y error en **Workflows**, en el panel de PocketBase.
+
+Los workflows se ejecutan en el motor OpenWorkflow integrado en el PocketBase de Vela, usando directamente la biblioteca [`openworkflow`](https://openworkflow.dev). Todo proyecto creado con Vela los incluye; un proyecto creado antes de que vinieran de serie los obtiene con [`vela enable workflows`](/es/enable/workflows).
+
+### Sintaxis
+
+```
+$ vela workflows <command>
+```
+
+- [`list`](/es/workflows/list) - Lista las ejecuciones recientes y su estado
+- [`run`](/es/workflows/run) - Inicia una ejecución desde el terminal
+- [`cancel`](/es/workflows/cancel) - Cancela una ejecución pendiente o en curso
+
+### Cómo encaja
+
+`src/lib/server/workflows.ts` contiene el cliente y el worker. Exporta `ow`, el cliente de OpenWorkflow con el que se definen los workflows, `getAdmin()`, un cliente superusuario de PocketBase para usar dentro de los pasos, y `startWorker()`, al que el hook `init` de `src/hooks.server.ts` llama una vez al arrancar el servidor.
+
+El worker corre dentro del servidor web, tanto en desarrollo como en producción, así que no hay un segundo proceso que ejecutar ni desplegar. Reclama ejecuciones de PocketBase y las procesa en el mismo proceso; varios servidores sobre una misma base de datos se reparten el trabajo sin conflicto, porque cada ejecución se presta a un solo worker a la vez. Un proyecto sin archivos de workflow nunca arranca un worker.
+
+### Definir un workflow
+
+Los workflows viven en `src/lib/workflows/`, un archivo por workflow, y [`vela generate workflow`](/es/generate/workflow) escribe uno:
+
+```
+$ vela generate workflow send-welcome-email
+```
+
+```ts
+import { z } from 'zod';
+import { ow } from '$lib/server/workflows';
+
+export const sendWelcomeEmail = ow.defineWorkflow(
+	{
+		name: 'send-welcome-email',
+		schema: z.object({ userId: z.string() }),
+		retryPolicy: { maximumAttempts: 3 }
+	},
+	async ({ input, step }) => {
+		const user = await step.run({ name: 'load-user' }, async () => {
+			const admin = await getAdmin();
+			return admin.collection('users').getOne(input.userId);
+		});
+
+		await step.run({ name: 'send' }, async () => {
+			// ...
+		});
+	}
+);
+```
+
+`schema` es lo que acepta `run()`, comprobado antes de encolar la ejecución. Cada `step.run` guarda su valor de retorno, de modo que un reintento o un reinicio continúa tras el último paso terminado en lugar de empezar de cero. Eso convierte a los pasos en la unidad de reintento: haz que cada uno sea seguro de repetir. El valor que devuelve un paso tiene que ser JSON.
+
+Un workflow tiene un solo intento salvo que `retryPolicy` diga otra cosa. `step.sleep`, `step.waitForSignal` y los workflows hijos mediante `step.runWorkflow` son la API de la propia biblioteca y están documentados en [openworkflow.dev](https://openworkflow.dev).
+
+### Iniciar una ejecución
+
+Importa el workflow en cualquier punto del servidor — una acción de formulario, una ruta de API, un hook, otro workflow — y llama a `run()`:
+
+```ts
+import { sendWelcomeEmail } from '$lib/workflows/send-welcome-email';
+
+await sendWelcomeEmail.run({ userId: user.id }, { idempotencyKey: user.id });
+```
+
+`run()` devuelve en cuanto la ejecución queda encolada. Su handle tiene `result()` para esperar la salida y `cancel()`; esperar dentro de un manejador de petición rara vez es lo que quieres, porque la idea es sacar el trabajo del camino de la petición.
+
+- `idempotencyKey` - Llamar a `run()` de nuevo con la misma clave en un plazo de 24 horas devuelve la ejecución existente en lugar de iniciar otra. Usa como clave aquello de lo que trata la ejecución — un id de usuario, un id de evento de Stripe — y una petición reintentada o un webhook reenviado no podrán hacer el trabajo dos veces.
+- `availableAt` - Un `Date` o una duración como `'10m'`; la ejecución espera hasta entonces.
+- `deadlineAt` - Un `Date` tras el cual la ejecución se marca como fallida en vez de reintentarse.
+
+### Workflows recurrentes
+
+Un archivo que exporta una expresión cron ejecuta todos los workflows que define con ese horario:
+
+```
+$ vela generate workflow sync-prices --cron '*/5 * * * *'
+```
+
+```ts
+export const cron = '*/5 * * * *';
+```
+
+El horario se dispara como mucho una vez por minuto, y una sola vez entre todos los servidores: cada disparo se identifica por el nombre del workflow y el minuto, así que por muchos servidores que haya en marcha, se inicia una única ejecución. Un minuto que pasa sin nada en marcha se salta, no se recupera. En las pruebas el horario está desactivado; `tickCron()` de `$lib/server/workflows` inicia a demanda todos los workflows recurrentes.
+
+### Pruebas
+
+El generador escribe un `<name>.server.test.ts` junto a cada workflow, que ejecuta [`vela test:server`](/es/test/server). El proceso de pruebas arranca su propio worker, así que una ejecución iniciada en una prueba se completa sin pasar por el servidor de desarrollo:
+
+```ts
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { startWorker, stopWorker } from '$lib/server/workflows';
+import { sendWelcomeEmail } from './send-welcome-email';
+
+describe('send-welcome-email', () => {
+	beforeAll(() => startWorker());
+	afterAll(() => stopWorker());
+
+	it('completes', async (context) => {
+		const handle = await sendWelcomeEmail.run({ userId: context.user.id });
+		await expect(handle.result({ timeoutMs: 15_000 })).resolves.toBeNull();
+	});
+});
+```
+
+### Ajustes
+
+Dos variables de entorno regulan el worker; ninguna es obligatoria:
+
+```
+WORKFLOWS_CONCURRENCY=5
+WORKFLOWS_ENABLED=true
+```
+
+`WORKFLOWS_CONCURRENCY` limita cuántas ejecuciones procesa un servidor a la vez. `WORKFLOWS_ENABLED=false` impide que un servidor procese ejecuciones sin dejar de encolarlas — el interruptor para mover el trabajo a un proceso dedicado más adelante.
+
+### En producción
+
+El worker vive dentro del servicio `vela-web`, así que un [despliegue](/es/deploy) o un reinicio lo detiene junto con el servidor web: termina las ejecuciones que tiene en curso, y una que no llegue a terminar a tiempo se retoma cuando expira su préstamo, desde el último paso completado. Las ejecuciones y sus pasos se guardan en `openworkflow.db`, junto a la base de datos de la aplicación, y forman parte de toda [copia de seguridad](/es/backup).
+<!-- @end -->

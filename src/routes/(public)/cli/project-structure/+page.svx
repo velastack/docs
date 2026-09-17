@@ -12,6 +12,8 @@ my-project/
 │   ├── lib/
 │   │   ├── components/ui/ shadcn-svelte components
 │   │   ├── schemas/       Zod schemas, generated alongside models
+│   │   ├── server/        server-only code, including the workflow runtime
+│   │   ├── workflows/     background workflows, one file each
 │   │   └── utils.ts       the cn helper and component type utilities
 │   ├── routes/
 │   │   ├── (public)/      routes anyone can reach
@@ -19,7 +21,7 @@ my-project/
 │   │   └── api/           your own API routes
 │   ├── app.css            Tailwind imports and theme tokens
 │   ├── app.d.ts           the App.Locals types, kept in sync by `vela sync`
-│   └── hooks.server.ts    the handlePocketbase middleware
+│   └── hooks.server.ts    the handlePocketbase middleware and the workflow worker's init
 ├── static/                served as-is
 ├── test/setup.ts          the server test context
 ├── .vela/project.json     the app id and target bindings — commit this
@@ -31,6 +33,10 @@ my-project/
 ### Route groups
 
 Vela leans on SvelteKit's route groups to express access. `(public)` is reachable by anyone; `(app)` is created when [auth](/enable/auth) is enabled and requires a signed-in user, with unauthenticated requests redirected to the login page. The [generators](/generate) place new routes in `(app)` when auth is enabled and `(public)` when it isn't, and `--route` overrides that.
+
+### Workflows
+
+`src/lib/workflows/` holds one file per background [workflow](/workflows), and `src/lib/server/workflows.ts` the client and worker they run on. The worker starts from the `init` hook in `src/hooks.server.ts` and does nothing until there is a workflow file to run.
 
 ### Generated and synced
 
@@ -53,6 +59,8 @@ my-project/
 │   ├── lib/
 │   │   ├── components/ui/ componentes de shadcn-svelte
 │   │   ├── schemas/       esquemas Zod, generados junto a los modelos
+│   │   ├── server/        código solo de servidor, incluido el runtime de workflows
+│   │   ├── workflows/     workflows en segundo plano, uno por archivo
 │   │   └── utils.ts       el helper cn y utilidades de tipos de componentes
 │   ├── routes/
 │   │   ├── (public)/      rutas accesibles por cualquiera
@@ -60,7 +68,7 @@ my-project/
 │   │   └── api/           tus propias rutas de API
 │   ├── app.css            importaciones de Tailwind y tokens del tema
 │   ├── app.d.ts           los tipos de App.Locals, sincronizados por `vela sync`
-│   └── hooks.server.ts    el middleware handlePocketbase
+│   └── hooks.server.ts    el middleware handlePocketbase y el init del worker de workflows
 ├── static/                servido tal cual
 ├── test/setup.ts          el contexto de pruebas del servidor
 ├── .vela/project.json     el id de la aplicación y los objetivos — súbelo al repositorio
@@ -72,6 +80,10 @@ my-project/
 ### Grupos de rutas
 
 Vela se apoya en los grupos de rutas de SvelteKit para expresar el acceso. `(public)` es accesible por cualquiera; `(app)` se crea cuando se habilita la [autenticación](/es/enable/auth) y requiere un usuario con sesión iniciada, redirigiendo las peticiones no autenticadas a la página de inicio de sesión. Los [generadores](/es/generate) colocan las rutas nuevas en `(app)` cuando la autenticación está habilitada y en `(public)` cuando no lo está, y `--route` lo anula.
+
+### Workflows
+
+`src/lib/workflows/` contiene un archivo por [workflow](/es/workflows) en segundo plano, y `src/lib/server/workflows.ts` el cliente y el worker sobre los que corren. El worker arranca desde el hook `init` de `src/hooks.server.ts` y no hace nada hasta que hay un archivo de workflow que ejecutar.
 
 ### Generado y sincronizado
 

@@ -76,6 +76,11 @@ export const load = async ({ parent }) => {
 				title: 'CMS',
 				url: /* @wc-url */ '/enable/cms',
 				description: 'Inline editing with an admin bar, served from the app itself.'
+			},
+			{
+				title: 'Workflows',
+				url: /* @wc-url */ '/enable/workflows',
+				description: 'Background workflows for a project created before they were built in.'
 			}
 		]
 	};

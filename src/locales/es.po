@@ -133,6 +133,7 @@ msgstr "Construir"
 #: src/routes/(public)/generate/resource/+page.ts
 #: src/routes/(public)/generate/scaffold/+page.ts
 #: src/routes/(public)/generate/schema/+page.ts
+#: src/routes/(public)/generate/workflow/+page.ts
 msgid "Generate"
 msgstr "Generar"
 
@@ -220,6 +221,7 @@ msgstr "Destruir"
 #: src/routes/(public)/enable/smtp/+page.ts
 #: src/routes/(public)/enable/subscriptions/+page.ts
 #: src/routes/(public)/enable/teams/+page.ts
+#: src/routes/(public)/enable/workflows/+page.ts
 msgid "Enable"
 msgstr "Habilitar"
 
@@ -833,11 +835,15 @@ msgstr "Entorno"
 
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/backup/+page.ts
 #: src/routes/(public)/backup/list/+page.ts
 #: src/routes/(public)/backup/list/+page.ts
 #: src/routes/(public)/env/list/+page.ts
 #: src/routes/(public)/env/list/+page.ts
+#: src/routes/(public)/workflows/+page.ts
+#: src/routes/(public)/workflows/list/+page.ts
+#: src/routes/(public)/workflows/list/+page.ts
 msgid "List"
 msgstr "Listar"
 
@@ -901,6 +907,7 @@ msgid "What Vela generates, and where it lives."
 msgstr "Qué genera Vela, y dónde vive."
 
 #: src/routes/(public)/enable/blog/+page.ts
+#: src/routes/(public)/enable/workflows/+page.ts
 msgid "Depends: backend"
 msgstr "Depende de: backend"
 
@@ -1032,3 +1039,52 @@ msgstr "Gestiona quién puede iniciar sesión en la barra de administración."
 #: src/routes/(public)/cms/+page.ts
 msgid "Rebuild a hosted site with the latest published content."
 msgstr "Reconstruye un sitio alojado con el último contenido publicado."
+
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/workflows/+page.ts
+#: src/routes/(public)/enable/workflows/+page.ts
+#: src/routes/(public)/workflows/+page.ts
+#: src/routes/(public)/workflows/+page.ts
+#: src/routes/(public)/workflows/cancel/+page.ts
+#: src/routes/(public)/workflows/list/+page.ts
+#: src/routes/(public)/workflows/run/+page.ts
+msgid "Workflows"
+msgstr "Workflows"
+
+#: src/routes/(public)/enable/+page.ts
+msgid "Background workflows for a project created before they were built in."
+msgstr "Workflows en segundo plano para un proyecto creado antes de que vinieran de serie."
+
+#: src/routes/(public)/workflows/+page.ts
+msgid "List recent runs and their state."
+msgstr "Lista las ejecuciones recientes y su estado."
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/workflows/+page.ts
+#: src/routes/(public)/workflows/run/+page.ts
+#: src/routes/(public)/workflows/run/+page.ts
+msgid "Run"
+msgstr "Ejecutar"
+
+#: src/routes/(public)/workflows/+page.ts
+msgid "Start a run from the terminal."
+msgstr "Inicia una ejecución desde el terminal."
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/workflows/+page.ts
+#: src/routes/(public)/workflows/cancel/+page.ts
+#: src/routes/(public)/workflows/cancel/+page.ts
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/routes/(public)/workflows/+page.ts
+msgid "Cancel a pending or running run."
+msgstr "Cancela una ejecución pendiente o en curso."
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/generate/workflow/+page.ts
+#: src/routes/(public)/generate/workflow/+page.ts
+msgid "Workflow"
+msgstr "Workflow"

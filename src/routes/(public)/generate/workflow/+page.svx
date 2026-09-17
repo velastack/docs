@@ -1,0 +1,115 @@
+<!-- @en -->
+Generate a background [workflow](/workflows) in `src/lib/workflows`, with a server test next to it.
+
+### Syntax
+
+```
+$ vela generate workflow <name> [--cron <schedule>]
+```
+
+```
+$ vela generate workflow send-welcome-email
+```
+
+### Options
+
+- `--cron <schedule>` - Run on a schedule, given as a five-field cron expression
+
+### What it writes
+
+```
+src/lib/workflows/send-welcome-email.ts
+src/lib/workflows/send-welcome-email.server.test.ts
+```
+
+The name can be written as `send-welcome-email`, `sendWelcomeEmail` or `send_welcome_email`; the file and the workflow's registered name use the kebab-case form, and the export is camelCase. The generated workflow takes an empty input schema and has one step to fill in:
+
+```ts
+import { z } from 'zod';
+import { ow } from '$lib/server/workflows';
+
+export const sendWelcomeEmail = ow.defineWorkflow(
+	{
+		name: 'send-welcome-email',
+		// What `run()` takes, checked before the run is queued.
+		schema: z.object({}),
+		retryPolicy: { maximumAttempts: 3 }
+	},
+	async ({ input, step }) => {
+		const result = await step.run({ name: 'first-step' }, async () => {
+			return input;
+		});
+		return result;
+	}
+);
+```
+
+Start it from server code with `sendWelcomeEmail.run(input)`. The test starts a worker in the test process, runs the workflow and waits for its result, so [`vela test:server`](/test/server) exercises it end to end.
+
+### Recurring
+
+```
+$ vela generate workflow sync-prices --cron '*/5 * * * *'
+```
+
+A recurring workflow takes no input and its file exports the schedule. Every workflow defined in that file runs on it, once per minute at most and once across all servers; `syncPrices.run()` starts an extra run at any time.
+
+The project has to have the workflow runtime — every project created with Vela does, and [`vela enable workflows`](/enable/workflows) adds it to one created earlier.
+<!-- @es -->
+Genera un [workflow](/es/workflows) en segundo plano en `src/lib/workflows`, con una prueba de servidor junto a él.
+
+### Sintaxis
+
+```
+$ vela generate workflow <name> [--cron <schedule>]
+```
+
+```
+$ vela generate workflow send-welcome-email
+```
+
+### Opciones
+
+- `--cron <schedule>` - Ejecutar según un horario, dado como una expresión cron de cinco campos
+
+### Qué escribe
+
+```
+src/lib/workflows/send-welcome-email.ts
+src/lib/workflows/send-welcome-email.server.test.ts
+```
+
+El nombre puede escribirse como `send-welcome-email`, `sendWelcomeEmail` o `send_welcome_email`; el archivo y el nombre registrado del workflow usan la forma kebab-case, y la exportación es camelCase. El workflow generado toma un esquema de entrada vacío y tiene un paso por rellenar:
+
+```ts
+import { z } from 'zod';
+import { ow } from '$lib/server/workflows';
+
+export const sendWelcomeEmail = ow.defineWorkflow(
+	{
+		name: 'send-welcome-email',
+		// Lo que acepta `run()`, comprobado antes de encolar la ejecución.
+		schema: z.object({}),
+		retryPolicy: { maximumAttempts: 3 }
+	},
+	async ({ input, step }) => {
+		const result = await step.run({ name: 'first-step' }, async () => {
+			return input;
+		});
+		return result;
+	}
+);
+```
+
+Inícialo desde el código del servidor con `sendWelcomeEmail.run(input)`. La prueba arranca un worker en el proceso de pruebas, ejecuta el workflow y espera su resultado, de modo que [`vela test:server`](/es/test/server) lo ejercita de principio a fin.
+
+### Recurrente
+
+```
+$ vela generate workflow sync-prices --cron '*/5 * * * *'
+```
+
+Un workflow recurrente no toma entrada y su archivo exporta el horario. Todos los workflows definidos en ese archivo se ejecutan con él, como mucho una vez por minuto y una sola vez entre todos los servidores; `syncPrices.run()` inicia una ejecución extra en cualquier momento.
+
+El proyecto tiene que contar con el runtime de workflows — todo proyecto creado con Vela lo tiene, y [`vela enable workflows`](/es/enable/workflows) lo añade a uno creado antes.
+<!-- @end -->
