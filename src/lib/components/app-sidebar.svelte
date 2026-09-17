@@ -193,6 +193,10 @@
 					{
 						title: 'Workflows',
 						url: /* @wc-url */ '/enable/workflows'
+					},
+					{
+						title: 'Analytics',
+						url: /* @wc-url */ '/enable/analytics'
 					}
 				]
 			},

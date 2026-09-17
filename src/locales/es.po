@@ -207,6 +207,7 @@ msgstr "Destruir"
 #: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/analytics/+page.ts
 #: src/routes/(public)/enable/api-keys/+page.ts
 #: src/routes/(public)/enable/api/+page.ts
 #: src/routes/(public)/enable/auth/+page.ts
@@ -939,17 +940,14 @@ msgstr "Pruebas que se ejecutan contra la aplicación y una base de datos desech
 msgid "A separate runner for tests that need no database."
 msgstr "Un ejecutor separado para las pruebas que no necesitan base de datos."
 
-#: src/lib/components/ui/sidebar/sidebar-menu-button.svelte
-msgid "string"
-msgstr ""
+#~ msgid "string"
+#~ msgstr ""
 
-#: src/lib/components/ui/sidebar/sidebar.svelte
-msgid "none"
-msgstr ""
+#~ msgid "none"
+#~ msgstr ""
 
-#: src/lib/components/ui/input/input.svelte
-msgid "file"
-msgstr ""
+#~ msgid "file"
+#~ msgstr ""
 
 #: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/backup/+page.ts
@@ -1088,3 +1086,14 @@ msgstr "Cancela una ejecución pendiente o en curso."
 #: src/routes/(public)/generate/workflow/+page.ts
 msgid "Workflow"
 msgstr "Workflow"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/analytics/+page.ts
+#: src/routes/(public)/enable/analytics/+page.ts
+msgid "Analytics"
+msgstr "Analítica"
+
+#: src/routes/(public)/enable/+page.ts
+msgid "Web analytics with Plausible, Google Analytics or PostHog."
+msgstr "Analítica web con Plausible, Google Analytics o PostHog."

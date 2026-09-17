@@ -207,6 +207,7 @@ msgstr "Destroy"
 #: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/analytics/+page.ts
 #: src/routes/(public)/enable/api-keys/+page.ts
 #: src/routes/(public)/enable/api/+page.ts
 #: src/routes/(public)/enable/auth/+page.ts
@@ -939,17 +940,14 @@ msgstr "Tests that run against the app and a throwaway database."
 msgid "A separate runner for tests that need no database."
 msgstr "A separate runner for tests that need no database."
 
-#: src/lib/components/ui/sidebar/sidebar-menu-button.svelte
-msgid "string"
-msgstr "string"
+#~ msgid "string"
+#~ msgstr "string"
 
-#: src/lib/components/ui/sidebar/sidebar.svelte
-msgid "none"
-msgstr "none"
+#~ msgid "none"
+#~ msgstr "none"
 
-#: src/lib/components/ui/input/input.svelte
-msgid "file"
-msgstr "file"
+#~ msgid "file"
+#~ msgstr "file"
 
 #: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/backup/+page.ts
@@ -1088,3 +1086,14 @@ msgstr "Cancel a pending or running run."
 #: src/routes/(public)/generate/workflow/+page.ts
 msgid "Workflow"
 msgstr "Workflow"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/analytics/+page.ts
+#: src/routes/(public)/enable/analytics/+page.ts
+msgid "Analytics"
+msgstr "Analytics"
+
+#: src/routes/(public)/enable/+page.ts
+msgid "Web analytics with Plausible, Google Analytics or PostHog."
+msgstr "Web analytics with Plausible, Google Analytics or PostHog."

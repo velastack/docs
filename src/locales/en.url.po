@@ -59,6 +59,7 @@ msgstr "/"
 #. /enable/notifications
 #. /enable/cms
 #. /enable/workflows
+#. /enable/analytics
 #. /disable
 #. /disable/auth
 #. /disable/api
@@ -263,6 +264,9 @@ msgstr "/"
 #. /enable/notifications
 #. /enable/cms
 #. /enable/workflows
+#. /enable/analytics
+#. /enable
+#. /enable/analytics
 #. /enable
 #. /enable/api-keys
 #. /enable
@@ -554,6 +558,7 @@ msgstr "/"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/account/+page.ts
 #: src/routes/(public)/account/login/+page.ts
 #: src/routes/(public)/account/login/+page.ts
@@ -667,6 +672,9 @@ msgstr "/"
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/analytics/+page.ts
+#: src/routes/(public)/enable/analytics/+page.ts
 #: src/routes/(public)/enable/api-keys/+page.ts
 #: src/routes/(public)/enable/api-keys/+page.ts
 #: src/routes/(public)/enable/api/+page.ts

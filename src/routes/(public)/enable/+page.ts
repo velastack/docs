@@ -81,6 +81,11 @@ export const load = async ({ parent }) => {
 				title: 'Workflows',
 				url: /* @wc-url */ '/enable/workflows',
 				description: 'Background workflows for a project created before they were built in.'
+			},
+			{
+				title: 'Analytics',
+				url: /* @wc-url */ '/enable/analytics',
+				description: 'Web analytics with Plausible, Google Analytics or PostHog.'
 			}
 		]
 	};

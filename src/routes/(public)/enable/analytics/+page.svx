@@ -1,0 +1,159 @@
+<!-- @en -->
+Enable web analytics for your application with Plausible, Google Analytics or PostHog.
+
+### Syntax
+
+```
+$ vela enable analytics [--provider <plausible|google|posthog>]
+```
+
+Without `--provider` you're prompted to pick one. Outside a terminal (CI, scripts) the flag is required. You're then asked for the provider's configuration values, and any already present in your `.env` are kept without asking.
+
+Analytics has no dependencies. It only touches the root layout and `.env`, so it works on static sites with no backend.
+
+### What you get
+
+- A component at `src/lib/components/analytics/analytics.svelte` that loads the provider's script and tracks page views, including client-side navigations.
+- `<Analytics />` mounted at the top level of `src/routes/+layout.svelte`, above `{@render children()}`.
+- The provider's `PUBLIC_*` variables added to `.env`.
+
+The component reads its configuration from `$env/dynamic/public` and renders nothing until the variables are set, so a local checkout with a blank `.env` sends no data. Set the same variables on each deploy target with [`vela env set`](/env/set).
+
+### Providers
+
+#### Plausible
+
+```
+$ vela enable analytics --provider plausible
+```
+
+| Variable | Description |
+| --- | --- |
+| `PUBLIC_PLAUSIBLE_DOMAIN` | The site as registered in Plausible, e.g. `example.com`. |
+
+Loads `plausible.io/js/script.js`, which tracks client-side navigations on its own. If you self-host Plausible, change the script `src` in the component to point at your instance.
+
+#### Google Analytics
+
+```
+$ vela enable analytics --provider google
+```
+
+| Variable | Description |
+| --- | --- |
+| `PUBLIC_GA_MEASUREMENT_ID` | The measurement ID, e.g. `G-XXXXXXXXXX`. |
+
+Loads gtag.js with automatic page views turned off, then sends a `page_view` event from `afterNavigate` so each route change is counted exactly once. A `gtag` helper in `src/lib/components/analytics/gtag.ts` is available for custom events:
+
+```ts
+import { gtag } from '$lib/components/analytics/gtag';
+
+gtag('event', 'sign_up', { method: 'email' });
+```
+
+#### PostHog
+
+```
+$ vela enable analytics --provider posthog
+```
+
+| Variable | Description |
+| --- | --- |
+| `PUBLIC_POSTHOG_KEY` | The project API key, e.g. `phc_...`. |
+| `PUBLIC_POSTHOG_HOST` | The ingestion host. Defaults to `https://us.i.posthog.com`; use `https://eu.i.posthog.com` for EU projects or your own instance. |
+
+Installs `posthog-js` and initialises it on mount with the `2025-05-24` defaults, which capture a pageview on every history change. Import `posthog` anywhere for custom events:
+
+```ts
+import posthog from 'posthog-js';
+
+posthog.capture('sign_up');
+```
+
+### Switching providers
+
+Run the command again with a different `--provider`. The component is overwritten with the new provider's implementation, the new variables are appended to `.env` and the layout is left alone, since `<Analytics />` is already mounted. Remove the old provider's variables from `.env` yourself.
+
+### Customising
+
+The generated component is yours to edit. Common changes are gating it behind a cookie consent banner, skipping it for signed-in admins, or adding custom events with the helpers above.
+<!-- @es -->
+Habilita analítica web para tu aplicación con Plausible, Google Analytics o PostHog.
+
+### Sintaxis
+
+```
+$ vela enable analytics [--provider <plausible|google|posthog>]
+```
+
+Sin `--provider` se te pedirá que elijas uno. Fuera de una terminal (CI, scripts) el flag es obligatorio. Después se te pedirán los valores de configuración del proveedor, y los que ya estén en tu `.env` se conservan sin preguntar.
+
+La analítica no tiene dependencias. Solo modifica el layout raíz y `.env`, así que funciona en sitios estáticos sin backend.
+
+### Qué obtienes
+
+- Un componente en `src/lib/components/analytics/analytics.svelte` que carga el script del proveedor y registra las vistas de página, incluidas las navegaciones del lado del cliente.
+- `<Analytics />` montado en el nivel superior de `src/routes/+layout.svelte`, encima de `{@render children()}`.
+- Las variables `PUBLIC_*` del proveedor añadidas a `.env`.
+
+El componente lee su configuración de `$env/dynamic/public` y no renderiza nada hasta que las variables estén definidas, así que una copia local con un `.env` vacío no envía datos. Define las mismas variables en cada destino de despliegue con [`vela env set`](/es/env/set).
+
+### Proveedores
+
+#### Plausible
+
+```
+$ vela enable analytics --provider plausible
+```
+
+| Variable | Descripción |
+| --- | --- |
+| `PUBLIC_PLAUSIBLE_DOMAIN` | El sitio tal como está registrado en Plausible, p. ej. `example.com`. |
+
+Carga `plausible.io/js/script.js`, que registra por sí solo las navegaciones del lado del cliente. Si alojas Plausible tú mismo, cambia el `src` del script en el componente para que apunte a tu instancia.
+
+#### Google Analytics
+
+```
+$ vela enable analytics --provider google
+```
+
+| Variable | Descripción |
+| --- | --- |
+| `PUBLIC_GA_MEASUREMENT_ID` | El ID de medición, p. ej. `G-XXXXXXXXXX`. |
+
+Carga gtag.js con las vistas de página automáticas desactivadas y envía un evento `page_view` desde `afterNavigate`, de modo que cada cambio de ruta se cuenta exactamente una vez. Hay una función `gtag` en `src/lib/components/analytics/gtag.ts` para eventos personalizados:
+
+```ts
+import { gtag } from '$lib/components/analytics/gtag';
+
+gtag('event', 'sign_up', { method: 'email' });
+```
+
+#### PostHog
+
+```
+$ vela enable analytics --provider posthog
+```
+
+| Variable | Descripción |
+| --- | --- |
+| `PUBLIC_POSTHOG_KEY` | La clave de API del proyecto, p. ej. `phc_...`. |
+| `PUBLIC_POSTHOG_HOST` | El host de ingesta. Por defecto `https://us.i.posthog.com`; usa `https://eu.i.posthog.com` para proyectos en la UE o tu propia instancia. |
+
+Instala `posthog-js` y lo inicializa al montar con los valores por defecto `2025-05-24`, que capturan una vista de página en cada cambio del historial. Importa `posthog` en cualquier parte para eventos personalizados:
+
+```ts
+import posthog from 'posthog-js';
+
+posthog.capture('sign_up');
+```
+
+### Cambiar de proveedor
+
+Ejecuta el comando de nuevo con otro `--provider`. El componente se sobrescribe con la implementación del nuevo proveedor, las nuevas variables se añaden a `.env` y el layout no se toca, ya que `<Analytics />` ya está montado. Elimina tú mismo las variables del proveedor anterior de `.env`.
+
+### Personalización
+
+El componente generado es tuyo para editarlo. Los cambios habituales son condicionarlo a un banner de consentimiento de cookies, omitirlo para administradores autenticados o añadir eventos personalizados con las funciones anteriores.
+<!-- @end -->
