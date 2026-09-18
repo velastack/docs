@@ -29,6 +29,19 @@ export function findScriptOpenEnd(code: string): number {
 	return -1;
 }
 
+/**
+ * Offset just past the closing `---` of the page's frontmatter, or -1.
+ *
+ * Frontmatter only counts at the very top of the file. Searching for the first
+ * two `---` anywhere used to match a table's `| --- | --- |` delimiter row on
+ * pages without frontmatter, so the script block landed inside the first table
+ * and broke it.
+ */
+export function findFrontmatterEnd(code: string): number {
+	const match = code.match(/^---[ \t]*\r?\n(?:[\s\S]*?\r?\n)?---[ \t]*(?=\r?\n|$)/);
+	return match ? match[0].length : -1;
+}
+
 function transformBlocks(code: string): string {
 	let result = '';
 
@@ -84,9 +97,8 @@ ${extraDeclarations.join('\n')}
 		return code.slice(0, scriptOpenEnd) + preamble + code.slice(scriptOpenEnd);
 	}
 
-	const frontmatterEnd = code.indexOf('---', code.indexOf('---') + 3);
-	if (frontmatterEnd !== -1) {
-		const insertPos = frontmatterEnd + 3;
+	const insertPos = findFrontmatterEnd(code);
+	if (insertPos !== -1) {
 		const scriptBlock = `\n\n<script lang="ts">${preamble}</script>\n`;
 		return code.slice(0, insertPos) + scriptBlock + code.slice(insertPos);
 	}
