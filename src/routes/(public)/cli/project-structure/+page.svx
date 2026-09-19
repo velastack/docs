@@ -32,7 +32,7 @@ my-project/
 
 ### Route groups
 
-Vela leans on SvelteKit's route groups to express access. `(public)` is reachable by anyone; `(app)` is created when [auth](/enable/auth) is enabled and requires a signed-in user, with unauthenticated requests redirected to the login page. The [generators](/generate) place new routes in `(app)` when auth is enabled and `(public)` when it isn't, and `--route` overrides that.
+Vela leans on SvelteKit's route groups to express access. `(public)` is reachable by anyone; `(app)` is created when [auth](/enable/auth) is enabled and requires a signed-in user, with unauthenticated requests redirected to the login page. The [generators](/generate) place new routes in `(app)` when auth is enabled and `(public)` when it isn't, and `--route` overrides that. In a project with neither group, they go directly in `src/routes`.
 
 ### Workflows
 
@@ -79,7 +79,7 @@ my-project/
 
 ### Grupos de rutas
 
-Vela se apoya en los grupos de rutas de SvelteKit para expresar el acceso. `(public)` es accesible por cualquiera; `(app)` se crea cuando se habilita la [autenticación](/es/enable/auth) y requiere un usuario con sesión iniciada, redirigiendo las peticiones no autenticadas a la página de inicio de sesión. Los [generadores](/es/generate) colocan las rutas nuevas en `(app)` cuando la autenticación está habilitada y en `(public)` cuando no lo está, y `--route` lo anula.
+Vela se apoya en los grupos de rutas de SvelteKit para expresar el acceso. `(public)` es accesible por cualquiera; `(app)` se crea cuando se habilita la [autenticación](/es/enable/auth) y requiere un usuario con sesión iniciada, redirigiendo las peticiones no autenticadas a la página de inicio de sesión. Los [generadores](/es/generate) colocan las rutas nuevas en `(app)` cuando la autenticación está habilitada y en `(public)` cuando no lo está, y `--route` lo anula. En un proyecto sin ninguno de los dos grupos, van directamente en `src/routes`.
 
 ### Workflows
 

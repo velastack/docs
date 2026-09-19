@@ -86,6 +86,11 @@ export const load = async ({ parent }) => {
 				title: 'Analytics',
 				url: /* @wc-url */ '/enable/analytics',
 				description: 'Web analytics with Plausible, Google Analytics or PostHog.'
+			},
+			{
+				title: 'AI',
+				url: /* @wc-url */ '/enable/ai',
+				description: 'AI chat with the AI SDK through Vercel AI Gateway, OpenAI or Anthropic.'
 			}
 		]
 	};

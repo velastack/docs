@@ -1,5 +1,5 @@
 <!-- @en -->
-The add command is used to add shadcn-svelte components to the application.
+The add command is used to add UI components to the application: shadcn-svelte components and Vela's own.
 
 ### Syntax
 
@@ -15,11 +15,31 @@ $ vela ui add button
 $ vela ui add button card dialog
 ```
 
-Several components can be added in one go. They are installed into `src/lib/components/ui`, as ordinary files you own and can edit.
+Several components can be added in one go. They are installed into `src/lib/components/ui`, as ordinary files you own and can edit. Components that are already there are left alone.
+
+### Options
+
+- `--overwrite` - Replace components that already exist. Local edits to them are lost.
+
+```
+$ vela ui add --overwrite button
+```
+
+Only the named components are replaced; the components they depend on are still added only when missing.
+
+### Vela components
+
+Vela also ships components that shadcn-svelte doesn't have, such as `data-table`, `multiselect` and `geopoint`. They are added by name like any other, along with the components and npm packages they need:
+
+```
+$ vela ui add data-table multiselect
+```
+
+Run [`vela ui list`](/ui/list) to see every component you can add.
 
 The [generators](/generate) add the components they need on their own, so this is for the ones you reach for yourself.
 <!-- @es -->
-El comando add se usa para añadir componentes de shadcn-svelte a la aplicación.
+El comando add se usa para añadir componentes de interfaz a la aplicación: componentes de shadcn-svelte y los propios de Vela.
 
 ### Sintaxis
 
@@ -35,7 +55,27 @@ $ vela ui add button
 $ vela ui add button card dialog
 ```
 
-Se pueden añadir varios componentes de una vez. Se instalan en `src/lib/components/ui`, como archivos corrientes que te pertenecen y puedes editar.
+Se pueden añadir varios componentes de una vez. Se instalan en `src/lib/components/ui`, como archivos corrientes que te pertenecen y puedes editar. Los componentes que ya existen se dejan como están.
+
+### Opciones
+
+- `--overwrite` - Reemplazar los componentes que ya existen. Se pierden los cambios locales que tengan.
+
+```
+$ vela ui add --overwrite button
+```
+
+Solo se reemplazan los componentes indicados; los componentes de los que dependen se siguen añadiendo solo si faltan.
+
+### Componentes de Vela
+
+Vela también incluye componentes que shadcn-svelte no tiene, como `data-table`, `multiselect` y `geopoint`. Se añaden por su nombre como cualquier otro, junto con los componentes y paquetes npm que necesitan:
+
+```
+$ vela ui add data-table multiselect
+```
+
+Ejecuta [`vela ui list`](/es/ui/list) para ver todos los componentes que puedes añadir.
 
 Los [generadores](/es/generate) añaden por su cuenta los componentes que necesitan, así que esto es para los que busques tú mismo.
 <!-- @end -->

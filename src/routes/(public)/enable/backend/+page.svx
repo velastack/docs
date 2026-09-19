@@ -7,11 +7,15 @@ Add the PocketBase backend to a project that doesn't have one — a project scaf
 $ vela enable backend
 ```
 
-This installs `@velastack/pocketbase` and `pocketbase-sveltekit`, then:
+This installs `@velastack/pocketbase`, `pocketbase-sveltekit`, `@velastack/kit` and `@sveltejs/adapter-node`, plus `vitest`, `supertest` and `@types/supertest` for server tests, then:
 
-- Wires up `hooks.server.ts` with the PocketBase middleware
-- Scaffolds the `data/` directory the database runs from
-- Switches the SvelteKit adapter from static to auto
+- Adds the PocketBase handle to `src/hooks.server.ts`, creating the file if there isn't one
+- Scaffolds the `data/` directory the database runs from, with `fixtures/`, `hooks/` and `seeds/` inside
+- Switches the SvelteKit adapter from `@sveltejs/adapter-static` or `@sveltejs/adapter-auto` to `@sveltejs/adapter-node`
+- Appends a PocketBase block to `.gitignore` that ignores the database in `data/` but keeps `fixtures/`, `hooks/` and `seeds/`
+- Writes `test/setup.ts`, which gives each server test PocketBase clients and a fresh test user. An existing `test/setup.ts` is replaced.
+
+An existing `hooks.server.ts` keeps its handles. `handlePocketbase` takes the place of the static template's `handleStatic()`; otherwise it is added last in a `sequence`, so the handles already there run first. Where a file is in a shape Vela can't edit — another adapter, or a `handle` it can't compose — it is left alone and you're shown the lines to change by hand.
 
 Once enabled, [`vela dev`](/dev) starts the database alongside the app and the admin interface is available at `/admin`. Everything else that needs a database — [auth](/enable/auth), [the API](/enable/api), [scaffolds](/generate/scaffold), [seeds](/seeds) and [fixtures](/fixtures) — depends on this.
 
@@ -27,11 +31,15 @@ Añade el backend de PocketBase a un proyecto que no lo tiene — un proyecto ge
 $ vela enable backend
 ```
 
-Esto instala `@velastack/pocketbase` y `pocketbase-sveltekit`, y después:
+Esto instala `@velastack/pocketbase`, `pocketbase-sveltekit`, `@velastack/kit` y `@sveltejs/adapter-node`, además de `vitest`, `supertest` y `@types/supertest` para los tests de servidor, y después:
 
-- Configura `hooks.server.ts` con el middleware de PocketBase
-- Genera el directorio `data/` desde el que se ejecuta la base de datos
-- Cambia el adaptador de SvelteKit de estático a auto
+- Añade el handle de PocketBase a `src/hooks.server.ts`, y crea el archivo si no existe
+- Genera el directorio `data/` desde el que se ejecuta la base de datos, con `fixtures/`, `hooks/` y `seeds/` dentro
+- Cambia el adaptador de SvelteKit de `@sveltejs/adapter-static` o `@sveltejs/adapter-auto` a `@sveltejs/adapter-node`
+- Añade a `.gitignore` un bloque de PocketBase que ignora la base de datos de `data/` pero conserva `fixtures/`, `hooks/` y `seeds/`
+- Escribe `test/setup.ts`, que da a cada test de servidor clientes de PocketBase y un usuario de prueba nuevo. Un `test/setup.ts` existente se reemplaza.
+
+Un `hooks.server.ts` existente conserva sus handles. `handlePocketbase` ocupa el lugar del `handleStatic()` de la plantilla estática; si no lo hay, se añade al final de una `sequence`, así que los handles que ya estaban se ejecutan primero. Si un archivo tiene una forma que Vela no sabe editar — otro adaptador, o un `handle` que no puede componer — se deja tal cual y se te muestran las líneas que hay que cambiar a mano.
 
 Una vez habilitado, [`vela dev`](/es/dev) inicia la base de datos junto a la aplicación y la interfaz de administración está disponible en `/admin`. Todo lo demás que necesita una base de datos — [auth](/es/enable/auth), [la API](/es/enable/api), los [scaffolds](/es/generate/scaffold), los [seeds](/es/seeds) y los [fixtures](/es/fixtures) — depende de esto.
 

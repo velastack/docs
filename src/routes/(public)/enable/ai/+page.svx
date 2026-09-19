@@ -1,0 +1,169 @@
+<!-- @en -->
+Add AI chat to your application with the [AI SDK](https://ai-sdk.dev), through Vercel AI Gateway, OpenAI or Anthropic.
+
+### Syntax
+
+```
+$ vela enable ai [--provider <gateway|openai|anthropic>]
+```
+
+Without `--provider` you're prompted to pick one. Outside a terminal (CI, scripts) the flag is required. You're then asked for the provider's API key, with the input hidden. A key already in your `.env` is kept without asking, and you can leave it blank to add it later.
+
+AI has no dependencies and doesn't need a backend: it works in any SvelteKit project with a server. A project that builds with `@sveltejs/adapter-static` is refused, because a static site has no server to keep the key private or stream the reply. [`vela enable backend`](/enable/backend) moves a static project to `@sveltejs/adapter-node`.
+
+### What you get
+
+- `src/lib/server/ai.ts`, which exports `languageModel()`: the configured model, or `undefined` while the API key is blank. Import it from any server code.
+- A streaming chat endpoint at `src/routes/api/chat/+server.ts`. It validates the conversation, sends it to the model with `streamText` and streams the reply back.
+- A demo chat page at `/ai`, built on the `Chat` class from `@ai-sdk/svelte`, with streaming replies, a Stop button and errors shown inline.
+- A server test for the endpoint in `src/routes/api/chat/server.test.ts`, when the project has the [`vela test:server`](/test/server) harness. Its requests never reach the model, so it passes without an API key.
+- The `ai` and `@ai-sdk/svelte` packages plus the provider's own, and the `button` and `textarea` components.
+- The provider's API key in `.env`.
+
+The endpoint reads the key from `$env/dynamic/private` on every request. While it's blank, the endpoint answers `503` with the name of the variable to set, and the demo page shows that message. Set the same key on each deploy target with [`vela env set`](/env/set).
+
+In a project without shadcn-svelte, the demo page uses plain HTML elements instead. In a project without route groups, it lands directly in `src/routes/ai`.
+
+### Providers
+
+#### Vercel AI Gateway
+
+```
+$ vela enable ai --provider gateway
+```
+
+| Variable | Description |
+| --- | --- |
+| `AI_GATEWAY_API_KEY` | A Vercel AI Gateway API key. |
+
+One key reaches models from every major provider. Model IDs take the form `creator/model`, and the default is `anthropic/claude-sonnet-5`. The gateway provider ships inside the `ai` package, so nothing else is installed.
+
+#### OpenAI
+
+```
+$ vela enable ai --provider openai
+```
+
+| Variable | Description |
+| --- | --- |
+| `OPENAI_API_KEY` | An OpenAI API key, e.g. `sk-...`. |
+
+Installs `@ai-sdk/openai`. The default model is `gpt-5.5`.
+
+#### Anthropic
+
+```
+$ vela enable ai --provider anthropic
+```
+
+| Variable | Description |
+| --- | --- |
+| `ANTHROPIC_API_KEY` | An Anthropic API key, e.g. `sk-ant-...`. |
+
+Installs `@ai-sdk/anthropic`. The default model is `claude-sonnet-5`.
+
+### Who can chat
+
+Every reply is billed to your API key. With [auth](/enable/auth) enabled, the endpoint answers only signed-in users (`401` otherwise) and the demo page sits behind sign-in in the `(app)` group. Without auth, both are public, so put the endpoint behind sign-in or a rate limit before you deploy.
+
+Enabling auth later doesn't change the endpoint. Run `vela enable ai` again to regenerate it with the sign-in check, then delete the old demo page in `src/routes/(public)/ai`.
+
+### Customising
+
+- **Model**: change the model ID in `src/lib/server/ai.ts`.
+- **Instructions**: `INSTRUCTIONS` at the top of the endpoint is sent ahead of every conversation, through the AI SDK's `instructions` option. System messages sent by the browser are refused.
+- **Tools and more**: tools, structured output and the rest of the AI SDK work in the endpoint as usual. See the [AI SDK docs](https://ai-sdk.dev/docs).
+- **Errors**: in development, provider errors such as a bad key or an unknown model are shown in the chat. In production they stay in the server log and the chat shows a generic message.
+
+The demo page is yours to change or delete. The endpoint and `languageModel()` don't depend on it.
+
+### Switching providers
+
+Run the command again with a different `--provider`. `src/lib/server/ai.ts` is replaced, the provider's package is installed and its key is added to `.env`. The endpoint and demo page are written again too, so re-apply any changes you made to them. Remove the previous provider's package and key yourself.
+
+To remove AI entirely, run [`vela disable ai`](/disable/ai).
+<!-- @es -->
+Añade un chat con IA a tu aplicación con el [AI SDK](https://ai-sdk.dev), a través de Vercel AI Gateway, OpenAI o Anthropic.
+
+### Sintaxis
+
+```
+$ vela enable ai [--provider <gateway|openai|anthropic>]
+```
+
+Sin `--provider` se te pedirá que elijas uno. Fuera de una terminal (CI, scripts) el flag es obligatorio. Después se te pedirá la clave de API del proveedor, sin mostrarla en pantalla. Si la clave ya está en tu `.env` se conserva sin preguntar, y puedes dejarla vacía para añadirla más tarde.
+
+La IA no tiene dependencias ni necesita backend: funciona en cualquier proyecto de SvelteKit con servidor. Un proyecto que se compila con `@sveltejs/adapter-static` se rechaza, porque un sitio estático no tiene servidor para mantener la clave en privado ni para transmitir la respuesta. [`vela enable backend`](/es/enable/backend) pasa un proyecto estático a `@sveltejs/adapter-node`.
+
+### Qué obtienes
+
+- `src/lib/server/ai.ts`, que exporta `languageModel()`: el modelo configurado, o `undefined` mientras la clave de API esté vacía. Impórtalo desde cualquier código de servidor.
+- Un endpoint de chat con streaming en `src/routes/api/chat/+server.ts`. Valida la conversación, la envía al modelo con `streamText` y transmite la respuesta de vuelta.
+- Una página de chat de demostración en `/ai`, construida con la clase `Chat` de `@ai-sdk/svelte`, con respuestas en streaming, un botón para detenerlas y los errores mostrados en la propia página.
+- Un test de servidor para el endpoint en `src/routes/api/chat/server.test.ts`, cuando el proyecto tiene el entorno de [`vela test:server`](/es/test/server). Sus peticiones nunca llegan al modelo, así que pasa sin clave de API.
+- Los paquetes `ai` y `@ai-sdk/svelte` más el del proveedor, y los componentes `button` y `textarea`.
+- La clave de API del proveedor en `.env`.
+
+El endpoint lee la clave de `$env/dynamic/private` en cada petición. Mientras esté vacía, el endpoint responde `503` con el nombre de la variable que hay que definir, y la página de demostración muestra ese mensaje. Define la misma clave en cada destino de despliegue con [`vela env set`](/es/env/set).
+
+En un proyecto sin shadcn-svelte, la página de demostración usa elementos HTML simples. En un proyecto sin grupos de rutas, se crea directamente en `src/routes/ai`.
+
+### Proveedores
+
+#### Vercel AI Gateway
+
+```
+$ vela enable ai --provider gateway
+```
+
+| Variable | Descripción |
+| --- | --- |
+| `AI_GATEWAY_API_KEY` | Una clave de API de Vercel AI Gateway. |
+
+Una sola clave da acceso a los modelos de todos los proveedores principales. Los IDs de modelo tienen la forma `creador/modelo`, y el predeterminado es `anthropic/claude-sonnet-5`. El proveedor del gateway viene incluido en el paquete `ai`, así que no se instala nada más.
+
+#### OpenAI
+
+```
+$ vela enable ai --provider openai
+```
+
+| Variable | Descripción |
+| --- | --- |
+| `OPENAI_API_KEY` | Una clave de API de OpenAI, p. ej. `sk-...`. |
+
+Instala `@ai-sdk/openai`. El modelo predeterminado es `gpt-5.5`.
+
+#### Anthropic
+
+```
+$ vela enable ai --provider anthropic
+```
+
+| Variable | Descripción |
+| --- | --- |
+| `ANTHROPIC_API_KEY` | Una clave de API de Anthropic, p. ej. `sk-ant-...`. |
+
+Instala `@ai-sdk/anthropic`. El modelo predeterminado es `claude-sonnet-5`.
+
+### Quién puede usar el chat
+
+Cada respuesta se factura a tu clave de API. Con la [autenticación](/es/enable/auth) habilitada, el endpoint solo responde a usuarios que han iniciado sesión (`401` en caso contrario) y la página de demostración queda tras el inicio de sesión, en el grupo `(app)`. Sin autenticación, ambos son públicos, así que protege el endpoint con inicio de sesión o un límite de peticiones antes de desplegar.
+
+Habilitar la autenticación después no cambia el endpoint. Ejecuta `vela enable ai` de nuevo para regenerarlo con la comprobación de sesión, y después elimina la página de demostración antigua en `src/routes/(public)/ai`.
+
+### Personalización
+
+- **Modelo**: cambia el ID del modelo en `src/lib/server/ai.ts`.
+- **Instrucciones**: `INSTRUCTIONS`, al principio del endpoint, se envía antes de cada conversación mediante la opción `instructions` del AI SDK. Los mensajes de sistema enviados por el navegador se rechazan.
+- **Herramientas y más**: las herramientas, la salida estructurada y el resto del AI SDK funcionan en el endpoint como siempre. Consulta la [documentación del AI SDK](https://ai-sdk.dev/docs).
+- **Errores**: en desarrollo, los errores del proveedor, como una clave incorrecta o un modelo desconocido, se muestran en el chat. En producción se quedan en el log del servidor y el chat muestra un mensaje genérico.
+
+La página de demostración es tuya para cambiarla o eliminarla. El endpoint y `languageModel()` no dependen de ella.
+
+### Cambiar de proveedor
+
+Ejecuta el comando de nuevo con otro `--provider`. `src/lib/server/ai.ts` se reemplaza, se instala el paquete del proveedor y su clave se añade a `.env`. El endpoint y la página de demostración también se vuelven a escribir, así que vuelve a aplicar los cambios que les hayas hecho. Elimina tú mismo el paquete y la clave del proveedor anterior.
+
+Para quitar la IA por completo, ejecuta [`vela disable ai`](/es/disable/ai).
+<!-- @end -->

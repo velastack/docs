@@ -13,6 +13,8 @@ $ vela i18n <command>
 - [`clean`](/i18n/clean) - Clean unused translatable strings
 
 `extract` is the default: `vela i18n` with no subcommand runs it.
+
+The commands run from the project root, the nearest directory with a `package.json`, so they work from anywhere inside the project. In a project without a Wuchale config they stop with `No wuchale config found` and point you to `vela enable i18n`.
 <!-- @es -->
 Utilidades para trabajar con las traducciones, una vez que [`vela enable i18n`](/es/enable/i18n) ha preparado el proyecto. Cada una es un envoltorio de [Wuchale](https://wuchale.dev), ejecutado con el gestor de paquetes del proyecto.
 
@@ -28,4 +30,6 @@ $ vela i18n <command>
 - [`clean`](/es/i18n/clean) - Limpiar las cadenas traducibles sin usar
 
 `extract` es el comando por defecto: `vela i18n` sin subcomando lo ejecuta.
+
+Los comandos se ejecutan desde la raíz del proyecto, el directorio más cercano con un `package.json`, así que funcionan desde cualquier lugar dentro del proyecto. En un proyecto sin configuración de Wuchale se detienen con `No wuchale config found` y te remiten a `vela enable i18n`.
 <!-- @end -->

@@ -197,6 +197,10 @@
 					{
 						title: 'Analytics',
 						url: /* @wc-url */ '/enable/analytics'
+					},
+					{
+						title: 'AI',
+						url: /* @wc-url */ '/enable/ai'
 					}
 				]
 			},
@@ -231,6 +235,14 @@
 					{
 						title: 'Notifications',
 						url: /* @wc-url */ '/disable/notifications'
+					},
+					{
+						title: 'Analytics',
+						url: /* @wc-url */ '/disable/analytics'
+					},
+					{
+						title: 'AI',
+						url: /* @wc-url */ '/disable/ai'
 					},
 					{
 						title: 'S3',
@@ -387,8 +399,20 @@
 						url: /* @wc-url */ '/ui/add'
 					},
 					{
+						title: 'List',
+						url: /* @wc-url */ '/ui/list'
+					},
+					{
+						title: 'Style',
+						url: /* @wc-url */ '/ui/style'
+					},
+					{
 						title: 'Base',
 						url: /* @wc-url */ '/ui/base'
+					},
+					{
+						title: 'Theme',
+						url: /* @wc-url */ '/ui/theme'
 					}
 				]
 			},

@@ -37,6 +37,7 @@ src/lib/index.ts        a $lib placeholder
 components.json         the shadcn-svelte config `vela ui add` reads
 .npmrc                  engine-strict=true
 .ignore                 search ignores for generated files
+vitest.config.ts        the server test project `vela test:server` runs
 ```
 
 Directories are added alongside what you have: `src/lib/components`, `data`, `test` and `static`. Configuration is merged rather than overwritten:
@@ -47,7 +48,10 @@ vite.config.ts
 tsconfig.json
 package.json
 .gitignore
+src/app.d.ts
 ```
+
+Your project's SvelteKit adapter is kept: if `package.json` already lists one, the template's `@sveltejs/adapter-node` isn't added. `.gitignore` gains only the entries it's missing, among them `/data/*` for the local database (with `data/fixtures`, `data/seeds` and `data/hooks` still tracked) and `/backups`.
 
 ### Routes
 
@@ -91,6 +95,7 @@ src/lib/index.ts        un marcador de posición de $lib
 components.json         la configuración de shadcn-svelte que lee `vela ui add`
 .npmrc                  engine-strict=true
 .ignore                 exclusiones de búsqueda para archivos generados
+vitest.config.ts        el proyecto de tests de servidor que ejecuta `vela test:server`
 ```
 
 Los directorios se añaden junto a los que ya tienes: `src/lib/components`, `data`, `test` y `static`. La configuración se fusiona en lugar de sobrescribirse:
@@ -101,7 +106,10 @@ vite.config.ts
 tsconfig.json
 package.json
 .gitignore
+src/app.d.ts
 ```
+
+El adaptador de SvelteKit de tu proyecto se conserva: si `package.json` ya incluye uno, no se añade el `@sveltejs/adapter-node` de la plantilla. `.gitignore` solo recibe las entradas que le faltan, entre ellas `/data/*` para la base de datos local (sin dejar de versionar `data/fixtures`, `data/seeds` y `data/hooks`) y `/backups`.
 
 ### Rutas
 

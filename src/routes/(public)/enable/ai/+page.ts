@@ -1,11 +1,10 @@
 export const load = async ({ parent }) => {
 	await parent();
 	return {
-		pageMetaTags: { title: 'Payments' },
+		pageMetaTags: { title: 'AI' },
 		breadcrumbs: [
 			{ title: 'Enable', url: /* @wc-url */ '/enable' },
-			{ title: 'Payments', url: /* @wc-url */ '/enable/payments' }
-		],
-		badges: ['Pro', 'Depends: workflows']
+			{ title: 'AI', url: /* @wc-url */ '/enable/ai' }
+		]
 	};
 };

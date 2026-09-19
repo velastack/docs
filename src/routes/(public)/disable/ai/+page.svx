@@ -1,0 +1,55 @@
+<!-- @en -->
+Remove AI chat, added by [`vela enable ai`](/enable/ai).
+
+### Syntax
+
+```
+$ vela disable ai
+```
+
+### Options
+
+- `-y, --yes` - Skip the confirmation prompt
+
+### What it removes
+
+- `src/lib/server/ai.ts`, the `/api/chat` endpoint and its server test
+- The `/ai` demo page, whether it is in `(public)` or `(app)`
+- The API key and its `# AI SDK` heading from `.env`
+- The `ai`, `@ai-sdk/svelte`, `@ai-sdk/openai` and `@ai-sdk/anthropic` packages, whichever are installed
+
+It works whichever provider you chose. Directories left empty, such as `src/routes/api/chat`, are removed too.
+
+### What it leaves
+
+- `zod` and the `button` and `textarea` components — other code may use them
+- Code of your own that imports `$lib/server/ai` or the AI SDK, which stops compiling once they are gone
+- The API key on your deploy targets. Remove it with [`vela env unset`](/env/unset).
+<!-- @es -->
+Elimina el chat con IA, añadido por [`vela enable ai`](/es/enable/ai).
+
+### Sintaxis
+
+```
+$ vela disable ai
+```
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+
+### Qué elimina
+
+- `src/lib/server/ai.ts`, el endpoint `/api/chat` y su test de servidor
+- La página de demostración `/ai`, esté en `(public)` o en `(app)`
+- La clave de API y su encabezado `# AI SDK` de `.env`
+- Los paquetes `ai`, `@ai-sdk/svelte`, `@ai-sdk/openai` y `@ai-sdk/anthropic`, los que estén instalados
+
+Funciona sea cual sea el proveedor que elegiste. Los directorios que quedan vacíos, como `src/routes/api/chat`, también se eliminan.
+
+### Qué deja
+
+- `zod` y los componentes `button` y `textarea` — otro código puede usarlos
+- El código tuyo que importe `$lib/server/ai` o el AI SDK, que deja de compilar cuando ya no están
+- La clave de API en tus destinos de despliegue. Elimínala con [`vela env unset`](/es/env/unset).
+<!-- @end -->

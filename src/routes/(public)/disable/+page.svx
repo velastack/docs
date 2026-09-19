@@ -16,6 +16,8 @@ The following features can be disabled:
 - [`content-negotiation`](/disable/content-negotiation) - Disable content negotiation
 - [`i18n`](/disable/i18n) - Disable internationalization
 - [`notifications`](/disable/notifications) - Disable in-app notifications
+- [`analytics`](/disable/analytics) - Disable web analytics
+- [`ai`](/disable/ai) - Disable AI chat
 - [`teams`](/disable/teams) - Disable teams
 - [`payments`](/disable/payments) - Disable payments
 - [`subscriptions`](/disable/subscriptions) - Disable Stripe subscriptions
@@ -26,9 +28,9 @@ The following features can be disabled:
 
 Every feature that changes files prompts before it does so. Pass `-y` or `--yes` to skip that confirmation. `s3` and `smtp` only flip a PocketBase setting, so they take no options.
 
-### What disabling does not do
+### Data
 
-Disabling reverts the code Vela generated. It deliberately stops short of destroying data you may still want: `disable auth` leaves the `users` collection and its records alone, `disable backend` leaves the installed packages in place, and `disable payments` leaves your Stripe dashboard untouched. Each page lists what it leaves behind.
+Disabling reverts the code Vela generated, and some features take their data with them: `disable backend` deletes the local database in `data/`, and features that added collections drop them with every record in them (auth's `oauth_accounts`, API keys, teams, notifications, payments and subscriptions). Everything else is left alone: `disable auth` keeps the `users` collection and its records, the databases on your deploy targets are never touched, and nothing is deleted at Stripe. Each page lists what it removes and what it leaves behind.
 <!-- @es -->
 El comando disable se usa para desactivar funciones habilitadas con el comando enable.
 
@@ -47,6 +49,8 @@ Se pueden desactivar las siguientes funciones:
 - [`content-negotiation`](/es/disable/content-negotiation) - Desactivar la negociación de contenido
 - [`i18n`](/es/disable/i18n) - Desactivar la internacionalización
 - [`notifications`](/es/disable/notifications) - Desactivar las notificaciones dentro de la aplicación
+- [`analytics`](/es/disable/analytics) - Desactivar la analítica web
+- [`ai`](/es/disable/ai) - Desactivar el chat con IA
 - [`teams`](/es/disable/teams) - Desactivar los equipos
 - [`payments`](/es/disable/payments) - Desactivar los pagos
 - [`subscriptions`](/es/disable/subscriptions) - Desactivar las suscripciones de Stripe
@@ -57,7 +61,7 @@ Se pueden desactivar las siguientes funciones:
 
 Cada función que modifica archivos pide confirmación antes de hacerlo. Pasa `-y` o `--yes` para omitirla. `s3` y `smtp` solo cambian un ajuste de PocketBase, así que no aceptan opciones.
 
-### Lo que desactivar no hace
+### Datos
 
-Desactivar revierte el código que Vela generó. Se detiene deliberadamente antes de destruir datos que quizá aún quieras: `disable auth` deja intacta la colección `users` y sus registros, `disable backend` deja instalados los paquetes, y `disable payments` no toca tu panel de Stripe. Cada página indica qué deja atrás.
+Desactivar revierte el código que Vela generó, y algunas funciones se llevan sus datos: `disable backend` elimina la base de datos local de `data/`, y las funciones que añadieron colecciones las eliminan con todos sus registros (`oauth_accounts` de la autenticación, las claves de API, los equipos, las notificaciones, los pagos y las suscripciones). Todo lo demás se conserva: `disable auth` mantiene la colección `users` y sus registros, las bases de datos de tus destinos de despliegue nunca se tocan, y no se elimina nada en Stripe. Cada página indica qué elimina y qué deja atrás.
 <!-- @end -->

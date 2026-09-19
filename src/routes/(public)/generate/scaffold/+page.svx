@@ -34,8 +34,8 @@ The `pets` collection is created in the database and the TypeScript definitions 
 
 ### Options
 
-- `--remote` - Generate a scaffold backed by a remote PocketBase collection
-- `--route <route>` - Place the scaffold at a custom route. Defaults to the pluralized model name under `(app)` when auth is enabled, or `(public)` when it isn't.
+- `--remote` - Generate the create and update forms with SvelteKit remote functions instead of superforms
+- `--route <route>` - Place the scaffold at a custom route. Defaults to the pluralized model name under `(app)` when auth is enabled, or `(public)` when it isn't. A project with neither group gets it directly under `src/routes`.
 - `--ai <description>` - Design the scaffold with AI from a natural-language description
 
 ### Route
@@ -89,8 +89,8 @@ La colección `pets` se crea en la base de datos y las definiciones de TypeScrip
 
 ### Opciones
 
-- `--remote` - Generar un scaffold respaldado por una colección remota de PocketBase
-- `--route <route>` - Colocar el scaffold en una ruta personalizada. Por defecto es el nombre del modelo en plural bajo `(app)` cuando la autenticación está habilitada, o `(public)` cuando no lo está.
+- `--remote` - Generar los formularios de creación y edición con funciones remotas de SvelteKit en lugar de superforms
+- `--route <route>` - Colocar el scaffold en una ruta personalizada. Por defecto es el nombre del modelo en plural bajo `(app)` cuando la autenticación está habilitada, o `(public)` cuando no lo está. En un proyecto sin ninguno de los dos grupos, va directamente en `src/routes`.
 - `--ai <description>` - Diseñar el scaffold con IA a partir de una descripción en lenguaje natural
 
 ### Ruta

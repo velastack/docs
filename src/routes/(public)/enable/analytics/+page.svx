@@ -77,6 +77,8 @@ Run the command again with a different `--provider`. The component is overwritte
 ### Customising
 
 The generated component is yours to edit. Common changes are gating it behind a cookie consent banner, skipping it for signed-in admins, or adding custom events with the helpers above.
+
+To remove analytics entirely, run [`vela disable analytics`](/disable/analytics).
 <!-- @es -->
 Habilita analítica web para tu aplicación con Plausible, Google Analytics o PostHog.
 
@@ -156,4 +158,6 @@ Ejecuta el comando de nuevo con otro `--provider`. El componente se sobrescribe 
 ### Personalización
 
 El componente generado es tuyo para editarlo. Los cambios habituales son condicionarlo a un banner de consentimiento de cookies, omitirlo para administradores autenticados o añadir eventos personalizados con las funciones anteriores.
+
+Para quitar la analítica por completo, ejecuta [`vela disable analytics`](/es/disable/analytics).
 <!-- @end -->

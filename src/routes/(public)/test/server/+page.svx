@@ -23,7 +23,7 @@ A bare positional argument filters which tests run, and any other arguments are 
 
 ### Test files
 
-Server tests match `src/**/*.{test,spec}.{js,ts}` and run in the Vitest project named `server`. Component tests — `*.svelte.test.ts` — are excluded. The generators write a `server.test.ts` next to the routes they create, and a `<name>.server.test.ts` next to each [workflow](/workflows); a workflow test starts a worker in the test process, so the run completes there.
+Server tests match `src/**/*.{test,spec}.{js,ts}` and run in the Vitest project named `server`. Component tests — `*.svelte.test.ts` — are excluded. The generators write a `server.test.ts` next to the routes they create, and a `<name>.server.test.ts` next to each [workflow](/workflows); a workflow test starts a worker in the test process, so the run completes there. [`vela generate form`](/generate/form) and [`vela enable ai`](/enable/ai) only write theirs when the project has `supertest` installed.
 
 ### Test context
 
@@ -69,7 +69,7 @@ Un argumento posicional simple filtra qué pruebas se ejecutan, y cualquier otro
 
 ### Archivos de prueba
 
-Las pruebas de servidor coinciden con `src/**/*.{test,spec}.{js,ts}` y se ejecutan en el proyecto de Vitest llamado `server`. Las pruebas de componentes — `*.svelte.test.ts` — quedan excluidas. Los generadores escriben un `server.test.ts` junto a las rutas que crean, y un `<name>.server.test.ts` junto a cada [workflow](/es/workflows); una prueba de workflow arranca un worker en el proceso de pruebas, así que la ejecución se completa ahí.
+Las pruebas de servidor coinciden con `src/**/*.{test,spec}.{js,ts}` y se ejecutan en el proyecto de Vitest llamado `server`. Las pruebas de componentes — `*.svelte.test.ts` — quedan excluidas. Los generadores escriben un `server.test.ts` junto a las rutas que crean, y un `<name>.server.test.ts` junto a cada [workflow](/es/workflows); una prueba de workflow arranca un worker en el proceso de pruebas, así que la ejecución se completa ahí. [`vela generate form`](/es/generate/form) y [`vela enable ai`](/es/enable/ai) solo escriben la suya cuando el proyecto tiene `supertest` instalado.
 
 ### Contexto de prueba
 

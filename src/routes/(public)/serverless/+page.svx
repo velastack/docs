@@ -17,6 +17,10 @@ A long-running server process can cache data in memory and avoid database querie
 
 With separate database and application hosts, automatic migrations are not supported. You'll need to manually run migrations after each deploy.
 
+#### A platform adapter
+
+Each platform needs its own SvelteKit adapter in place of `@sveltejs/adapter-node`, and [`vela deploy`](/deploy) won't deploy a project built with one.
+
 ### PocketBase hosting
 
 We recommend PocketHost as a hosted solution for PocketBase. Set up a database instance and then configure the `POCKETBASE_URL` environment variable in your project.
@@ -38,6 +42,10 @@ Un proceso de servidor que se ejecuta durante mucho tiempo puede cachear datos e
 #### Migraciones automáticas
 
 Con hosts de base de datos y aplicaciones separados, las migraciones automáticas no son soportadas. Necesitarás ejecutar migraciones manualmente después de cada despliegue.
+
+#### Un adaptador de la plataforma
+
+Cada plataforma necesita su propio adaptador de SvelteKit en lugar de `@sveltejs/adapter-node`, y [`vela deploy`](/es/deploy) no despliega un proyecto compilado con uno de ellos.
 
 ### Alojamiento de PocketBase
 

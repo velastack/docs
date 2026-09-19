@@ -15,13 +15,31 @@ $ vela build
 
 The adapter is configured in `vite.config.ts` with a `200.html` fallback, so client-side routing works on hosts that serve a single fallback document.
 
+### Deploying
+
+Upload the `build` directory to any static host. [`vela deploy`](/deploy) won't deploy it: it runs the app as a Node server, and stops on a project built with `@sveltejs/adapter-static`. To serve the site from your own server instead, switch the adapter to `@sveltejs/adapter-node`. No backend is needed for that.
+
 ### Converting an existing project
 
-A project created with the default template can drop its backend, which removes the database, the migrations and the PocketBase middleware:
+A project created with the default template can drop its backend, which removes the database, the migrations and the PocketBase middleware, and switches the adapter to `@sveltejs/adapter-static`:
 
 ```
 $ vela disable backend
 ```
+
+[`vela enable backend`](/enable/backend) adds it back.
+
+### Commands without a backend
+
+Commands that need the database stop and say so. These work without one:
+
+- `vela dev`, `vela build` and `vela preview`
+- `vela ui`, `vela legal`, `vela routes` and `vela i18n`
+- `vela generate schema` and `vela generate form`, and `vela destroy` for both
+- `vela enable` for `ai`, `analytics`, `backend`, `blog`, `cms`, `content-negotiation` and `i18n`
+- `vela disable` for `ai`, `analytics`, `content-negotiation` and `i18n`
+- `vela cms`, and the account commands: `signup`, `login`, `logout` and `whoami`
+- `vela deploy`, once the project uses adapter-node, and the server commands, such as `provision`, `env`, `status` and `logs`
 
 ### Limitations
 
@@ -53,13 +71,31 @@ $ vela build
 
 El adaptador se configura en `vite.config.ts` con un fallback `200.html`, de modo que el enrutado en el cliente funciona en alojamientos que sirven un único documento de respaldo.
 
+### Desplegar
+
+Sube el directorio `build` a cualquier alojamiento estático. [`vela deploy`](/es/deploy) no lo despliega: ejecuta la aplicación como un servidor Node, y se detiene en un proyecto compilado con `@sveltejs/adapter-static`. Para servir el sitio desde tu propio servidor, cambia el adaptador a `@sveltejs/adapter-node`. Para eso no hace falta backend.
+
 ### Convertir un proyecto existente
 
-Un proyecto creado con la plantilla por defecto puede prescindir de su backend, lo que elimina la base de datos, las migraciones y el middleware de PocketBase:
+Un proyecto creado con la plantilla por defecto puede prescindir de su backend, lo que elimina la base de datos, las migraciones y el middleware de PocketBase, y cambia el adaptador a `@sveltejs/adapter-static`:
 
 ```
 $ vela disable backend
 ```
+
+[`vela enable backend`](/es/enable/backend) lo vuelve a añadir.
+
+### Comandos sin backend
+
+Los comandos que necesitan la base de datos se detienen y lo indican. Estos funcionan sin ella:
+
+- `vela dev`, `vela build` y `vela preview`
+- `vela ui`, `vela legal`, `vela routes` y `vela i18n`
+- `vela generate schema` y `vela generate form`, y `vela destroy` para ambos
+- `vela enable` para `ai`, `analytics`, `backend`, `blog`, `cms`, `content-negotiation` e `i18n`
+- `vela disable` para `ai`, `analytics`, `content-negotiation` e `i18n`
+- `vela cms`, y los comandos de cuenta: `signup`, `login`, `logout` y `whoami`
+- `vela deploy`, una vez que el proyecto usa adapter-node, y los comandos de servidor, como `provision`, `env`, `status` y `logs`
 
 ### Limitaciones
 

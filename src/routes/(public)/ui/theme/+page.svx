@@ -1,0 +1,85 @@
+<!-- @en -->
+The theme command changes the accent color of the application, keeping the base palette.
+
+### Syntax
+
+```
+$ vela ui theme <accent>
+```
+
+```
+$ vela ui theme blue
+```
+
+The accent sets the primary color, the focus ring and the chart colors. Like [`base`](/ui/base), it rewrites the color tokens in `src/app.css`.
+
+Running `vela ui base` afterwards resets the accent, so pick the base color first.
+
+### Colors
+
+Vela supports the following accents:
+
+```
+amber
+blue
+cyan
+emerald
+fuchsia
+green
+indigo
+lime
+orange
+pink
+purple
+red
+rose
+sky
+teal
+violet
+yellow
+```
+
+The base colors are accepted as well. The list comes from the project's shadcn-svelte, so a newer version may offer more.
+<!-- @es -->
+El comando theme cambia el color de acento de la aplicación, manteniendo la paleta base.
+
+### Sintaxis
+
+```
+$ vela ui theme <accent>
+```
+
+```
+$ vela ui theme blue
+```
+
+El acento define el color primario, el anillo de foco y los colores de los gráficos. Igual que [`base`](/es/ui/base), reescribe los tokens de color de `src/app.css`.
+
+Ejecutar `vela ui base` después restablece el acento, así que elige primero el color base.
+
+### Colores
+
+Vela admite los siguientes acentos:
+
+```
+amber
+blue
+cyan
+emerald
+fuchsia
+green
+indigo
+lime
+orange
+pink
+purple
+red
+rose
+sky
+teal
+violet
+yellow
+```
+
+También se aceptan los colores base. La lista viene del shadcn-svelte del proyecto, así que una versión más reciente puede ofrecer más.
+<!-- @end -->

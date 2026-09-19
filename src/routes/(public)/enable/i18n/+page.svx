@@ -11,6 +11,24 @@ This sets up [Wuchale](https://wuchale.dev) with locale-aware routing. Translata
 
 Has no dependencies — it works with or without a backend, and composes with [content negotiation](/enable/content-negotiation)'s reroute hook.
 
+### What you get
+
+- `wuchale.config.js`, with the locales `en` and `es`. English is the source locale and keeps the unprefixed URLs; Spanish is served under `/es`.
+- A `reroute` hook in `src/hooks.ts` that maps localized URLs back to their routes, and the URL helpers it uses in `src/lib/url.ts`.
+- A language select in `src/lib/components/language-select.svelte`, added to the root layout.
+- A handle in `src/hooks.server.ts` that loads the catalogs on the server and renders each request in its locale. The file is created if the project has none; otherwise the handle is composed with the existing `handle`.
+- A `load` in `src/routes/+layout.ts` that loads the locale's catalog in the browser.
+- `lang="%sveltekit.lang%"` on the `<html>` tag in `src/app.html`, which the handle fills in with the locale.
+- The Wuchale plugin in the Vite config, and a `$locales` alias for `src/locales`, where the catalogs live. The alias goes in `svelte.config.js`, or in the `sveltekit()` options if the Vite config sets them there.
+- The `wuchale` and `@wuchale/svelte` packages, and the `select` component in a project with shadcn-svelte.
+- A `.gitignore` entry for `src/locales/.wuchale`.
+
+In a project with shadcn-svelte, the language select is a shadcn `Select`, added as the last item of the navbar in the root layout. Without shadcn-svelte, as in a project from `sv create`, it's a native `<select>` placed above `{@render children()}` in `src/routes/+layout.svelte`.
+
+If `src/routes/+page.svelte` is still the `sv create` welcome page, the command also writes its Spanish translation to `src/locales/es.po`, so switching language visibly changes the page. Any other copy is yours to translate.
+
+A file the command can't safely edit is left as it is, and the change to make is printed instead. The common case is a `src/routes/+layout.ts` that already has a `load`, as the `static` template's does: merge the printed loader into it by hand.
+
 ### Working with translations
 
 Once enabled, the [`vela i18n`](/i18n) commands manage the catalogs:
@@ -22,7 +40,7 @@ Once enabled, the [`vela i18n`](/i18n) commands manage the catalogs:
 
 ### Reverting
 
-[`vela disable i18n`](/disable/i18n) removes the scaffolding, but `vite.config.ts`, `svelte.config.js`, `hooks.server.ts`, `app.html` and `+layout.ts` have to be reverted by hand.
+[`vela disable i18n`](/disable/i18n) removes the generated files and undoes the changes above. Your catalogs in `src/locales` are kept.
 <!-- @es -->
 Habilita la internacionalización en el proyecto de SvelteKit.
 
@@ -36,6 +54,24 @@ Esto configura [Wuchale](https://wuchale.dev) con enrutado según el idioma. Las
 
 No tiene dependencias — funciona con o sin backend, y se combina con el hook reroute de la [negociación de contenido](/es/enable/content-negotiation).
 
+### Qué obtienes
+
+- `wuchale.config.js`, con los idiomas `en` y `es`. El inglés es el idioma de origen y conserva las URLs sin prefijo; el español se sirve bajo `/es`.
+- Un hook `reroute` en `src/hooks.ts` que lleva las URLs localizadas a sus rutas, y las funciones de URL que usa en `src/lib/url.ts`.
+- Un selector de idioma en `src/lib/components/language-select.svelte`, añadido al layout raíz.
+- Un handle en `src/hooks.server.ts` que carga los catálogos en el servidor y renderiza cada petición en su idioma. El archivo se crea si el proyecto no tiene uno; si no, el handle se combina con el `handle` existente.
+- Un `load` en `src/routes/+layout.ts` que carga el catálogo del idioma en el navegador.
+- `lang="%sveltekit.lang%"` en la etiqueta `<html>` de `src/app.html`, que el handle rellena con el idioma.
+- El plugin de Wuchale en la configuración de Vite, y un alias `$locales` para `src/locales`, donde viven los catálogos. El alias va en `svelte.config.js`, o en las opciones de `sveltekit()` si la configuración de Vite las define ahí.
+- Los paquetes `wuchale` y `@wuchale/svelte`, y el componente `select` en un proyecto con shadcn-svelte.
+- Una entrada en `.gitignore` para `src/locales/.wuchale`.
+
+En un proyecto con shadcn-svelte, el selector de idioma es un `Select` de shadcn, añadido como último elemento de la barra de navegación del layout raíz. Sin shadcn-svelte, como en un proyecto creado con `sv create`, es un `<select>` nativo colocado encima de `{@render children()}` en `src/routes/+layout.svelte`.
+
+Si `src/routes/+page.svelte` sigue siendo la página de bienvenida de `sv create`, el comando también escribe su traducción al español en `src/locales/es.po`, así que cambiar de idioma cambia la página de forma visible. El resto de los textos te toca traducirlos a ti.
+
+Un archivo que el comando no puede editar con seguridad se deja como está, y en su lugar se muestra el cambio que hay que hacer. El caso habitual es un `src/routes/+layout.ts` que ya tiene un `load`, como el de la plantilla `static`: integra en él a mano el cargador que se muestra.
+
 ### Trabajar con las traducciones
 
 Una vez habilitado, los comandos [`vela i18n`](/es/i18n) gestionan los catálogos:
@@ -47,5 +83,5 @@ Una vez habilitado, los comandos [`vela i18n`](/es/i18n) gestionan los catálogo
 
 ### Revertir
 
-[`vela disable i18n`](/es/disable/i18n) elimina el andamiaje, pero `vite.config.ts`, `svelte.config.js`, `hooks.server.ts`, `app.html` y `+layout.ts` hay que revertirlos a mano.
+[`vela disable i18n`](/es/disable/i18n) elimina los archivos generados y deshace los cambios anteriores. Tus catálogos en `src/locales` se conservan.
 <!-- @end -->

@@ -1,0 +1,73 @@
+<!-- @en -->
+The style command switches the application to another shadcn-svelte style, which changes the look of its components.
+
+### Syntax
+
+```
+$ vela ui style <style>
+```
+
+```
+$ vela ui style maia
+```
+
+Before anything is written, Vela reads the new style's registry, lists the installed components it will re-add from there, and asks for confirmation. Those components are replaced with the new style's version, so **local edits to their files are lost**; `git diff src/lib/components/ui` shows what was replaced. Vela's own components, and any component the registry doesn't offer, are left alone.
+
+The style is recorded in `components.json` and the style's font is applied: its package is installed and imported in `src/app.css`. The previous font's import is kept, and the command points it out so you can remove it. Colors are not changed; use [`base`](/ui/base) and [`theme`](/ui/theme) for those.
+
+### Options
+
+- `-y, --yes` - Skip the confirmation prompt
+- `--no-font` - Keep the current font instead of applying the style's
+
+### Styles
+
+```
+nova
+vega
+maia
+lyra
+mira
+luma
+sera
+rhea
+```
+
+New applications start on `vega`. The list comes from the project's shadcn-svelte, so a newer version may offer more.
+<!-- @es -->
+El comando style cambia la aplicación a otro estilo de shadcn-svelte, lo que cambia el aspecto de sus componentes.
+
+### Sintaxis
+
+```
+$ vela ui style <style>
+```
+
+```
+$ vela ui style maia
+```
+
+Antes de escribir nada, Vela lee el registro del nuevo estilo, lista los componentes instalados que volverá a añadir desde él y pide confirmación. Esos componentes se reemplazan por la versión del nuevo estilo, así que **se pierden los cambios locales en sus archivos**; `git diff src/lib/components/ui` muestra lo que se reemplazó. Los componentes propios de Vela, y cualquier componente que el registro no ofrezca, se dejan como están.
+
+El estilo se guarda en `components.json` y se aplica la fuente del estilo: su paquete se instala y se importa en `src/app.css`. La importación de la fuente anterior se mantiene, y el comando la señala para que puedas quitarla. Los colores no cambian; para eso están [`base`](/es/ui/base) y [`theme`](/es/ui/theme).
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+- `--no-font` - Mantener la fuente actual en lugar de aplicar la del estilo
+
+### Estilos
+
+```
+nova
+vega
+maia
+lyra
+mira
+luma
+sera
+rhea
+```
+
+Las aplicaciones nuevas empiezan con `vega`. La lista viene del shadcn-svelte del proyecto, así que una versión más reciente puede ofrecer más.
+<!-- @end -->

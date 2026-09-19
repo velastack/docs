@@ -7,7 +7,7 @@ Start the development server.
 $ vela dev
 ```
 
-This will start the development server and the database. The server will be available at `http://localhost:5173` and the admin interface at `http://localhost:5173/admin`.
+This will start the development server and the database. The server will be available at `http://localhost:5173` and the admin interface at `http://localhost:5173/admin`. In a project without a backend, such as one from the [static template](/static), only the development server starts.
 
 ### Options
 
@@ -17,10 +17,13 @@ This will start the development server and the database. The server will be avai
 - `--strictPort` - Exit if the port is already in use instead of taking the next one
 - `--cors` - Enable CORS
 - `--force` - Re-bundle dependencies, ignoring the optimizer cache
+- `--all-sql` - Also print the auth lookup PocketBase runs on every request
 
 ```
 $ vela dev --open --port 3000
 ```
+
+PocketBase prints every SQL query it runs. `vela dev` leaves out one of them: the `_superusers` lookup that verifies the superuser token on each request, which would otherwise bury everything else. Pass `--all-sql` to see it too.
 <!-- @es -->
 Inicia el servidor de desarrollo.
 
@@ -30,7 +33,7 @@ Inicia el servidor de desarrollo.
 $ vela dev
 ```
 
-Esto iniciará el servidor de desarrollo y la base de datos. El servidor estará disponible en `http://localhost:5173` y la interfaz de administración en `http://localhost:5173/admin`.
+Esto iniciará el servidor de desarrollo y la base de datos. El servidor estará disponible en `http://localhost:5173` y la interfaz de administración en `http://localhost:5173/admin`. En un proyecto sin backend, como uno creado con la [plantilla estática](/es/static), solo se inicia el servidor de desarrollo.
 
 ### Opciones
 
@@ -40,8 +43,11 @@ Esto iniciará el servidor de desarrollo y la base de datos. El servidor estará
 - `--strictPort` - Salir si el puerto ya está en uso en lugar de tomar el siguiente
 - `--cors` - Habilitar CORS
 - `--force` - Reempaquetar las dependencias, ignorando la caché del optimizador
+- `--all-sql` - Mostrar también la consulta de autenticación que PocketBase ejecuta en cada petición
 
 ```
 $ vela dev --open --port 3000
 ```
+
+PocketBase imprime cada consulta SQL que ejecuta. `vela dev` omite una: la consulta a `_superusers` que verifica el token de superusuario en cada petición, que de lo contrario taparía todo lo demás. Pasa `--all-sql` para verla también.
 <!-- @end -->

@@ -1,0 +1,55 @@
+<!-- @en -->
+Remove web analytics, added by [`vela enable analytics`](/enable/analytics).
+
+### Syntax
+
+```
+$ vela disable analytics
+```
+
+### Options
+
+- `-y, --yes` - Skip the confirmation prompt
+
+### What it removes
+
+- The analytics component in `src/lib/components/analytics/`, including the `gtag` helper for Google Analytics
+- `<Analytics />` and its import from `src/routes/+layout.svelte`
+- The provider's `PUBLIC_*` variables and their heading from `.env`
+- The `posthog-js` package, if it is installed
+
+It works whichever provider you chose, and on static sites as well.
+
+### What it leaves
+
+- Code of your own that imports the component, `gtag` or `posthog-js`, which stops compiling once they are gone
+- The variables on your deploy targets. Remove them with [`vela env unset`](/env/unset).
+- Your data at the analytics provider — nothing is deleted there
+<!-- @es -->
+Elimina la analítica web, añadida por [`vela enable analytics`](/es/enable/analytics).
+
+### Sintaxis
+
+```
+$ vela disable analytics
+```
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+
+### Qué elimina
+
+- El componente de analítica en `src/lib/components/analytics/`, incluida la función `gtag` de Google Analytics
+- `<Analytics />` y su importación de `src/routes/+layout.svelte`
+- Las variables `PUBLIC_*` del proveedor y su encabezado de `.env`
+- El paquete `posthog-js`, si está instalado
+
+Funciona sea cual sea el proveedor que elegiste, y también en sitios estáticos.
+
+### Qué deja
+
+- El código tuyo que importe el componente, `gtag` o `posthog-js`, que deja de compilar cuando ya no están
+- Las variables en tus destinos de despliegue. Elimínalas con [`vela env unset`](/es/env/unset).
+- Tus datos en el proveedor de analítica — allí no se elimina nada
+<!-- @end -->

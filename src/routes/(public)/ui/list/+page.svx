@@ -1,0 +1,45 @@
+<!-- @en -->
+The list command shows the UI components in the application and the ones that can be added.
+
+### Syntax
+
+```
+$ vela ui list
+```
+
+The output has three sections:
+
+- **Installed** - the components in `src/lib/components/ui`
+- **Vela components** - Vela's own components, such as `data-table` and `multiselect`, marked when already installed
+- **shadcn-svelte** - the components the registry offers for the project's style
+
+Anything in the last two can be added with [`vela ui add`](/ui/add). The registry is fetched over the network; when it can't be reached, its section is left out with a warning.
+
+### Options
+
+- `--json` - Print the result as JSON
+
+The JSON lists every registry item with its type, including the blocks and hooks the default output leaves out.
+<!-- @es -->
+El comando list muestra los componentes de interfaz de la aplicación y los que se pueden añadir.
+
+### Sintaxis
+
+```
+$ vela ui list
+```
+
+La salida tiene tres secciones:
+
+- **Installed** - los componentes de `src/lib/components/ui`
+- **Vela components** - los componentes propios de Vela, como `data-table` y `multiselect`, marcados si ya están instalados
+- **shadcn-svelte** - los componentes que ofrece el registro para el estilo del proyecto
+
+Cualquier componente de las dos últimas se puede añadir con [`vela ui add`](/es/ui/add). El registro se descarga por la red; si no se puede acceder a él, su sección se omite con un aviso.
+
+### Opciones
+
+- `--json` - Imprimir el resultado como JSON
+
+El JSON incluye cada elemento del registro con su tipo, también los bloques y hooks que la salida normal omite.
+<!-- @end -->

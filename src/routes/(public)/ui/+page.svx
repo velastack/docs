@@ -1,5 +1,5 @@
 <!-- @en -->
-Vela uses shadcn-svelte for its UI components with no modifications. The add command is a wrapper around the shadcn-svelte add command. All components are installed to the `src/lib/components/ui` directory.
+Vela builds its interface with shadcn-svelte components, plus a few of its own that shadcn-svelte doesn't provide, such as `data-table`, `multiselect` and `geopoint`. All components are installed to the `src/lib/components/ui` directory, as ordinary files you own and can edit.
 
 ### Syntax
 
@@ -8,11 +8,14 @@ $ vela ui <command>
 ```
 
 - [`add`](/ui/add) - Add components to the application
+- [`list`](/ui/list) - List installed and available components
+- [`style`](/ui/style) - Switch the shadcn-svelte style
 - [`base`](/ui/base) - Change the base color
+- [`theme`](/ui/theme) - Change the accent color
 
-The shadcn-svelte configuration lives in `components.json` at the project root.
+The shadcn-svelte configuration lives in `components.json` at the project root. `style`, `base` and `theme` use the project's own shadcn-svelte, which must be version 1.6 or newer.
 <!-- @es -->
-Vela usa shadcn-svelte para sus componentes de interfaz sin modificaciones. El comando add es un envoltorio del comando add de shadcn-svelte. Todos los componentes se instalan en el directorio `src/lib/components/ui`.
+Vela construye su interfaz con componentes de shadcn-svelte, más algunos propios que shadcn-svelte no ofrece, como `data-table`, `multiselect` y `geopoint`. Todos los componentes se instalan en el directorio `src/lib/components/ui`, como archivos corrientes que te pertenecen y puedes editar.
 
 ### Sintaxis
 
@@ -21,7 +24,10 @@ $ vela ui <command>
 ```
 
 - [`add`](/es/ui/add) - Añadir componentes a la aplicación
+- [`list`](/es/ui/list) - Listar los componentes instalados y disponibles
+- [`style`](/es/ui/style) - Cambiar el estilo de shadcn-svelte
 - [`base`](/es/ui/base) - Cambiar el color base
+- [`theme`](/es/ui/theme) - Cambiar el color de acento
 
-La configuración de shadcn-svelte vive en `components.json`, en la raíz del proyecto.
+La configuración de shadcn-svelte vive en `components.json`, en la raíz del proyecto. `style`, `base` y `theme` usan el shadcn-svelte del propio proyecto, que debe ser la versión 1.6 o posterior.
 <!-- @end -->

@@ -1,6 +1,21 @@
 <!-- @en -->
 Deploy your application to Netlify. You'll need a hosted database backend (we recommend PocketHost) and configured Netlify environment variables.
 
+New projects build with `@sveltejs/adapter-node`, which is what [`vela deploy`](/deploy) runs. Switch to Netlify's adapter first:
+
+```
+$ npm uninstall @sveltejs/adapter-node
+$ npm install -D @sveltejs/adapter-netlify
+```
+
+Then import the adapter from `@sveltejs/adapter-netlify` in `vite.config.ts`:
+
+```ts
+import adapter from '@sveltejs/adapter-netlify';
+```
+
+Set the environment variables and deploy:
+
 ```
 $ netlify env:set POCKETBASE_URL
 $ netlify env:set POCKETBASE_SUPERUSER_EMAIL
@@ -9,6 +24,21 @@ $ netlify deploy
 ```
 <!-- @es -->
 Despliega tu aplicación en Netlify. Necesitarás un backend de base de datos alojada (recomendamos PocketHost) y variables de entorno de Netlify configuradas.
+
+Los proyectos nuevos se compilan con `@sveltejs/adapter-node`, que es lo que ejecuta [`vela deploy`](/es/deploy). Cambia primero al adaptador de Netlify:
+
+```
+$ npm uninstall @sveltejs/adapter-node
+$ npm install -D @sveltejs/adapter-netlify
+```
+
+Después importa el adaptador desde `@sveltejs/adapter-netlify` en `vite.config.ts`:
+
+```ts
+import adapter from '@sveltejs/adapter-netlify';
+```
+
+Configura las variables de entorno y despliega:
 
 ```
 $ netlify env:set POCKETBASE_URL

@@ -207,6 +207,7 @@ msgstr "Destruir"
 #: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/ai/+page.ts
 #: src/routes/(public)/enable/analytics/+page.ts
 #: src/routes/(public)/enable/api-keys/+page.ts
 #: src/routes/(public)/enable/api/+page.ts
@@ -289,6 +290,8 @@ msgstr "Suscripciones"
 #: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/disable/+page.ts
 #: src/routes/(public)/disable/+page.ts
+#: src/routes/(public)/disable/ai/+page.ts
+#: src/routes/(public)/disable/analytics/+page.ts
 #: src/routes/(public)/disable/api-keys/+page.ts
 #: src/routes/(public)/disable/api/+page.ts
 #: src/routes/(public)/disable/auth/+page.ts
@@ -837,11 +840,14 @@ msgstr "Entorno"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/backup/+page.ts
 #: src/routes/(public)/backup/list/+page.ts
 #: src/routes/(public)/backup/list/+page.ts
 #: src/routes/(public)/env/list/+page.ts
 #: src/routes/(public)/env/list/+page.ts
+#: src/routes/(public)/ui/list/+page.ts
+#: src/routes/(public)/ui/list/+page.ts
 #: src/routes/(public)/workflows/+page.ts
 #: src/routes/(public)/workflows/list/+page.ts
 #: src/routes/(public)/workflows/list/+page.ts
@@ -1088,6 +1094,9 @@ msgid "Workflow"
 msgstr "Workflow"
 
 #: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/disable/analytics/+page.ts
+#: src/routes/(public)/disable/analytics/+page.ts
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/analytics/+page.ts
 #: src/routes/(public)/enable/analytics/+page.ts
@@ -1097,3 +1106,24 @@ msgstr "Analítica"
 #: src/routes/(public)/enable/+page.ts
 msgid "Web analytics with Plausible, Google Analytics or PostHog."
 msgstr "Analítica web con Plausible, Google Analytics o PostHog."
+
+#: src/routes/(public)/enable/+page.ts
+msgid "AI chat with the AI SDK through Vercel AI Gateway, OpenAI or Anthropic."
+msgstr "Chat con IA mediante el AI SDK, a través de Vercel AI Gateway, OpenAI o Anthropic."
+
+#: src/routes/(public)/enable/payments/+page.ts
+#: src/routes/(public)/enable/subscriptions/+page.ts
+msgid "Depends: workflows"
+msgstr "Depende de: workflows"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/ui/style/+page.ts
+#: src/routes/(public)/ui/style/+page.ts
+msgid "Style"
+msgstr "Estilo"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/ui/theme/+page.ts
+#: src/routes/(public)/ui/theme/+page.ts
+msgid "Theme"
+msgstr "Tema"

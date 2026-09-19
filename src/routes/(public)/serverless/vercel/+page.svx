@@ -1,6 +1,21 @@
 <!-- @en -->
 Deploy your application to Vercel. You'll need a hosted database backend (we recommend PocketHost) and configured Vercel environment variables.
 
+New projects build with `@sveltejs/adapter-node`, which is what [`vela deploy`](/deploy) runs. Switch to Vercel's adapter first:
+
+```
+$ npm uninstall @sveltejs/adapter-node
+$ npm install -D @sveltejs/adapter-vercel
+```
+
+Then import the adapter from `@sveltejs/adapter-vercel` in `vite.config.ts`:
+
+```ts
+import adapter from '@sveltejs/adapter-vercel';
+```
+
+Set the environment variables and deploy:
+
 ```
 $ vercel env add POCKETBASE_URL
 $ vercel env add POCKETBASE_SUPERUSER_EMAIL
@@ -9,6 +24,21 @@ $ vercel deploy
 ```
 <!-- @es -->
 Despliega tu aplicación en Vercel. Necesitarás un backend de base de datos alojada (recomendamos PocketHost) y variables de entorno de Vercel configuradas.
+
+Los proyectos nuevos se compilan con `@sveltejs/adapter-node`, que es lo que ejecuta [`vela deploy`](/es/deploy). Cambia primero al adaptador de Vercel:
+
+```
+$ npm uninstall @sveltejs/adapter-node
+$ npm install -D @sveltejs/adapter-vercel
+```
+
+Después importa el adaptador desde `@sveltejs/adapter-vercel` en `vite.config.ts`:
+
+```ts
+import adapter from '@sveltejs/adapter-vercel';
+```
+
+Configura las variables de entorno y despliega:
 
 ```
 $ vercel env add POCKETBASE_URL

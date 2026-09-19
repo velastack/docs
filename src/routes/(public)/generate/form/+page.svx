@@ -24,12 +24,15 @@ src/routes/(public)/contact/server.test.ts
 src/lib/schemas/contact.ts
 ```
 
-Any shadcn-svelte components the form needs are installed automatically. A [server test](/test/server) is generated alongside the form.
+In a project with shadcn-svelte, any components the form needs are installed automatically. `sveltekit-superforms` and `zod` are installed too if the project doesn't have them. The [server test](/test/server) is only written when the project has the `vela test:server` harness (`supertest` installed).
+
+Success is shown as a flash message when the project has `sveltekit-flash-message`. Without it, the action returns the message with superforms' `message()` instead.
 
 ### Options
 
-- `--remote` - Generate a form backed by a remote PocketBase collection
-- `--route <route>` - Place the form at a custom route. Defaults to the model name under `(app)` when auth is enabled, or `(public)` when it isn't.
+- `--remote` - Generate the form with SvelteKit remote functions instead of sveltekit-superforms
+- `--route <route>` - Place the form at a custom route. Defaults to the model name under `(app)` when auth is enabled, or `(public)` when it isn't. A project with neither group gets it directly under `src/routes`.
+- `--ui <shadcn|plain>` - Generate shadcn-svelte components or plain HTML elements. Defaults to `shadcn` when the project has shadcn-svelte, `plain` otherwise.
 - `--ai <description>` - Design the form with AI from a natural-language description
 
 ### Route
@@ -50,6 +53,43 @@ src/lib/schemas/project.ts
 ```
 
 Keep the route you used — [`vela destroy form`](/destroy/form) needs the same `--route` to find the files again.
+
+### Plain HTML
+
+`--ui` defaults to `shadcn` when the project has a `components.json` and the `shadcn-svelte` or `bits-ui` package. Otherwise the form uses plain HTML elements with no classes, and no components are installed. `--ui plain` does the same in a project that has shadcn-svelte; `--ui shadcn` in a project without it is an error — run [`vela bless`](/bless) to set it up.
+
+In a project from `sv create`, which has no route groups and no test harness:
+
+```
+$ vela generate form contact name:text! email:email! message:editor
+```
+
+Creates:
+
+```
+src/routes/contact/+page.svelte
+src/routes/contact/+page.server.ts
+src/lib/schemas/contact.ts
+```
+
+Each field's wrapper has a `data-field` attribute with the field name, and `data-invalid` while the field has errors. Error messages have `data-error`. Use these to style every generated form from one stylesheet. Without `sveltekit-flash-message`, the success message is shown above the form.
+
+### Remote functions
+
+`--remote` generates the form with SvelteKit remote functions: a `form.remote.ts` takes the place of `+page.server.ts`, and remote functions are turned on in your SvelteKit config. `--route` and `--ui` work the same way.
+
+```
+$ vela generate form --remote contact name:text! email:email! message:editor
+```
+
+Creates:
+
+```
+src/routes/(public)/contact/+page.svelte
+src/routes/(public)/contact/form.remote.ts
+src/routes/(public)/contact/server.test.ts
+src/lib/schemas/contact.ts
+```
 
 ### Examples
 
@@ -94,12 +134,15 @@ src/routes/(public)/contact/server.test.ts
 src/lib/schemas/contact.ts
 ```
 
-Los componentes de shadcn-svelte que el formulario necesite se instalan automáticamente. Junto al formulario se genera una [prueba de servidor](/es/test/server).
+En un proyecto con shadcn-svelte, los componentes que el formulario necesite se instalan automáticamente. `sveltekit-superforms` y `zod` también se instalan si el proyecto no los tiene. La [prueba de servidor](/es/test/server) solo se escribe cuando el proyecto tiene el entorno de `vela test:server` (`supertest` instalado).
+
+El éxito se muestra como un mensaje flash cuando el proyecto tiene `sveltekit-flash-message`. Sin él, la acción devuelve el mensaje con `message()` de superforms.
 
 ### Opciones
 
-- `--remote` - Generar un formulario respaldado por una colección remota de PocketBase
-- `--route <route>` - Colocar el formulario en una ruta personalizada. Por defecto es el nombre del modelo bajo `(app)` cuando la autenticación está habilitada, o `(public)` cuando no lo está.
+- `--remote` - Generar el formulario con remote functions de SvelteKit en lugar de sveltekit-superforms
+- `--route <route>` - Colocar el formulario en una ruta personalizada. Por defecto es el nombre del modelo bajo `(app)` cuando la autenticación está habilitada, o `(public)` cuando no lo está. En un proyecto sin ninguno de los dos grupos, va directamente en `src/routes`.
+- `--ui <shadcn|plain>` - Generar componentes de shadcn-svelte o elementos HTML simples. Por defecto es `shadcn` cuando el proyecto tiene shadcn-svelte, y `plain` cuando no.
 - `--ai <description>` - Diseñar el formulario con IA a partir de una descripción en lenguaje natural
 
 ### Ruta
@@ -120,6 +163,43 @@ src/lib/schemas/project.ts
 ```
 
 Recuerda la ruta que usaste — [`vela destroy form`](/es/destroy/form) necesita el mismo `--route` para volver a encontrar los archivos.
+
+### HTML simple
+
+`--ui` es `shadcn` por defecto cuando el proyecto tiene un `components.json` y el paquete `shadcn-svelte` o `bits-ui`. Si no, el formulario usa elementos HTML simples sin clases, y no se instala ningún componente. `--ui plain` hace lo mismo en un proyecto con shadcn-svelte; `--ui shadcn` en un proyecto sin él es un error — ejecuta [`vela bless`](/es/bless) para configurarlo.
+
+En un proyecto creado con `sv create`, que no tiene grupos de rutas ni entorno de pruebas:
+
+```
+$ vela generate form contact name:text! email:email! message:editor
+```
+
+Crea:
+
+```
+src/routes/contact/+page.svelte
+src/routes/contact/+page.server.ts
+src/lib/schemas/contact.ts
+```
+
+El contenedor de cada campo tiene un atributo `data-field` con el nombre del campo, y `data-invalid` mientras el campo tiene errores. Los mensajes de error tienen `data-error`. Úsalos para dar estilo a todos los formularios generados desde una sola hoja de estilos. Sin `sveltekit-flash-message`, el mensaje de éxito se muestra encima del formulario.
+
+### Remote functions
+
+`--remote` genera el formulario con remote functions de SvelteKit: un `form.remote.ts` ocupa el lugar de `+page.server.ts`, y las remote functions se activan en la configuración de SvelteKit. `--route` y `--ui` funcionan igual.
+
+```
+$ vela generate form --remote contact name:text! email:email! message:editor
+```
+
+Crea:
+
+```
+src/routes/(public)/contact/+page.svelte
+src/routes/(public)/contact/form.remote.ts
+src/routes/(public)/contact/server.test.ts
+src/lib/schemas/contact.ts
+```
 
 ### Ejemplos
 

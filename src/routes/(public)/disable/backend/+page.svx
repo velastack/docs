@@ -13,15 +13,31 @@ $ vela disable backend
 
 ### What it removes
 
-- `hooks.server.ts`
-- The `data/` scaffold — the database and everything in it
-- The `test/setup.ts` database wiring
+These are deleted, along with anything you added to them:
 
-The SvelteKit adapter is switched back to static with an SPA fallback. Disable the features that depend on the backend — [auth](/disable/auth), [api](/disable/api) and the rest — before running this.
+- `data/` — the local database, and your fixtures, hooks and seeds in `data/fixtures`, `data/hooks` and `data/seeds`
+- `src/lib/server/workflows.ts` and all of `src/lib/workflows/`, including workflows you wrote. [Workflows](/workflows) run on PocketBase, so they go with it.
+- Every `server.test.ts` under `src/`. Server tests run against the PocketBase test context, so they can't run without it.
+- The `openworkflow`, `openworkflow-pocketbase` and `croner` packages
+
+The database on a deployed server is not touched.
+
+The rest is reverted rather than deleted:
+
+- `src/hooks.server.ts` loses the PocketBase handle and the `init` hook that starts the workflow worker. Handles other features added, such as i18n, stay. The file is deleted only if nothing is left in it.
+- The SvelteKit adapter is switched back to `@sveltejs/adapter-static` with an SPA fallback, and `@sveltejs/adapter-static` is installed.
+- The PocketBase block comes out of `.gitignore`.
+- `test/setup.ts` goes back to the version without a database, which gives tests only `request` and `agent`.
+- `src/routes/+layout.server.ts` reads the app name and URL from a new `src/lib/site.ts` instead of `locals.meta`, which only the PocketBase handle sets. Set `url` there to where the site is deployed.
+
+A file Vela can't revert safely, such as a `hooks.server.ts` whose `init` does more than start the worker, is left as it is, and you're told what to change.
+
+Disable the features that depend on the backend — [auth](/disable/auth), [api](/disable/api) and the rest — before running this.
 
 ### What it leaves
 
-`@velastack/pocketbase` and `pocketbase-sveltekit` stay in `package.json`. Uninstall them yourself if you want them gone.
+- `@velastack/pocketbase`, `pocketbase-sveltekit` and `@sveltejs/adapter-node` stay in `package.json`. Uninstall them yourself if you want them gone.
+- The `migrations/` directory at the project root
 <!-- @es -->
 Elimina el backend de PocketBase, convirtiendo el proyecto en un [sitio estático](/es/static) solo de frontend.
 
@@ -37,13 +53,29 @@ $ vela disable backend
 
 ### Qué elimina
 
-- `hooks.server.ts`
-- El andamiaje de `data/` — la base de datos y todo lo que contiene
-- La configuración de la base de datos en `test/setup.ts`
+Se eliminan, junto con todo lo que les hayas añadido:
 
-El adaptador de SvelteKit se cambia de nuevo a estático con un fallback de SPA. Desactiva las funciones que dependen del backend — [auth](/es/disable/auth), [api](/es/disable/api) y el resto — antes de ejecutar esto.
+- `data/` — la base de datos local, y tus fixtures, hooks y seeds de `data/fixtures`, `data/hooks` y `data/seeds`
+- `src/lib/server/workflows.ts` y todo `src/lib/workflows/`, incluidos los workflows que hayas escrito. Los [workflows](/es/workflows) se ejecutan sobre PocketBase, así que se van con él.
+- Todos los `server.test.ts` dentro de `src/`. Los tests de servidor se ejecutan con el contexto de test de PocketBase, así que sin él no pueden ejecutarse.
+- Los paquetes `openworkflow`, `openworkflow-pocketbase` y `croner`
+
+La base de datos de un servidor desplegado no se toca.
+
+El resto se revierte en lugar de eliminarse:
+
+- `src/hooks.server.ts` pierde el handle de PocketBase y el hook `init` que arranca el worker de workflows. Los handles que añadieron otras funciones, como i18n, se quedan. El archivo solo se elimina si no queda nada en él.
+- El adaptador de SvelteKit se cambia de nuevo a `@sveltejs/adapter-static` con un fallback de SPA, y se instala `@sveltejs/adapter-static`.
+- El bloque de PocketBase se quita de `.gitignore`.
+- `test/setup.ts` vuelve a la versión sin base de datos, que solo da a los tests `request` y `agent`.
+- `src/routes/+layout.server.ts` lee el nombre y la URL de la aplicación de un nuevo `src/lib/site.ts` en lugar de `locals.meta`, que solo define el handle de PocketBase. Define ahí `url` con la dirección donde se despliega el sitio.
+
+Un archivo que Vela no puede revertir con seguridad, como un `hooks.server.ts` cuyo `init` hace algo más que arrancar el worker, se deja tal cual, y se te indica qué cambiar.
+
+Desactiva las funciones que dependen del backend — [auth](/es/disable/auth), [api](/es/disable/api) y el resto — antes de ejecutar esto.
 
 ### Qué deja
 
-`@velastack/pocketbase` y `pocketbase-sveltekit` permanecen en `package.json`. Desinstálalos tú mismo si quieres eliminarlos.
+- `@velastack/pocketbase`, `pocketbase-sveltekit` y `@sveltejs/adapter-node` permanecen en `package.json`. Desinstálalos tú mismo si quieres eliminarlos.
+- El directorio `migrations/` en la raíz del proyecto
 <!-- @end -->

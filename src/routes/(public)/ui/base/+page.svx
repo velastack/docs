@@ -1,53 +1,65 @@
 <!-- @en -->
-The base command changes the base color of the application.
+The base command changes the base color of the application: the gray palette behind backgrounds, borders and text.
 
 ### Syntax
 
 ```
-$ vela ui base
+$ vela ui base <color>
 ```
 
 ```
-$ vela ui base slate
+$ vela ui base stone
 ```
 
-This will change the base color of the application to slate.
+This rewrites the color tokens in `src/app.css`, for light and dark mode, and records the base color in `components.json`.
+
+Changing the base color also resets the accent to it. Run [`vela ui theme`](/ui/theme) afterwards to put an accent back on top.
 
 ### Colors
 
 Vela supports the following colors:
 
 ```
-slate
-gray
-zinc
 neutral
 stone
+zinc
+mauve
+olive
+mist
+taupe
 ```
+
+The list comes from the project's shadcn-svelte, so a newer version may offer more.
 <!-- @es -->
-El comando base cambia el color base de la aplicación.
+El comando base cambia el color base de la aplicación: la paleta de grises de los fondos, los bordes y el texto.
 
 ### Sintaxis
 
 ```
-$ vela ui base
+$ vela ui base <color>
 ```
 
 ```
-$ vela ui base slate
+$ vela ui base stone
 ```
 
-Esto cambiará el color base de la aplicación a pizarra.
+Esto reescribe los tokens de color de `src/app.css`, para el modo claro y el oscuro, y guarda el color base en `components.json`.
+
+Cambiar el color base también restablece el acento a ese mismo color. Ejecuta [`vela ui theme`](/es/ui/theme) después para volver a poner un acento encima.
 
 ### Colores
 
 Vela admite los siguientes colores:
 
 ```
-slate
-gray
-zinc
 neutral
 stone
+zinc
+mauve
+olive
+mist
+taupe
 ```
+
+La lista viene del shadcn-svelte del proyecto, así que una versión más reciente puede ofrecer más.
 <!-- @end -->
