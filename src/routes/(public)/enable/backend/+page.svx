@@ -7,6 +7,17 @@ Add the PocketBase backend to a project that doesn't have one — a project scaf
 $ vela enable backend
 ```
 
+You'll be prompted for the admin email and password for the new PocketBase database, the same pair [`vela create`](/create) and [`vela bless`](/bless) ask for. Credentials already in your environment — from a `.env` the project kept through an earlier [`vela disable backend`](/disable/backend), say — are reused instead of being asked for again.
+
+### Options
+
+- `--email <email>` - Email of the PocketBase superuser
+- `--password <password>` - Password of the PocketBase superuser, at least 8 characters
+
+Off a terminal, such as in CI, there is nothing to prompt on: pass both flags, or have `POCKETBASE_SUPERUSER_EMAIL` and `POCKETBASE_SUPERUSER_PASSWORD` in the environment already.
+
+### What it does
+
 This installs `@velastack/pocketbase`, `pocketbase-sveltekit`, `@velastack/kit` and `@sveltejs/adapter-node`, plus `vitest`, `supertest` and `@types/supertest` for server tests, then:
 
 - Adds the PocketBase handle to `src/hooks.server.ts`, creating the file if there isn't one
@@ -16,6 +27,14 @@ This installs `@velastack/pocketbase`, `pocketbase-sveltekit`, `@velastack/kit` 
 - Writes `test/setup.ts`, which gives each server test PocketBase clients and a fresh test user. An existing `test/setup.ts` is replaced.
 
 An existing `hooks.server.ts` keeps its handles. `handlePocketbase` takes the place of the static template's `handleStatic()`; otherwise it is added last in a `sequence`, so the handles already there run first. Where a file is in a shape Vela can't edit — another adapter, or a `handle` it can't compose — it is left alone and you're shown the lines to change by hand.
+
+### The superuser
+
+Once the files are in place the database gets its superuser, and `POCKETBASE_SUPERUSER_EMAIL` and `POCKETBASE_SUPERUSER_PASSWORD` are written to `.env` — where every `vela` command reads them from, and which the template already gitignores. Without that pair, `vela dev` starts a database nothing can authenticate against and every other command stops at the missing-credentials guard, so this is what makes the backend usable rather than merely installed.
+
+`POCKETBASE_URL` is not one of them: [`vela dev`](/dev), [`vela build`](/build) and [`vela preview`](/preview) start PocketBase on a free port and set it for the app themselves. Set it yourself only to point a command at a database that is already running.
+
+Re-running the command is safe. The credentials in `.env` are reused and the superuser is upserted, so the file and the database cannot end up disagreeing.
 
 Once enabled, [`vela dev`](/dev) starts the database alongside the app and the admin interface is available at `/admin`. Everything else that needs a database — [auth](/enable/auth), [the API](/enable/api), [scaffolds](/generate/scaffold), [seeds](/seeds) and [fixtures](/fixtures) — depends on this.
 
@@ -31,6 +50,17 @@ Añade el backend de PocketBase a un proyecto que no lo tiene — un proyecto ge
 $ vela enable backend
 ```
 
+Se te pedirá el correo electrónico y la contraseña del administrador para la nueva base de datos PocketBase, el mismo par que piden [`vela create`](/es/create) y [`vela bless`](/es/bless). Si esas credenciales ya están en tu entorno — por ejemplo en un `.env` que el proyecto conservó tras un [`vela disable backend`](/es/disable/backend) anterior — se reutilizan en lugar de volver a preguntarlas.
+
+### Opciones
+
+- `--email <email>` - Correo electrónico del superusuario de PocketBase
+- `--password <password>` - Contraseña del superusuario de PocketBase, de al menos 8 caracteres
+
+Fuera de una terminal, por ejemplo en CI, no hay dónde preguntar: pasa ambas opciones, o ten ya `POCKETBASE_SUPERUSER_EMAIL` y `POCKETBASE_SUPERUSER_PASSWORD` en el entorno.
+
+### Qué hace
+
 Esto instala `@velastack/pocketbase`, `pocketbase-sveltekit`, `@velastack/kit` y `@sveltejs/adapter-node`, además de `vitest`, `supertest` y `@types/supertest` para los tests de servidor, y después:
 
 - Añade el handle de PocketBase a `src/hooks.server.ts`, y crea el archivo si no existe
@@ -40,6 +70,14 @@ Esto instala `@velastack/pocketbase`, `pocketbase-sveltekit`, `@velastack/kit` y
 - Escribe `test/setup.ts`, que da a cada test de servidor clientes de PocketBase y un usuario de prueba nuevo. Un `test/setup.ts` existente se reemplaza.
 
 Un `hooks.server.ts` existente conserva sus handles. `handlePocketbase` ocupa el lugar del `handleStatic()` de la plantilla estática; si no lo hay, se añade al final de una `sequence`, así que los handles que ya estaban se ejecutan primero. Si un archivo tiene una forma que Vela no sabe editar — otro adaptador, o un `handle` que no puede componer — se deja tal cual y se te muestran las líneas que hay que cambiar a mano.
+
+### El superusuario
+
+Una vez colocados los archivos, la base de datos recibe su superusuario y se escriben `POCKETBASE_SUPERUSER_EMAIL` y `POCKETBASE_SUPERUSER_PASSWORD` en `.env` — de donde los lee cada comando `vela`, y que la plantilla ya ignora en git. Sin ese par, `vela dev` inicia una base de datos contra la que nada puede autenticarse y cualquier otro comando se detiene en la comprobación de credenciales, así que esto es lo que hace que el backend sea utilizable y no solo esté instalado.
+
+`POCKETBASE_URL` no es una de ellas: [`vela dev`](/es/dev), [`vela build`](/es/build) y [`vela preview`](/es/preview) inician PocketBase en un puerto libre y la definen ellos mismos para la aplicación. Defínela tú solo para apuntar un comando a una base de datos que ya esté en marcha.
+
+Volver a ejecutar el comando es seguro. Se reutilizan las credenciales de `.env` y el superusuario se inserta o actualiza, así que el archivo y la base de datos no pueden acabar en desacuerdo.
 
 Una vez habilitado, [`vela dev`](/es/dev) inicia la base de datos junto a la aplicación y la interfaz de administración está disponible en `/admin`. Todo lo demás que necesita una base de datos — [auth](/es/enable/auth), [la API](/es/enable/api), los [scaffolds](/es/generate/scaffold), los [seeds](/es/seeds) y los [fixtures](/es/fixtures) — depende de esto.
 

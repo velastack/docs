@@ -38,6 +38,7 @@ Disable the features that depend on the backend — [auth](/disable/auth), [api]
 
 - `@velastack/pocketbase`, `pocketbase-sveltekit` and `@sveltejs/adapter-node` stay in `package.json`. Uninstall them yourself if you want them gone.
 - The `migrations/` directory at the project root
+- `POCKETBASE_SUPERUSER_EMAIL` and `POCKETBASE_SUPERUSER_PASSWORD` in `.env`, which is what lets [`vela enable backend`](/enable/backend) reuse them rather than ask again
 <!-- @es -->
 Elimina el backend de PocketBase, convirtiendo el proyecto en un [sitio estático](/es/static) solo de frontend.
 
@@ -78,4 +79,5 @@ Desactiva las funciones que dependen del backend — [auth](/es/disable/auth), [
 
 - `@velastack/pocketbase`, `pocketbase-sveltekit` y `@sveltejs/adapter-node` permanecen en `package.json`. Desinstálalos tú mismo si quieres eliminarlos.
 - El directorio `migrations/` en la raíz del proyecto
+- `POCKETBASE_SUPERUSER_EMAIL` y `POCKETBASE_SUPERUSER_PASSWORD` en `.env`, que es lo que permite a [`vela enable backend`](/es/enable/backend) reutilizarlas en lugar de volver a preguntar
 <!-- @end -->

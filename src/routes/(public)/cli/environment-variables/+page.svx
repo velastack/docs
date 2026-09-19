@@ -7,7 +7,7 @@ POCKETBASE_SUPERUSER_EMAIL=admin@example.com
 POCKETBASE_SUPERUSER_PASSWORD=password
 ```
 
-You'll be prompted to create a PocketBase superuser account when you run the vela create command. The login details are saved in the `.env` file. The superuser account is used by the CLI, the admin interface and the REST API.
+You'll be prompted to create a PocketBase superuser account by whichever command gives the project its database — [`vela create`](/create) for a new project, [`vela bless`](/bless) for an existing SvelteKit one, or [`vela enable backend`](/enable/backend) for a project that had no backend. The login details are saved in the `.env` file. The superuser account is used by the CLI, the admin interface and the REST API.
 
 ### Workflows
 
@@ -28,5 +28,5 @@ POCKETBASE_SUPERUSER_EMAIL=admin@example.com
 POCKETBASE_SUPERUSER_PASSWORD=password
 ```
 
-Se te pedirá crear una cuenta de superusuario de PocketBase cuando ejecutes el comando `vela create`. Los detalles de inicio de sesión se guardan en el archivo `.env`. La cuenta de superusuario se utiliza por la CLI, la interfaz de administración y la API REST.
+El comando que le da su base de datos al proyecto te pedirá crear una cuenta de superusuario de PocketBase — [`vela create`](/es/create) para un proyecto nuevo, [`vela bless`](/es/bless) para un proyecto SvelteKit existente, o [`vela enable backend`](/es/enable/backend) para un proyecto sin backend. Los detalles de inicio de sesión se guardan en el archivo `.env`. La cuenta de superusuario se utiliza por la CLI, la interfaz de administración y la API REST.
 <!-- @end -->
