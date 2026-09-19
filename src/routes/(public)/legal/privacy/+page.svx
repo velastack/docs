@@ -8,6 +8,8 @@ $ vela legal privacy
 ```
 
 This will start a wizard to guide you through the process of creating a demo privacy policy for your application. The generated privacy policy is a placeholder and not a legal document. Seek legal advice for your specific use case.
+
+The website name and URL prompts start out filled in from [`src/lib/site.ts`](/cli/project-structure).
 <!-- @es -->
 Vela incluye un generador de política de privacidad para crear una política de privacidad de demostración para tu aplicación.
 
@@ -18,4 +20,6 @@ $ vela legal privacy
 ```
 
 Esto iniciará un asistente para guiarte a través del proceso de creación de una política de privacidad de demostración para tu aplicación. La política de privacidad generada es un marcador de posición y no es un documento legal. Busca asesoría legal para tu caso de uso específico.
+
+Las preguntas por el nombre y la URL del sitio web vienen rellenadas con los valores de [`src/lib/site.ts`](/es/cli/project-structure).
 <!-- @end -->

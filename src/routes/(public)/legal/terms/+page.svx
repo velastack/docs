@@ -10,6 +10,8 @@ $ vela legal terms
 This will start a wizard to guide you through the process of creating a demo terms of service for
 your application. The generated terms of service is a placeholder and not a legal document. Seek
 legal advice for your specific use case.
+
+The website name and URL prompts start out filled in from [`src/lib/site.ts`](/cli/project-structure).
 <!-- @es -->
 Vela incluye un generador de términos de servicio para crear unos términos de servicio de demostración para tu aplicación.
 
@@ -18,4 +20,8 @@ Vela incluye un generador de términos de servicio para crear unos términos de 
 ```
 $ vela legal terms
 ```
+
+Esto iniciará un asistente para guiarte a través del proceso de creación de unos términos de servicio de demostración para tu aplicación. Los términos de servicio generados son un marcador de posición y no un documento legal. Busca asesoría legal para tu caso de uso específico.
+
+Las preguntas por el nombre y la URL del sitio web vienen rellenadas con los valores de [`src/lib/site.ts`](/es/cli/project-structure).
 <!-- @end -->

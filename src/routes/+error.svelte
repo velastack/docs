@@ -2,11 +2,9 @@
 	import { page } from '$app/state';
 	import { Button } from '$lib/components/ui/button';
 	import RootLayout from './(public)/root-layout.svelte';
-
-	let { data } = $props();
 </script>
 
-<RootLayout {data}>
+<RootLayout>
 	<main class="mx-auto max-w-screen-xl px-4 w-full flex items-center justify-center">
 		<div class="text-center space-y-4">
 			<div class="text-9xl font-bold text-primary">

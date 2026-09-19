@@ -9,6 +9,8 @@ $ vela dev
 
 This will start the development server and the database. The server will be available at `http://localhost:5173` and the admin interface at `http://localhost:5173/admin`. In a project without a backend, such as one from the [static template](/static), only the development server starts.
 
+With a backend, every start also copies `site.name` from [`src/lib/site.ts`](/cli/project-structure) into PocketBase's application name, and the development server's address into its app URL, so the emails PocketBase sends in development carry the right name and links.
+
 ### Options
 
 - `--open [path]` - Open the app in a browser once the server is ready
@@ -34,6 +36,8 @@ $ vela dev
 ```
 
 Esto iniciará el servidor de desarrollo y la base de datos. El servidor estará disponible en `http://localhost:5173` y la interfaz de administración en `http://localhost:5173/admin`. En un proyecto sin backend, como uno creado con la [plantilla estática](/es/static), solo se inicia el servidor de desarrollo.
+
+Con backend, cada arranque copia además `site.name` de [`src/lib/site.ts`](/es/cli/project-structure) en el nombre de aplicación de PocketBase, y la dirección del servidor de desarrollo en su URL de aplicación, para que los correos que PocketBase envía en desarrollo lleven el nombre y los enlaces correctos.
 
 ### Opciones
 

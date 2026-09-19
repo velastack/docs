@@ -34,6 +34,7 @@ src/hooks.server.ts     the handlePocketbase hook
 src/app.css             Tailwind imports and theme tokens
 src/lib/utils.ts        the cn helper and component type utilities
 src/lib/index.ts        a $lib placeholder
+src/lib/site.ts         the app's name, taken from package.json, and its URL
 components.json         the shadcn-svelte config `vela ui add` reads
 .npmrc                  engine-strict=true
 .ignore                 search ignores for generated files
@@ -92,6 +93,7 @@ src/hooks.server.ts     el hook handlePocketbase
 src/app.css             importaciones de Tailwind y tokens del tema
 src/lib/utils.ts        el helper cn y utilidades de tipos de componentes
 src/lib/index.ts        un marcador de posición de $lib
+src/lib/site.ts         el nombre de la aplicación, tomado de package.json, y su URL
 components.json         la configuración de shadcn-svelte que lee `vela ui add`
 .npmrc                  engine-strict=true
 .ignore                 exclusiones de búsqueda para archivos generados

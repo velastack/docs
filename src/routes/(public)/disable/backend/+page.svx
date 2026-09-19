@@ -28,7 +28,7 @@ The rest is reverted rather than deleted:
 - The SvelteKit adapter is switched back to `@sveltejs/adapter-static` with an SPA fallback, and `@sveltejs/adapter-static` is installed.
 - The PocketBase block comes out of `.gitignore`.
 - `test/setup.ts` goes back to the version without a database, which gives tests only `request` and `agent`.
-- `src/routes/+layout.server.ts` reads the app name and URL from a new `src/lib/site.ts` instead of `locals.meta`, which only the PocketBase handle sets. Set `url` there to where the site is deployed.
+- An older project's `src/routes/+layout.server.ts` that still reads the app name and URL from `locals.meta`, which only the PocketBase handle set, is switched to [`src/lib/site.ts`](/cli/project-structure), created if it's missing. Set `url` there to where the site is deployed. Newer projects already read `src/lib/site.ts`, so their root layout doesn't change.
 
 A file Vela can't revert safely, such as a `hooks.server.ts` whose `init` does more than start the worker, is left as it is, and you're told what to change.
 
@@ -68,7 +68,7 @@ El resto se revierte en lugar de eliminarse:
 - El adaptador de SvelteKit se cambia de nuevo a `@sveltejs/adapter-static` con un fallback de SPA, y se instala `@sveltejs/adapter-static`.
 - El bloque de PocketBase se quita de `.gitignore`.
 - `test/setup.ts` vuelve a la versión sin base de datos, que solo da a los tests `request` y `agent`.
-- `src/routes/+layout.server.ts` lee el nombre y la URL de la aplicación de un nuevo `src/lib/site.ts` en lugar de `locals.meta`, que solo define el handle de PocketBase. Define ahí `url` con la dirección donde se despliega el sitio.
+- El `src/routes/+layout.server.ts` de un proyecto antiguo que aún lee el nombre y la URL de la aplicación de `locals.meta`, que solo definía el handle de PocketBase, pasa a leerlos de [`src/lib/site.ts`](/es/cli/project-structure), que se crea si no existe. Define ahí `url` con la dirección donde se despliega el sitio. Los proyectos nuevos ya leen `src/lib/site.ts`, así que su layout raíz no cambia.
 
 Un archivo que Vela no puede revertir con seguridad, como un `hooks.server.ts` cuyo `init` hace algo más que arrancar el worker, se deja tal cual, y se te indica qué cambiar.
 

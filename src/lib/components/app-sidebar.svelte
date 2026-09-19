@@ -2,6 +2,7 @@
 	import NavMain from './nav-main.svelte';
 	import * as Sidebar from '$lib/components/ui/sidebar';
 	import type { ComponentProps } from 'svelte';
+	import { site } from '$lib/site';
 
 	let data = {
 		navMain: [
@@ -631,11 +632,7 @@
 		]
 	};
 
-	let {
-		meta,
-		ref = $bindable(null),
-		...restProps
-	}: ComponentProps<typeof Sidebar.Root> & { meta: any } = $props();
+	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 </script>
 
 <Sidebar.Root bind:ref variant="inset" {...restProps}>
@@ -651,7 +648,7 @@
 								<img src="/favicon.svg" alt="logo" class="size-6" />
 							</div>
 							<div class="grid flex-1 text-left text-sm leading-tight">
-								<span class="truncate font-medium">{meta.appName}</span>
+								<span class="truncate font-medium">{site.name}</span>
 							</div>
 						</a>
 					{/snippet}

@@ -577,10 +577,8 @@ msgstr "Muestra la barra lateral móvil."
 msgid "Vela is a fullstack command line tool for rapidly scaffolding modern web apps."
 msgstr "Vela es una herramienta de línea de comandos de pila completa para el andamiaje rápido de aplicaciones web modernas."
 
-#: src/routes/+layout.ts
-#: src/routes/+layout.ts
-msgid "Vela Docs"
-msgstr "Vela Docs"
+#~ msgid "Vela Docs"
+#~ msgstr "Vela Docs"
 
 #: src/routes/(public)/root-layout.svelte
 msgid "English"
@@ -913,7 +911,6 @@ msgstr "Notificaciones dentro de la aplicación con un desplegable de campana."
 msgid "What Vela generates, and where it lives."
 msgstr "Qué genera Vela, y dónde vive."
 
-#: src/routes/(public)/enable/blog/+page.ts
 #: src/routes/(public)/enable/workflows/+page.ts
 msgid "Depends: backend"
 msgstr "Depende de: backend"

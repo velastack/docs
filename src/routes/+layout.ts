@@ -4,6 +4,7 @@ import { loadLocale } from 'wuchale/load-utils';
 import { getLocale } from '$locales/main.url';
 import { locales } from '$locales/data';
 import { translateUrl } from '$lib/url';
+import { site } from '$lib/site';
 
 import '$locales/main.loader.svelte.js';
 import '$locales/js.loader.js';
@@ -19,7 +20,7 @@ export const load = async ({ url }) => {
 
 	const baseTags = defineBaseMetaTags({
 		title: 'Getting Started',
-		titleTemplate: '%s | Vela Docs',
+		titleTemplate: `%s | ${site.name}`,
 		description: 'Vela is a fullstack command line tool for rapidly scaffolding modern web apps.',
 		canonical,
 		openGraph: {
@@ -27,8 +28,8 @@ export const load = async ({ url }) => {
 			url: canonical,
 			images: [
 				{
-					url: 'https://docs.velastack.dev/og.png',
-					alt: 'Vela Docs',
+					url: `${site.url}/og.png`,
+					alt: site.name,
 					width: 1200,
 					height: 630
 				}
@@ -42,10 +43,5 @@ export const load = async ({ url }) => {
 		})
 	});
 
-	return {
-		meta: {
-			appName: 'Vela Docs'
-		},
-		...baseTags
-	};
+	return baseTags;
 };

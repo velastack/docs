@@ -163,7 +163,7 @@ Set `remote-db: false` to opt out and build against a throwaway database instead
           remote-db: false
 ```
 
-Pass `domain` on the first deploy from CI, so prerendered pages get their canonical links from the domain rather than from SvelteKit's placeholder host.
+Pass `domain` on the first deploy from CI, so prerendered pages see the domain as `url.origin` rather than SvelteKit's placeholder host. Their canonical links, like the app's name, come from [`src/lib/site.ts`](/cli/project-structure), not from the database.
 
 ### Secrets
 
@@ -357,7 +357,7 @@ Pon `remote-db: false` para renunciar y compilar contra una base de datos desech
           remote-db: false
 ```
 
-Pasa `domain` en el primer despliegue desde CI, para que las páginas prerenderizadas tomen sus enlaces canónicos del dominio y no del host de relleno de SvelteKit.
+Pasa `domain` en el primer despliegue desde CI, para que las páginas prerenderizadas vean el dominio como `url.origin` y no el host de relleno de SvelteKit. Sus enlaces canónicos, como el nombre de la aplicación, salen de [`src/lib/site.ts`](/es/cli/project-structure), no de la base de datos.
 
 ### Secretos
 

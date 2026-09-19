@@ -26,7 +26,7 @@
 		description?: string;
 	}[];
 
-	let { data, children } = $props();
+	let { children } = $props();
 
 	let locale: Locale = $derived.by(() => {
 		const [_, locale] = deLocalizeDefault(page.url.pathname, locales);
@@ -46,7 +46,7 @@
 
 <div class="min-h-dvh dashboard">
 	<Sidebar.Provider>
-		<AppSidebar meta={data.meta} />
+		<AppSidebar />
 		<Sidebar.Inset>
 			<header class="flex h-16 shrink-0 items-center justify-between">
 				<div class="flex items-center gap-2 px-6">

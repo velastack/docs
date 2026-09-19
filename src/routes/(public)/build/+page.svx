@@ -15,7 +15,7 @@ This runs `vite build` with the project's package manager. The output directory 
 
 ### Origin of prerendered pages
 
-Prerendering happens with no request to take an origin from, so SvelteKit substitutes a placeholder host and it ends up in every canonical link, `og:url` and `hreflang` on a prerendered page.
+Prerendering happens with no request to take an origin from, so SvelteKit substitutes a placeholder host and it ends up in every canonical link, `og:url` and `hreflang` a prerendered page builds from `url.origin`.
 
 Vela sets that origin from the domain bound to the target in `.vela/project.json`, falling back to `deploy.domain` in `velastack.config.ts`. Set `VELA_ORIGIN` to override it. The config reads it as `kit.prerender.origin`:
 
@@ -26,6 +26,8 @@ sveltekit({
 ```
 
 If the target has no domain yet and the build prerendered something, Vela says so rather than shipping the placeholder quietly.
+
+Canonical links and Open Graph image URLs in the templates don't depend on it: they are built from `url` in [`src/lib/site.ts`](/cli/project-structure), which has to be set to where the site is deployed. The origin still matters for anything else that reads `url.origin`.
 
 ### Database during the build
 
@@ -50,6 +52,22 @@ $ vela build
 ```
 
 Esto ejecuta `vite build` con el gestor de paquetes del proyecto. El directorio de salida lo determina el adaptador de SvelteKit configurado en `vite.config.ts` — `build` para los adaptadores por defecto.
+
+### Origen de las páginas prerenderizadas
+
+El prerenderizado no tiene una petición de la que tomar un origen, así que SvelteKit usa un host de marcador de posición, y este acaba en cada enlace canónico, `og:url` y `hreflang` que una página prerenderizada construya a partir de `url.origin`.
+
+Vela establece ese origen a partir del dominio vinculado al objetivo en `.vela/project.json`, y si no lo hay, de `deploy.domain` en `velastack.config.ts`. Define `VELA_ORIGIN` para sobrescribirlo. La configuración lo lee como `kit.prerender.origin`:
+
+```ts
+sveltekit({
+    ...(process.env.VELA_ORIGIN ? { prerender: { origin: process.env.VELA_ORIGIN } } : {})
+})
+```
+
+Si el objetivo aún no tiene dominio y la compilación prerenderizó algo, Vela lo indica en lugar de publicar el marcador de posición sin avisar.
+
+Los enlaces canónicos y las URLs de las imágenes Open Graph de las plantillas no dependen de él: se construyen a partir de `url` en [`src/lib/site.ts`](/es/cli/project-structure), que tiene que apuntar a la dirección donde se despliega el sitio. El origen sigue importando para todo lo demás que lea `url.origin`.
 
 ### La base de datos durante la compilación
 

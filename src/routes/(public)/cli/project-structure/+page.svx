@@ -14,6 +14,7 @@ my-project/
 │   │   ├── schemas/       Zod schemas, generated alongside models
 │   │   ├── server/        server-only code, including the workflow runtime
 │   │   ├── workflows/     background workflows, one file each
+│   │   ├── site.ts        the app's name and public URL
 │   │   └── utils.ts       the cn helper and component type utilities
 │   ├── routes/
 │   │   ├── (public)/      routes anyone can reach
@@ -33,6 +34,21 @@ my-project/
 ### Route groups
 
 Vela leans on SvelteKit's route groups to express access. `(public)` is reachable by anyone; `(app)` is created when [auth](/enable/auth) is enabled and requires a signed-in user, with unauthenticated requests redirected to the login page. The [generators](/generate) place new routes in `(app)` when auth is enabled and `(public)` when it isn't, and `--route` overrides that. In a project with neither group, they go directly in `src/routes`.
+
+### App name and URL
+
+`src/lib/site.ts` holds the app's name and the URL it is served on, in every project, with a backend or without:
+
+```ts
+export const site = {
+    name: 'My App',
+    url: 'http://localhost:5173'
+};
+```
+
+Pages read it with `import { site } from '$lib/site'`. [`vela create`](/create) writes the name. Set `url` to where the site is deployed: canonical links, Open Graph image URLs and the [blog](/enable/blog)'s RSS feed are built from it, prerendered pages included. [`vela deploy`](/deploy) warns while it is still a localhost address or doesn't match the domain being deployed to.
+
+This file is the source of truth for both. With a backend, PocketBase keeps an application name of its own for the emails it sends — `{APP_NAME}` in the verification and password reset emails — so [`vela dev`](/dev) and [`vela deploy`](/deploy) copy `site.name` into it every time they run. A name changed in the admin panel is overwritten the next time either runs; change `src/lib/site.ts` instead.
 
 ### Workflows
 
@@ -61,6 +77,7 @@ my-project/
 │   │   ├── schemas/       esquemas Zod, generados junto a los modelos
 │   │   ├── server/        código solo de servidor, incluido el runtime de workflows
 │   │   ├── workflows/     workflows en segundo plano, uno por archivo
+│   │   ├── site.ts        el nombre y la URL pública de la aplicación
 │   │   └── utils.ts       el helper cn y utilidades de tipos de componentes
 │   ├── routes/
 │   │   ├── (public)/      rutas accesibles por cualquiera
@@ -80,6 +97,21 @@ my-project/
 ### Grupos de rutas
 
 Vela se apoya en los grupos de rutas de SvelteKit para expresar el acceso. `(public)` es accesible por cualquiera; `(app)` se crea cuando se habilita la [autenticación](/es/enable/auth) y requiere un usuario con sesión iniciada, redirigiendo las peticiones no autenticadas a la página de inicio de sesión. Los [generadores](/es/generate) colocan las rutas nuevas en `(app)` cuando la autenticación está habilitada y en `(public)` cuando no lo está, y `--route` lo anula. En un proyecto sin ninguno de los dos grupos, van directamente en `src/routes`.
+
+### Nombre y URL de la aplicación
+
+`src/lib/site.ts` contiene el nombre de la aplicación y la URL en la que se sirve, en todos los proyectos, con backend o sin él:
+
+```ts
+export const site = {
+    name: 'My App',
+    url: 'http://localhost:5173'
+};
+```
+
+Las páginas lo leen con `import { site } from '$lib/site'`. [`vela create`](/es/create) escribe el nombre. Define `url` con la dirección donde se despliega el sitio: los enlaces canónicos, las URLs de las imágenes Open Graph y el feed RSS del [blog](/es/enable/blog) se construyen a partir de ella, también en las páginas prerenderizadas. [`vela deploy`](/es/deploy) avisa mientras siga siendo una dirección de localhost o no coincida con el dominio al que se despliega.
+
+Este archivo es la fuente de verdad de ambos. Con backend, PocketBase guarda un nombre de aplicación propio para los correos que envía — `{APP_NAME}` en los correos de verificación y de restablecimiento de contraseña — así que [`vela dev`](/es/dev) y [`vela deploy`](/es/deploy) copian `site.name` en él cada vez que se ejecutan. Un nombre cambiado en el panel de administración se sobrescribe la próxima vez que se ejecute cualquiera de los dos; cámbialo en `src/lib/site.ts`.
 
 ### Workflows
 

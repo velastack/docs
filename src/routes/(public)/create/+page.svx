@@ -16,7 +16,7 @@ This will create a directory called `my-project` with the new SvelteKit project.
 ### Options
 
 - `--template <type>` - Template to scaffold, defaults to `minimal`
-- `--name <name>` - App name, used for emails and metadata
+- `--name <name>` - App name, written to `src/lib/site.ts`. A project with a backend also gets it as PocketBase's application name, which its emails use.
 - `--email <email>` - Email of the PocketBase superuser
 - `--password <password>` - Password of the PocketBase superuser
 - `--install <package-manager>` - Install dependencies with the given package manager. One of `npm`, `yarn`, `pnpm`, `pnpm-rush`, `bun`, `deno`, `nub` or `aube`. Pass `--no-install` to skip installing.
@@ -75,7 +75,7 @@ Passing a name that is not available lists every template, grouped by category. 
 Out of the box, before enabling any modules, all Vela templates include these minimum features, which are deemed essential for a production-ready application:
 
 - Database connection
-- App metadata (app name, canonical domain)
+- App metadata (app name, public URL) in [`src/lib/site.ts`](/cli/project-structure)
 - Tailwind CSS full height grid layout
 - Error fallback page
 - Light/dark mode support
@@ -100,7 +100,7 @@ Esto creará un directorio llamado `my-project` con el nuevo proyecto de SvelteK
 ### Opciones
 
 - `--template <type>` - Plantilla a generar, por defecto `minimal`
-- `--name <name>` - Nombre de la aplicación, usado para correos y metadatos
+- `--name <name>` - Nombre de la aplicación, que se escribe en `src/lib/site.ts`. Un proyecto con backend también lo recibe como nombre de aplicación de PocketBase, que es el que usan sus correos.
 - `--email <email>` - Correo electrónico del superusuario de PocketBase
 - `--password <password>` - Contraseña del superusuario de PocketBase
 - `--install <package-manager>` - Instala las dependencias con el gestor de paquetes indicado. Uno de `npm`, `yarn`, `pnpm`, `pnpm-rush`, `bun`, `deno`, `nub` o `aube`. Pasa `--no-install` para omitir la instalación.
@@ -159,7 +159,7 @@ Pasar un nombre que no existe muestra todas las plantillas agrupadas por categor
 De serie, antes de habilitar cualquier módulo, todas las plantillas de Vela incluyen estas características mínimas, consideradas esenciales para una aplicación lista para producción:
 
 - Conexión a la base de datos
-- Metadatos de la aplicación (nombre de la aplicación, dominio canónico)
+- Metadatos de la aplicación (nombre de la aplicación, URL pública) en [`src/lib/site.ts`](/es/cli/project-structure)
 - Diseño de cuadrícula de altura completa con Tailwind CSS
 - Página de respaldo para errores
 - Soporte de modo claro/oscuro

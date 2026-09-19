@@ -15,6 +15,8 @@ $ vela build
 
 The adapter is configured in `vite.config.ts` with a `200.html` fallback, so client-side routing works on hosts that serve a single fallback document.
 
+The site's name and URL are in [`src/lib/site.ts`](/cli/project-structure). Set `url` there to where the site will be served before building for production: every page is prerendered, and its canonical link and Open Graph image URL are built from it.
+
 ### Deploying
 
 Upload the `build` directory to any static host. [`vela deploy`](/deploy) won't deploy it: it runs the app as a Node server, and stops on a project built with `@sveltejs/adapter-static`. To serve the site from your own server instead, switch the adapter to `@sveltejs/adapter-node`. No backend is needed for that.
@@ -70,6 +72,8 @@ $ vela build
 ```
 
 El adaptador se configura en `vite.config.ts` con un fallback `200.html`, de modo que el enrutado en el cliente funciona en alojamientos que sirven un único documento de respaldo.
+
+El nombre y la URL del sitio están en [`src/lib/site.ts`](/es/cli/project-structure). Define ahí `url` con la dirección donde se servirá el sitio antes de compilar para producción: todas las páginas se prerenderizan, y su enlace canónico y la URL de su imagen Open Graph se construyen a partir de ella.
 
 ### Desplegar
 
