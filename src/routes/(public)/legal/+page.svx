@@ -1,5 +1,17 @@
 <!-- @en -->
 Vela includes a privacy policy and terms of service generator to create a demo privacy policy and terms of service for your application.
+
+### Generated pages
+
+The pages are written to a `(legal)` group inside the project's `(public)` routes, or directly under `src/routes` in a project that has no `(public)` group, and are served at `/privacy` and `/terms`.
+
+Both work in any SvelteKit project. In a project without Tailwind CSS the utility classes are left out of the markup, so the browser's own heading and list styles apply. The page title and description are set in a `+page.ts` when the project has `svelte-meta-tags`; without it they go in a `<svelte:head>` in the page and no `+page.ts` is written.
 <!-- @es -->
 Vela incluye un generador de política de privacidad y términos de servicio para crear una política de privacidad y términos de servicio de demostración para tu aplicación.
+
+### Páginas generadas
+
+Las páginas se escriben en un grupo `(legal)` dentro de las rutas `(public)` del proyecto, o directamente bajo `src/routes` en un proyecto que no tiene grupo `(public)`, y se sirven en `/privacy` y `/terms`.
+
+Ambas funcionan en cualquier proyecto SvelteKit. En un proyecto sin Tailwind CSS las clases de utilidad se omiten del marcado, así que se aplican los estilos de encabezados y listas del propio navegador. El título y la descripción de la página se definen en un `+page.ts` cuando el proyecto tiene `svelte-meta-tags`; sin él van en un `<svelte:head>` dentro de la página y no se escribe ningún `+page.ts`.
 <!-- @end -->

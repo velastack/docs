@@ -11,6 +11,10 @@ This wires up [`sveltekit-negotiate`](https://github.com/nathancahill/sveltekit-
 
 Has no dependencies — it works with or without a backend, and composes with [i18n](/enable/i18n)'s own reroute hook.
 
+It also adds a demo page at `/negotiate`, in the project's `(public)` group, or directly under `src/routes` in a project that has no such group. Its `+page.ts`, which sets the page's meta tags, is only written when the project has `svelte-meta-tags`.
+
+A project without a `src/hooks.server.ts` gets one. If it has a `hooks.server.js` instead, that file is left alone and the lines to add are printed.
+
 ### Reverting
 
 [`vela disable content-negotiation`](/disable/content-negotiation) removes the wiring and the generated files.
@@ -26,6 +30,10 @@ $ vela enable content-negotiation
 Esto configura [`sveltekit-negotiate`](https://github.com/nathancahill/sveltekit-negotiate) en `hooks.server.ts`, añade un hook `reroute` y coloca un componente `<Negotiate />` en el layout raíz. Una petición de `text/markdown` o `application/json` recibe entonces esa representación de la página en lugar de HTML.
 
 No tiene dependencias — funciona con o sin backend, y se combina con el propio hook reroute de [i18n](/es/enable/i18n).
+
+También añade una página de demostración en `/negotiate`, en el grupo `(public)` del proyecto, o directamente bajo `src/routes` en un proyecto que no tiene ese grupo. Su `+page.ts`, que define las meta etiquetas de la página, solo se escribe cuando el proyecto tiene `svelte-meta-tags`.
+
+Un proyecto sin `src/hooks.server.ts` recibe uno. Si en su lugar tiene un `hooks.server.js`, ese archivo no se toca y se imprimen las líneas que añadir.
 
 ### Revertir
 

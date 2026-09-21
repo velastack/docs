@@ -1,5 +1,5 @@
 <!-- @en -->
-Add an inline-editing CMS to the project, served from the app's own backend or from a hosted one.
+Add an inline-editing CMS to the project, served from the app's own server or from a hosted one. It works in any SvelteKit project, including one Vela did not create.
 
 ### Syntax
 
@@ -16,9 +16,16 @@ This installs [`@velastack/cms`](https://www.npmjs.com/package/@velastack/cms) a
 
 ### Where the CMS lives
 
-Without `--endpoint`, an app with a backend hosts the CMS itself. The command also installs `better-sqlite3` and mounts the backend at `/api/cms`, with its SQLite database and uploads in the data directory.
+The command decides where the CMS backend runs, in this order:
 
-With `--endpoint`, the app reads from a CMS hosted elsewhere, such as a project on velastack.dev, and the admin bar signs in there. That is the only shape a static site can use, since it has no server to host the backend; `vela build` then prerenders the published content and downloads its media into the site. A site velastack.dev hosts is rebuilt that way by [`vela cms deploy`](/cms/deploy) or by **Deploy Site…** in the admin bar.
+1. `--endpoint <url>` always wins: the app reads from the hosted CMS at that URL.
+2. An app that runs as a Node server hosts the CMS itself. That is a project with a [PocketBase backend](/enable/backend), or one on `@sveltejs/adapter-node` with no PocketBase at all, which is where [`vela deploy`](/deploy) leaves a project from `npx sv create`. `@sveltejs/adapter-auto` does not count: it decides per platform, and most of what it picks has no disk to keep a database on.
+3. Otherwise, a project [linked](/link) to velastack.dev uses that project's hosted CMS, so `vela link` followed by `vela enable cms` needs no URL. The command says which endpoint it picked.
+4. Otherwise it stops without changing anything and lists the ways forward: link the project, pass `--endpoint`, or give the app a server with [`vela enable backend`](/enable/backend) or `@sveltejs/adapter-node`.
+
+An app that hosts the CMS also gets `better-sqlite3` and [`@velastack/kit`](/helpers/kit) installed, and the backend mounted at `/api/cms`, with its SQLite database and uploads in the data directory. The CMS keeps its own database; PocketBase is never involved.
+
+With a hosted CMS, from `--endpoint` or from the link, the app reads from a CMS that runs elsewhere and the admin bar signs in there. That is the only shape a static site can use, since it has no server to host the backend; `vela build` then prerenders the published content and downloads its media into the site. A site velastack.dev hosts is rebuilt that way by [`vela cms deploy`](/cms/deploy) or by **Deploy Site…** in the admin bar.
 
 Every project on velastack.dev has a hosted CMS at `https://velastack.dev/v1/projects/<project>/cms`, where `<project>` is the id [`vela link`](/link) records. The CMS-ready templates from [`vela create`](/create) arrive with this wiring in place and the endpoint of the linked project already in `src/lib/site.ts`, so they need no `vela enable cms`.
 
@@ -53,9 +60,9 @@ Running the command again only fills in what is missing. `src/lib/cms.ts` and, f
 
 ### Reverting
 
-There is no `vela disable cms` yet. Delete `src/lib/cms.ts` and, if the app hosts the backend, `src/lib/server/cms.ts`, `src/routes/api/cms` and `src/routes/uploads`; remove `cms()` from `vite.config.ts`, the `loadCms` call from `+layout.server.ts` and `<AdminBar />` from `+layout.svelte`; then uninstall `@velastack/cms`, `marked` and `better-sqlite3`.
+There is no `vela disable cms` yet. Delete `src/lib/cms.ts` and, if the app hosts the backend, `src/lib/server/cms.ts`, `src/routes/api/cms` and `src/routes/uploads`; remove `cms()` from `vite.config.ts`, the `loadCms` call from `+layout.server.ts` and `<AdminBar />` from `+layout.svelte`; then uninstall `@velastack/cms`, `marked` and `better-sqlite3`. `@velastack/kit` stays if the project has a PocketBase backend, which uses it too.
 <!-- @es -->
-Añade al proyecto un CMS de edición en línea, servido desde el propio backend de la aplicación o desde uno alojado.
+Añade al proyecto un CMS de edición en línea, servido desde el propio servidor de la aplicación o desde uno alojado. Funciona en cualquier proyecto SvelteKit, también en uno que Vela no creó.
 
 ### Sintaxis
 
@@ -72,9 +79,16 @@ Esto instala [`@velastack/cms`](https://www.npmjs.com/package/@velastack/cms) y 
 
 ### Dónde vive el CMS
 
-Sin `--endpoint`, una aplicación con backend aloja el CMS ella misma. El comando instala además `better-sqlite3` y monta el backend en `/api/cms`, con su base de datos SQLite y las subidas en el directorio de datos.
+El comando decide dónde se ejecuta el backend del CMS, en este orden:
 
-Con `--endpoint`, la aplicación lee de un CMS alojado en otro lugar, como un proyecto en velastack.dev, y la barra de administración inicia sesión allí. Es la única forma que puede usar un sitio estático, ya que no tiene servidor donde alojar el backend; `vela build` prerrenderiza entonces el contenido publicado y descarga sus medios al sitio. Un sitio que aloja velastack.dev se reconstruye así con [`vela cms deploy`](/es/cms/deploy) o con **Deploy Site…** en la barra de administración.
+1. `--endpoint <url>` siempre gana: la aplicación lee del CMS alojado en esa URL.
+2. Una aplicación que se ejecuta como servidor Node aloja el CMS ella misma. Es un proyecto con un [backend de PocketBase](/es/enable/backend), o uno con `@sveltejs/adapter-node` y sin PocketBase, que es como [`vela deploy`](/es/deploy) deja un proyecto de `npx sv create`. `@sveltejs/adapter-auto` no cuenta: decide según la plataforma, y casi nada de lo que elige tiene un disco donde guardar una base de datos.
+3. Si no, un proyecto [vinculado](/es/link) a velastack.dev usa el CMS alojado de ese proyecto, así que `vela link` seguido de `vela enable cms` no necesita ninguna URL. El comando indica qué endpoint eligió.
+4. Si no, se detiene sin cambiar nada y enumera las salidas: vincular el proyecto, pasar `--endpoint`, o darle un servidor a la aplicación con [`vela enable backend`](/es/enable/backend) o `@sveltejs/adapter-node`.
+
+Una aplicación que aloja el CMS recibe además `better-sqlite3` y [`@velastack/kit`](/es/helpers/kit), y el backend montado en `/api/cms`, con su base de datos SQLite y las subidas en el directorio de datos. El CMS mantiene su propia base de datos; PocketBase nunca interviene.
+
+Con un CMS alojado, por `--endpoint` o por el vínculo, la aplicación lee de un CMS que se ejecuta en otro lugar y la barra de administración inicia sesión allí. Es la única forma que puede usar un sitio estático, ya que no tiene servidor donde alojar el backend; `vela build` prerrenderiza entonces el contenido publicado y descarga sus medios al sitio. Un sitio que aloja velastack.dev se reconstruye así con [`vela cms deploy`](/es/cms/deploy) o con **Deploy Site…** en la barra de administración.
 
 Cada proyecto en velastack.dev tiene un CMS alojado en `https://velastack.dev/v1/projects/<project>/cms`, donde `<project>` es el id que registra [`vela link`](/es/link). Las plantillas con CMS de [`vela create`](/es/create) llegan con esta conexión hecha y con el endpoint del proyecto vinculado ya en `src/lib/site.ts`, así que no necesitan `vela enable cms`.
 
@@ -109,5 +123,5 @@ Ejecutar el comando de nuevo solo completa lo que falta. `src/lib/cms.ts` y, par
 
 ### Revertir
 
-Todavía no existe `vela disable cms`. Elimina `src/lib/cms.ts` y, si la aplicación aloja el backend, `src/lib/server/cms.ts`, `src/routes/api/cms` y `src/routes/uploads`; quita `cms()` de `vite.config.ts`, la llamada a `loadCms` de `+layout.server.ts` y `<AdminBar />` de `+layout.svelte`; y luego desinstala `@velastack/cms`, `marked` y `better-sqlite3`.
+Todavía no existe `vela disable cms`. Elimina `src/lib/cms.ts` y, si la aplicación aloja el backend, `src/lib/server/cms.ts`, `src/routes/api/cms` y `src/routes/uploads`; quita `cms()` de `vite.config.ts`, la llamada a `loadCms` de `+layout.server.ts` y `<AdminBar />` de `+layout.svelte`; y luego desinstala `@velastack/cms`, `marked` y `better-sqlite3`. `@velastack/kit` se queda si el proyecto tiene un backend de PocketBase, que también lo usa.
 <!-- @end -->

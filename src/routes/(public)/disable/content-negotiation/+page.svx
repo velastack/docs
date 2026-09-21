@@ -13,7 +13,7 @@ $ vela disable content-negotiation
 
 ### What it removes
 
-- The generated `sveltekit-negotiate` files
+- The generated `sveltekit-negotiate` files, including the demo page, from wherever enabling wrote it
 - The negotiate wrapper around the `handle` hook
 - The `reroute` hook, preserving the [i18n](/enable/i18n) composition if it is in use
 - The `<Negotiate />` component in the root layout
@@ -32,7 +32,7 @@ $ vela disable content-negotiation
 
 ### Qué elimina
 
-- Los archivos generados de `sveltekit-negotiate`
+- Los archivos generados de `sveltekit-negotiate`, incluida la página de demostración, de donde la escribió la habilitación
 - El envoltorio de negociación alrededor del hook `handle`
 - El hook `reroute`, conservando la composición de [i18n](/es/enable/i18n) si está en uso
 - El componente `<Negotiate />` en el layout raíz

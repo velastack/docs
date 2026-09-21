@@ -14,6 +14,15 @@ $ vela ui <command>
 - [`theme`](/ui/theme) - Change the accent color
 
 The shadcn-svelte configuration lives in `components.json` at the project root. `style`, `base` and `theme` use the project's own shadcn-svelte, which must be version 1.6 or newer.
+
+### Requirements
+
+Every `vela ui` command needs a shadcn-svelte project: a `components.json`, and the `shadcn-svelte` or `bits-ui` package in `package.json`. Projects from [`vela create`](/create) and [`vela bless`](/bless) have both. Anywhere else the command is refused before anything is changed, and prints how to set it up:
+
+```
+$ npx sv add tailwindcss
+$ npx shadcn-svelte@latest init
+```
 <!-- @es -->
 Vela construye su interfaz con componentes de shadcn-svelte, más algunos propios que shadcn-svelte no ofrece, como `data-table`, `multiselect` y `geopoint`. Todos los componentes se instalan en el directorio `src/lib/components/ui`, como archivos corrientes que te pertenecen y puedes editar.
 
@@ -30,4 +39,13 @@ $ vela ui <command>
 - [`theme`](/es/ui/theme) - Cambiar el color de acento
 
 La configuración de shadcn-svelte vive en `components.json`, en la raíz del proyecto. `style`, `base` y `theme` usan el shadcn-svelte del propio proyecto, que debe ser la versión 1.6 o posterior.
+
+### Requisitos
+
+Todos los comandos `vela ui` necesitan un proyecto con shadcn-svelte: un `components.json`, y el paquete `shadcn-svelte` o `bits-ui` en `package.json`. Los proyectos de [`vela create`](/es/create) y [`vela bless`](/es/bless) tienen ambos. En cualquier otro el comando se rechaza antes de cambiar nada, e imprime cómo configurarlo:
+
+```
+$ npx sv add tailwindcss
+$ npx shadcn-svelte@latest init
+```
 <!-- @end -->

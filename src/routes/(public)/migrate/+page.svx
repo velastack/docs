@@ -1,5 +1,5 @@
 <!-- @en -->
-Manage database migrations. Migrations are files in the `migrations` directory, applied in order and tracked in the database, so every environment converges on the same schema.
+Manage database migrations. Migrations are files in the `migrations` directory, applied in order and tracked in the database, so every environment converges on the same schema. The directory is resolved from the project root, so the commands can be run from any subdirectory.
 
 ### Syntax
 
@@ -25,7 +25,7 @@ Pending migrations are applied to the server's database as part of [`vela deploy
 
 After changing the schema, run [`vela sync`](/sync) to regenerate the TypeScript definitions.
 <!-- @es -->
-Gestiona las migraciones de la base de datos. Las migraciones son archivos del directorio `migrations`, aplicados en orden y registrados en la base de datos, de modo que todos los entornos convergen en el mismo esquema.
+Gestiona las migraciones de la base de datos. Las migraciones son archivos del directorio `migrations`, aplicados en orden y registrados en la base de datos, de modo que todos los entornos convergen en el mismo esquema. El directorio se resuelve desde la raíz del proyecto, así que los comandos pueden ejecutarse desde cualquier subdirectorio.
 
 ### Sintaxis
 

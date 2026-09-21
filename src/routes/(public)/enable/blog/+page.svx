@@ -16,6 +16,8 @@ This scaffolds:
 
 Posts are files in the repository, not database records, so they version alongside the code, and the blog works with or without a backend.
 
+The pages are built from shadcn-svelte components, so the project needs [shadcn-svelte](/ui). Without it the command is refused before anything is changed.
+
 The RSS feed takes its title and links from `site.name` and `site.url` in [`src/lib/site.ts`](/cli/project-structure), so set `url` there to where the site is deployed. A project without that file gets one, named after PocketBase's application name when there is a backend and after `package.json` otherwise.
 <!-- @es -->
 Añade al proyecto un blog basado en mdsvex.
@@ -34,6 +36,8 @@ Esto genera:
 - Un par de entradas de ejemplo para empezar
 
 Las entradas son archivos del repositorio, no registros de la base de datos, así que se versionan junto al código, y el blog funciona con o sin backend.
+
+Las páginas se construyen con componentes de shadcn-svelte, así que el proyecto necesita [shadcn-svelte](/es/ui). Sin él el comando se rechaza antes de cambiar nada.
 
 El feed RSS toma su título y sus enlaces de `site.name` y `site.url` en [`src/lib/site.ts`](/es/cli/project-structure), así que define ahí `url` con la dirección donde se despliega el sitio. Un proyecto sin ese archivo recibe uno, con el nombre de aplicación de PocketBase si hay backend, o con el de `package.json` si no lo hay.
 <!-- @end -->

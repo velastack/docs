@@ -17,7 +17,6 @@ The generated files:
 
 ```
 wuchale.config.js
-src/hooks.ts
 src/lib/url.ts
 src/lib/components/language-select.svelte
 ```
@@ -26,8 +25,9 @@ The `wuchale` and `@wuchale/svelte` packages are uninstalled, and the changes ma
 
 - The Wuchale plugin comes out of the Vite config, and the `$locales` alias out of the SvelteKit config.
 - The Wuchale handle comes out of `src/hooks.server.ts`. If nothing else is left in the file, it is deleted.
+- The de-localizing `reroute` comes out of `src/hooks.ts`, leaving content negotiation's reroute if it is composed with one. If nothing else is left in the file, it is deleted.
 - The `<html>` tag in `src/app.html` goes back to `lang="en"`.
-- `src/routes/+layout.ts` is deleted if it is still the generated loader.
+- The loader comes out of `src/routes/+layout.ts`, leaving whatever else the file exports. If nothing else is left, it is deleted.
 - The language select comes out of the root layout.
 - The Wuchale block comes out of `.gitignore`.
 
@@ -35,7 +35,7 @@ The `wuchale` and `@wuchale/svelte` packages are uninstalled, and the changes ma
 
 - `src/locales`, with your `.po` catalogs and the loaders Wuchale generated. Delete it once you no longer need the translations.
 - The shadcn-svelte `select` component — other code may use it
-- A `src/routes/+layout.ts` with code of its own besides the loader, or a `handle` in `src/hooks.server.ts` it can't take apart. The file is left as it is, and the command prints what to remove by hand.
+- A `load` in `src/routes/+layout.ts` with code of its own besides the loader, a `reroute` in `src/hooks.ts` or a `handle` in `src/hooks.server.ts` it can't take apart. The file is left as it is, and the command prints what to remove by hand.
 <!-- @es -->
 Elimina la internacionalización, añadida por [`vela enable i18n`](/es/enable/i18n).
 
@@ -55,7 +55,6 @@ Los archivos generados:
 
 ```
 wuchale.config.js
-src/hooks.ts
 src/lib/url.ts
 src/lib/components/language-select.svelte
 ```
@@ -64,8 +63,9 @@ Los paquetes `wuchale` y `@wuchale/svelte` se desinstalan, y los cambios hechos 
 
 - El plugin de Wuchale sale de la configuración de Vite, y el alias `$locales` de la configuración de SvelteKit.
 - El handle de Wuchale sale de `src/hooks.server.ts`. Si el archivo se queda sin nada más, se elimina.
+- El `reroute` que quita el idioma de la URL sale de `src/hooks.ts`, y deja el de la negociación de contenido si estaban combinados. Si el archivo se queda sin nada más, se elimina.
 - La etiqueta `<html>` de `src/app.html` vuelve a `lang="en"`.
-- `src/routes/+layout.ts` se elimina si sigue siendo el cargador generado.
+- El cargador sale de `src/routes/+layout.ts`, y deja lo demás que el archivo exporte. Si se queda sin nada más, se elimina.
 - El selector de idioma sale del layout raíz.
 - El bloque de Wuchale sale de `.gitignore`.
 
@@ -73,5 +73,5 @@ Los paquetes `wuchale` y `@wuchale/svelte` se desinstalan, y los cambios hechos 
 
 - `src/locales`, con tus catálogos `.po` y los cargadores que generó Wuchale. Elimínalo cuando ya no necesites las traducciones.
 - El componente `select` de shadcn-svelte — otro código puede usarlo
-- Un `src/routes/+layout.ts` con código propio además del cargador, o un `handle` en `src/hooks.server.ts` que no puede desmontar. El archivo se deja como está, y el comando muestra lo que hay que quitar a mano.
+- Un `load` en `src/routes/+layout.ts` con código propio además del cargador, un `reroute` en `src/hooks.ts` o un `handle` en `src/hooks.server.ts` que no puede desmontar. El archivo se deja como está, y el comando muestra lo que hay que quitar a mano.
 <!-- @end -->

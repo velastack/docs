@@ -31,6 +31,8 @@ Each deployed target runs the Node server and the database as separate systemd u
 ```
 $ vela logs --pocketbase -f
 ```
+
+A target deployed without a backend has no database service, so `--pocketbase` fails there and says so.
 <!-- @es -->
 Sigue los logs de una aplicación desplegada.
 
@@ -64,4 +66,6 @@ Cada objetivo desplegado ejecuta el servidor de Node y la base de datos como uni
 ```
 $ vela logs --pocketbase -f
 ```
+
+Un objetivo desplegado sin backend no tiene servicio de base de datos, así que `--pocketbase` falla allí y lo indica.
 <!-- @end -->

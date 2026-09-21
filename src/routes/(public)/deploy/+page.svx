@@ -54,15 +54,27 @@ Both can be combined. With a domain of your own, that domain is primary and the 
 
 ### Adapter
 
-`vela deploy` runs the app as a Node server, so the project has to build with `@sveltejs/adapter-node`. New projects from the default template already do. A project on `@sveltejs/adapter-auto`, which is what `sv create` gives you, or with no adapter at all, is switched on its first deploy: the config and `package.json` are rewritten and the package is installed. Commit the files the deploy lists, lockfile included, so every deploy builds the same way.
+`vela deploy` runs the app as a Node server, so the project has to build with `@sveltejs/adapter-node`. New projects from the default template already do. A project on `@sveltejs/adapter-auto`, which is what `sv create` gives you, or with no adapter at all, is switched on its first deploy: the config and `package.json` are rewritten and the package is installed. At a terminal the deploy asks first, naming the files it will edit; answer no and nothing is changed or deployed. In CI, or anywhere without a terminal, it switches without asking. Commit the files the deploy lists, lockfile included, so every deploy builds the same way.
 
 A project on `@sveltejs/adapter-static` or a hosting platform's adapter has chosen something else. The deploy leaves it alone and stops before building, showing the lines to change. Host a [static site](/static) elsewhere, or see [Serverless](/serverless) for the platforms.
 
 ### Backend
 
-The deploy checks the project for a backend every time rather than reading a setting: a `data/` directory means PocketBase. A project without one deploys as the app alone.
+The deploy checks the project for a backend every time rather than reading a setting: a `data/` directory together with the PocketBase client in `package.json` (`pocketbase-sveltekit` or `@velastack/pocketbase`) means PocketBase. A project without them deploys as the app alone.
 
-Add a backend with [`vela bless`](/bless) or [`vela enable backend`](/enable/backend) and deploy again, and the same target gains PocketBase. Deploy after removing it and PocketBase is stopped; its database stays on the server until [`vela destroy deployment --purge`](/destroy/deployment). The deploy says when either happens. [`vela disable backend`](/disable/backend) also switches the adapter to static, so switch it back to `@sveltejs/adapter-node` before deploying again.
+Add a backend with [`vela enable backend`](/enable/backend) and deploy again, and the same target gains PocketBase. Deploy after removing it and PocketBase is stopped; its database stays on the server until [`vela destroy deployment --purge`](/destroy/deployment). The deploy says when either happens. [`vela disable backend`](/disable/backend) also switches the adapter to static, so switch it back to `@sveltejs/adapter-node` before deploying again.
+
+### Dependencies
+
+The server installs the release's production dependencies with npm: `npm ci` when the project has a `package-lock.json`, `npm install` otherwise. The installed tree is cached on the server and keyed on the lockfile, so a deploy that changes no dependencies skips the install.
+
+A `pnpm-lock.yaml`, `yarn.lock`, `bun.lock` or `bun.lockb` is uploaded too and is part of that key, so a change to it triggers a reinstall. npm cannot replay those lockfiles, though: versions are resolved from the ranges in `package.json` and may differ from yours, and the deploy warns about it. Commit a `package-lock.json` for a reproducible deploy:
+
+```
+$ npm install --package-lock-only
+```
+
+The project's own `prepare` script is not run on the server. It is a development hook, and the tools it calls are dev dependencies, which are not installed there. Install scripts of the dependencies themselves still run.
 
 ### Prerendered pages
 
@@ -243,15 +255,27 @@ Ambas cosas se pueden combinar. Con un dominio propio, ese dominio es el princip
 
 ### Adaptador
 
-`vela deploy` ejecuta la aplicación como un servidor Node, así que el proyecto tiene que compilarse con `@sveltejs/adapter-node`. Los proyectos nuevos de la plantilla por defecto ya lo hacen. Un proyecto con `@sveltejs/adapter-auto`, que es lo que da `sv create`, o sin ningún adaptador, se cambia en su primer despliegue: se reescriben la configuración y `package.json` y se instala el paquete. Sube al repositorio los archivos que lista el despliegue, lockfile incluido, para que cada despliegue compile igual.
+`vela deploy` ejecuta la aplicación como un servidor Node, así que el proyecto tiene que compilarse con `@sveltejs/adapter-node`. Los proyectos nuevos de la plantilla por defecto ya lo hacen. Un proyecto con `@sveltejs/adapter-auto`, que es lo que da `sv create`, o sin ningún adaptador, se cambia en su primer despliegue: se reescriben la configuración y `package.json` y se instala el paquete. En una terminal el despliegue pregunta antes, indicando los archivos que va a editar; responde que no y no se cambia ni se despliega nada. En CI, o en cualquier sitio sin terminal, lo cambia sin preguntar. Sube al repositorio los archivos que lista el despliegue, lockfile incluido, para que cada despliegue compile igual.
 
 Un proyecto con `@sveltejs/adapter-static` o con el adaptador de una plataforma de alojamiento ya ha elegido otra cosa. El despliegue no lo toca y se detiene antes de compilar, mostrando las líneas que cambiar. Aloja un [sitio estático](/es/static) en otro sitio, o consulta [Serverless](/es/serverless) para las plataformas.
 
 ### Backend
 
-El despliegue comprueba cada vez si el proyecto tiene backend, en lugar de leer una opción: un directorio `data/` significa PocketBase. Un proyecto sin él se despliega solo como aplicación.
+El despliegue comprueba cada vez si el proyecto tiene backend, en lugar de leer una opción: un directorio `data/` junto con el cliente de PocketBase en `package.json` (`pocketbase-sveltekit` o `@velastack/pocketbase`) significa PocketBase. Un proyecto sin ellos se despliega solo como aplicación.
 
-Añade un backend con [`vela bless`](/es/bless) o [`vela enable backend`](/es/enable/backend) y despliega de nuevo, y el mismo objetivo gana PocketBase. Despliega después de quitarlo y PocketBase se detiene; su base de datos se queda en el servidor hasta [`vela destroy deployment --purge`](/es/destroy/deployment). El despliegue avisa cuando ocurre cualquiera de las dos cosas. [`vela disable backend`](/es/disable/backend) también cambia el adaptador a static, así que vuelve a ponerlo en `@sveltejs/adapter-node` antes de desplegar de nuevo.
+Añade un backend con [`vela enable backend`](/es/enable/backend) y despliega de nuevo, y el mismo objetivo gana PocketBase. Despliega después de quitarlo y PocketBase se detiene; su base de datos se queda en el servidor hasta [`vela destroy deployment --purge`](/es/destroy/deployment). El despliegue avisa cuando ocurre cualquiera de las dos cosas. [`vela disable backend`](/es/disable/backend) también cambia el adaptador a static, así que vuelve a ponerlo en `@sveltejs/adapter-node` antes de desplegar de nuevo.
+
+### Dependencias
+
+El servidor instala las dependencias de producción de la release con npm: `npm ci` cuando el proyecto tiene un `package-lock.json`, y `npm install` en caso contrario. El árbol instalado se guarda en caché en el servidor, con el lockfile como clave, así que un despliegue que no cambia dependencias se salta la instalación.
+
+Un `pnpm-lock.yaml`, `yarn.lock`, `bun.lock` o `bun.lockb` también se sube y forma parte de esa clave, así que un cambio en él provoca una reinstalación. Pero npm no puede reproducir esos lockfiles: las versiones se resuelven a partir de los rangos de `package.json` y pueden diferir de las tuyas, y el despliegue avisa de ello. Sube al repositorio un `package-lock.json` para un despliegue reproducible:
+
+```
+$ npm install --package-lock-only
+```
+
+El script `prepare` del proyecto no se ejecuta en el servidor. Es un hook de desarrollo, y las herramientas que llama son dependencias de desarrollo, que allí no se instalan. Los scripts de instalación de las propias dependencias se siguen ejecutando.
 
 ### Páginas prerenderizadas
 

@@ -33,7 +33,7 @@ $ vela disable backend
 
 ### Commands without a backend
 
-Commands that need the database stop and say so. These work without one:
+Commands that need the database stop and say so, pointing at [`vela enable backend`](/enable/backend). A project has a backend when it has a `data` directory and depends on `pocketbase-sveltekit` or `@velastack/pocketbase`. These work without one:
 
 - `vela dev`, `vela build` and `vela preview`
 - `vela ui`, `vela legal`, `vela routes` and `vela i18n`
@@ -91,7 +91,7 @@ $ vela disable backend
 
 ### Comandos sin backend
 
-Los comandos que necesitan la base de datos se detienen y lo indican. Estos funcionan sin ella:
+Los comandos que necesitan la base de datos se detienen y lo indican, remitiendo a [`vela enable backend`](/es/enable/backend). Un proyecto tiene backend cuando tiene un directorio `data` y depende de `pocketbase-sveltekit` o de `@velastack/pocketbase`. Estos funcionan sin ella:
 
 - `vela dev`, `vela build` y `vela preview`
 - `vela ui`, `vela legal`, `vela routes` y `vela i18n`

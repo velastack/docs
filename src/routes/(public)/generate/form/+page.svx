@@ -56,7 +56,7 @@ Keep the route you used — [`vela destroy form`](/destroy/form) needs the same 
 
 ### Plain HTML
 
-`--ui` defaults to `shadcn` when the project has a `components.json` and the `shadcn-svelte` or `bits-ui` package. Otherwise the form uses plain HTML elements with no classes, and no components are installed. `--ui plain` does the same in a project that has shadcn-svelte; `--ui shadcn` in a project without it is an error — run [`vela bless`](/bless) to set it up.
+`--ui` defaults to `shadcn` when the project has a `components.json` and the `shadcn-svelte` or `bits-ui` package. Otherwise the form uses plain HTML elements with no classes, and no components are installed. `--ui plain` does the same in a project that has shadcn-svelte; `--ui shadcn` in a project without it is an error — set it up with `npx sv add tailwindcss`, then `npx shadcn-svelte@latest init`, or run [`vela bless`](/bless) for the full upgrade.
 
 In a project from `sv create`, which has no route groups and no test harness:
 
@@ -166,7 +166,7 @@ Recuerda la ruta que usaste — [`vela destroy form`](/es/destroy/form) necesita
 
 ### HTML simple
 
-`--ui` es `shadcn` por defecto cuando el proyecto tiene un `components.json` y el paquete `shadcn-svelte` o `bits-ui`. Si no, el formulario usa elementos HTML simples sin clases, y no se instala ningún componente. `--ui plain` hace lo mismo en un proyecto con shadcn-svelte; `--ui shadcn` en un proyecto sin él es un error — ejecuta [`vela bless`](/es/bless) para configurarlo.
+`--ui` es `shadcn` por defecto cuando el proyecto tiene un `components.json` y el paquete `shadcn-svelte` o `bits-ui`. Si no, el formulario usa elementos HTML simples sin clases, y no se instala ningún componente. `--ui plain` hace lo mismo en un proyecto con shadcn-svelte; `--ui shadcn` en un proyecto sin él es un error — configúralo con `npx sv add tailwindcss` y luego `npx shadcn-svelte@latest init`, o ejecuta [`vela bless`](/es/bless) para la actualización completa.
 
 En un proyecto creado con `sv create`, que no tiene grupos de rutas ni entorno de pruebas:
 

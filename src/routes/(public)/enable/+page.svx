@@ -8,6 +8,12 @@ $ vela enable <feature>
 ```
 
 Features have dependencies on each other — enabling API keys, for example, needs both auth and the API first. Each page lists what it depends on. Anything enabled can be turned back off with [`vela disable`](/disable).
+
+### In any SvelteKit project
+
+[`ai`](/enable/ai), [`analytics`](/enable/analytics), [`backend`](/enable/backend), [`cms`](/enable/cms), [`content-negotiation`](/enable/content-negotiation) and [`i18n`](/enable/i18n) work in a project Vela did not create, such as one from `sv create`. They adapt to what the project has: no route groups, no shadcn-svelte, no test harness.
+
+[`auth`](/enable/auth) and [`blog`](/enable/blog) generate shadcn-svelte pages, as does everything that builds on auth: [`api-keys`](/enable/api-keys), [`notifications`](/enable/notifications), [`teams`](/enable/teams), [`payments`](/enable/payments) and [`subscriptions`](/enable/subscriptions). In a project without [shadcn-svelte](/ui) they are refused before anything is changed.
 <!-- @es -->
 El comando enable se usa para habilitar funciones en un proyecto de Vela. Puede usarse para habilitar la autenticación, el acceso a la API, el almacenamiento en S3, el envío de correo por SMTP, los equipos, los pagos y más. Se te pedirán opciones de configuración para cada función y el comando generará el código necesario.
 
@@ -18,4 +24,10 @@ $ vela enable <feature>
 ```
 
 Las funciones dependen unas de otras — habilitar las claves de API, por ejemplo, requiere primero la autenticación y la API. Cada página indica de qué depende. Todo lo que se habilita puede desactivarse de nuevo con [`vela disable`](/es/disable).
+
+### En cualquier proyecto SvelteKit
+
+[`ai`](/es/enable/ai), [`analytics`](/es/enable/analytics), [`backend`](/es/enable/backend), [`cms`](/es/enable/cms), [`content-negotiation`](/es/enable/content-negotiation) e [`i18n`](/es/enable/i18n) funcionan en un proyecto que Vela no creó, como uno de `sv create`. Se adaptan a lo que el proyecto tiene: sin grupos de rutas, sin shadcn-svelte, sin entorno de pruebas.
+
+[`auth`](/es/enable/auth) y [`blog`](/es/enable/blog) generan páginas de shadcn-svelte, igual que todo lo que se apoya en la autenticación: [`api-keys`](/es/enable/api-keys), [`notifications`](/es/enable/notifications), [`teams`](/es/enable/teams), [`payments`](/es/enable/payments) y [`subscriptions`](/es/enable/subscriptions). En un proyecto sin [shadcn-svelte](/es/ui) se rechazan antes de cambiar nada.
 <!-- @end -->

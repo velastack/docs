@@ -25,6 +25,10 @@ vela create my-project
 
 This will create a new directory called `my-project` with the project files.
 
+### Use an Existing Project
+
+Vela also runs in a SvelteKit project it did not create, such as one from `npx sv create`. Generators, deploys and several features work there as it is; [`vela enable backend`](/enable/backend) adds the database, and [`vela bless`](/bless) upgrades the whole project. See [Bless](/bless) for what works where.
+
 ### Run the Project
 
 To run the project, run the following command:
@@ -62,6 +66,10 @@ vela create my-project
 ```
 
 Este comando creará un nuevo directorio llamado `my-project` con los archivos del proyecto.
+
+### Usar un Proyecto Existente
+
+Vela también funciona en un proyecto SvelteKit que no creó, como uno de `npx sv create`. Los generadores, los despliegues y varias funciones funcionan allí tal cual; [`vela enable backend`](/es/enable/backend) añade la base de datos, y [`vela bless`](/es/bless) convierte el proyecto entero. Consulta [Bless](/es/bless) para ver qué funciona en cada caso.
 
 ### Ejecutar el Proyecto
 

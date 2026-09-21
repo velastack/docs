@@ -444,11 +444,6 @@
 				url: /* @wc-url */ '/routes'
 			},
 			{
-				title: 'OAuth',
-				url: /* @wc-url */ '/oauth',
-				badge: 'Planned'
-			},
-			{
 				title: 'Provision',
 				url: /* @wc-url */ '/provision'
 			},

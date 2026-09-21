@@ -21,13 +21,15 @@ Each run:
 
 A bare positional argument filters which tests run, and any other arguments are passed straight through to Vitest. The command exits non-zero when a test fails, so it can gate CI.
 
+With no filter of your own, a project that has no server tests yet passes — the state a project is in right after [`vela enable backend`](/enable/backend). A filter that matches no test file still fails.
+
 ### Test files
 
 Server tests match `src/**/*.{test,spec}.{js,ts}` and run in the Vitest project named `server`. Component tests — `*.svelte.test.ts` — are excluded. The generators write a `server.test.ts` next to the routes they create, and a `<name>.server.test.ts` next to each [workflow](/workflows); a workflow test starts a worker in the test process, so the run completes there. [`vela generate form`](/generate/form) and [`vela enable ai`](/enable/ai) only write theirs when the project has `supertest` installed.
 
 ### Test context
 
-`test/setup.ts` gives every test a fresh user and a set of clients, so tests read as HTTP requests against the running app:
+`test/setup.ts` gives every test a fresh user and a set of clients, so tests read as HTTP requests against the running app. [`vela enable backend`](/enable/backend) creates it, and the `vitest.config.ts` that loads it, in a project that has neither:
 
 - `request` - A supertest client, unauthenticated
 - `agent` - A supertest agent that keeps cookies, with `authenticateUser()`
@@ -67,13 +69,15 @@ Cada ejecución:
 
 Un argumento posicional simple filtra qué pruebas se ejecutan, y cualquier otro argumento se pasa directamente a Vitest. El comando termina con un código distinto de cero cuando falla una prueba, así que puede usarse como puerta en CI.
 
+Sin un filtro tuyo, un proyecto que todavía no tiene pruebas de servidor pasa — el estado en que queda un proyecto justo después de [`vela enable backend`](/es/enable/backend). Un filtro que no coincide con ningún archivo de prueba sigue fallando.
+
 ### Archivos de prueba
 
 Las pruebas de servidor coinciden con `src/**/*.{test,spec}.{js,ts}` y se ejecutan en el proyecto de Vitest llamado `server`. Las pruebas de componentes — `*.svelte.test.ts` — quedan excluidas. Los generadores escriben un `server.test.ts` junto a las rutas que crean, y un `<name>.server.test.ts` junto a cada [workflow](/es/workflows); una prueba de workflow arranca un worker en el proceso de pruebas, así que la ejecución se completa ahí. [`vela generate form`](/es/generate/form) y [`vela enable ai`](/es/enable/ai) solo escriben la suya cuando el proyecto tiene `supertest` instalado.
 
 ### Contexto de prueba
 
-`test/setup.ts` da a cada prueba un usuario nuevo y un conjunto de clientes, de modo que las pruebas se leen como peticiones HTTP contra la aplicación en ejecución:
+`test/setup.ts` da a cada prueba un usuario nuevo y un conjunto de clientes, de modo que las pruebas se leen como peticiones HTTP contra la aplicación en ejecución. [`vela enable backend`](/es/enable/backend) lo crea, junto con el `vitest.config.ts` que lo carga, en un proyecto que no tiene ninguno de los dos:
 
 - `request` - Un cliente de supertest, sin autenticar
 - `agent` - Un agente de supertest que conserva las cookies, con `authenticateUser()`

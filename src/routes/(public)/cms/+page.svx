@@ -12,7 +12,7 @@ $ vela cms <command>
 
 ### Two shapes
 
-Where the CMS lives decides which command applies. An app with a backend hosts the CMS itself, in a SQLite database in its data directory; `vela cms editor` writes to that database, and the app reads published content live, so there is nothing to deploy. A static site reads from a CMS hosted on velastack.dev instead, which manages its own editors; what they publish reaches visitors once the site is built again, which is what `vela cms deploy` asks for.
+Where the CMS lives decides which command applies. An app that runs as a Node server, with a PocketBase backend or on `@sveltejs/adapter-node` alone, hosts the CMS itself, in a SQLite database in its data directory; `vela cms editor` writes to that database, and the app reads published content live, so there is nothing to deploy. A static site reads from a CMS hosted on velastack.dev instead, which manages its own editors; what they publish reaches visitors once the site is built again, which is what `vela cms deploy` asks for.
 
 Neither command needs a PocketBase backend, so both work in a static project.
 <!-- @es -->
@@ -29,7 +29,7 @@ $ vela cms <command>
 
 ### Dos formas
 
-Dónde vive el CMS decide qué comando aplica. Una aplicación con backend aloja el CMS ella misma, en una base de datos SQLite en su directorio de datos; `vela cms editor` escribe en esa base de datos, y la aplicación lee el contenido publicado en vivo, así que no hay nada que desplegar. Un sitio estático lee en cambio de un CMS alojado en velastack.dev, que gestiona sus propios editores; lo que publican llega a los visitantes cuando el sitio se compila de nuevo, que es lo que pide `vela cms deploy`.
+Dónde vive el CMS decide qué comando aplica. Una aplicación que se ejecuta como servidor Node, con un backend de PocketBase o solo con `@sveltejs/adapter-node`, aloja el CMS ella misma, en una base de datos SQLite en su directorio de datos; `vela cms editor` escribe en esa base de datos, y la aplicación lee el contenido publicado en vivo, así que no hay nada que desplegar. Un sitio estático lee en cambio de un CMS alojado en velastack.dev, que gestiona sus propios editores; lo que publican llega a los visitantes cuando el sitio se compila de nuevo, que es lo que pide `vela cms deploy`.
 
 Ninguno de los dos comandos necesita un backend PocketBase, así que ambos funcionan en un proyecto estático.
 <!-- @end -->

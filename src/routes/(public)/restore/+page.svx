@@ -11,6 +11,8 @@ $ vela restore ./backups/vela_myapp_20260901134501.zip   # one on this machine
 
 A local path is uploaded first. Anything else is looked up among the target's own backups, and with no argument at all you are shown the list to pick from.
 
+A target that has never been deployed, or was deployed without a database, is refused before anything is uploaded.
+
 ### Options
 
 - `-y, --yes` - Skip the confirmation prompt
@@ -61,6 +63,8 @@ $ vela restore ./backups/vela_myapp_20260901134501.zip   # una en esta máquina
 ```
 
 Una ruta local se sube primero. Cualquier otra cosa se busca entre las copias del propio objetivo, y sin ningún argumento se te muestra la lista para elegir.
+
+Un objetivo que nunca se ha desplegado, o que se desplegó sin base de datos, se rechaza antes de subir nada.
 
 ### Opciones
 

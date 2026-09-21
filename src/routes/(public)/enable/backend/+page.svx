@@ -1,5 +1,5 @@
 <!-- @en -->
-Add the PocketBase backend to a project that doesn't have one — a project scaffolded from the [static template](/static), or one where the backend was removed.
+Add the PocketBase backend to a project that doesn't have one — a project scaffolded from the [static template](/static), one where the backend was removed, or a SvelteKit project Vela did not create, such as one from `npx sv create`. It adds the backend and the server test harness and nothing else; [`vela bless`](/bless) is the full upgrade.
 
 ### Syntax
 
@@ -25,6 +25,7 @@ This installs `@velastack/pocketbase`, `pocketbase-sveltekit`, `@velastack/kit` 
 - Switches the SvelteKit adapter from `@sveltejs/adapter-static` or `@sveltejs/adapter-auto` to `@sveltejs/adapter-node`
 - Appends a PocketBase block to `.gitignore` that ignores the database in `data/` but keeps `fixtures/`, `hooks/` and `seeds/`
 - Writes `test/setup.ts`, which gives each server test PocketBase clients and a fresh test user. An existing `test/setup.ts` is replaced.
+- Writes `vitest.config.ts`, the server test project [`vela test:server`](/test) runs, when the project configures vitest nowhere: no `vitest.config.*` or `vitest.workspace.*`, and no `test` block in `vite.config`. Without it `test/setup.ts` is never loaded.
 
 An existing `hooks.server.ts` keeps its handles. `handlePocketbase` takes the place of the static template's `handleStatic()`; otherwise it is added last in a `sequence`, so the handles already there run first. Where a file is in a shape Vela can't edit — another adapter, or a `handle` it can't compose — it is left alone and you're shown the lines to change by hand.
 
@@ -38,11 +39,27 @@ Re-running the command is safe. The credentials in `.env` are reused and the sup
 
 Once enabled, [`vela dev`](/dev) starts the database alongside the app and the admin interface is available at `/admin`. Everything else that needs a database — [auth](/enable/auth), [the API](/enable/api), [scaffolds](/generate/scaffold), [seeds](/seeds) and [fixtures](/fixtures) — depends on this.
 
+### Without shadcn-svelte
+
+[`vela enable auth`](/enable/auth) and [`vela generate scaffold`](/generate/scaffold) write shadcn-svelte pages, and refuse a project that has no `components.json` and shadcn-svelte package; see [`vela bless`](/bless). In such a project the next steps the command prints point at what works there instead: [`vela generate form`](/generate/form), which writes its form in plain HTML, and [`vela test:server`](/test) for the server test that comes with it.
+
+### How a backend is detected
+
+A project has a backend when it has a `data/` directory and depends on `pocketbase-sveltekit` or `@velastack/pocketbase`. The directory alone is not enough: it is also where a self-hosted [CMS](/enable/cms) keeps its database, in a project that may have no PocketBase. A command that needs the database stops in a project without one:
+
+```
+vela migrate up needs a backend, and this project does not have one.
+
+There is no PocketBase database here for it to talk to.
+
+To add one, run vela enable backend.
+```
+
 ### Reverting
 
 [`vela disable backend`](/disable/backend) takes it back out.
 <!-- @es -->
-Añade el backend de PocketBase a un proyecto que no lo tiene — un proyecto generado a partir de la [plantilla estática](/es/static), o uno al que se le quitó el backend.
+Añade el backend de PocketBase a un proyecto que no lo tiene — un proyecto generado a partir de la [plantilla estática](/es/static), uno al que se le quitó el backend, o un proyecto SvelteKit que Vela no creó, como uno de `npx sv create`. Añade el backend y la infraestructura de tests de servidor y nada más; [`vela bless`](/es/bless) es la conversión completa.
 
 ### Sintaxis
 
@@ -68,6 +85,7 @@ Esto instala `@velastack/pocketbase`, `pocketbase-sveltekit`, `@velastack/kit` y
 - Cambia el adaptador de SvelteKit de `@sveltejs/adapter-static` o `@sveltejs/adapter-auto` a `@sveltejs/adapter-node`
 - Añade a `.gitignore` un bloque de PocketBase que ignora la base de datos de `data/` pero conserva `fixtures/`, `hooks/` y `seeds/`
 - Escribe `test/setup.ts`, que da a cada test de servidor clientes de PocketBase y un usuario de prueba nuevo. Un `test/setup.ts` existente se reemplaza.
+- Escribe `vitest.config.ts`, el proyecto de tests de servidor que ejecuta [`vela test:server`](/es/test), cuando el proyecto no configura vitest en ningún sitio: ni `vitest.config.*` ni `vitest.workspace.*`, ni un bloque `test` en `vite.config`. Sin él, `test/setup.ts` nunca se carga.
 
 Un `hooks.server.ts` existente conserva sus handles. `handlePocketbase` ocupa el lugar del `handleStatic()` de la plantilla estática; si no lo hay, se añade al final de una `sequence`, así que los handles que ya estaban se ejecutan primero. Si un archivo tiene una forma que Vela no sabe editar — otro adaptador, o un `handle` que no puede componer — se deja tal cual y se te muestran las líneas que hay que cambiar a mano.
 
@@ -80,6 +98,22 @@ Una vez colocados los archivos, la base de datos recibe su superusuario y se esc
 Volver a ejecutar el comando es seguro. Se reutilizan las credenciales de `.env` y el superusuario se inserta o actualiza, así que el archivo y la base de datos no pueden acabar en desacuerdo.
 
 Una vez habilitado, [`vela dev`](/es/dev) inicia la base de datos junto a la aplicación y la interfaz de administración está disponible en `/admin`. Todo lo demás que necesita una base de datos — [auth](/es/enable/auth), [la API](/es/enable/api), los [scaffolds](/es/generate/scaffold), los [seeds](/es/seeds) y los [fixtures](/es/fixtures) — depende de esto.
+
+### Sin shadcn-svelte
+
+[`vela enable auth`](/es/enable/auth) y [`vela generate scaffold`](/es/generate/scaffold) escriben páginas de shadcn-svelte, y rechazan un proyecto que no tiene `components.json` ni el paquete shadcn-svelte; consulta [`vela bless`](/es/bless). En un proyecto así, los siguientes pasos que imprime el comando apuntan a lo que sí funciona allí: [`vela generate form`](/es/generate/form), que escribe su formulario en HTML plano, y [`vela test:server`](/es/test) para el test de servidor que lo acompaña.
+
+### Cómo se detecta un backend
+
+Un proyecto tiene backend cuando tiene un directorio `data/` y depende de `pocketbase-sveltekit` o de `@velastack/pocketbase`. El directorio solo no basta: también es donde un [CMS](/es/enable/cms) autoalojado guarda su base de datos, en un proyecto que puede no tener PocketBase. Un comando que necesita la base de datos se detiene en un proyecto que no la tiene:
+
+```
+vela migrate up needs a backend, and this project does not have one.
+
+There is no PocketBase database here for it to talk to.
+
+To add one, run vela enable backend.
+```
 
 ### Revertir
 

@@ -17,6 +17,8 @@ $ vela generate scaffold --ai "listing info for hotels"
 
 For forms and scaffolds this runs in two stages — first the schema, then the layout — with a chance to refine each before anything is written. See [schema](/generate/schema), [form](/generate/form) and [scaffold](/generate/scaffold).
 
+The chosen layout is saved as `data/ai-form-layouts/<model>.json`, or as `.vela/ai-form-layouts/<model>.json` in a project without a backend.
+
 Requires an account and a linked project — run [`vela login`](/account/login) and [`vela link`](/link) first.
 
 ### Planned: whiteboard
@@ -40,6 +42,8 @@ $ vela generate scaffold --ai "listing info for hotels"
 ```
 
 Para formularios y scaffolds esto se ejecuta en dos fases — primero el esquema, después el diseño — con la posibilidad de refinar cada una antes de que se escriba nada. Consulta [schema](/es/generate/schema), [form](/es/generate/form) y [scaffold](/es/generate/scaffold).
+
+El diseño elegido se guarda como `data/ai-form-layouts/<model>.json`, o como `.vela/ai-form-layouts/<model>.json` en un proyecto sin backend.
 
 Requiere una cuenta y un proyecto vinculado — ejecuta primero [`vela login`](/es/account/login) y [`vela link`](/es/link).
 

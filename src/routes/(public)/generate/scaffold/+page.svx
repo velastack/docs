@@ -32,6 +32,8 @@ src/routes/(public)/pets/server.test.ts
 
 The `pets` collection is created in the database and the TypeScript definitions are [synced](/sync). The data table, form and dialog components it needs are installed automatically.
 
+The pages are shadcn-svelte markup, so the project needs [shadcn-svelte](/ui). Without it the command is refused before the collection or any file is created — and with `--ai`, before the AI stages run. For a form in plain HTML, use [`vela generate form`](/generate/form).
+
 ### Options
 
 - `--remote` - Generate the create and update forms with SvelteKit remote functions instead of superforms
@@ -86,6 +88,8 @@ src/routes/(public)/pets/server.test.ts
 ```
 
 La colección `pets` se crea en la base de datos y las definiciones de TypeScript se [sincronizan](/es/sync). Los componentes de tabla de datos, formulario y diálogo que necesita se instalan automáticamente.
+
+Las páginas son marcado de shadcn-svelte, así que el proyecto necesita [shadcn-svelte](/es/ui). Sin él el comando se rechaza antes de crear la colección o cualquier archivo — y con `--ai`, antes de que se ejecuten las fases de IA. Para un formulario en HTML plano, usa [`vela generate form`](/es/generate/form).
 
 ### Opciones
 

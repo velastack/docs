@@ -21,7 +21,7 @@ This will create a Zod schema for a resource. The file created is:
 src/lib/schemas/category.ts
 ```
 
-No database collection is created — use [resource](/generate/resource) for that.
+No database collection is created — use [resource](/generate/resource) for that. The command works in any SvelteKit project, with or without a backend, and installs `zod` if the project doesn't have it.
 
 ### Options
 
@@ -57,7 +57,7 @@ Esto creará un esquema Zod para un recurso. El archivo creado es:
 src/lib/schemas/category.ts
 ```
 
-No se crea ninguna colección en la base de datos — usa [resource](/es/generate/resource) para eso.
+No se crea ninguna colección en la base de datos — usa [resource](/es/generate/resource) para eso. El comando funciona en cualquier proyecto SvelteKit, con o sin backend, e instala `zod` si el proyecto no lo tiene.
 
 ### Opciones
 

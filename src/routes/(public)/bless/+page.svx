@@ -1,6 +1,8 @@
 <!-- @en -->
 Upgrade an existing, vanilla SvelteKit project into a VelaStack project — the equivalent of [`vela create`](/create) for a repository that already exists.
 
+There are two routes into an existing project. `vela bless` is the all-in-one upgrade: Tailwind, shadcn-svelte and its `components.json`, Vela's layout and routes, and the PocketBase backend. [`vela enable backend`](/enable/backend) adds only PocketBase and the server test harness, and leaves everything else alone. Much of Vela needs neither; see *Without blessing* below.
+
 ### Syntax
 
 ```
@@ -30,18 +32,19 @@ You'll be prompted for the admin email and password for the new PocketBase datab
 Files Vela owns outright are written in. If your project already has one, it is kept and you're told what Vela's copy would have carried:
 
 ```
-src/hooks.server.ts     the handlePocketbase hook
-src/app.css             Tailwind imports and theme tokens
-src/lib/utils.ts        the cn helper and component type utilities
-src/lib/index.ts        a $lib placeholder
-src/lib/site.ts         the app's name, taken from package.json, and its URL
-components.json         the shadcn-svelte config `vela ui add` reads
-.npmrc                  engine-strict=true
-.ignore                 search ignores for generated files
-vitest.config.ts        the server test project `vela test:server` runs
+src/hooks.server.ts          the handlePocketbase hook
+src/lib/server/workflows.ts  the workflow client and the worker hooks.server.ts starts
+src/app.css                  Tailwind imports and theme tokens
+src/lib/utils.ts             the cn helper and component type utilities
+src/lib/index.ts             a $lib placeholder
+src/lib/site.ts              the app's name, taken from package.json, and its URL
+components.json              the shadcn-svelte config `vela ui add` reads
+.npmrc                       engine-strict=true
+.ignore                      search ignores for generated files
+vitest.config.ts             the server test project `vela test:server` runs
 ```
 
-Directories are added alongside what you have: `src/lib/components`, `data`, `test` and `static`. Configuration is merged rather than overwritten:
+Directories are added alongside what you have: `src/lib/components`, `src/lib/workflows`, `data`, `test` and `static`. Configuration is merged rather than overwritten:
 
 ```
 svelte.config.js
@@ -57,8 +60,37 @@ Your project's SvelteKit adapter is kept: if `package.json` already lists one, t
 ### Routes
 
 Vela looks at `src/routes` to decide whether it is still the untouched `npx sv create` placeholder. If it is, it is replaced with the template's routes; if you have written anything real, it is left alone. Override the detection either way with `--skip-routes` or `--force-routes`.
+
+### Without blessing
+
+These work in a project straight from `npx sv create`, with no setup:
+
+- [`vela generate schema`](/generate/schema) and [`vela generate form`](/generate/form). Without shadcn-svelte the form is written in plain HTML.
+- [`vela enable`](/enable) for `i18n`, `ai`, `analytics`, `content-negotiation` and `cms`
+- [`vela legal privacy`](/legal/privacy) and [`vela legal terms`](/legal/terms), [`vela routes`](/routes) and [`vela i18n`](/i18n)
+- [`vela deploy`](/deploy) and the server commands: `env`, `status`, `logs` and `rollback`
+
+Generated routes go straight under `src/routes` in a project without Vela's `(public)` and `(app)` groups.
+
+These write shadcn-svelte markup or drive shadcn-svelte itself, so they need a `components.json` and the shadcn-svelte package:
+
+- [`vela ui`](/ui)
+- [`vela enable blog`](/enable/blog)
+- [`vela enable auth`](/enable/auth) and what builds on it: `api-keys`, `notifications`, `teams`, `payments` and `subscriptions`
+- [`vela generate scaffold`](/generate/scaffold)
+
+In a project without them they refuse before changing anything, and print the two commands that set it up:
+
+```
+$ npx sv add tailwindcss
+$ npx shadcn-svelte@latest init
+```
+
+The commands that need a database say so the same way, and point at [`vela enable backend`](/enable/backend).
 <!-- @es -->
 Convierte un proyecto SvelteKit existente y sin modificar en un proyecto VelaStack — el equivalente de [`vela create`](/es/create) para un repositorio que ya existe.
+
+Hay dos caminos hacia un proyecto existente. `vela bless` es la conversión completa: Tailwind, shadcn-svelte y su `components.json`, el layout y las rutas de Vela, y el backend de PocketBase. [`vela enable backend`](/es/enable/backend) añade solo PocketBase y la infraestructura de tests de servidor, y deja todo lo demás tal cual. Buena parte de Vela no necesita ninguno de los dos; consulta *Sin bendecir* más abajo.
 
 ### Sintaxis
 
@@ -89,18 +121,19 @@ Se te pedirá el correo electrónico y la contraseña del administrador para la 
 Los archivos que Vela posee por completo se escriben directamente. Si tu proyecto ya tiene uno, se conserva y se te indica qué habría contenido la copia de Vela:
 
 ```
-src/hooks.server.ts     el hook handlePocketbase
-src/app.css             importaciones de Tailwind y tokens del tema
-src/lib/utils.ts        el helper cn y utilidades de tipos de componentes
-src/lib/index.ts        un marcador de posición de $lib
-src/lib/site.ts         el nombre de la aplicación, tomado de package.json, y su URL
-components.json         la configuración de shadcn-svelte que lee `vela ui add`
-.npmrc                  engine-strict=true
-.ignore                 exclusiones de búsqueda para archivos generados
-vitest.config.ts        el proyecto de tests de servidor que ejecuta `vela test:server`
+src/hooks.server.ts          el hook handlePocketbase
+src/lib/server/workflows.ts  el cliente de workflows y el worker que inicia hooks.server.ts
+src/app.css                  importaciones de Tailwind y tokens del tema
+src/lib/utils.ts             el helper cn y utilidades de tipos de componentes
+src/lib/index.ts             un marcador de posición de $lib
+src/lib/site.ts              el nombre de la aplicación, tomado de package.json, y su URL
+components.json              la configuración de shadcn-svelte que lee `vela ui add`
+.npmrc                       engine-strict=true
+.ignore                      exclusiones de búsqueda para archivos generados
+vitest.config.ts             el proyecto de tests de servidor que ejecuta `vela test:server`
 ```
 
-Los directorios se añaden junto a los que ya tienes: `src/lib/components`, `data`, `test` y `static`. La configuración se fusiona en lugar de sobrescribirse:
+Los directorios se añaden junto a los que ya tienes: `src/lib/components`, `src/lib/workflows`, `data`, `test` y `static`. La configuración se fusiona en lugar de sobrescribirse:
 
 ```
 svelte.config.js
@@ -116,4 +149,31 @@ El adaptador de SvelteKit de tu proyecto se conserva: si `package.json` ya inclu
 ### Rutas
 
 Vela examina `src/routes` para decidir si sigue siendo el marcador de posición intacto de `npx sv create`. Si lo es, se reemplaza con las rutas de la plantilla; si has escrito algo real, se deja tal cual. Anula la detección en cualquier sentido con `--skip-routes` o `--force-routes`.
+
+### Sin bendecir
+
+Esto funciona en un proyecto recién salido de `npx sv create`, sin ninguna preparación:
+
+- [`vela generate schema`](/es/generate/schema) y [`vela generate form`](/es/generate/form). Sin shadcn-svelte el formulario se escribe en HTML plano.
+- [`vela enable`](/es/enable) para `i18n`, `ai`, `analytics`, `content-negotiation` y `cms`
+- [`vela legal privacy`](/es/legal/privacy) y [`vela legal terms`](/es/legal/terms), [`vela routes`](/es/routes) y [`vela i18n`](/es/i18n)
+- [`vela deploy`](/es/deploy) y los comandos de servidor: `env`, `status`, `logs` y `rollback`
+
+Las rutas generadas van directamente bajo `src/routes` en un proyecto sin los grupos `(public)` y `(app)` de Vela.
+
+Estos escriben marcado de shadcn-svelte o manejan shadcn-svelte directamente, así que necesitan un `components.json` y el paquete shadcn-svelte:
+
+- [`vela ui`](/es/ui)
+- [`vela enable blog`](/es/enable/blog)
+- [`vela enable auth`](/es/enable/auth) y lo que se construye sobre él: `api-keys`, `notifications`, `teams`, `payments` y `subscriptions`
+- [`vela generate scaffold`](/es/generate/scaffold)
+
+En un proyecto que no los tiene se niegan antes de cambiar nada, e imprimen los dos comandos que lo preparan:
+
+```
+$ npx sv add tailwindcss
+$ npx shadcn-svelte@latest init
+```
+
+Los comandos que necesitan una base de datos lo dicen del mismo modo, y remiten a [`vela enable backend`](/es/enable/backend).
 <!-- @end -->

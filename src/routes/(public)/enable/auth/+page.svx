@@ -7,6 +7,8 @@ Authentication (user accounts) is enabled by running the `vela enable auth` comm
 $ vela enable auth
 ```
 
+Auth needs a [backend](/enable/backend), and its pages are built from shadcn-svelte components, so the project needs [shadcn-svelte](/ui) too. Without it the command is refused before anything is changed.
+
 ### Protected routes
 
 Once enabled, a group of protected routes is automatically created, defaulting to `(app)`. Any routes placed within this group will be protected and require authentication to access. Unauthenticated users will be redirected to the login page. The protected routes and the login path for redirection can be configured in the middleware in `hooks.server.ts`, defaults shown below:
@@ -38,6 +40,8 @@ Autenticación (cuentas de usuario) se habilita ejecutando el comando `vela enab
 ```
 $ vela enable auth
 ```
+
+La autenticación necesita un [backend](/es/enable/backend), y sus páginas se construyen con componentes de shadcn-svelte, así que el proyecto también necesita [shadcn-svelte](/es/ui). Sin él el comando se rechaza antes de cambiar nada.
 
 ### Rutas protegidas
 

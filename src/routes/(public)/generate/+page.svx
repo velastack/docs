@@ -20,6 +20,8 @@ $ vela generate <type> <name> [fields...]
 - [`migration`](/generate/migration) - A migration that alters an existing collection
 - [`workflow`](/generate/workflow) - A background workflow, with no database model
 
+`form` and `schema` work in any SvelteKit project, with or without a backend. `scaffold` needs [shadcn-svelte](/ui); the rest need a [backend](/enable/backend).
+
 ### Name
 
 The plural name of the model, form, resource, schema or scaffold, for example `pets` or `todos`. Model names are always plural and will be converted to plural if the singular form is provided. Names can be nested within directories by using a slash (`/`) separator. For example, `users/pets` will create a resource at `/users/pets`.
@@ -188,6 +190,8 @@ $ vela generate <type> <name> [fields...]
 - [`scaffold`](/es/generate/scaffold) - Una interfaz CRUD completa, modelo, esquema y migración
 - [`migration`](/es/generate/migration) - Una migración que altera una colección existente
 - [`workflow`](/es/generate/workflow) - Un workflow en segundo plano, sin modelo de base de datos
+
+`form` y `schema` funcionan en cualquier proyecto SvelteKit, con o sin backend. `scaffold` necesita [shadcn-svelte](/es/ui); el resto necesita un [backend](/es/enable/backend).
 
 ### Nombre
 

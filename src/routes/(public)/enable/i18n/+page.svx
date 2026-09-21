@@ -14,10 +14,10 @@ Has no dependencies — it works with or without a backend, and composes with [c
 ### What you get
 
 - `wuchale.config.js`, with the locales `en` and `es`. English is the source locale and keeps the unprefixed URLs; Spanish is served under `/es`.
-- A `reroute` hook in `src/hooks.ts` that maps localized URLs back to their routes, and the URL helpers it uses in `src/lib/url.ts`.
+- A `reroute` hook in `src/hooks.ts` that maps localized URLs back to their routes, and the URL helpers it uses in `src/lib/url.ts`. The file is created if the project has none; otherwise the hook is composed with the existing `reroute`.
 - A language select in `src/lib/components/language-select.svelte`, added to the root layout.
 - A handle in `src/hooks.server.ts` that loads the catalogs on the server and renders each request in its locale. The file is created if the project has none; otherwise the handle is composed with the existing `handle`.
-- A `load` in `src/routes/+layout.ts` that loads the locale's catalog in the browser.
+- A `load` in `src/routes/+layout.ts` that loads the locale's catalog in the browser. It is added to a file that has route options of its own; a file that already has a `load` is left alone, with a note on what to merge.
 - `lang="%sveltekit.lang%"` on the `<html>` tag in `src/app.html`, which the handle fills in with the locale.
 - The Wuchale plugin in the Vite config, and a `$locales` alias for `src/locales`, where the catalogs live. The alias goes in `svelte.config.js`, or in the `sveltekit()` options if the Vite config sets them there.
 - The `wuchale` and `@wuchale/svelte` packages, and the `select` component in a project with shadcn-svelte.
@@ -57,10 +57,10 @@ No tiene dependencias — funciona con o sin backend, y se combina con el hook r
 ### Qué obtienes
 
 - `wuchale.config.js`, con los idiomas `en` y `es`. El inglés es el idioma de origen y conserva las URLs sin prefijo; el español se sirve bajo `/es`.
-- Un hook `reroute` en `src/hooks.ts` que lleva las URLs localizadas a sus rutas, y las funciones de URL que usa en `src/lib/url.ts`.
+- Un hook `reroute` en `src/hooks.ts` que lleva las URLs localizadas a sus rutas, y las funciones de URL que usa en `src/lib/url.ts`. El archivo se crea si el proyecto no tiene uno; si no, el hook se combina con el `reroute` existente.
 - Un selector de idioma en `src/lib/components/language-select.svelte`, añadido al layout raíz.
 - Un handle en `src/hooks.server.ts` que carga los catálogos en el servidor y renderiza cada petición en su idioma. El archivo se crea si el proyecto no tiene uno; si no, el handle se combina con el `handle` existente.
-- Un `load` en `src/routes/+layout.ts` que carga el catálogo del idioma en el navegador.
+- Un `load` en `src/routes/+layout.ts` que carga el catálogo del idioma en el navegador. Se añade a un archivo que ya tenga opciones de ruta propias; si el archivo ya tiene un `load`, se deja como está y se indica qué combinar.
 - `lang="%sveltekit.lang%"` en la etiqueta `<html>` de `src/app.html`, que el handle rellena con el idioma.
 - El plugin de Wuchale en la configuración de Vite, y un alias `$locales` para `src/locales`, donde viven los catálogos. El alias va en `svelte.config.js`, o en las opciones de `sveltekit()` si la configuración de Vite las define ahí.
 - Los paquetes `wuchale` y `@wuchale/svelte`, y el componente `select` en un proyecto con shadcn-svelte.
