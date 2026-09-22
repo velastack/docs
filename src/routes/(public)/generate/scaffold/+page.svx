@@ -30,15 +30,33 @@ src/routes/(public)/pets/[id]/edit/+page.server.ts
 src/routes/(public)/pets/server.test.ts
 ```
 
-The `pets` collection is created in the database and the TypeScript definitions are [synced](/sync). The data table, form and dialog components it needs are installed automatically.
+The `pets` collection is created in the database and the TypeScript definitions are [synced](/sync). The data table, form and dialog components it needs are installed automatically, and so are `sveltekit-superforms` and `zod` if the project doesn't have them. The [server test](/test/server) is only written when the project has the `vela test:server` harness (`supertest` installed).
 
-The pages are shadcn-svelte markup, so the project needs [shadcn-svelte](/ui). Without it the command is refused before the collection or any file is created — and with `--ai`, before the AI stages run. For a form in plain HTML, use [`vela generate form`](/generate/form).
+The index page is a data table built on TanStack Table v9: sortable columns, a search box on the first text field, a filter for each select field, pagination and row selection. In a project without shadcn-svelte the pages are plain HTML instead (see below).
 
 ### Options
 
-- `--remote` - Generate the create and update forms with SvelteKit remote functions instead of superforms
+- `--remote` - Generate the create and update forms with SvelteKit remote functions instead of superforms. Needs shadcn-svelte.
 - `--route <route>` - Place the scaffold at a custom route. Defaults to the pluralized model name under `(app)` when auth is enabled, or `(public)` when it isn't. A project with neither group gets it directly under `src/routes`.
+- `--ui <shadcn|plain>` - Generate shadcn-svelte components or plain HTML elements. Defaults to `shadcn` when the project has shadcn-svelte, `plain` otherwise.
 - `--ai <description>` - Design the scaffold with AI from a natural-language description
+
+### Plain HTML
+
+`--ui` defaults to `shadcn` when the project has a `components.json` and the `shadcn-svelte` or `bits-ui` package. Otherwise the pages use plain HTML elements with no classes, and no components are installed: the index page is a `<table>` of every record, each with links to view and edit it and a button to delete it; the detail page is a `<dl>`; the create and edit forms are the same plain forms [`vela generate form`](/generate/form) writes. There is no sorting, filtering or pagination.
+
+`--ui plain` does the same in a project that has shadcn-svelte; `--ui shadcn` in a project without it is an error — set it up with `npx sv add tailwindcss`, then `npx shadcn-svelte@latest init`, or run [`vela bless`](/bless) for the full upgrade. `--remote` has no plain version: without shadcn-svelte it is refused before the collection or any file is created, and with `--ai`, before the AI stages run.
+
+### Upgrading from TanStack Table v8
+
+Projects set up before the data table moved to TanStack Table v9 have `@tanstack/table-core` 8 and the v8 table components. A v9 index page doesn't compile against them, and upgrading them in place would break the index pages already generated, so the command refuses such a project before the collection or any file is created. To upgrade:
+
+```
+$ npm install @tanstack/table-core@^9.2.4
+$ vela ui add data-table column-header faceted-filter pagination --overwrite
+```
+
+Then move the existing index pages to the v9 API (`createTable` with `tableFeatures`): TanStack's [migration guide](https://tanstack.com/table/latest/docs/framework/svelte/guide/migrating) covers it, and a freshly generated scaffold is a working example to compare against.
 
 ### Route
 
@@ -87,15 +105,33 @@ src/routes/(public)/pets/[id]/edit/+page.server.ts
 src/routes/(public)/pets/server.test.ts
 ```
 
-La colección `pets` se crea en la base de datos y las definiciones de TypeScript se [sincronizan](/es/sync). Los componentes de tabla de datos, formulario y diálogo que necesita se instalan automáticamente.
+La colección `pets` se crea en la base de datos y las definiciones de TypeScript se [sincronizan](/es/sync). Los componentes de tabla de datos, formulario y diálogo que necesita se instalan automáticamente, y también `sveltekit-superforms` y `zod` si el proyecto no los tiene. La [prueba de servidor](/es/test/server) solo se escribe cuando el proyecto tiene el entorno de `vela test:server` (`supertest` instalado).
 
-Las páginas son marcado de shadcn-svelte, así que el proyecto necesita [shadcn-svelte](/es/ui). Sin él el comando se rechaza antes de crear la colección o cualquier archivo — y con `--ai`, antes de que se ejecuten las fases de IA. Para un formulario en HTML plano, usa [`vela generate form`](/es/generate/form).
+La página de índice es una tabla de datos construida con TanStack Table v9: columnas ordenables, un cuadro de búsqueda sobre el primer campo de texto, un filtro por cada campo select, paginación y selección de filas. En un proyecto sin shadcn-svelte las páginas son HTML plano (ver más abajo).
 
 ### Opciones
 
-- `--remote` - Generar los formularios de creación y edición con funciones remotas de SvelteKit en lugar de superforms
+- `--remote` - Generar los formularios de creación y edición con funciones remotas de SvelteKit en lugar de superforms. Necesita shadcn-svelte.
 - `--route <route>` - Colocar el scaffold en una ruta personalizada. Por defecto es el nombre del modelo en plural bajo `(app)` cuando la autenticación está habilitada, o `(public)` cuando no lo está. En un proyecto sin ninguno de los dos grupos, va directamente en `src/routes`.
+- `--ui <shadcn|plain>` - Generar componentes de shadcn-svelte o elementos HTML simples. Por defecto es `shadcn` cuando el proyecto tiene shadcn-svelte, y `plain` cuando no.
 - `--ai <description>` - Diseñar el scaffold con IA a partir de una descripción en lenguaje natural
+
+### HTML plano
+
+`--ui` es `shadcn` por defecto cuando el proyecto tiene un `components.json` y el paquete `shadcn-svelte` o `bits-ui`. Si no, las páginas usan elementos HTML simples sin clases, y no se instala ningún componente: la página de índice es una `<table>` con todos los registros, cada uno con enlaces para verlo y editarlo y un botón para borrarlo; la página de detalle es una `<dl>`; los formularios de creación y edición son los mismos formularios simples que escribe [`vela generate form`](/es/generate/form). No hay ordenación, filtros ni paginación.
+
+`--ui plain` hace lo mismo en un proyecto con shadcn-svelte; `--ui shadcn` en un proyecto sin él es un error — configúralo con `npx sv add tailwindcss` y luego `npx shadcn-svelte@latest init`, o ejecuta [`vela bless`](/es/bless) para la actualización completa. `--remote` no tiene versión en HTML plano: sin shadcn-svelte se rechaza antes de crear la colección o cualquier archivo, y con `--ai`, antes de que se ejecuten las fases de IA.
+
+### Actualizar desde TanStack Table v8
+
+Los proyectos creados antes de que la tabla de datos pasara a TanStack Table v9 tienen `@tanstack/table-core` 8 y los componentes de tabla de v8. Una página de índice de v9 no compila con ellos, y actualizarlos en su sitio rompería las páginas de índice ya generadas, así que el comando rechaza un proyecto así antes de crear la colección o cualquier archivo. Para actualizar:
+
+```
+$ npm install @tanstack/table-core@^9.2.4
+$ vela ui add data-table column-header faceted-filter pagination --overwrite
+```
+
+Después pasa las páginas de índice existentes a la API de v9 (`createTable` con `tableFeatures`): la [guía de migración](https://tanstack.com/table/latest/docs/framework/svelte/guide/migrating) de TanStack lo explica, y un scaffold recién generado sirve de ejemplo para comparar.
 
 ### Ruta
 

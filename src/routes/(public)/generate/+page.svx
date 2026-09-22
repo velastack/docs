@@ -20,7 +20,7 @@ $ vela generate <type> <name> [fields...]
 - [`migration`](/generate/migration) - A migration that alters an existing collection
 - [`workflow`](/generate/workflow) - A background workflow, with no database model
 
-`form` and `schema` work in any SvelteKit project, with or without a backend. `scaffold` needs [shadcn-svelte](/ui); the rest need a [backend](/enable/backend).
+`form` and `schema` work in any SvelteKit project, with or without a backend. The rest need a [backend](/enable/backend), and `scaffold --remote` also needs [shadcn-svelte](/ui).
 
 ### Name
 
@@ -191,7 +191,7 @@ $ vela generate <type> <name> [fields...]
 - [`migration`](/es/generate/migration) - Una migración que altera una colección existente
 - [`workflow`](/es/generate/workflow) - Un workflow en segundo plano, sin modelo de base de datos
 
-`form` y `schema` funcionan en cualquier proyecto SvelteKit, con o sin backend. `scaffold` necesita [shadcn-svelte](/es/ui); el resto necesita un [backend](/es/enable/backend).
+`form` y `schema` funcionan en cualquier proyecto SvelteKit, con o sin backend. El resto necesita un [backend](/es/enable/backend), y `scaffold --remote` también necesita [shadcn-svelte](/es/ui).
 
 ### Nombre
 

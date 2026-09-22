@@ -41,7 +41,7 @@ Once enabled, [`vela dev`](/dev) starts the database alongside the app and the a
 
 ### Without shadcn-svelte
 
-[`vela enable auth`](/enable/auth) and [`vela generate scaffold`](/generate/scaffold) write shadcn-svelte pages, and refuse a project that has no `components.json` and shadcn-svelte package; see [`vela bless`](/bless). In such a project the next steps the command prints point at what works there instead: [`vela generate form`](/generate/form), which writes its form in plain HTML, and [`vela test:server`](/test) for the server test that comes with it.
+[`vela enable auth`](/enable/auth) writes shadcn-svelte pages, and refuses a project that has no `components.json` and shadcn-svelte package; see [`vela bless`](/bless). In such a project the next steps the command prints point at what works there instead: [`vela generate scaffold`](/generate/scaffold), which writes its pages in plain HTML, and [`vela test:server`](/test) for the server test that comes with it.
 
 ### How a backend is detected
 
@@ -101,7 +101,7 @@ Una vez habilitado, [`vela dev`](/es/dev) inicia la base de datos junto a la apl
 
 ### Sin shadcn-svelte
 
-[`vela enable auth`](/es/enable/auth) y [`vela generate scaffold`](/es/generate/scaffold) escriben páginas de shadcn-svelte, y rechazan un proyecto que no tiene `components.json` ni el paquete shadcn-svelte; consulta [`vela bless`](/es/bless). En un proyecto así, los siguientes pasos que imprime el comando apuntan a lo que sí funciona allí: [`vela generate form`](/es/generate/form), que escribe su formulario en HTML plano, y [`vela test:server`](/es/test) para el test de servidor que lo acompaña.
+[`vela enable auth`](/es/enable/auth) escribe páginas de shadcn-svelte, y rechaza un proyecto que no tiene `components.json` ni el paquete shadcn-svelte; consulta [`vela bless`](/es/bless). En un proyecto así, los siguientes pasos que imprime el comando apuntan a lo que sí funciona allí: [`vela generate scaffold`](/es/generate/scaffold), que escribe sus páginas en HTML plano, y [`vela test:server`](/es/test) para el test de servidor que lo acompaña.
 
 ### Cómo se detecta un backend
 

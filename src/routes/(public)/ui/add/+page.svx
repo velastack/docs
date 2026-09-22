@@ -35,6 +35,8 @@ Vela also ships components that shadcn-svelte doesn't have, such as `data-table`
 $ vela ui add data-table multiselect
 ```
 
+`data-table`, `column-header`, `faceted-filter` and `pagination` are built on TanStack Table v9 and install `@tanstack/table-core`. In a project still on version 8 they are refused until the package is upgraded; see [upgrading from v8](/generate/scaffold).
+
 Run [`vela ui list`](/ui/list) to see every component you can add.
 
 The [generators](/generate) add the components they need on their own, so this is for the ones you reach for yourself.
@@ -74,6 +76,8 @@ Vela también incluye componentes que shadcn-svelte no tiene, como `data-table`,
 ```
 $ vela ui add data-table multiselect
 ```
+
+`data-table`, `column-header`, `faceted-filter` y `pagination` están construidos con TanStack Table v9 e instalan `@tanstack/table-core`. En un proyecto que sigue en la versión 8 se rechazan hasta actualizar el paquete; consulta [cómo actualizar desde v8](/es/generate/scaffold).
 
 Ejecuta [`vela ui list`](/es/ui/list) para ver todos los componentes que puedes añadir.
 

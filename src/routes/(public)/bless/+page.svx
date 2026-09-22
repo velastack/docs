@@ -77,7 +77,7 @@ These write shadcn-svelte markup or drive shadcn-svelte itself, so they need a `
 - [`vela ui`](/ui)
 - [`vela enable blog`](/enable/blog)
 - [`vela enable auth`](/enable/auth) and what builds on it: `api-keys`, `notifications`, `teams`, `payments` and `subscriptions`
-- [`vela generate scaffold`](/generate/scaffold)
+- [`vela generate scaffold --remote`](/generate/scaffold)
 
 In a project without them they refuse before changing anything, and print the two commands that set it up:
 
@@ -86,7 +86,7 @@ $ npx sv add tailwindcss
 $ npx shadcn-svelte@latest init
 ```
 
-The commands that need a database say so the same way, and point at [`vela enable backend`](/enable/backend).
+The commands that need a database say so the same way, and point at [`vela enable backend`](/enable/backend). Once it has run, [`vela generate scaffold`](/generate/scaffold) works without shadcn-svelte too, with its pages in plain HTML.
 <!-- @es -->
 Convierte un proyecto SvelteKit existente y sin modificar en un proyecto VelaStack — el equivalente de [`vela create`](/es/create) para un repositorio que ya existe.
 
@@ -166,7 +166,7 @@ Estos escriben marcado de shadcn-svelte o manejan shadcn-svelte directamente, as
 - [`vela ui`](/es/ui)
 - [`vela enable blog`](/es/enable/blog)
 - [`vela enable auth`](/es/enable/auth) y lo que se construye sobre él: `api-keys`, `notifications`, `teams`, `payments` y `subscriptions`
-- [`vela generate scaffold`](/es/generate/scaffold)
+- [`vela generate scaffold --remote`](/es/generate/scaffold)
 
 En un proyecto que no los tiene se niegan antes de cambiar nada, e imprimen los dos comandos que lo preparan:
 
@@ -175,5 +175,5 @@ $ npx sv add tailwindcss
 $ npx shadcn-svelte@latest init
 ```
 
-Los comandos que necesitan una base de datos lo dicen del mismo modo, y remiten a [`vela enable backend`](/es/enable/backend).
+Los comandos que necesitan una base de datos lo dicen del mismo modo, y remiten a [`vela enable backend`](/es/enable/backend). Una vez ejecutado, [`vela generate scaffold`](/es/generate/scaffold) también funciona sin shadcn-svelte, con sus páginas en HTML plano.
 <!-- @end -->
