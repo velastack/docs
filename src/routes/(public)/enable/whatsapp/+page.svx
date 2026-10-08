@@ -32,7 +32,7 @@ Until you set a sender, codes are not sent: they show in the PocketBase logs of 
 
 ### Sending codes in production
 
-Set a sender on each deploy target with [`vela env`](/env). Codes go out through the VelaStack relay:
+A deploy target without a sender hides the WhatsApp option. Set one with [`vela env`](/env). Codes go out through the VelaStack relay:
 
 ```
 $ vela env set VELASTACK_API_KEY=...
@@ -85,7 +85,7 @@ Hasta que configures un remitente, los códigos no se envían: aparecen en los l
 
 ### Enviar códigos en producción
 
-Configura un remitente en cada destino de despliegue con [`vela env`](/es/env). Los códigos salen por el relay de VelaStack:
+Un destino de despliegue sin remitente oculta la opción de WhatsApp. Configura uno con [`vela env`](/es/env). Los códigos salen por el relay de VelaStack:
 
 ```
 $ vela env set VELASTACK_API_KEY=...
