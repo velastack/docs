@@ -1,0 +1,49 @@
+<!-- @en -->
+Remove WhatsApp sign-in, added by [`vela enable whatsapp`](/enable/whatsapp).
+
+### Syntax
+
+```
+$ vela disable whatsapp
+```
+
+### Options
+
+- `-y, --yes` - Skip the confirmation prompt
+
+### What it removes
+
+- The code page (`/whatsapp/[token]`) and `src/lib/server/whatsapp.ts`
+- The WhatsApp option on the login and signup pages, which go back to the pages [`vela enable auth`](/enable/auth) wrote. Pages you changed after enabling WhatsApp are left as they are and reported as failed.
+- WhatsApp sign-in in PocketBase, turned off by a migration so your deploys follow
+
+### What it leaves
+
+- The `phone` and `phoneVerified` fields on `users`, and `email` stays optional: they hold your users' data. Remove them in the PocketBase dashboard if you no longer need them.
+- Users who signed up with a phone number keep their accounts, but cannot log in until they have an email and password.
+- The sender env vars on your deploy targets — remove them with [`vela env`](/env)
+<!-- @es -->
+Elimina el inicio de sesión con WhatsApp, añadido por [`vela enable whatsapp`](/es/enable/whatsapp).
+
+### Sintaxis
+
+```
+$ vela disable whatsapp
+```
+
+### Opciones
+
+- `-y, --yes` - Omitir la confirmación
+
+### Qué elimina
+
+- La página del código (`/whatsapp/[token]`) y `src/lib/server/whatsapp.ts`
+- La opción de WhatsApp en las páginas de login y registro, que vuelven a las páginas que escribió [`vela enable auth`](/es/enable/auth). Las páginas que cambiaste después de habilitar WhatsApp se dejan como están y se marcan como fallidas.
+- El inicio de sesión con WhatsApp en PocketBase, desactivado con una migración para que tus despliegues lo sigan
+
+### Qué deja
+
+- Los campos `phone` y `phoneVerified` en `users`, y `email` sigue siendo opcional: contienen datos de tus usuarios. Elimínalos en el panel de PocketBase si ya no los necesitas.
+- Los usuarios que se registraron con un número de teléfono conservan sus cuentas, pero no pueden iniciar sesión hasta tener un correo y una contraseña.
+- Las variables de entorno del remitente en tus destinos de despliegue — elimínalas con [`vela env`](/es/env)
+<!-- @end -->

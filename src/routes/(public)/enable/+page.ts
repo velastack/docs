@@ -15,6 +15,11 @@ export const load = async ({ parent }) => {
 				description: 'Authentication for your application.'
 			},
 			{
+				title: 'WhatsApp',
+				url: /* @wc-url */ '/enable/whatsapp',
+				description: 'Sign in with a code sent on WhatsApp, next to email.'
+			},
+			{
 				title: 'API',
 				url: /* @wc-url */ '/enable/api',
 				description: 'REST API endpoints for your application.'

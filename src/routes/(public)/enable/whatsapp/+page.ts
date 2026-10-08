@@ -1,0 +1,11 @@
+export const load = async ({ parent }) => {
+	await parent();
+	return {
+		pageMetaTags: { title: 'WhatsApp' },
+		breadcrumbs: [
+			{ title: 'Enable', url: /* @wc-url */ '/enable' },
+			{ title: 'WhatsApp', url: /* @wc-url */ '/enable/whatsapp' }
+		],
+		badges: ['Depends: auth']
+	};
+};

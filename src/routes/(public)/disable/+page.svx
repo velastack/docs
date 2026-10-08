@@ -10,6 +10,7 @@ $ vela disable <feature>
 The following features can be disabled:
 
 - [`auth`](/disable/auth) - Disable authentication
+- [`whatsapp`](/disable/whatsapp) - Disable WhatsApp sign-in
 - [`api`](/disable/api) - Disable the REST API
 - [`api-keys`](/disable/api-keys) - Disable API key management
 - [`backend`](/disable/backend) - Disable the PocketBase backend
@@ -41,6 +42,7 @@ $ vela disable <feature>
 Se pueden desactivar las siguientes funciones:
 
 - [`auth`](/es/disable/auth) - Desactivar la autenticación
+- [`whatsapp`](/es/disable/whatsapp) - Desactivar el inicio de sesión con WhatsApp
 - [`api`](/es/disable/api) - Desactivar la API REST
 - [`api-keys`](/es/disable/api-keys) - Desactivar la gestión de claves de API
 - [`backend`](/es/disable/backend) - Desactivar el backend de PocketBase
