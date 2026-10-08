@@ -17,7 +17,7 @@ This runs `vite build` with the project's package manager. The output directory 
 
 Prerendering happens with no request to take an origin from, so SvelteKit substitutes a placeholder host and it ends up in every canonical link, `og:url` and `hreflang` a prerendered page builds from `url.origin`.
 
-Vela sets that origin from the domain bound to the target in `.vela/project.json`, falling back to `deploy.domain` in `velastack.config.ts`. Set `VELA_ORIGIN` to override it. The config reads it as `kit.prerender.origin`:
+Vela sets that origin from the domain bound to the target in `.vela/project.json`. Set `VELA_ORIGIN` to override it. The config reads it as `kit.prerender.origin`:
 
 ```ts
 sveltekit({
@@ -57,7 +57,7 @@ Esto ejecuta `vite build` con el gestor de paquetes del proyecto. El directorio 
 
 El prerenderizado no tiene una petición de la que tomar un origen, así que SvelteKit usa un host de marcador de posición, y este acaba en cada enlace canónico, `og:url` y `hreflang` que una página prerenderizada construya a partir de `url.origin`.
 
-Vela establece ese origen a partir del dominio vinculado al objetivo en `.vela/project.json`, y si no lo hay, de `deploy.domain` en `velastack.config.ts`. Define `VELA_ORIGIN` para sobrescribirlo. La configuración lo lee como `kit.prerender.origin`:
+Vela establece ese origen a partir del dominio vinculado al objetivo en `.vela/project.json`. Define `VELA_ORIGIN` para sobrescribirlo. La configuración lo lee como `kit.prerender.origin`:
 
 ```ts
 sveltekit({

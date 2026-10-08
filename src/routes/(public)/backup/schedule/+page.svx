@@ -23,7 +23,7 @@ $ vela backup schedule --off
 
 ### A schedule is not yet disaster recovery
 
-By default the archives are written to the same disk as the data they protect. Pair this with [`vela enable s3 --backups`](/enable/s3) to send them somewhere else, or download them on a schedule of your own.
+By default the archives are written to the same disk as the data they protect. Set `PB_BACKUPS_S3_ENDPOINT`, `PB_BACKUPS_S3_BUCKET`, `PB_BACKUPS_S3_REGION`, `PB_BACKUPS_S3_ACCESS_KEY` and `PB_BACKUPS_S3_SECRET` with [`vela env set`](/env/set) to send them to a bucket instead, or download them on a schedule of your own.
 <!-- @es -->
 Haz que un objetivo se copie a sí mismo de forma programada.
 
@@ -49,5 +49,5 @@ $ vela backup schedule --off
 
 ### Una programación todavía no es recuperación ante desastres
 
-Por defecto los archivos se escriben en el mismo disco que los datos que protegen. Combínalo con [`vela enable s3 --backups`](/es/enable/s3) para enviarlos a otro sitio, o descárgalos con tu propia periodicidad.
+Por defecto los archivos se escriben en el mismo disco que los datos que protegen. Define `PB_BACKUPS_S3_ENDPOINT`, `PB_BACKUPS_S3_BUCKET`, `PB_BACKUPS_S3_REGION`, `PB_BACKUPS_S3_ACCESS_KEY` y `PB_BACKUPS_S3_SECRET` con [`vela env set`](/es/env/set) para enviarlos a un bucket, o descárgalos con tu propia periodicidad.
 <!-- @end -->

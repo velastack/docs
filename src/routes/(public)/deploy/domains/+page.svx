@@ -51,7 +51,7 @@ That name always points at the server's public address. It is what the edge prox
 
 ### Your own domain
 
-There are two ways to attach a domain, and they end up in the same place. The first is the one that has always worked — pass it on deploy, or commit it in `velastack.config.ts`:
+There are two ways to attach a domain, and they end up in the same place. The first is the one that has always worked — pass it on deploy, and it is recorded in `.vela/project.json` for every deploy after:
 
 ```
 $ vela deploy --domain www.example.com
@@ -150,7 +150,7 @@ Ese nombre apunta siempre a la dirección pública del servidor. Es a lo que ree
 
 ### Tu propio dominio
 
-Hay dos formas de añadir un dominio, y acaban en el mismo sitio. La primera es la que siempre ha funcionado — pásalo al desplegar, o súbelo al repositorio en `velastack.config.ts`:
+Hay dos formas de añadir un dominio, y acaban en el mismo sitio. La primera es la que siempre ha funcionado — pásalo al desplegar, y queda registrado en `.vela/project.json` para todos los despliegues siguientes:
 
 ```
 $ vela deploy --domain www.example.com

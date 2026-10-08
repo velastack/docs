@@ -1,5 +1,5 @@
 <!-- @en -->
-The enable command is used to enable features in a Vela project. It can be used to enable authentication, API access, S3 storage, SMTP email sending, teams, payments and more. You'll be prompted for configuration options for each feature and the command will generate the necessary code.
+The enable command is used to enable features in a Vela project. It can be used to enable authentication, API access, teams, payments and more. You'll be prompted for configuration options for each feature and the command will generate the necessary code.
 
 ### Syntax
 
@@ -15,7 +15,7 @@ Features have dependencies on each other — enabling API keys, for example, nee
 
 [`auth`](/enable/auth) and [`blog`](/enable/blog) generate shadcn-svelte pages, as does everything that builds on auth: [`api-keys`](/enable/api-keys), [`notifications`](/enable/notifications), [`teams`](/enable/teams), [`payments`](/enable/payments) and [`subscriptions`](/enable/subscriptions). In a project without [shadcn-svelte](/ui) they are refused before anything is changed.
 <!-- @es -->
-El comando enable se usa para habilitar funciones en un proyecto de Vela. Puede usarse para habilitar la autenticación, el acceso a la API, el almacenamiento en S3, el envío de correo por SMTP, los equipos, los pagos y más. Se te pedirán opciones de configuración para cada función y el comando generará el código necesario.
+El comando enable se usa para habilitar funciones en un proyecto de Vela. Puede usarse para habilitar la autenticación, el acceso a la API, los equipos, los pagos y más. Se te pedirán opciones de configuración para cada función y el comando generará el código necesario.
 
 ### Sintaxis
 

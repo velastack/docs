@@ -1,33 +1,69 @@
 <!-- @en -->
-List the environment variable names configured for a target.
+Show which environment variables exist, and where.
 
 ### Syntax
 
 ```
-$ vela env list
+$ vela env list [-t <target>]
 ```
+
+Without `-t`, every scope at once: the local `.env` by name, then one table per bound server with a column for the `all` layer, the `preview` layer and each target there. A public value is shown, a secret as `••••`, and an instance column that does not set a key itself names the layer its value comes from:
+
+```
+$ vela env list
+
+  Environment (root@203.0.113.10)
+
+                       all     preview    production  preview:feature-maps
+    PUBLIC_CMS_URL     —       —          https://…   —
+    STRIPE_SECRET_KEY  —       ••••       ••••        ↑ preview
+    VELASTACK_API_KEY  ••••    —          ↑ all       ↑ all
+    WHATSAPP_MODE      —       dev        velastack   ↑ preview
+```
+
+With a target, the environment as that copy of the app sees it, each key with the layer it comes from:
 
 ```
 $ vela env list -t production
+$ vela env list -t preview:feature/maps
+$ vela env list -t all
 ```
 
-Names only, never values — the same rule locally and on a server, so the output is safe to paste into an issue or a screenshot wherever it came from. To read a value back, look in `.env` yourself, or on the server as root.
+`-t local` lists the names in `.env`, never their values, so the output is safe to paste wherever it came from.
 
-Defaults to `-t local`. See [env](/env) for the full option list.
+See [env](/env) for the full option list.
 <!-- @es -->
-Lista los nombres de las variables de entorno configuradas para un objetivo.
+Muestra qué variables de entorno existen, y dónde.
 
 ### Sintaxis
 
 ```
-$ vela env list
+$ vela env list [-t <target>]
 ```
+
+Sin `-t`, todos los ámbitos a la vez: el `.env` local por nombre, y después una tabla por servidor vinculado con una columna para la capa `all`, la capa `preview` y cada objetivo que haya allí. Un valor público se muestra, un secreto como `••••`, y una columna de instancia que no define una clave por sí misma nombra la capa de la que viene su valor:
+
+```
+$ vela env list
+
+  Environment (root@203.0.113.10)
+
+                       all     preview    production  preview:feature-maps
+    PUBLIC_CMS_URL     —       —          https://…   —
+    STRIPE_SECRET_KEY  —       ••••       ••••        ↑ preview
+    VELASTACK_API_KEY  ••••    —          ↑ all       ↑ all
+    WHATSAPP_MODE      —       dev        velastack   ↑ preview
+```
+
+Con un objetivo, el entorno tal como lo ve esa copia de la aplicación, cada clave con la capa de la que viene:
 
 ```
 $ vela env list -t production
+$ vela env list -t preview:feature/maps
+$ vela env list -t all
 ```
 
-Solo nombres, nunca valores — la misma regla en local y en un servidor, así que la salida se puede pegar en una incidencia o una captura venga de donde venga. Para leer un valor, mira tú mismo en `.env`, o en el servidor como root.
+`-t local` lista los nombres de `.env`, nunca sus valores, así que la salida se puede pegar venga de donde venga.
 
-Por defecto usa `-t local`. Consulta [env](/es/env) para la lista completa de opciones.
+Consulta [env](/es/env) para la lista completa de opciones.
 <!-- @end -->

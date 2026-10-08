@@ -4,30 +4,32 @@ Merge a dotenv file into the environment.
 ### Syntax
 
 ```
-$ vela env import <file>
+$ vela env import <file> [--public] -t <target>
 ```
 
 ```
 $ vela env import .env.production -t production
+$ vela env import previews.env --public -t preview
 ```
 
 This is a merge, not a replace: variables already set that the file doesn't mention are left alone. Variables the file does mention are overwritten.
 
-Importing into the same file you are importing from is refused. The instance is restarted afterwards so the values take effect. Defaults to `-t local`.
+Every value lands secret unless `--public` is passed; `PUBLIC_*` keys land public either way, and a key already on the other side moves. Importing into the same file you are importing from is refused. The instances the layer reaches are restarted once afterwards, and the environment is asked for when `-t` is missing.
 <!-- @es -->
 Fusiona un archivo dotenv con el entorno.
 
 ### Sintaxis
 
 ```
-$ vela env import <file>
+$ vela env import <file> [--public] -t <target>
 ```
 
 ```
 $ vela env import .env.production -t production
+$ vela env import previews.env --public -t preview
 ```
 
 Esto es una fusión, no un reemplazo: las variables ya definidas que el archivo no menciona se dejan intactas. Las que sí menciona se sobrescriben.
 
-Importar sobre el mismo archivo del que se importa se rechaza. La instancia se reinicia después para que los valores surtan efecto. Por defecto usa `-t local`.
+Todos los valores quedan secretos salvo que se pase `--public`; las claves `PUBLIC_*` quedan públicas en cualquier caso, y una clave que ya estaba en el otro lado se mueve. Importar sobre el mismo archivo del que se importa se rechaza. Las instancias a las que llega la capa se reinician una vez al terminar, y se pregunta por el entorno cuando falta `-t`.
 <!-- @end -->

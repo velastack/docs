@@ -149,14 +149,6 @@
 						url: /* @wc-url */ '/enable/api-keys'
 					},
 					{
-						title: 'S3',
-						url: /* @wc-url */ '/enable/s3'
-					},
-					{
-						title: 'SMTP',
-						url: /* @wc-url */ '/enable/smtp'
-					},
-					{
 						title: 'Blog',
 						url: /* @wc-url */ '/enable/blog'
 					},
@@ -244,14 +236,6 @@
 					{
 						title: 'AI',
 						url: /* @wc-url */ '/disable/ai'
-					},
-					{
-						title: 'S3',
-						url: /* @wc-url */ '/disable/s3'
-					},
-					{
-						title: 'SMTP',
-						url: /* @wc-url */ '/disable/smtp'
 					},
 					{
 						title: 'Teams',
@@ -514,6 +498,10 @@
 					{
 						title: 'List',
 						url: /* @wc-url */ '/env/list'
+					},
+					{
+						title: 'Get',
+						url: /* @wc-url */ '/env/get'
 					},
 					{
 						title: 'Set',

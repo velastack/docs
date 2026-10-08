@@ -1,5 +1,5 @@
 <!-- @en -->
-Manage environment variables, locally or on a deployed target. Locally they live in the `.env` file at the project root; on a server they live in `/etc/vela/apps`, readable only by root, and never travel inside a release.
+Manage environment variables, locally or on a server. Everything that differs between environments is an environment variable, for the app and for PocketBase alike: locally they live in `.env` at the project root; on a server they live under `/etc/vela`, readable only by root, and never travel inside a release.
 
 ### Syntax
 
@@ -7,36 +7,56 @@ Manage environment variables, locally or on a deployed target. Locally they live
 $ vela env <command>
 ```
 
-- [`list`](/env/list) - List environment variable names
-- [`set`](/env/set) - Set an environment variable
-- [`unset`](/env/unset) - Remove an environment variable
+- [`list`](/env/list) - Show which variables exist where
+- [`get`](/env/get) - Print a public variable
+- [`set`](/env/set) - Set a variable, prompting for the value
+- [`unset`](/env/unset) - Remove a variable
 - [`import`](/env/import) - Merge a dotenv file into the environment
 
-### Targets
+### Scopes
 
-Unlike the deploy commands, `vela env` defaults to `-t local`. Name a target to work on a server instead:
+On a server, a target's environment is three layers, lowest to highest. A variable in a higher layer wins:
 
 ```
-$ vela env list                    # this machine's .env
-$ vela env list -t production      # the production server
-$ vela env list -t staging
+$ vela env set VELASTACK_API_KEY -t all        # every target, on every server the app is deployed to
+$ vela env set WHATSAPP_MODE -t preview        # every preview
+$ vela env set STRIPE_SECRET_KEY -t production # one target
 ```
+
+`-t all` and `-t preview` write to every server the project's targets are bound to, and restart every instance the layer reaches on each. A preview branch inherits both shared layers, so it is never empty on its first deploy; `-t preview:<branch>` addresses one preview on its own. `-t local` is the `.env` on this machine.
+
+For `env`, a bare `-t preview` means the layer every preview shares; for [`vela deploy`](/deploy) it means the branch checked out here. A preview API key is set once, a branch is deployed many times.
+
+There is no default. Without `-t`, `set`, `unset` and `import` ask which environment at a terminal and refuse in CI; `list` shows every scope at once.
+
+### Secret unless said otherwise
+
+A value on a server is secret by default: written, never read back, shown as `••••`. Pass `--public` for one that should read back — `vela env get` prints it and `vela env list` shows it. `PUBLIC_*` keys are public without asking, since SvelteKit ships them to the browser anyway. Setting a key again with or without `--public` moves it; `unset` removes it from whichever side it was on.
+
+Values are always prompted for, never taken as an argument, so none lands in shell history. A secret is typed without echo, a public value with, so the prompt itself says which kind you are setting.
+
+### PocketBase reads the same environment
+
+With a backend, PocketBase takes its own settings from the same variables and shows them locked in the [admin panel](/admin): `APP_NAME` (handed over from [`src/lib/site.ts`](/cli/project-structure)), `APP_URL` (the deploy's origin unless you say otherwise), `PB_SMTP_HOST`, `PB_SMTP_PORT`, `PB_SMTP_USERNAME`, `PB_SMTP_PASSWORD`, `PB_SMTP_TLS`, `PB_SENDER_NAME`, `PB_SENDER_ADDRESS`, `PB_S3_*`, `PB_BACKUPS_S3_*`, and the WhatsApp plugin's `WHATSAPP_*` / `VELASTACK_*`. Setting `PB_SMTP_HOST` turns SMTP on; setting `PB_S3_ENDPOINT` moves uploads to that bucket. The mail and storage names are prefixed on purpose: an app's own `SMTP_HOST` or `S3_BUCKET` must not switch PocketBase mail or storage on.
 
 ### Options
 
 Every subcommand takes the same target and connection options:
 
-- `-t, --target <target>` - Which copy of the app to act on, defaults to `local`
-- `--server <ssh>` - Server this target runs on, recorded on first use
+- `-t, --target <target>` - Which environment: `local`, `all`, `preview`, `preview:<branch>`, `production`, or any bound target such as `staging`
+- `--public` - On `set` and `import`: readable back
+- `--server <ssh>` - Server a target runs on, recorded on first use; not taken by `all` or `preview`, which go to the bound servers
 - `-i, --identity <file>` - SSH private key to authenticate with
 - `--ssh-port <port>` - SSH port
 - `--accept-host-keys` - Trust an unknown host key on first connect (CI)
 
-### Deploys never touch them
+### Deploys never write them
 
-[`vela deploy`](/deploy) does not read, upload or overwrite the environment on a server. Production secrets are set once with these commands and stay put across releases. Anything the _build_ needs, as opposed to the running app, has to exist wherever the build runs.
+[`vela deploy`](/deploy) does not upload or overwrite the environment on a server. It does read it: the build runs with the target's resolved environment rather than your `.env`, so a prerendered page sees what the running app will. A key set only in `.env` is blanked for the build, and a `$env/static` import of one fails the deploy before anything is uploaded. A key the app imports from `$env/static` is baked at build time, so `set` says "redeploy to apply" for it rather than restarting.
+
+On an instance's first deploy, the keys `.env.example` documents that the target lacks are listed and, at a terminal, offered for setting. Nothing is required; the file documents, it does not gate.
 <!-- @es -->
-Gestiona las variables de entorno, en local o en un objetivo desplegado. En local viven en el archivo `.env` en la raíz del proyecto; en un servidor viven en `/etc/vela/apps`, legible solo por root, y nunca viajan dentro de una release.
+Gestiona las variables de entorno, en local o en un servidor. Todo lo que difiere entre entornos es una variable de entorno, tanto para la aplicación como para PocketBase: en local viven en `.env` en la raíz del proyecto; en un servidor viven bajo `/etc/vela`, legibles solo por root, y nunca viajan dentro de una release.
 
 ### Sintaxis
 
@@ -44,32 +64,52 @@ Gestiona las variables de entorno, en local o en un objetivo desplegado. En loca
 $ vela env <command>
 ```
 
-- [`list`](/es/env/list) - Listar los nombres de las variables de entorno
-- [`set`](/es/env/set) - Definir una variable de entorno
-- [`unset`](/es/env/unset) - Eliminar una variable de entorno
+- [`list`](/es/env/list) - Mostrar qué variables existen y dónde
+- [`get`](/es/env/get) - Imprimir una variable pública
+- [`set`](/es/env/set) - Definir una variable, pidiendo el valor
+- [`unset`](/es/env/unset) - Eliminar una variable
 - [`import`](/es/env/import) - Fusionar un archivo dotenv con el entorno
 
-### Objetivos
+### Ámbitos
 
-A diferencia de los comandos de despliegue, `vela env` usa `-t local` por defecto. Nombra un objetivo para trabajar sobre un servidor:
+En un servidor, el entorno de un objetivo son tres capas, de la más baja a la más alta. Una variable en una capa superior gana:
 
 ```
-$ vela env list                    # el .env de esta máquina
-$ vela env list -t production      # el servidor de producción
-$ vela env list -t staging
+$ vela env set VELASTACK_API_KEY -t all        # todos los objetivos, en todos los servidores donde se despliega la aplicación
+$ vela env set WHATSAPP_MODE -t preview        # todas las previsualizaciones
+$ vela env set STRIPE_SECRET_KEY -t production # un objetivo
 ```
+
+`-t all` y `-t preview` escriben en todos los servidores a los que están vinculados los objetivos del proyecto, y reinician en cada uno todas las instancias a las que llega la capa. Una rama de previsualización hereda ambas capas compartidas, así que nunca está vacía en su primer despliegue; `-t preview:<branch>` se dirige a una sola previsualización. `-t local` es el `.env` de esta máquina.
+
+Para `env`, un `-t preview` a secas significa la capa que comparten todas las previsualizaciones; para [`vela deploy`](/es/deploy) significa la rama que tienes abierta. Una clave de API para previsualizaciones se define una vez; una rama se despliega muchas veces.
+
+No hay valor por defecto. Sin `-t`, `set`, `unset` e `import` preguntan por el entorno en una terminal y se niegan en CI; `list` muestra todos los ámbitos a la vez.
+
+### Secreto salvo que se diga lo contrario
+
+Un valor en un servidor es secreto por defecto: se escribe, nunca se lee de vuelta, y se muestra como `••••`. Pasa `--public` para uno que deba poder leerse — `vela env get` lo imprime y `vela env list` lo muestra. Las claves `PUBLIC_*` son públicas sin pedirlo, ya que SvelteKit las envía al navegador de todos modos. Definir una clave de nuevo con o sin `--public` la mueve; `unset` la elimina del lado en que estuviera.
+
+Los valores siempre se piden, nunca se toman como argumento, así que ninguno acaba en el historial del shell. Un secreto se escribe sin eco; un valor público, con eco, de modo que el propio aviso dice qué tipo estás definiendo.
+
+### PocketBase lee el mismo entorno
+
+Con backend, PocketBase toma sus propios ajustes de las mismas variables y los muestra bloqueados en el [panel de administración](/es/admin): `APP_NAME` (entregado desde [`src/lib/site.ts`](/es/cli/project-structure)), `APP_URL` (el origen del despliegue salvo que indiques otro), `PB_SMTP_HOST`, `PB_SMTP_PORT`, `PB_SMTP_USERNAME`, `PB_SMTP_PASSWORD`, `PB_SMTP_TLS`, `PB_SENDER_NAME`, `PB_SENDER_ADDRESS`, `PB_S3_*`, `PB_BACKUPS_S3_*`, y las `WHATSAPP_*` / `VELASTACK_*` del plugin de WhatsApp. Definir `PB_SMTP_HOST` activa SMTP; definir `PB_S3_ENDPOINT` lleva las subidas a ese bucket. Los nombres de correo y almacenamiento llevan prefijo a propósito: el `SMTP_HOST` o `S3_BUCKET` propio de una aplicación no debe activar el correo ni el almacenamiento de PocketBase.
 
 ### Opciones
 
 Todos los subcomandos aceptan las mismas opciones de objetivo y conexión:
 
-- `-t, --target <target>` - Sobre qué copia de la aplicación actuar, por defecto `local`
-- `--server <ssh>` - Servidor en el que se ejecuta este objetivo, registrado en el primer uso
+- `-t, --target <target>` - Qué entorno: `local`, `all`, `preview`, `preview:<branch>`, `production`, o cualquier objetivo vinculado como `staging`
+- `--public` - En `set` e `import`: legible de vuelta
+- `--server <ssh>` - Servidor en el que se ejecuta un objetivo, registrado en el primer uso; `all` y `preview` no lo aceptan, van a los servidores vinculados
 - `-i, --identity <file>` - Clave privada SSH con la que autenticarse
 - `--ssh-port <port>` - Puerto SSH
 - `--accept-host-keys` - Confiar en una clave de host desconocida en la primera conexión (CI)
 
-### Los despliegues nunca las tocan
+### Los despliegues nunca las escriben
 
-[`vela deploy`](/es/deploy) no lee, sube ni sobrescribe el entorno de un servidor. Los secretos de producción se definen una vez con estos comandos y permanecen entre releases. Todo lo que necesite la _compilación_, a diferencia de la aplicación en ejecución, tiene que existir allí donde se compile.
+[`vela deploy`](/es/deploy) no sube ni sobrescribe el entorno de un servidor. Sí lo lee: la compilación se ejecuta con el entorno resuelto del objetivo en lugar de tu `.env`, de modo que una página prerenderizada ve lo mismo que verá la aplicación en ejecución. Una clave definida solo en `.env` se deja en blanco para la compilación, y una importación de `$env/static` de una de ellas hace fallar el despliegue antes de subir nada. Una clave que la aplicación importa de `$env/static` queda fijada al compilar, así que `set` dice «vuelve a desplegar para aplicarla» en lugar de reiniciar.
+
+En el primer despliegue de una instancia, se listan las claves que `.env.example` documenta y el objetivo no tiene y, en una terminal, se ofrece definirlas. Nada es obligatorio; el archivo documenta, no bloquea.
 <!-- @end -->
