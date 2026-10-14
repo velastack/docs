@@ -7,8 +7,8 @@
 	import { toast } from 'svelte-sonner';
 	import { MetaTags, deepMerge } from 'svelte-meta-tags';
 	import { page } from '$app/state';
-	import { Toaster } from '$lib/components/ui/sonner';
-	import { Negotiate } from '$lib/negotiate';
+	import { Toaster } from '#lib/components/ui/sonner/index.js';
+	import { Negotiate } from '#lib/negotiate.js';
 
 	let { data, children } = $props();
 	const flash = getFlash(page);

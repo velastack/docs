@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as Sidebar from '$lib/components/ui/sidebar';
-	import { Badge } from '$lib/components/ui/badge';
+	import * as Sidebar from '#lib/components/ui/sidebar/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 	import { page } from '$app/state';
 
 	const isActive = (url: string) => {

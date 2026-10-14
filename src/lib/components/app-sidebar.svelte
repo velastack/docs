@@ -1,8 +1,8 @@
 <script lang="ts">
 	import NavMain from './nav-main.svelte';
-	import * as Sidebar from '$lib/components/ui/sidebar';
+	import * as Sidebar from '#lib/components/ui/sidebar/index.js';
 	import type { ComponentProps } from 'svelte';
-	import { site } from '$lib/site';
+	import { site } from '#lib/site.js';
 
 	let data = {
 		navMain: [

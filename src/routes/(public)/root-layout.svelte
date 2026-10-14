@@ -1,18 +1,18 @@
 <script lang="ts">
 	import { toggleMode } from 'mode-watcher';
-	import * as Sidebar from '$lib/components/ui/sidebar';
-	import { Separator } from '$lib/components/ui/separator';
-	import AppSidebar from '$lib/components/app-sidebar.svelte';
-	import * as Breadcrumb from '$lib/components/ui/breadcrumb';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import * as Navbar from '$lib/components/ui/navbar';
-	import * as ButtonGroup from '$lib/components/ui/button-group';
+	import * as Sidebar from '#lib/components/ui/sidebar/index.js';
+	import { Separator } from '#lib/components/ui/separator/index.js';
+	import AppSidebar from '#lib/components/app-sidebar.svelte';
+	import * as Breadcrumb from '#lib/components/ui/breadcrumb/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import * as Navbar from '#lib/components/ui/navbar/index.js';
+	import * as ButtonGroup from '#lib/components/ui/button-group/index.js';
 	import { locales, type Locale } from '$locales/data.js';
 	import { deLocalizeDefault } from 'wuchale/url';
 	import { goto } from '$app/navigation';
-	import { translateUrl, defaultLocale } from '$lib/url';
-	import * as Item from '$lib/components/ui/item';
+	import { translateUrl, defaultLocale } from '#lib/url.js';
+	import * as Item from '#lib/components/ui/item/index.js';
 
 	import { page } from '$app/state';
 
@@ -40,7 +40,7 @@
 
 	const handleValueChange = (toLocale: Locale) => {
 		const translatedUrl = translateUrl(page.url.pathname, locale, toLocale);
-		goto(translatedUrl, { invalidateAll: true });
+		goto(translatedUrl, { refreshAll: true });
 	};
 </script>
 
@@ -77,14 +77,14 @@
 							size="sm"
 							class={locale !== 'en' ? 'opacity-50' : ''}
 							onclick={() => handleValueChange('en')}
-							data-sveltekit-preload-data="off">{localeNames['en']}</Button
+							data-sveltekit-preload-data={false}>{localeNames['en']}</Button
 						>
 						<Button
 							variant="outline"
 							size="sm"
 							class={locale !== 'es' ? 'opacity-50' : ''}
 							onclick={() => handleValueChange('es')}
-							data-sveltekit-preload-data="off">{localeNames['es']}</Button
+							data-sveltekit-preload-data={false}>{localeNames['es']}</Button
 						>
 					</ButtonGroup.Root>
 					<Button onclick={toggleMode} variant="ghost" size="icon">
