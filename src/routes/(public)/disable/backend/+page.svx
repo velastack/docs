@@ -25,6 +25,7 @@ The database on a deployed server is not touched.
 The rest is reverted rather than deleted:
 
 - `src/hooks.server.ts` loses the PocketBase handle and the `init` hook that starts the workflow worker. Handles other features added, such as i18n, stay. The file is deleted only if nothing is left in it.
+- `src/env.ts` loses the PocketBase and workflow variables.
 - The SvelteKit adapter is switched back to `@sveltejs/adapter-static` with an SPA fallback, and `@sveltejs/adapter-static` is installed.
 - The PocketBase block comes out of `.gitignore`.
 - `test/setup.ts` goes back to the version without a database, which gives tests only `request` and `agent`.
@@ -66,6 +67,7 @@ La base de datos de un servidor desplegado no se toca.
 El resto se revierte en lugar de eliminarse:
 
 - `src/hooks.server.ts` pierde el handle de PocketBase y el hook `init` que arranca el worker de workflows. Los handles que añadieron otras funciones, como i18n, se quedan. El archivo solo se elimina si no queda nada en él.
+- `src/env.ts` pierde las variables de PocketBase y de workflows.
 - El adaptador de SvelteKit se cambia de nuevo a `@sveltejs/adapter-static` con un fallback de SPA, y se instala `@sveltejs/adapter-static`.
 - El bloque de PocketBase se quita de `.gitignore`.
 - `test/setup.ts` vuelve a la versión sin base de datos, que solo da a los tests `request` y `agent`.

@@ -21,6 +21,7 @@ Off a terminal, such as in CI, there is nothing to prompt on: pass both flags, o
 This installs `@velastack/pocketbase`, `pocketbase-sveltekit`, `@velastack/kit` and `@sveltejs/adapter-node`, plus `vitest`, `supertest` and `@types/supertest` for server tests, then:
 
 - Adds the PocketBase handle to `src/hooks.server.ts`, creating the file if there isn't one
+- Declares `POCKETBASE_URL`, `POCKETBASE_SUPERUSER_EMAIL` and `POCKETBASE_SUPERUSER_PASSWORD` in `src/env.ts`, creating the file if there isn't one
 - Scaffolds the `data/` directory the database runs from, with `fixtures/`, `hooks/` and `seeds/` inside
 - Switches the SvelteKit adapter from `@sveltejs/adapter-static` or `@sveltejs/adapter-auto` to `@sveltejs/adapter-node`
 - Appends a PocketBase block to `.gitignore` that ignores the database in `data/` but keeps `fixtures/`, `hooks/` and `seeds/`
@@ -81,6 +82,7 @@ Fuera de una terminal, por ejemplo en CI, no hay dónde preguntar: pasa ambas op
 Esto instala `@velastack/pocketbase`, `pocketbase-sveltekit`, `@velastack/kit` y `@sveltejs/adapter-node`, además de `vitest`, `supertest` y `@types/supertest` para los tests de servidor, y después:
 
 - Añade el handle de PocketBase a `src/hooks.server.ts`, y crea el archivo si no existe
+- Declara `POCKETBASE_URL`, `POCKETBASE_SUPERUSER_EMAIL` y `POCKETBASE_SUPERUSER_PASSWORD` en `src/env.ts`, y crea el archivo si no existe
 - Genera el directorio `data/` desde el que se ejecuta la base de datos, con `fixtures/`, `hooks/` y `seeds/` dentro
 - Cambia el adaptador de SvelteKit de `@sveltejs/adapter-static` o `@sveltejs/adapter-auto` a `@sveltejs/adapter-node`
 - Añade a `.gitignore` un bloque de PocketBase que ignora la base de datos de `data/` pero conserva `fixtures/`, `hooks/` y `seeds/`

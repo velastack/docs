@@ -761,6 +761,7 @@ msgstr "Negociación de contenido"
 #: src/routes/(public)/migrate/create/+page.ts
 #: src/routes/(public)/migrate/down/+page.ts
 #: src/routes/(public)/migrate/history-sync/+page.ts
+#: src/routes/(public)/migrate/sveltekit-3/+page.ts
 #: src/routes/(public)/migrate/up/+page.ts
 msgid "Migrate"
 msgstr "Migrar"
@@ -1137,3 +1138,9 @@ msgstr "WhatsApp"
 #: src/routes/(public)/enable/+page.ts
 msgid "Sign in with a code sent on WhatsApp, next to email."
 msgstr "Inicia sesión con un código enviado por WhatsApp, junto al correo electrónico."
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/migrate/sveltekit-3/+page.ts
+#: src/routes/(public)/migrate/sveltekit-3/+page.ts
+msgid "SvelteKit 3"
+msgstr "SvelteKit 3"

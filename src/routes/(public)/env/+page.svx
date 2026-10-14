@@ -31,9 +31,22 @@ There is no default. Without `-t`, `set`, `unset` and `import` ask which environ
 
 ### Secret unless said otherwise
 
-A value on a server is secret by default: written, never read back, shown as `••••`. Pass `--public` for one that should read back — `vela env get` prints it and `vela env list` shows it. `PUBLIC_*` keys are public without asking, since SvelteKit ships them to the browser anyway. Setting a key again with or without `--public` moves it; `unset` removes it from whichever side it was on.
+A value on a server is secret by default: written, never read back, shown as `••••`. Pass `--public` for one that should read back — `vela env get` prints it and `vela env list` shows it. `PUBLIC_*` keys are public without asking, since they are meant for the browser. Setting a key again with or without `--public` moves it; `unset` removes it from whichever side it was on.
 
 Values are always prompted for, never taken as an argument, so none lands in shell history. A secret is typed without echo, a public value with, so the prompt itself says which kind you are setting.
+
+### The app reads what `src/env.ts` declares
+
+SvelteKit exposes only the variables declared in `src/env.ts`. A server-side one is imported by name from `$app/env/private`, one declared `public: true` from `$app/env/public`; a variable that isn't declared isn't exposed at all, however it was set. The templates declare the variables they read, and an [`enable`](/enable) command that adds code reading one declares it too. A variable of your own needs an entry in the file's `defineEnvVars` call before the app can see it:
+
+```ts
+MY_API_KEY: {
+	schema: (value) => value ?? '',
+	description: 'Key for the example API.'
+},
+```
+
+Vela's declarations turn a missing value into `''`, so the app builds and starts with a blank `.env`.
 
 ### PocketBase reads the same environment
 
@@ -88,9 +101,22 @@ No hay valor por defecto. Sin `-t`, `set`, `unset` e `import` preguntan por el e
 
 ### Secreto salvo que se diga lo contrario
 
-Un valor en un servidor es secreto por defecto: se escribe, nunca se lee de vuelta, y se muestra como `••••`. Pasa `--public` para uno que deba poder leerse — `vela env get` lo imprime y `vela env list` lo muestra. Las claves `PUBLIC_*` son públicas sin pedirlo, ya que SvelteKit las envía al navegador de todos modos. Definir una clave de nuevo con o sin `--public` la mueve; `unset` la elimina del lado en que estuviera.
+Un valor en un servidor es secreto por defecto: se escribe, nunca se lee de vuelta, y se muestra como `••••`. Pasa `--public` para uno que deba poder leerse — `vela env get` lo imprime y `vela env list` lo muestra. Las claves `PUBLIC_*` son públicas sin pedirlo, ya que están pensadas para el navegador. Definir una clave de nuevo con o sin `--public` la mueve; `unset` la elimina del lado en que estuviera.
 
 Los valores siempre se piden, nunca se toman como argumento, así que ninguno acaba en el historial del shell. Un secreto se escribe sin eco; un valor público, con eco, de modo que el propio aviso dice qué tipo estás definiendo.
+
+### La aplicación lee lo que declara `src/env.ts`
+
+SvelteKit expone solo las variables declaradas en `src/env.ts`. Una del servidor se importa por nombre de `$app/env/private`, y una declarada con `public: true`, de `$app/env/public`; una variable que no está declarada no se expone en absoluto, la definas como la definas. Las plantillas declaran las variables que leen, y un comando [`enable`](/es/enable) que añade código que lee una también la declara. Una variable propia necesita una entrada en la llamada a `defineEnvVars` del archivo para que la aplicación la vea:
+
+```ts
+MY_API_KEY: {
+	schema: (value) => value ?? '',
+	description: 'Clave de la API de ejemplo.'
+},
+```
+
+Las declaraciones de Vela convierten un valor ausente en `''`, así que la aplicación compila y arranca con un `.env` vacío.
 
 ### PocketBase lee el mismo entorno
 

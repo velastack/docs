@@ -14,7 +14,7 @@ The notifications module creates a `notifications` collection, a bell dropdown i
 - A bell in the `(app)` layout header with an unread count. Opening it lists the five most recent unread notifications.
 - Polling every 30 seconds while the tab is visible, plus a refresh whenever the tab regains focus. New notifications also appear as toasts.
 - A `/notifications` page listing everything for the signed-in user, with "Mark read" per item and "Mark all read".
-- A `notify` helper in `$lib/server/notifications` for creating notifications from server code.
+- A `notify` helper in `#lib/server/notifications.js` for creating notifications from server code.
 
 The `(app)` layout's `+layout.server.ts` is extended to load the unread notifications and register the `app:notifications` dependency, so calling `invalidate('app:notifications')` anywhere refreshes the bell.
 
@@ -23,7 +23,7 @@ The `(app)` layout's `+layout.server.ts` is extended to load the unread notifica
 Notifications are created server-side. Import `notify` in a form action, hook or API route and pass the user's id:
 
 ```ts
-import { notify } from '$lib/server/notifications';
+import { notify } from '#lib/server/notifications.js';
 
 export const actions = {
   invite: async ({ locals }) => {
@@ -62,7 +62,7 @@ El módulo de notificaciones crea una colección `notifications`, un desplegable
 - Una campana en la cabecera del layout `(app)` con el número de no leídas. Al abrirla se muestran las cinco notificaciones no leídas más recientes.
 - Consulta cada 30 segundos mientras la pestaña esté visible, además de una actualización cada vez que la pestaña recupera el foco. Las notificaciones nuevas también aparecen como toasts.
 - Una página `/notifications` con todas las notificaciones del usuario autenticado, con "Marcar como leída" por elemento y "Marcar todas como leídas".
-- Una función `notify` en `$lib/server/notifications` para crear notificaciones desde el código del servidor.
+- Una función `notify` en `#lib/server/notifications.js` para crear notificaciones desde el código del servidor.
 
 El `+layout.server.ts` del layout `(app)` se amplía para cargar las notificaciones no leídas y registrar la dependencia `app:notifications`, de modo que llamar a `invalidate('app:notifications')` desde cualquier sitio actualiza la campana.
 
@@ -71,7 +71,7 @@ El `+layout.server.ts` del layout `(app)` se amplía para cargar las notificacio
 Las notificaciones se crean en el servidor. Importa `notify` en una acción de formulario, un hook o una ruta de API y pásale el id del usuario:
 
 ```ts
-import { notify } from '$lib/server/notifications';
+import { notify } from '#lib/server/notifications.js';
 
 export const actions = {
   invite: async ({ locals }) => {

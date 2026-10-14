@@ -16,6 +16,8 @@ $ vela bless ./my-app
 
 You'll be prompted for the admin email and password for the new PocketBase database. Blessing a project that has already been blessed is refused.
 
+The project has to be on SvelteKit 3. A SvelteKit 2 project, one that declares `@sveltejs/kit` 2 or still has a `svelte.config.js`, is refused with the command that upgrades it: [`vela migrate sveltekit-3`](/migrate/sveltekit-3).
+
 ### Options
 
 - `--template <type>` - Template to scaffold from, defaults to `minimal`. Only templates with a backend can be used — blessing is what adds PocketBase to a project.
@@ -36,7 +38,7 @@ src/hooks.server.ts          the handlePocketbase hook
 src/lib/server/workflows.ts  the workflow client and the worker hooks.server.ts starts
 src/app.css                  Tailwind imports and theme tokens
 src/lib/utils.ts             the cn helper and component type utilities
-src/lib/index.ts             a $lib placeholder
+src/lib/index.ts             the placeholder #lib resolves to
 src/lib/site.ts              the app's name, taken from package.json, and its URL
 components.json              the shadcn-svelte config `vela ui add` reads
 .npmrc                       engine-strict=true
@@ -47,15 +49,15 @@ vitest.config.ts             the server test project `vela test:server` runs
 Directories are added alongside what you have: `src/lib/components`, `src/lib/workflows`, `data`, `test` and `static`. Configuration is merged rather than overwritten:
 
 ```
-svelte.config.js
 vite.config.ts
 tsconfig.json
 package.json
+src/env.ts
 .gitignore
 src/app.d.ts
 ```
 
-Your project's SvelteKit adapter is kept: if `package.json` already lists one, the template's `@sveltejs/adapter-node` isn't added. `.gitignore` gains only the entries it's missing, among them `/data/*` for the local database (with `data/fixtures`, `data/seeds` and `data/hooks` still tracked) and `/backups`.
+The Svelte compiler options go into the `sveltekit()` call in `vite.config.ts`, where SvelteKit 3 reads its config. `package.json` gains the `#lib` imports, and `src/env.ts` declares the variables Vela reads, such as `POCKETBASE_URL`. Your project's SvelteKit adapter is kept: if `package.json` already lists one, the template's `@sveltejs/adapter-node` isn't added. `.gitignore` gains only the entries it's missing, among them `/data/*` for the local database (with `data/fixtures`, `data/seeds` and `data/hooks` still tracked) and `/backups`.
 
 ### Routes
 
@@ -105,6 +107,8 @@ $ vela bless ./my-app
 
 Se te pedirá el correo electrónico y la contraseña del administrador para la nueva base de datos PocketBase. Bendecir un proyecto que ya ha sido bendecido se rechaza.
 
+El proyecto tiene que estar en SvelteKit 3. Un proyecto de SvelteKit 2, uno que declara `@sveltejs/kit` 2 o que todavía tiene un `svelte.config.js`, se rechaza con el comando que lo actualiza: [`vela migrate sveltekit-3`](/es/migrate/sveltekit-3).
+
 ### Opciones
 
 - `--template <type>` - Plantilla desde la que generar, por defecto `minimal`. Solo se pueden usar plantillas con backend — bendecir es lo que añade PocketBase a un proyecto.
@@ -125,7 +129,7 @@ src/hooks.server.ts          el hook handlePocketbase
 src/lib/server/workflows.ts  el cliente de workflows y el worker que inicia hooks.server.ts
 src/app.css                  importaciones de Tailwind y tokens del tema
 src/lib/utils.ts             el helper cn y utilidades de tipos de componentes
-src/lib/index.ts             un marcador de posición de $lib
+src/lib/index.ts             el marcador de posición al que resuelve #lib
 src/lib/site.ts              el nombre de la aplicación, tomado de package.json, y su URL
 components.json              la configuración de shadcn-svelte que lee `vela ui add`
 .npmrc                       engine-strict=true
@@ -136,15 +140,15 @@ vitest.config.ts             el proyecto de tests de servidor que ejecuta `vela 
 Los directorios se añaden junto a los que ya tienes: `src/lib/components`, `src/lib/workflows`, `data`, `test` y `static`. La configuración se fusiona en lugar de sobrescribirse:
 
 ```
-svelte.config.js
 vite.config.ts
 tsconfig.json
 package.json
+src/env.ts
 .gitignore
 src/app.d.ts
 ```
 
-El adaptador de SvelteKit de tu proyecto se conserva: si `package.json` ya incluye uno, no se añade el `@sveltejs/adapter-node` de la plantilla. `.gitignore` solo recibe las entradas que le faltan, entre ellas `/data/*` para la base de datos local (sin dejar de versionar `data/fixtures`, `data/seeds` y `data/hooks`) y `/backups`.
+Las opciones del compilador de Svelte van a la llamada a `sveltekit()` de `vite.config.ts`, donde SvelteKit 3 lee su configuración. `package.json` recibe las importaciones `#lib`, y `src/env.ts` declara las variables que lee Vela, como `POCKETBASE_URL`. El adaptador de SvelteKit de tu proyecto se conserva: si `package.json` ya incluye uno, no se añade el `@sveltejs/adapter-node` de la plantilla. `.gitignore` solo recibe las entradas que le faltan, entre ellas `/data/*` para la base de datos local (sin dejar de versionar `data/fixtures`, `data/seeds` y `data/hooks`) y `/backups`.
 
 ### Rutas
 

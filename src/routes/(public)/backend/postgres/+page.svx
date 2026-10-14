@@ -5,7 +5,7 @@ PostgreSQL support is planned. `@velastack/postgres` is not published yet. Confi
 import { handlePostgres } from '@velastack/postgres';
 import {
     POSTGRES_CONNECTION_STRING
-} from '$env/static/private';
+} from '$app/env/private';
 
 export const handle = handlePostgres({
     connectionString: POSTGRES_CONNECTION_STRING
@@ -20,7 +20,7 @@ El soporte para PostgreSQL está planificado. `@velastack/postgres` aún no est�
 import { handlePostgres } from '@velastack/postgres';
 import {
     POSTGRES_CONNECTION_STRING
-} from '$env/static/private';
+} from '$app/env/private';
 
 export const handle = handlePostgres({
     connectionString: POSTGRES_CONNECTION_STRING

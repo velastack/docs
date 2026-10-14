@@ -29,7 +29,7 @@ $ vela generate workflow send-welcome-email
 
 ```ts
 import { z } from 'zod';
-import { ow } from '$lib/server/workflows';
+import { ow } from '#lib/server/workflows.js';
 
 export const sendWelcomeEmail = ow.defineWorkflow(
 	{
@@ -59,7 +59,7 @@ A workflow gets one attempt unless `retryPolicy` says otherwise. `step.sleep`, `
 Import the workflow anywhere on the server — a form action, an API route, a hook, another workflow — and call `run()`:
 
 ```ts
-import { sendWelcomeEmail } from '$lib/workflows/send-welcome-email';
+import { sendWelcomeEmail } from '#lib/workflows/send-welcome-email.js';
 
 await sendWelcomeEmail.run({ userId: user.id }, { idempotencyKey: user.id });
 ```
@@ -82,7 +82,7 @@ $ vela generate workflow sync-prices --cron '*/5 * * * *'
 export const cron = '*/5 * * * *';
 ```
 
-The schedule fires once per minute at most, and once across all servers: each firing is keyed on the workflow name and the minute, so however many servers are running, one run starts. A minute that passes while nothing is running is skipped, not caught up. In tests the schedule is off; `tickCron()` from `$lib/server/workflows` starts every recurring workflow on demand.
+The schedule fires once per minute at most, and once across all servers: each firing is keyed on the workflow name and the minute, so however many servers are running, one run starts. A minute that passes while nothing is running is skipped, not caught up. In tests the schedule is off; `tickCron()` from `#lib/server/workflows.js` starts every recurring workflow on demand.
 
 ### Testing
 
@@ -90,7 +90,7 @@ The generator writes a `<name>.server.test.ts` next to each workflow, which [`ve
 
 ```ts
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { startWorker, stopWorker } from '$lib/server/workflows';
+import { startWorker, stopWorker } from '#lib/server/workflows.js';
 import { sendWelcomeEmail } from './send-welcome-email';
 
 describe('send-welcome-email', () => {
@@ -149,7 +149,7 @@ $ vela generate workflow send-welcome-email
 
 ```ts
 import { z } from 'zod';
-import { ow } from '$lib/server/workflows';
+import { ow } from '#lib/server/workflows.js';
 
 export const sendWelcomeEmail = ow.defineWorkflow(
 	{
@@ -179,7 +179,7 @@ Un workflow tiene un solo intento salvo que `retryPolicy` diga otra cosa. `step.
 Importa el workflow en cualquier punto del servidor — una acción de formulario, una ruta de API, un hook, otro workflow — y llama a `run()`:
 
 ```ts
-import { sendWelcomeEmail } from '$lib/workflows/send-welcome-email';
+import { sendWelcomeEmail } from '#lib/workflows/send-welcome-email.js';
 
 await sendWelcomeEmail.run({ userId: user.id }, { idempotencyKey: user.id });
 ```
@@ -202,7 +202,7 @@ $ vela generate workflow sync-prices --cron '*/5 * * * *'
 export const cron = '*/5 * * * *';
 ```
 
-El horario se dispara como mucho una vez por minuto, y una sola vez entre todos los servidores: cada disparo se identifica por el nombre del workflow y el minuto, así que por muchos servidores que haya en marcha, se inicia una única ejecución. Un minuto que pasa sin nada en marcha se salta, no se recupera. En las pruebas el horario está desactivado; `tickCron()` de `$lib/server/workflows` inicia a demanda todos los workflows recurrentes.
+El horario se dispara como mucho una vez por minuto, y una sola vez entre todos los servidores: cada disparo se identifica por el nombre del workflow y el minuto, así que por muchos servidores que haya en marcha, se inicia una única ejecución. Un minuto que pasa sin nada en marcha se salta, no se recupera. En las pruebas el horario está desactivado; `tickCron()` de `#lib/server/workflows.js` inicia a demanda todos los workflows recurrentes.
 
 ### Pruebas
 
@@ -210,7 +210,7 @@ El generador escribe un `<name>.server.test.ts` junto a cada workflow, que ejecu
 
 ```ts
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { startWorker, stopWorker } from '$lib/server/workflows';
+import { startWorker, stopWorker } from '#lib/server/workflows.js';
 import { sendWelcomeEmail } from './send-welcome-email';
 
 describe('send-welcome-email', () => {

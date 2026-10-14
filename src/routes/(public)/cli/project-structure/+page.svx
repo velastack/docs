@@ -22,12 +22,13 @@ my-project/
 │   │   └── api/           your own API routes
 │   ├── app.css            Tailwind imports and theme tokens
 │   ├── app.d.ts           the App.Locals types, kept in sync by `vela sync`
+│   ├── env.ts             the environment variables the app reads, see `vela env`
 │   └── hooks.server.ts    the handlePocketbase middleware and the workflow worker's init
 ├── static/                served as-is
 ├── test/setup.ts          the server test context
 ├── .vela/project.json     the app id and target bindings — commit this
 ├── components.json        shadcn-svelte configuration
-├── vite.config.ts         Vite, Tailwind and the SvelteKit adapter
+├── vite.config.ts         Vite, Tailwind and the SvelteKit config, adapter included
 ```
 
 ### Route groups
@@ -45,7 +46,7 @@ export const site = {
 };
 ```
 
-Pages read it with `import { site } from '$lib/site'`. [`vela create`](/create) writes the name. Set `url` to where the site is deployed: canonical links, Open Graph image URLs and the [blog](/enable/blog)'s RSS feed are built from it, prerendered pages included. It is deliberately the canonical site, so a preview's pages still point at production.
+Pages read it with `import { site } from '#lib/site.js'`. [`vela create`](/create) writes the name. Set `url` to where the site is deployed: canonical links, Open Graph image URLs and the [blog](/enable/blog)'s RSS feed are built from it, prerendered pages included. It is deliberately the canonical site, so a preview's pages still point at production.
 
 This file is ordinary code, and the one place the name lives. With a backend, PocketBase names the emails it sends after `APP_NAME` — `{APP_NAME}` in the verification and password reset templates — and [`vela dev`](/dev) and [`vela deploy`](/deploy) hand it `site.name` through its environment, where it shows as locked in the admin panel. The URL those emails link to is separate from `site.url`: it is the origin each instance is served on, so a preview's reset links hit the preview. See [`vela env`](/env) for what else PocketBase reads from the environment.
 
@@ -84,12 +85,13 @@ my-project/
 │   │   └── api/           tus propias rutas de API
 │   ├── app.css            importaciones de Tailwind y tokens del tema
 │   ├── app.d.ts           los tipos de App.Locals, sincronizados por `vela sync`
+│   ├── env.ts             las variables de entorno que lee la aplicación, ver `vela env`
 │   └── hooks.server.ts    el middleware handlePocketbase y el init del worker de workflows
 ├── static/                servido tal cual
 ├── test/setup.ts          el contexto de pruebas del servidor
 ├── .vela/project.json     el id de la aplicación y los objetivos — súbelo al repositorio
 ├── components.json        configuración de shadcn-svelte
-├── vite.config.ts         Vite, Tailwind y el adaptador de SvelteKit
+├── vite.config.ts         Vite, Tailwind y la configuración de SvelteKit, adaptador incluido
 ```
 
 ### Grupos de rutas
@@ -107,7 +109,7 @@ export const site = {
 };
 ```
 
-Las páginas lo leen con `import { site } from '$lib/site'`. [`vela create`](/es/create) escribe el nombre. Define `url` con la dirección donde se despliega el sitio: los enlaces canónicos, las URLs de las imágenes Open Graph y el feed RSS del [blog](/es/enable/blog) se construyen a partir de ella, también en las páginas prerenderizadas. Es deliberadamente el sitio canónico, así que las páginas de una previsualización siguen apuntando a producción.
+Las páginas lo leen con `import { site } from '#lib/site.js'`. [`vela create`](/es/create) escribe el nombre. Define `url` con la dirección donde se despliega el sitio: los enlaces canónicos, las URLs de las imágenes Open Graph y el feed RSS del [blog](/es/enable/blog) se construyen a partir de ella, también en las páginas prerenderizadas. Es deliberadamente el sitio canónico, así que las páginas de una previsualización siguen apuntando a producción.
 
 Este archivo es código corriente, y el único lugar donde vive el nombre. Con backend, PocketBase nombra los correos que envía con `APP_NAME` — `{APP_NAME}` en las plantillas de verificación y de restablecimiento de contraseña — y [`vela dev`](/es/dev) y [`vela deploy`](/es/deploy) le entregan `site.name` a través de su entorno, donde aparece bloqueado en el panel de administración. La URL a la que enlazan esos correos es distinta de `site.url`: es el origen en el que se sirve cada instancia, así que los enlaces de restablecimiento de una previsualización llegan a la previsualización. Consulta [`vela env`](/es/env) para ver qué más lee PocketBase del entorno.
 

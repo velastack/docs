@@ -18,9 +18,9 @@ AI has no dependencies and doesn't need a backend: it works in any SvelteKit pro
 - A demo chat page at `/ai`, built on the `Chat` class from `@ai-sdk/svelte`, with streaming replies, a Stop button and errors shown inline.
 - A server test for the endpoint in `src/routes/api/chat/server.test.ts`, when the project has the [`vela test:server`](/test/server) harness. Its requests never reach the model, so it passes without an API key.
 - The `ai` and `@ai-sdk/svelte` packages plus the provider's own, and the `button` and `textarea` components.
-- The provider's API key in `.env`.
+- The provider's API key in `.env`, declared in `src/env.ts`.
 
-The endpoint reads the key from `$env/dynamic/private` on every request. While it's blank, the endpoint answers `503` with the name of the variable to set, and the demo page shows that message. Set the same key on each deploy target with [`vela env set`](/env/set).
+The endpoint imports the key from `$app/env/private`, which reads it at runtime rather than baking it into the build. While it's blank, the endpoint answers `503` with the name of the variable to set, and the demo page shows that message. Set the same key on each deploy target with [`vela env set`](/env/set).
 
 In a project without shadcn-svelte, the demo page uses plain HTML elements instead. In a project without route groups, it lands directly in `src/routes/ai`.
 
@@ -102,9 +102,9 @@ La IA no tiene dependencias ni necesita backend: funciona en cualquier proyecto 
 - Una página de chat de demostración en `/ai`, construida con la clase `Chat` de `@ai-sdk/svelte`, con respuestas en streaming, un botón para detenerlas y los errores mostrados en la propia página.
 - Un test de servidor para el endpoint en `src/routes/api/chat/server.test.ts`, cuando el proyecto tiene el entorno de [`vela test:server`](/es/test/server). Sus peticiones nunca llegan al modelo, así que pasa sin clave de API.
 - Los paquetes `ai` y `@ai-sdk/svelte` más el del proveedor, y los componentes `button` y `textarea`.
-- La clave de API del proveedor en `.env`.
+- La clave de API del proveedor en `.env`, declarada en `src/env.ts`.
 
-El endpoint lee la clave de `$env/dynamic/private` en cada petición. Mientras esté vacía, el endpoint responde `503` con el nombre de la variable que hay que definir, y la página de demostración muestra ese mensaje. Define la misma clave en cada destino de despliegue con [`vela env set`](/es/env/set).
+El endpoint importa la clave de `$app/env/private`, que la lee en tiempo de ejecución en lugar de fijarla en el build. Mientras esté vacía, el endpoint responde `503` con el nombre de la variable que hay que definir, y la página de demostración muestra ese mensaje. Define la misma clave en cada destino de despliegue con [`vela env set`](/es/env/set).
 
 En un proyecto sin shadcn-svelte, la página de demostración usa elementos HTML simples. En un proyecto sin grupos de rutas, se crea directamente en `src/routes/ai`.
 

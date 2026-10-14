@@ -80,6 +80,7 @@ msgstr "/"
 #. /migrate/create
 #. /migrate/collections
 #. /migrate/history-sync
+#. /migrate/sveltekit-3
 #. /sync
 #. /test
 #. /test/server
@@ -382,6 +383,8 @@ msgstr "/"
 #. /migrate
 #. /migrate/history-sync
 #. /migrate
+#. /migrate/sveltekit-3
+#. /migrate
 #. /migrate/up
 #. /preview
 #. /provision
@@ -437,6 +440,7 @@ msgstr "/"
 #. /workflows/list
 #. /workflows
 #. /workflows/run
+#: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
@@ -802,6 +806,8 @@ msgstr "/"
 #: src/routes/(public)/migrate/down/+page.ts
 #: src/routes/(public)/migrate/history-sync/+page.ts
 #: src/routes/(public)/migrate/history-sync/+page.ts
+#: src/routes/(public)/migrate/sveltekit-3/+page.ts
+#: src/routes/(public)/migrate/sveltekit-3/+page.ts
 #: src/routes/(public)/migrate/up/+page.ts
 #: src/routes/(public)/migrate/up/+page.ts
 #: src/routes/(public)/preview/+page.ts
