@@ -141,6 +141,10 @@
 						url: /* @wc-url */ '/enable/auth'
 					},
 					{
+						title: 'WhatsApp',
+						url: /* @wc-url */ '/enable/whatsapp'
+					},
+					{
 						title: 'API',
 						url: /* @wc-url */ '/enable/api'
 					},
@@ -204,6 +208,10 @@
 					{
 						title: 'Auth',
 						url: /* @wc-url */ '/disable/auth'
+					},
+					{
+						title: 'WhatsApp',
+						url: /* @wc-url */ '/disable/whatsapp'
 					},
 					{
 						title: 'API',

@@ -219,10 +219,9 @@ msgstr "Destruir"
 #: src/routes/(public)/enable/i18n/+page.ts
 #: src/routes/(public)/enable/notifications/+page.ts
 #: src/routes/(public)/enable/payments/+page.ts
-#: src/routes/(public)/enable/s3/+page.ts
-#: src/routes/(public)/enable/smtp/+page.ts
 #: src/routes/(public)/enable/subscriptions/+page.ts
 #: src/routes/(public)/enable/teams/+page.ts
+#: src/routes/(public)/enable/whatsapp/+page.ts
 #: src/routes/(public)/enable/workflows/+page.ts
 msgid "Enable"
 msgstr "Habilitar"
@@ -300,10 +299,9 @@ msgstr "Suscripciones"
 #: src/routes/(public)/disable/i18n/+page.ts
 #: src/routes/(public)/disable/notifications/+page.ts
 #: src/routes/(public)/disable/payments/+page.ts
-#: src/routes/(public)/disable/s3/+page.ts
-#: src/routes/(public)/disable/smtp/+page.ts
 #: src/routes/(public)/disable/subscriptions/+page.ts
 #: src/routes/(public)/disable/teams/+page.ts
+#: src/routes/(public)/disable/whatsapp/+page.ts
 msgid "Disable"
 msgstr "Deshabilitar"
 
@@ -596,6 +594,7 @@ msgstr "404 - Página no encontrada"
 #: src/routes/(public)/enable/notifications/+page.ts
 #: src/routes/(public)/enable/subscriptions/+page.ts
 #: src/routes/(public)/enable/teams/+page.ts
+#: src/routes/(public)/enable/whatsapp/+page.ts
 msgid "Depends: auth"
 msgstr "Depende de: auth"
 
@@ -715,7 +714,6 @@ msgstr "Estructura del proyecto"
 #: src/routes/(public)/generate/ai/+page.ts
 #: src/routes/(public)/helpers/+page.ts
 #: src/routes/(public)/helpers/postgres/+page.ts
-#: src/routes/(public)/oauth/+page.ts
 #: src/routes/(public)/test/+page.ts
 #: src/routes/(public)/test/unit/+page.ts
 msgid "Planned"
@@ -798,10 +796,8 @@ msgstr "Sincronizar historial"
 msgid "Server"
 msgstr "Servidor"
 
-#: src/routes/(public)/oauth/+page.ts
-#: src/routes/(public)/oauth/+page.ts
-msgid "OAuth"
-msgstr "OAuth"
+#~ msgid "OAuth"
+#~ msgstr "OAuth"
 
 #: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/logs/+page.ts
@@ -1127,3 +1123,17 @@ msgstr "Tema"
 #: src/routes/(public)/env/get/+page.ts
 msgid "Get"
 msgstr "Obtener"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/disable/whatsapp/+page.ts
+#: src/routes/(public)/disable/whatsapp/+page.ts
+#: src/routes/(public)/enable/+page.ts
+#: src/routes/(public)/enable/whatsapp/+page.ts
+#: src/routes/(public)/enable/whatsapp/+page.ts
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: src/routes/(public)/enable/+page.ts
+msgid "Sign in with a code sent on WhatsApp, next to email."
+msgstr "Inicia sesión con un código enviado por WhatsApp, junto al correo electrónico."

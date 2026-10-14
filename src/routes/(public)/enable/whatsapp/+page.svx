@@ -1,0 +1,107 @@
+<!-- @en -->
+Let users sign up and log in with a one-time code sent on WhatsApp, next to email. `vela enable whatsapp` adds a "Continue with WhatsApp" option to the login and signup pages that [`vela enable auth`](/enable/auth) created.
+
+### Syntax
+
+```
+$ vela enable whatsapp
+```
+
+Run [`vela enable auth`](/enable/auth) first. WhatsApp sign-in comes from a plugin in `pocketbase-server` 0.40.5-beta.5 and later; with an older PocketBase the command stops and says what to update.
+
+### What it adds
+
+- A **Continue with WhatsApp** option on `/login` and `/signup`. The user enters their number, gets a code on WhatsApp, and types it in on `/whatsapp/[token]`.
+- `src/lib/server/whatsapp.ts`, the calls to the PocketBase plugin.
+- `phone` and `phoneVerified` fields on `users`. The number is unique among users who have one.
+- New accounts land on `/welcome` to pick a name, since all they have is a number.
+
+### Email becomes optional
+
+A WhatsApp signup has no email, so `enable whatsapp` makes `email` optional on `users`. The pages auth, [teams](/enable/teams) and [payments](/enable/payments) generate already handle users without one:
+
+- Settings hides the email, verification and password sections from them.
+- The nav and team member lists show the name, then the phone number.
+- Billing creates their Stripe customer from the name and phone number.
+
+Team invites still go to an email address, so a user without one sees no pending invites. There is no page yet for adding an email to an account made with a phone number.
+
+### Local development
+
+Until you set a sender, codes are not sent: they show in the PocketBase logs of `vela dev`. Sign up with any number in international format, like `+16165550123`, and copy the code from there.
+
+### Sending codes in production
+
+A deploy target without a sender hides the WhatsApp option. Set one with [`vela env`](/env). Codes go out through the VelaStack relay:
+
+```
+$ vela env set VELASTACK_API_KEY=...
+```
+
+Or directly through the WhatsApp Cloud API, with a message template approved in your Meta Business account:
+
+```
+$ vela env set WHATSAPP_PHONE_NUMBER_ID=... WHATSAPP_ACCESS_TOKEN=... WHATSAPP_TEMPLATE_NAME=...
+```
+
+The sender follows the credentials that are set. WhatsApp sign-in itself is turned on by a migration `enable whatsapp` writes, so it reaches every deploy with the rest of your migrations.
+
+### Customized pages
+
+`enable whatsapp` rewrites the login and signup pages, and only does so while they are still the pages `enable auth` wrote. If you changed a form, its page, server code and schema are left as they are and reported as failed; the other form is still updated. Add WhatsApp to your version by hand, using the [WhatsApp pages](https://github.com/velastack/patterns/tree/main/src/patterns/enable/whatsapp/templates) as the reference.
+
+Turn it back off with [`vela disable whatsapp`](/disable/whatsapp).
+<!-- @es -->
+Permite que los usuarios se registren e inicien sesión con un código de un solo uso enviado por WhatsApp, junto al correo electrónico. `vela enable whatsapp` añade la opción "Continuar con WhatsApp" a las páginas de login y registro que creó [`vela enable auth`](/es/enable/auth).
+
+### Sintaxis
+
+```
+$ vela enable whatsapp
+```
+
+Ejecuta primero [`vela enable auth`](/es/enable/auth). El inicio de sesión con WhatsApp viene de un plugin de `pocketbase-server` 0.40.5-beta.5 y posteriores; con un PocketBase anterior el comando se detiene e indica qué actualizar.
+
+### Qué añade
+
+- Una opción **Continuar con WhatsApp** en `/login` y `/signup`. El usuario introduce su número, recibe un código por WhatsApp y lo escribe en `/whatsapp/[token]`.
+- `src/lib/server/whatsapp.ts`, las llamadas al plugin de PocketBase.
+- Los campos `phone` y `phoneVerified` en `users`. El número es único entre los usuarios que tienen uno.
+- Las cuentas nuevas llegan a `/welcome` para elegir un nombre, ya que solo tienen un número.
+
+### El correo electrónico pasa a ser opcional
+
+Un registro con WhatsApp no tiene correo electrónico, así que `enable whatsapp` hace opcional `email` en `users`. Las páginas que generan auth, [teams](/es/enable/teams) y [payments](/es/enable/payments) ya admiten usuarios sin él:
+
+- Los ajustes les ocultan las secciones de correo, verificación y contraseña.
+- La navegación y las listas de miembros de equipo muestran el nombre y, si no hay, el número de teléfono.
+- La facturación crea su cliente de Stripe a partir del nombre y el número de teléfono.
+
+Las invitaciones a equipos siguen yendo a una dirección de correo, así que un usuario sin correo no ve invitaciones pendientes. Todavía no hay una página para añadir un correo a una cuenta creada con un número de teléfono.
+
+### Desarrollo local
+
+Hasta que configures un remitente, los códigos no se envían: aparecen en los logs de PocketBase de `vela dev`. Regístrate con cualquier número en formato internacional, como `+16165550123`, y copia el código de ahí.
+
+### Enviar códigos en producción
+
+Un destino de despliegue sin remitente oculta la opción de WhatsApp. Configura uno con [`vela env`](/es/env). Los códigos salen por el relay de VelaStack:
+
+```
+$ vela env set VELASTACK_API_KEY=...
+```
+
+O directamente por la API de WhatsApp Cloud, con una plantilla de mensaje aprobada en tu cuenta de Meta Business:
+
+```
+$ vela env set WHATSAPP_PHONE_NUMBER_ID=... WHATSAPP_ACCESS_TOKEN=... WHATSAPP_TEMPLATE_NAME=...
+```
+
+El remitente sigue a las credenciales configuradas. El inicio de sesión con WhatsApp se activa con una migración que escribe `enable whatsapp`, así que llega a cada despliegue con el resto de tus migraciones.
+
+### Páginas personalizadas
+
+`enable whatsapp` reescribe las páginas de login y registro, y solo lo hace mientras sigan siendo las páginas que escribió `enable auth`. Si cambiaste un formulario, su página, código de servidor y esquema se dejan como están y se marcan como fallidos; el otro formulario se actualiza igualmente. Añade WhatsApp a tu versión a mano, usando las [páginas con WhatsApp](https://github.com/velastack/patterns/tree/main/src/patterns/enable/whatsapp/templates) como referencia.
+
+Desactívalo con [`vela disable whatsapp`](/es/disable/whatsapp).
+<!-- @end -->
