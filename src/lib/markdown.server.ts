@@ -13,17 +13,19 @@ const sources = import.meta.glob('/src/routes/**/+page.svx', {
 	eager: true
 }) as Record<string, string>;
 
-type PageModule = {
-	load?: (event: {
-		parent: () => Promise<Record<string, unknown>>;
-	}) => Promise<{ pageMetaTags?: { title?: string } }>;
-};
+type PageLoad = (event: {
+	parent: () => Promise<Record<string, unknown>>;
+}) => Promise<{ pageMetaTags?: { title?: string } }>;
 
-/** The matching `+page.ts` modules, which is where each doc's title lives. */
-const pages = import.meta.glob('/src/routes/**/+page.ts', { eager: true }) as Record<
-	string,
-	PageModule
->;
+/**
+ * The matching `+page.ts` loads, which is where each doc's title lives. Only
+ * `load` is imported: globbing whole modules makes the bundler export a namespace
+ * object from every page chunk, which SvelteKit 3 rejects as an invalid export.
+ */
+const pages = import.meta.glob('/src/routes/**/+page.ts', {
+	import: 'load',
+	eager: true
+}) as Record<string, PageLoad | undefined>;
 
 /** The component imports mdsvex needs, always the first thing in the file. */
 const LEADING_SCRIPT = /^\s*<script[^>]*>[\s\S]*?<\/script>\s*/;
@@ -51,7 +53,7 @@ export function markdownSource(routeId: string): string | null {
  * normal render would.
  */
 export async function pageTitle(routeId: string): Promise<string | null> {
-	const load = pages[`/src/routes${routeId}/+page.ts`]?.load;
+	const load = pages[`/src/routes${routeId}/+page.ts`];
 	if (!load) {
 		return null;
 	}

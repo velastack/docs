@@ -84,7 +84,7 @@ function transformInlineT(code: string): { code: string; declarations: string[] 
 function injectPreamble(code: string, extraDeclarations: string[]): string {
 	const preamble = `
 import { page } from '$app/state';
-import { deLocalize } from '$lib/url';
+import { deLocalize } from '#lib/url.js';
 import { locales } from '$locales/data';
 
 let [, i18nLocale] = $derived.by(() => deLocalize(page.url.pathname, locales));

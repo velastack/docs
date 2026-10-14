@@ -1,11 +1,10 @@
 import * as main from '$locales/main.loader.server.svelte.js';
 import * as js from '$locales/js.loader.server.js';
 import { runWithLocale, loadLocales } from 'wuchale/load-utils/server';
-import { sequence } from '@sveltejs/kit/hooks';
-import type { Handle } from '@sveltejs/kit';
+import { sequence, type Handle } from '@sveltejs/kit/hooks';
 import { locales } from '$locales/data.js';
 import { getLocale } from '$locales/main.url';
-import { handle as negotiate } from '$lib/negotiate';
+import { handle as negotiate } from '#lib/negotiate.js';
 
 // load at server startup
 loadLocales(main.key, main.loadCount, main.loadCatalog, locales);

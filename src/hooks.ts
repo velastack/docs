@@ -1,7 +1,7 @@
 import { matchUrl } from '$locales/main.url';
 import { deLocalizeDefault } from 'wuchale/url';
 import { locales } from '$locales/data';
-import { reroute as negotiateReroute } from '$lib/negotiate';
+import { reroute as negotiateReroute } from '#lib/negotiate.js';
 
 // The site root has no segment to hang the extension off, so its markdown lives at
 // /index.md rather than /.md. Every other path is the library's plain suffix strip.

@@ -1,5 +1,5 @@
-import { negotiate } from '$lib/negotiate';
-import { markdownSource, pageTitle, toMarkdown } from '$lib/markdown.server';
+import { negotiate } from '#lib/negotiate.js';
+import { markdownSource, pageTitle, toMarkdown } from '#lib/markdown.server.js';
 import { getLocale } from '$locales/main.url';
 
 export const load = async ({ locals, route, url }) => {
