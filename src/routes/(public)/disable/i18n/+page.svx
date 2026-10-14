@@ -23,7 +23,7 @@ src/lib/components/language-select.svelte
 
 The `wuchale` and `@wuchale/svelte` packages are uninstalled, and the changes made to the rest of the project are reverted:
 
-- The Wuchale plugin comes out of the Vite config, and the `$locales` alias out of the SvelteKit config.
+- The Wuchale plugin comes out of the Vite config, and the `#locales/*` entry out of the `package.json` `imports`. A project enabled before SvelteKit 3 has a `$locales` alias in the SvelteKit config instead, and that comes out.
 - The Wuchale handle comes out of `src/hooks.server.ts`. If nothing else is left in the file, it is deleted.
 - The de-localizing `reroute` comes out of `src/hooks.ts`, leaving content negotiation's reroute if it is composed with one. If nothing else is left in the file, it is deleted.
 - The `<html>` tag in `src/app.html` goes back to `lang="en"`.
@@ -61,7 +61,7 @@ src/lib/components/language-select.svelte
 
 Los paquetes `wuchale` y `@wuchale/svelte` se desinstalan, y los cambios hechos en el resto del proyecto se revierten:
 
-- El plugin de Wuchale sale de la configuración de Vite, y el alias `$locales` de la configuración de SvelteKit.
+- El plugin de Wuchale sale de la configuración de Vite, y la entrada `#locales/*` de los `imports` de `package.json`. Un proyecto habilitado antes de SvelteKit 3 tiene en su lugar un alias `$locales` en la configuración de SvelteKit, y ese sale.
 - El handle de Wuchale sale de `src/hooks.server.ts`. Si el archivo se queda sin nada más, se elimina.
 - El `reroute` que quita el idioma de la URL sale de `src/hooks.ts`, y deja el de la negociación de contenido si estaban combinados. Si el archivo se queda sin nada más, se elimina.
 - La etiqueta `<html>` de `src/app.html` vuelve a `lang="en"`.

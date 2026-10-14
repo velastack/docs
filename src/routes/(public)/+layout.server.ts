@@ -1,6 +1,6 @@
 import { negotiate } from '#lib/negotiate.js';
 import { markdownSource, pageTitle, toMarkdown } from '#lib/markdown.server.js';
-import { getLocale } from '$locales/main.url';
+import { getLocale } from '#locales/main.url.js';
 
 export const load = async ({ locals, route, url }) => {
 	// Nothing here is needed unless markdown was the negotiated type, so an ordinary

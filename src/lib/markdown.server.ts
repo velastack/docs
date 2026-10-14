@@ -1,6 +1,6 @@
 import { parseLocaleBlocks, replaceInlineT } from './i18n-blocks';
 import { defaultLocale } from './url';
-import type { Locale } from '$locales/data';
+import type { Locale } from '#locales/data.js';
 
 /**
  * Raw `.svx` sources, keyed by file path. Eager so a route id resolves to source
