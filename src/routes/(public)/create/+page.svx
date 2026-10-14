@@ -16,7 +16,7 @@ This will create a directory called `my-project` with the new SvelteKit project.
 ### Options
 
 - `--template <type>` - Template to scaffold, defaults to `minimal`
-- `--name <name>` - App name, written to `src/lib/site.ts`. A project with a backend also gets it as PocketBase's application name, which its emails use.
+- `--name <name>` - App name, written to `src/lib/site.ts`. With a backend, [`vela dev`](/dev) and [`vela deploy`](/deploy) hand it to PocketBase as `APP_NAME`, which its emails use.
 - `--email <email>` - Email of the PocketBase superuser
 - `--password <password>` - Password of the PocketBase superuser
 - `--install <package-manager>` - Install dependencies with the given package manager. One of `npm`, `yarn`, `pnpm`, `pnpm-rush`, `bun`, `deno`, `nub` or `aube`. Pass `--no-install` to skip installing.
@@ -100,7 +100,7 @@ Esto creará un directorio llamado `my-project` con el nuevo proyecto de SvelteK
 ### Opciones
 
 - `--template <type>` - Plantilla a generar, por defecto `minimal`
-- `--name <name>` - Nombre de la aplicación, que se escribe en `src/lib/site.ts`. Un proyecto con backend también lo recibe como nombre de aplicación de PocketBase, que es el que usan sus correos.
+- `--name <name>` - Nombre de la aplicación, que se escribe en `src/lib/site.ts`. Con backend, [`vela dev`](/es/dev) y [`vela deploy`](/es/deploy) se lo entregan a PocketBase como `APP_NAME`, que es el que usan sus correos.
 - `--email <email>` - Correo electrónico del superusuario de PocketBase
 - `--password <password>` - Contraseña del superusuario de PocketBase
 - `--install <package-manager>` - Instala las dependencias con el gestor de paquetes indicado. Uno de `npm`, `yarn`, `pnpm`, `pnpm-rush`, `bun`, `deno`, `nub` o `aube`. Pasa `--no-install` para omitir la instalación.

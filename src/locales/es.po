@@ -623,13 +623,11 @@ msgstr "Endpoints de API REST para tu aplicación."
 msgid "API keys for your application's API."
 msgstr "Claves de API para la API de tu aplicación."
 
-#: src/routes/(public)/enable/+page.ts
-msgid "S3 storage for file uploads."
-msgstr "Almacenamiento S3 para uploads de archivos."
+#~ msgid "S3 storage for file uploads."
+#~ msgstr "Almacenamiento S3 para uploads de archivos."
 
-#: src/routes/(public)/enable/+page.ts
-msgid "SMTP email sending for your application."
-msgstr "Envío de emails SMTP para tu aplicación."
+#~ msgid "SMTP email sending for your application."
+#~ msgstr "Envío de emails SMTP para tu aplicación."
 
 #: src/routes/(public)/enable/+page.ts
 msgid "Team management for your application's users."
@@ -709,7 +707,6 @@ msgstr "Depende de: payments"
 msgid "Project Structure"
 msgstr "Estructura del proyecto"
 
-#: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
@@ -801,7 +798,6 @@ msgstr "Sincronizar historial"
 msgid "Server"
 msgstr "Servidor"
 
-#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/oauth/+page.ts
 #: src/routes/(public)/oauth/+page.ts
 msgid "OAuth"
@@ -828,6 +824,7 @@ msgstr "Objetivos"
 #: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/env/+page.ts
 #: src/routes/(public)/env/+page.ts
+#: src/routes/(public)/env/get/+page.ts
 #: src/routes/(public)/env/import/+page.ts
 #: src/routes/(public)/env/list/+page.ts
 #: src/routes/(public)/env/set/+page.ts
@@ -1124,3 +1121,9 @@ msgstr "Estilo"
 #: src/routes/(public)/ui/theme/+page.ts
 msgid "Theme"
 msgstr "Tema"
+
+#: src/lib/components/app-sidebar.svelte
+#: src/routes/(public)/env/get/+page.ts
+#: src/routes/(public)/env/get/+page.ts
+msgid "Get"
+msgstr "Obtener"

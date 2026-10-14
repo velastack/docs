@@ -39,9 +39,9 @@ $ vela backup list -t local          # the development database
 
 ### With S3 storage
 
-If [`vela enable s3`](/enable/s3) is on, PocketBase leaves `storage/` out of the archive: the files are not on the server to copy. The archive still holds the databases, and the bucket's own versioning is what protects the uploads. `vela backup create` says so when it applies.
+If uploads are stored in S3 (`PB_S3_ENDPOINT` and friends, set with [`vela env`](/env)), PocketBase leaves `storage/` out of the archive: the files are not on the server to copy. The archive still holds the databases, and the bucket's own versioning is what protects the uploads. `vela backup create` says so when it applies.
 
-[`vela enable s3 --backups`](/enable/s3) is a separate setting, and sends the archives themselves to a bucket rather than leaving them on the disk they are a backup of.
+`PB_BACKUPS_S3_*` is a separate setting, and sends the archives themselves to a bucket rather than leaving them on the disk they are a backup of.
 <!-- @es -->
 Copia de seguridad de la base de datos y los archivos subidos de un despliegue, y descarga del archivo fuera del servidor.
 
@@ -83,7 +83,7 @@ $ vela backup list -t local          # la base de datos de desarrollo
 
 ### Con almacenamiento S3
 
-Si [`vela enable s3`](/es/enable/s3) está activo, PocketBase deja `storage/` fuera del archivo: los ficheros no están en el servidor para copiarlos. El archivo sigue conteniendo las bases de datos, y el versionado del bucket es lo que protege las subidas. `vela backup create` lo advierte cuando corresponde.
+Si las subidas se guardan en S3 (`PB_S3_ENDPOINT` y compañía, definidos con [`vela env`](/es/env)), PocketBase deja `storage/` fuera del archivo: los ficheros no están en el servidor para copiarlos. El archivo sigue conteniendo las bases de datos, y el versionado del bucket es lo que protege las subidas. `vela backup create` lo advierte cuando corresponde.
 
-[`vela enable s3 --backups`](/es/enable/s3) es un ajuste distinto, y envía los propios archivos a un bucket en lugar de dejarlos en el disco del que son copia.
+`PB_BACKUPS_S3_*` es un ajuste distinto, y envía los propios archivos a un bucket en lugar de dejarlos en el disco del que son copia.
 <!-- @end -->

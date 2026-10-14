@@ -25,16 +25,6 @@ export const load = async ({ parent }) => {
 				description: "API keys for your application's API."
 			},
 			{
-				title: 'S3',
-				url: /* @wc-url */ '/enable/s3',
-				description: 'S3 storage for file uploads.'
-			},
-			{
-				title: 'SMTP',
-				url: /* @wc-url */ '/enable/smtp',
-				description: 'SMTP email sending for your application.'
-			},
-			{
 				title: 'Blog',
 				url: /* @wc-url */ '/enable/blog',
 				description: 'An mdsvex blog with posts, tags and an RSS feed.'

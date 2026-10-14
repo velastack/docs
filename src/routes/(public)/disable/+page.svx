@@ -21,12 +21,10 @@ The following features can be disabled:
 - [`teams`](/disable/teams) - Disable teams
 - [`payments`](/disable/payments) - Disable payments
 - [`subscriptions`](/disable/subscriptions) - Disable Stripe subscriptions
-- [`s3`](/disable/s3) - Disable S3 file storage
-- [`smtp`](/disable/smtp) - Disable SMTP configuration
 
 ### Options
 
-Every feature that changes files prompts before it does so. Pass `-y` or `--yes` to skip that confirmation. `s3` and `smtp` only flip a PocketBase setting, so they take no options.
+Every feature that changes files prompts before it does so. Pass `-y` or `--yes` to skip that confirmation.
 
 ### Data
 
@@ -54,12 +52,10 @@ Se pueden desactivar las siguientes funciones:
 - [`teams`](/es/disable/teams) - Desactivar los equipos
 - [`payments`](/es/disable/payments) - Desactivar los pagos
 - [`subscriptions`](/es/disable/subscriptions) - Desactivar las suscripciones de Stripe
-- [`s3`](/es/disable/s3) - Desactivar el almacenamiento de archivos en S3
-- [`smtp`](/es/disable/smtp) - Desactivar la configuración de SMTP
 
 ### Opciones
 
-Cada función que modifica archivos pide confirmación antes de hacerlo. Pasa `-y` o `--yes` para omitirla. `s3` y `smtp` solo cambian un ajuste de PocketBase, así que no aceptan opciones.
+Cada función que modifica archivos pide confirmación antes de hacerlo. Pasa `-y` o `--yes` para omitirla.
 
 ### Datos
 

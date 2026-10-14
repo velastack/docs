@@ -48,8 +48,6 @@ msgstr "/"
 #. /enable/auth
 #. /enable/api
 #. /enable/api-keys
-#. /enable/s3
-#. /enable/smtp
 #. /enable/blog
 #. /enable/content-negotiation
 #. /enable/i18n
@@ -71,8 +69,6 @@ msgstr "/"
 #. /disable/notifications
 #. /disable/analytics
 #. /disable/ai
-#. /disable/s3
-#. /disable/smtp
 #. /disable/teams
 #. /disable/payments
 #. /disable/subscriptions
@@ -115,7 +111,6 @@ msgstr "/"
 #. /i18n/status
 #. /i18n/clean
 #. /routes
-#. /oauth
 #. /provision
 #. /deploy
 #. /deploy/previews
@@ -133,6 +128,7 @@ msgstr "/"
 #. /targets
 #. /env
 #. /env/list
+#. /env/get
 #. /env/set
 #. /env/unset
 #. /env/import
@@ -263,8 +259,6 @@ msgstr "/"
 #. /enable/auth
 #. /enable/api
 #. /enable/api-keys
-#. /enable/s3
-#. /enable/smtp
 #. /enable/blog
 #. /enable/content-negotiation
 #. /enable/i18n
@@ -311,6 +305,8 @@ msgstr "/"
 #. /enable
 #. /enable/workflows
 #. /env
+#. /env
+#. /env/get
 #. /env
 #. /env/import
 #. /env
@@ -580,10 +576,6 @@ msgstr "/"
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
 #: src/lib/components/app-sidebar.svelte
-#: src/lib/components/app-sidebar.svelte
-#: src/lib/components/app-sidebar.svelte
-#: src/lib/components/app-sidebar.svelte
-#: src/lib/components/app-sidebar.svelte
 #: src/routes/(public)/account/+page.ts
 #: src/routes/(public)/account/login/+page.ts
 #: src/routes/(public)/account/login/+page.ts
@@ -701,8 +693,6 @@ msgstr "/"
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/+page.ts
-#: src/routes/(public)/enable/+page.ts
-#: src/routes/(public)/enable/+page.ts
 #: src/routes/(public)/enable/ai/+page.ts
 #: src/routes/(public)/enable/ai/+page.ts
 #: src/routes/(public)/enable/analytics/+page.ts
@@ -738,6 +728,8 @@ msgstr "/"
 #: src/routes/(public)/enable/workflows/+page.ts
 #: src/routes/(public)/enable/workflows/+page.ts
 #: src/routes/(public)/env/+page.ts
+#: src/routes/(public)/env/get/+page.ts
+#: src/routes/(public)/env/get/+page.ts
 #: src/routes/(public)/env/import/+page.ts
 #: src/routes/(public)/env/import/+page.ts
 #: src/routes/(public)/env/list/+page.ts

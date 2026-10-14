@@ -9,6 +9,43 @@ POCKETBASE_SUPERUSER_PASSWORD=password
 
 You'll be prompted to create a PocketBase superuser account by whichever command gives the project its database — [`vela create`](/create) for a new project, [`vela bless`](/bless) for an existing SvelteKit one, or [`vela enable backend`](/enable/backend) for a project that had no backend. The login details are saved in the `.env` file. The superuser account is used by the CLI, the admin interface and the REST API.
 
+### One model, three environments
+
+Everything that differs between environments is an environment variable, for the app and for PocketBase alike. What is the same everywhere — the app's name, its canonical URL — is code, in [`src/lib/site.ts`](/cli/project-structure). The database keeps only what an admin changes at runtime, such as the backup schedule. There is no project config file.
+
+- **Locally**, `.env`, gitignored. `.env.example` is committed and documents what the app reads; it is a nudge, not a contract — a project's own example is full of keys it means to leave unset.
+- **On a server**, three layers per target managed with [`vela env`](/env): one every target shares (`-t all`), one every preview shares (`-t preview`), and the instance's own. A higher layer wins. Values are secret unless set `--public`; `PUBLIC_*` keys are public regardless.
+- **Derived** by Vela, never typed: `ORIGIN`, `POCKETBASE_URL`, `PORT`, `VELA_ENV`, `VELA_APP_ID`, `VELA_RELEASE`, `VELA_DATA_DIR`, and PocketBase's app URL.
+
+The repository never carries environment but `.env.example`. A build runs with the target's environment, not your `.env`: see [`vela deploy`](/deploy).
+
+### PocketBase
+
+With a backend, PocketBase reads its own settings from the same environment and shows them locked in the [admin panel](/admin). `APP_NAME` and `APP_URL` are plain; the rest is `PB_`-prefixed so that an app's own `SMTP_HOST` or `S3_BUCKET` cannot switch PocketBase mail or storage on.
+
+```ts
+APP_NAME=My App                 # from src/lib/site.ts, set by vela dev and vela deploy
+APP_URL=https://example.com     # defaults to ORIGIN, the address the instance is served on
+PB_SENDER_NAME=My App
+PB_SENDER_ADDRESS=hello@example.com
+PB_SMTP_HOST=smtp.example.com   # setting it turns SMTP on
+PB_SMTP_PORT=587
+PB_SMTP_USERNAME=
+PB_SMTP_PASSWORD=
+PB_SMTP_TLS=true
+PB_S3_ENDPOINT=                 # setting it moves uploads to the bucket
+PB_S3_BUCKET=
+PB_S3_REGION=
+PB_S3_ACCESS_KEY=
+PB_S3_SECRET=
+PB_S3_FORCE_PATH_STYLE=false
+PB_BACKUPS_S3_*                 # the same six, for where backups are kept
+```
+
+The WhatsApp plugin reads `WHATSAPP_MODE`, `VELASTACK_API_KEY`, `VELASTACK_RELAY_URL` and `WHATSAPP_PHONE_NUMBER_ID`, `WHATSAPP_WABA_ID`, `WHATSAPP_ACCESS_TOKEN`, `WHATSAPP_TEMPLATE_NAME`, `WHATSAPP_TEMPLATE_LANGUAGES`, `WHATSAPP_GRAPH_VERSION`. With `WHATSAPP_MODE` unset, the credentials pick the sender: `VELASTACK_API_KEY` selects VelaStack, `WHATSAPP_ACCESS_TOKEN` the direct Cloud API. Locally, `WHATSAPP_MODE=dev` logs the codes instead of sending them.
+
+Booleans accept `true`, `1` or `yes`. A variable that is set but empty still counts as set.
+
 ### Workflows
 
 The [workflow](/workflows) worker reads two optional variables:
@@ -29,4 +66,41 @@ POCKETBASE_SUPERUSER_PASSWORD=password
 ```
 
 El comando que le da su base de datos al proyecto te pedirá crear una cuenta de superusuario de PocketBase — [`vela create`](/es/create) para un proyecto nuevo, [`vela bless`](/es/bless) para un proyecto SvelteKit existente, o [`vela enable backend`](/es/enable/backend) para un proyecto sin backend. Los detalles de inicio de sesión se guardan en el archivo `.env`. La cuenta de superusuario se utiliza por la CLI, la interfaz de administración y la API REST.
+
+### Un modelo, tres entornos
+
+Todo lo que difiere entre entornos es una variable de entorno, tanto para la aplicación como para PocketBase. Lo que es igual en todas partes — el nombre de la aplicación, su URL canónica — es código, en [`src/lib/site.ts`](/es/cli/project-structure). La base de datos guarda solo lo que un administrador cambia en ejecución, como la programación de copias. No hay archivo de configuración del proyecto.
+
+- **En local**, `.env`, ignorado por git. `.env.example` se versiona y documenta lo que la aplicación lee; es una pista, no un contrato — el ejemplo de un proyecto está lleno de claves que pretende dejar sin definir.
+- **En un servidor**, tres capas por objetivo gestionadas con [`vela env`](/es/env): una que comparten todos los objetivos (`-t all`), una que comparten todas las previsualizaciones (`-t preview`), y la propia de la instancia. Una capa superior gana. Los valores son secretos salvo que se definan con `--public`; las claves `PUBLIC_*` son públicas en cualquier caso.
+- **Derivadas** por Vela, nunca escritas a mano: `ORIGIN`, `POCKETBASE_URL`, `PORT`, `VELA_ENV`, `VELA_APP_ID`, `VELA_RELEASE`, `VELA_DATA_DIR`, y la URL de aplicación de PocketBase.
+
+El repositorio nunca lleva entorno salvo `.env.example`. Una compilación se ejecuta con el entorno del objetivo, no con tu `.env`: consulta [`vela deploy`](/es/deploy).
+
+### PocketBase
+
+Con backend, PocketBase lee sus propios ajustes del mismo entorno y los muestra bloqueados en el [panel de administración](/es/admin). `APP_NAME` y `APP_URL` van sin prefijo; el resto lleva `PB_` para que el `SMTP_HOST` o `S3_BUCKET` propio de una aplicación no pueda activar el correo ni el almacenamiento de PocketBase.
+
+```ts
+APP_NAME=My App                 # de src/lib/site.ts, definido por vela dev y vela deploy
+APP_URL=https://example.com     # por defecto ORIGIN, la dirección en la que se sirve la instancia
+PB_SENDER_NAME=My App
+PB_SENDER_ADDRESS=hello@example.com
+PB_SMTP_HOST=smtp.example.com   # definirlo activa SMTP
+PB_SMTP_PORT=587
+PB_SMTP_USERNAME=
+PB_SMTP_PASSWORD=
+PB_SMTP_TLS=true
+PB_S3_ENDPOINT=                 # definirlo lleva las subidas al bucket
+PB_S3_BUCKET=
+PB_S3_REGION=
+PB_S3_ACCESS_KEY=
+PB_S3_SECRET=
+PB_S3_FORCE_PATH_STYLE=false
+PB_BACKUPS_S3_*                 # las mismas seis, para dónde se guardan las copias
+```
+
+El plugin de WhatsApp lee `WHATSAPP_MODE`, `VELASTACK_API_KEY`, `VELASTACK_RELAY_URL` y `WHATSAPP_PHONE_NUMBER_ID`, `WHATSAPP_WABA_ID`, `WHATSAPP_ACCESS_TOKEN`, `WHATSAPP_TEMPLATE_NAME`, `WHATSAPP_TEMPLATE_LANGUAGES`, `WHATSAPP_GRAPH_VERSION`. Sin `WHATSAPP_MODE`, las credenciales eligen el emisor: `VELASTACK_API_KEY` selecciona VelaStack, `WHATSAPP_ACCESS_TOKEN` la Cloud API directa. En local, `WHATSAPP_MODE=dev` registra los códigos en lugar de enviarlos.
+
+Los booleanos aceptan `true`, `1` o `yes`. Una variable definida pero vacía cuenta como definida.
 <!-- @end -->

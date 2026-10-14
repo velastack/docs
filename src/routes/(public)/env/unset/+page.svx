@@ -4,26 +4,28 @@ Remove an environment variable.
 ### Syntax
 
 ```
-$ vela env unset <key>
+$ vela env unset <key> -t <target>
 ```
 
 ```
 $ vela env unset STRIPE_SECRET_KEY -t production
+$ vela env unset WHATSAPP_MODE -t preview
 ```
 
-Removing a variable that isn't set reports that there was nothing to remove rather than failing. As with [set](/env/set), the instance is restarted so the change takes effect. Defaults to `-t local`.
+The key is removed whether it was secret or public — you should not have to remember which. Removing one that isn't set reports that there was nothing to remove rather than failing. As with [set](/env/set), the instances the layer reaches are restarted so the change takes effect, and the environment is asked for when `-t` is missing.
 <!-- @es -->
 Elimina una variable de entorno.
 
 ### Sintaxis
 
 ```
-$ vela env unset <key>
+$ vela env unset <key> -t <target>
 ```
 
 ```
 $ vela env unset STRIPE_SECRET_KEY -t production
+$ vela env unset WHATSAPP_MODE -t preview
 ```
 
-Eliminar una variable que no está definida informa de que no había nada que eliminar en lugar de fallar. Igual que con [set](/es/env/set), la instancia se reinicia para que el cambio surta efecto. Por defecto usa `-t local`.
+La clave se elimina tanto si era secreta como pública — no deberías tener que recordar cuál era. Eliminar una que no está definida informa de que no había nada que eliminar en lugar de fallar. Igual que con [set](/es/env/set), las instancias a las que llega la capa se reinician para que el cambio surta efecto, y se pregunta por el entorno cuando falta `-t`.
 <!-- @end -->

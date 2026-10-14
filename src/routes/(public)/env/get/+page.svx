@@ -1,0 +1,37 @@
+<!-- @en -->
+Print a public environment variable.
+
+### Syntax
+
+```
+$ vela env get <key> -t <target>
+```
+
+```
+$ vela env get PUBLIC_CMS_URL -t production
+$ vela env get WHATSAPP_MODE -t preview
+$ vela env get POCKETBASE_SUPERUSER_EMAIL -t local
+```
+
+For a target, the value is resolved the way the running app sees it: a key the instance does not set itself may still reach it from the `all` or `preview` layer. For `-t all` or `-t preview`, it is that layer's own value.
+
+A secret is never read back. Asking for one says that it is secret, and where it is set, and exits non-zero; [`vela env set`](/env/set) is how it changes. Locally, `.env` is your own file, so every key in it prints.
+<!-- @es -->
+Imprime una variable de entorno pública.
+
+### Sintaxis
+
+```
+$ vela env get <key> -t <target>
+```
+
+```
+$ vela env get PUBLIC_CMS_URL -t production
+$ vela env get WHATSAPP_MODE -t preview
+$ vela env get POCKETBASE_SUPERUSER_EMAIL -t local
+```
+
+Para un objetivo, el valor se resuelve tal como lo ve la aplicación en ejecución: una clave que la instancia no define por sí misma puede llegarle desde la capa `all` o `preview`. Para `-t all` o `-t preview`, es el valor propio de esa capa.
+
+Un secreto nunca se lee de vuelta. Pedir uno indica que es secreto, y dónde está definido, y termina con código distinto de cero; [`vela env set`](/es/env/set) es como se cambia. En local, `.env` es tu propio archivo, así que todas sus claves se imprimen.
+<!-- @end -->
