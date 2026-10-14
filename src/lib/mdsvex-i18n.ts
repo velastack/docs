@@ -85,7 +85,7 @@ function injectPreamble(code: string, extraDeclarations: string[]): string {
 	const preamble = `
 import { page } from '$app/state';
 import { deLocalize } from '#lib/url.js';
-import { locales } from '$locales/data';
+import { locales } from '#locales/data.js';
 
 let [, i18nLocale] = $derived.by(() => deLocalize(page.url.pathname, locales));
 const i18nT = (t) => t[i18nLocale] ?? t['en'];

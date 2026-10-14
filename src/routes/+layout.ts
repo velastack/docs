@@ -1,13 +1,13 @@
 import { defineBaseMetaTags } from 'svelte-meta-tags';
 import { browser } from '$app/env';
 import { loadLocale } from 'wuchale/load-utils';
-import { getLocale } from '$locales/main.url';
-import { locales } from '$locales/data';
+import { getLocale } from '#locales/main.url.js';
+import { locales } from '#locales/data.js';
 import { translateUrl } from '#lib/url.js';
 import { site } from '#lib/site.js';
 
-import '$locales/main.loader.svelte.js';
-import '$locales/js.loader.js';
+import '#locales/main.loader.svelte.js';
+import '#locales/js.loader.js';
 
 export const load = async ({ url }) => {
 	const locale = getLocale(url);

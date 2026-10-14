@@ -1,6 +1,6 @@
-import { matchUrl } from '$locales/main.url';
+import { matchUrl } from '#locales/main.url.js';
 import { deLocalizeDefault } from 'wuchale/url';
-import { locales } from '$locales/data';
+import { locales } from '#locales/data.js';
 import { reroute as negotiateReroute } from '#lib/negotiate.js';
 
 // The site root has no segment to hang the extension off, so its markdown lives at
