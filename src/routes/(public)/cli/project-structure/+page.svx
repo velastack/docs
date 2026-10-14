@@ -22,7 +22,7 @@ my-project/
 │   │   └── api/           your own API routes
 │   ├── app.css            Tailwind imports and theme tokens
 │   ├── app.d.ts           the App.Locals types, kept in sync by `vela sync`
-│   ├── env.ts             the environment variables the app reads, see vela env
+│   ├── env.ts             the environment variables the app reads, see `vela env`
 │   └── hooks.server.ts    the handlePocketbase middleware and the workflow worker's init
 ├── static/                served as-is
 ├── test/setup.ts          the server test context
@@ -85,7 +85,7 @@ my-project/
 │   │   └── api/           tus propias rutas de API
 │   ├── app.css            importaciones de Tailwind y tokens del tema
 │   ├── app.d.ts           los tipos de App.Locals, sincronizados por `vela sync`
-│   ├── env.ts             las variables de entorno que lee la aplicación, ver vela env
+│   ├── env.ts             las variables de entorno que lee la aplicación, ver `vela env`
 │   └── hooks.server.ts    el middleware handlePocketbase y el init del worker de workflows
 ├── static/                servido tal cual
 ├── test/setup.ts          el contexto de pruebas del servidor
