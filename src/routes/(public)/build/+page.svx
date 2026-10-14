@@ -17,13 +17,15 @@ This runs `vite build` with the project's package manager. The output directory 
 
 Prerendering happens with no request to take an origin from, so SvelteKit substitutes a placeholder host and it ends up in every canonical link, `og:url` and `hreflang` a prerendered page builds from `url.origin`.
 
-Vela sets that origin from the domain bound to the target in `.vela/project.json`. Set `VELA_ORIGIN` to override it. The config reads it as `kit.prerender.origin`:
+Vela sets that origin from the domain bound to the target in `.vela/project.json`. Set `VELA_ORIGIN` to override it. `vite.config.ts` passes it to SvelteKit as `paths.origin`:
 
 ```ts
 sveltekit({
-    ...(process.env.VELA_ORIGIN ? { prerender: { origin: process.env.VELA_ORIGIN } } : {})
+    ...(process.env.VELA_ORIGIN ? { paths: { origin: process.env.VELA_ORIGIN } } : {})
 })
 ```
+
+`paths.origin` is more than the prerender origin: it is also what `url.origin` reads at runtime and what SvelteKit checks form posts against. An app [deployed](/deploy) directly on several hosts can't share one, so `vela deploy` builds it with `VELA_ORIGIN` empty and each request takes its origin from the request itself. A page prerendered there still sees the placeholder, and the build says so.
 
 If the target has no domain yet and the build prerendered something, Vela says so rather than shipping the placeholder quietly.
 
@@ -57,13 +59,15 @@ Esto ejecuta `vite build` con el gestor de paquetes del proyecto. El directorio 
 
 El prerenderizado no tiene una petición de la que tomar un origen, así que SvelteKit usa un host de marcador de posición, y este acaba en cada enlace canónico, `og:url` y `hreflang` que una página prerenderizada construya a partir de `url.origin`.
 
-Vela establece ese origen a partir del dominio vinculado al objetivo en `.vela/project.json`. Define `VELA_ORIGIN` para sobrescribirlo. La configuración lo lee como `kit.prerender.origin`:
+Vela establece ese origen a partir del dominio vinculado al objetivo en `.vela/project.json`. Define `VELA_ORIGIN` para sobrescribirlo. `vite.config.ts` se lo pasa a SvelteKit como `paths.origin`:
 
 ```ts
 sveltekit({
-    ...(process.env.VELA_ORIGIN ? { prerender: { origin: process.env.VELA_ORIGIN } } : {})
+    ...(process.env.VELA_ORIGIN ? { paths: { origin: process.env.VELA_ORIGIN } } : {})
 })
 ```
+
+`paths.origin` es más que el origen del prerenderizado: también es lo que lee `url.origin` en tiempo de ejecución y el origen contra el que SvelteKit comprueba los envíos de formularios. Una aplicación [desplegada](/es/deploy) directamente en varios hosts no puede compartir uno, así que `vela deploy` la compila con `VELA_ORIGIN` vacío y cada petición toma su origen de la propia petición. Una página prerenderizada ahí sigue viendo el marcador de posición, y la compilación lo indica.
 
 Si el objetivo aún no tiene dominio y la compilación prerenderizó algo, Vela lo indica en lugar de publicar el marcador de posición sin avisar.
 

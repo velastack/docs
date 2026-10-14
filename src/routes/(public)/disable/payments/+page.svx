@@ -14,7 +14,7 @@ $ vela disable payments
 ### What it removes
 
 - The Stripe collections, and every record in them
-- The Stripe credentials in the environment
+- The Stripe credentials in `.env`, and their declarations in `src/env.ts`
 - The generated payment files, webhooks and nav / signup edits
 
 ### What it leaves
@@ -37,7 +37,7 @@ $ vela disable payments
 ### Qué elimina
 
 - Las colecciones de Stripe, y todos los registros que contienen
-- Las credenciales de Stripe en el entorno
+- Las credenciales de Stripe en `.env`, y sus declaraciones en `src/env.ts`
 - Los archivos de pagos generados, los webhooks y las modificaciones de la navegación y el registro
 
 ### Qué deja

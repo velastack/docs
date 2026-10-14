@@ -1,0 +1,101 @@
+<!-- @en -->
+Upgrade a SvelteKit 2 project to SvelteKit 3.
+
+### Syntax
+
+```
+$ vela migrate sveltekit-3
+```
+
+Vela 0.15 writes SvelteKit 3 code only. In a SvelteKit 2 project, one whose `package.json` declares `@sveltejs/kit` 2 or that still has a `svelte.config.js`, [`vela bless`](/bless), [`vela deploy`](/deploy) and the commands that write code, such as [`enable`](/enable), [`disable`](/disable) and [`generate`](/generate), refuse to run and point here. `vela dev`, `build`, `preview` and `test:server` still run, with a one-line warning.
+
+A SvelteKit 2 project pins `vela ^0.14`, which never moves to 0.15 on its own, so run the migration through npx:
+
+```
+$ npx vela@^0.15 migrate sveltekit-3
+```
+
+Or stay on Vela 0.14, which keeps working with SvelteKit 2.
+
+### Options
+
+- `--cwd <path>` - The project to migrate, defaults to the current project
+- `--no-install` - Skip installing dependencies
+- `--force` - Run even when the git working tree has uncommitted changes
+- `--skip-sv` - Only run the Vela steps, for a project `sv` has already migrated
+
+### What it does
+
+It needs Node 22.17 or later, and a clean git working tree so the migration's changes can be reviewed on their own.
+
+First it runs SvelteKit's own migration, `sv migrate sveltekit-3`. The config moves out of `svelte.config.js` into the `sveltekit()` plugin in `vite.config.ts`, `tsconfig.json` extends `$app/tsconfig`, `$lib` imports become `#lib`, environment variables are declared in `src/env.ts` and read from `$app/env`, and SvelteKit APIs move to their new modules.
+
+Then it does what a Vela project needs on top:
+
+- Restores `VELA_ORIGIN` as `paths.origin`, which sv drops when it moves the config. See [`vela build`](/build).
+- Declares the variables Vela reads, such as `POCKETBASE_URL`, in `src/env.ts`. See [`vela env`](/env).
+- Adds `#lib` to the `package.json` `imports`, points `components.json` at it, and rewrites the `$lib` imports sv leaves behind, such as those outside `src/`.
+- Replaces the [i18n](/enable/i18n) `$locales` alias with a `#locales` import.
+- Raises the minimum versions of `vela` and the packages SvelteKit 3 needs, and overrides dependencies that still declare a SvelteKit 2 peer.
+- Drops the lockfile entries that would otherwise make the install fail.
+
+Then it installs dependencies and formats what changed.
+
+### What's left
+
+What can't be done safely by machine is listed in `MIGRATION_TASKS.md`, and marked in the code with `@migration-task` comments. Work through both and delete the file, then run `npm run check`, [`vela test:server`](/test) and `npm run build`.
+
+Servers need Node 22.17 or later too. Run [`vela provision`](/provision) on each before the first SvelteKit 3 deploy.
+
+Running the command again is safe. On a project already on SvelteKit 3 it skips sv and only re-checks the Vela steps.
+<!-- @es -->
+Actualiza un proyecto de SvelteKit 2 a SvelteKit 3.
+
+### Sintaxis
+
+```
+$ vela migrate sveltekit-3
+```
+
+Vela 0.15 solo escribe código de SvelteKit 3. En un proyecto de SvelteKit 2, uno cuyo `package.json` declara `@sveltejs/kit` 2 o que todavía tiene un `svelte.config.js`, [`vela bless`](/es/bless), [`vela deploy`](/es/deploy) y los comandos que escriben código, como [`enable`](/es/enable), [`disable`](/es/disable) y [`generate`](/es/generate), se niegan a ejecutarse y remiten aquí. `vela dev`, `build`, `preview` y `test:server` siguen funcionando, con un aviso de una línea.
+
+Un proyecto de SvelteKit 2 fija `vela ^0.14`, que nunca pasa a 0.15 por sí solo, así que ejecuta la migración con npx:
+
+```
+$ npx vela@^0.15 migrate sveltekit-3
+```
+
+O quédate en Vela 0.14, que sigue funcionando con SvelteKit 2.
+
+### Opciones
+
+- `--cwd <path>` - El proyecto que migrar; por defecto, el proyecto actual
+- `--no-install` - Omite la instalación de dependencias
+- `--force` - Se ejecuta aunque el árbol de trabajo de git tenga cambios sin confirmar
+- `--skip-sv` - Solo ejecuta los pasos de Vela, para un proyecto que `sv` ya migró
+
+### Qué hace
+
+Necesita Node 22.17 o posterior, y un árbol de trabajo de git limpio para que los cambios de la migración se puedan revisar por separado.
+
+Primero ejecuta la migración propia de SvelteKit, `sv migrate sveltekit-3`. La configuración sale de `svelte.config.js` y pasa al plugin `sveltekit()` de `vite.config.ts`, `tsconfig.json` extiende `$app/tsconfig`, las importaciones de `$lib` pasan a `#lib`, las variables de entorno se declaran en `src/env.ts` y se leen de `$app/env`, y las APIs de SvelteKit pasan a sus nuevos módulos.
+
+Después hace lo que un proyecto de Vela necesita además:
+
+- Restaura `VELA_ORIGIN` como `paths.origin`, que sv descarta al mover la configuración. Consulta [`vela build`](/es/build).
+- Declara en `src/env.ts` las variables que lee Vela, como `POCKETBASE_URL`. Consulta [`vela env`](/es/env).
+- Añade `#lib` a los `imports` de `package.json`, hace que `components.json` apunte a él y reescribe las importaciones de `$lib` que sv deja atrás, como las de fuera de `src/`.
+- Sustituye el alias `$locales` de [i18n](/es/enable/i18n) por una importación `#locales`.
+- Sube las versiones mínimas de `vela` y de los paquetes que SvelteKit 3 necesita, y añade overrides para las dependencias que todavía declaran SvelteKit 2 como peer.
+- Elimina las entradas del lockfile que de otro modo harían fallar la instalación.
+
+Luego instala las dependencias y da formato a lo que cambió.
+
+### Qué queda
+
+Lo que no se puede hacer con seguridad de forma automática se enumera en `MIGRATION_TASKS.md` y se marca en el código con comentarios `@migration-task`. Resuelve ambos y elimina el archivo; después ejecuta `npm run check`, [`vela test:server`](/es/test) y `npm run build`.
+
+Los servidores también necesitan Node 22.17 o posterior. Ejecuta [`vela provision`](/es/provision) en cada uno antes del primer despliegue con SvelteKit 3.
+
+Volver a ejecutar el comando es seguro. En un proyecto que ya está en SvelteKit 3 se salta sv y solo vuelve a comprobar los pasos de Vela.
+<!-- @end -->

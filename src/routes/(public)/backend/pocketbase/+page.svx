@@ -11,7 +11,7 @@ import {
   POCKETBASE_URL,
   POCKETBASE_SUPERUSER_EMAIL,
   POCKETBASE_SUPERUSER_PASSWORD,
-} from '$env/static/private';
+} from '$app/env/private';
 
 export const handle = handlePocketbase({
   pocketbaseUrl: POCKETBASE_URL,
@@ -45,7 +45,7 @@ import {
   POCKETBASE_URL,
   POCKETBASE_SUPERUSER_EMAIL,
   POCKETBASE_SUPERUSER_PASSWORD,
-} from '$env/static/private';
+} from '$app/env/private';
 ```
 
 Cuando se ejecuta el proyecto, la interfaz de administración de PocketBase está disponible en `/admin`. La API REST pública (si está habilitada) está disponible en `/api`.

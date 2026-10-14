@@ -12,6 +12,7 @@ Projects created with Vela 0.13 or later already have everything this adds, and 
 - `src/lib/server/workflows.ts` - The OpenWorkflow client, the superuser client for steps, and the worker
 - `src/lib/workflows/` - Where workflow files go, with a README
 - An `init` hook in `src/hooks.server.ts` that starts the worker when the server does
+- The PocketBase and workflow variables declared in `src/env.ts`
 
 and installs `openworkflow`, `openworkflow-pocketbase` and `croner`.
 
@@ -20,8 +21,8 @@ and installs `openworkflow`, `openworkflow-pocketbase` and `croner`.
 The hook is appended to `src/hooks.server.ts` as it is, whether the file exports a bare `handlePocketbase` or a `sequence` of handles:
 
 ```ts
-import type { ServerInit } from '@sveltejs/kit';
-import { startWorker } from '$lib/server/workflows';
+import type { ServerInit } from '@sveltejs/kit/hooks';
+import { startWorker } from '#lib/server/workflows.js';
 
 export const init: ServerInit = () => startWorker();
 ```
@@ -43,6 +44,7 @@ Los proyectos creados con Vela 0.13 o posterior ya tienen todo lo que esto añad
 - `src/lib/server/workflows.ts` - El cliente de OpenWorkflow, el cliente superusuario para los pasos y el worker
 - `src/lib/workflows/` - Donde van los archivos de workflow, con un README
 - Un hook `init` en `src/hooks.server.ts` que arranca el worker cuando arranca el servidor
+- Las variables de PocketBase y de workflows declaradas en `src/env.ts`
 
 e instala `openworkflow`, `openworkflow-pocketbase` y `croner`.
 
@@ -51,8 +53,8 @@ e instala `openworkflow`, `openworkflow-pocketbase` y `croner`.
 El hook se añade al final de `src/hooks.server.ts` tal cual, tanto si el archivo exporta un `handlePocketbase` a secas como una `sequence` de handles:
 
 ```ts
-import type { ServerInit } from '@sveltejs/kit';
-import { startWorker } from '$lib/server/workflows';
+import type { ServerInit } from '@sveltejs/kit/hooks';
+import { startWorker } from '#lib/server/workflows.js';
 
 export const init: ServerInit = () => startWorker();
 ```

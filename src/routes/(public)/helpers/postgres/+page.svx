@@ -7,7 +7,7 @@ Configuration is planned to mirror [`handlePocketbase`](/helpers/pocketbase), in
 
 ```ts
 import { handlePostgres } from '@velastack/postgres';
-import { POSTGRES_CONNECTION_STRING } from '$env/static/private';
+import { POSTGRES_CONNECTION_STRING } from '$app/env/private';
 
 export const handle = handlePostgres({
     connectionString: POSTGRES_CONNECTION_STRING
@@ -24,7 +24,7 @@ Está previsto que la configuración refleje la de [`handlePocketbase`](/es/help
 
 ```ts
 import { handlePostgres } from '@velastack/postgres';
-import { POSTGRES_CONNECTION_STRING } from '$env/static/private';
+import { POSTGRES_CONNECTION_STRING } from '$app/env/private';
 
 export const handle = handlePostgres({
     connectionString: POSTGRES_CONNECTION_STRING

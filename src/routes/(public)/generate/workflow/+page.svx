@@ -26,7 +26,7 @@ The name can be written as `send-welcome-email`, `sendWelcomeEmail` or `send_wel
 
 ```ts
 import { z } from 'zod';
-import { ow } from '$lib/server/workflows';
+import { ow } from '#lib/server/workflows.js';
 
 export const sendWelcomeEmail = ow.defineWorkflow(
 	{
@@ -83,7 +83,7 @@ El nombre puede escribirse como `send-welcome-email`, `sendWelcomeEmail` o `send
 
 ```ts
 import { z } from 'zod';
-import { ow } from '$lib/server/workflows';
+import { ow } from '#lib/server/workflows.js';
 
 export const sendWelcomeEmail = ow.defineWorkflow(
 	{

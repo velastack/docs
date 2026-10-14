@@ -285,6 +285,10 @@
 					{
 						title: 'History Sync',
 						url: /* @wc-url */ '/migrate/history-sync'
+					},
+					{
+						title: 'SvelteKit 3',
+						url: /* @wc-url */ '/migrate/sveltekit-3'
 					}
 				]
 			},

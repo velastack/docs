@@ -13,6 +13,8 @@ $ vela migrate <command>
 - [`collections`](/migrate/collections) - Snapshot local collections into a new migration
 - [`history-sync`](/migrate/history-sync) - Drop history rows whose files no longer exist
 
+[`sveltekit-3`](/migrate/sveltekit-3) is the odd one out: it migrates the project's code, not its database, upgrading a SvelteKit 2 project to SvelteKit 3.
+
 ### Where migrations come from
 
 Most of the time you don't write them. The [generators](/generate) create collections as they go, and [`vela generate migration`](/generate/migration) writes the migration for a change to an existing collection. Changes made by hand in the PocketBase admin interface are captured with [`collections`](/migrate/collections).
@@ -38,6 +40,8 @@ $ vela migrate <command>
 - [`create`](/es/migrate/create) - Crear una migración nueva en blanco
 - [`collections`](/es/migrate/collections) - Capturar las colecciones locales en una migración nueva
 - [`history-sync`](/es/migrate/history-sync) - Eliminar las filas del historial cuyos archivos ya no existen
+
+[`sveltekit-3`](/es/migrate/sveltekit-3) es la excepción: migra el código del proyecto, no su base de datos, y actualiza un proyecto de SvelteKit 2 a SvelteKit 3.
 
 ### De dónde vienen las migraciones
 
