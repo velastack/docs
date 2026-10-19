@@ -1,0 +1,19 @@
+{
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"redirects": [
+		{ "source": "/index.md", "destination": "https://velastack.dev/docs.md", "statusCode": 301 },
+		{
+			"source": "/es/index.md",
+			"destination": "https://velastack.dev/es/docs.md",
+			"statusCode": 301
+		},
+		{ "source": "/es", "destination": "https://velastack.dev/es/docs", "statusCode": 301 },
+		{
+			"source": "/es/:path*",
+			"destination": "https://velastack.dev/es/docs/:path*",
+			"statusCode": 301
+		},
+		{ "source": "/", "destination": "https://velastack.dev/docs", "statusCode": 301 },
+		{ "source": "/:path*", "destination": "https://velastack.dev/docs/:path*", "statusCode": 301 }
+	]
+}
